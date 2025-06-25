@@ -1,0 +1,1429 @@
+{
+  "session": "session-1750855667711",
+  "sessionStart": "2025-06-25T12:47:47.711Z",
+  "timestamp": "2025-06-25T12:49:07.708Z",
+  "url": "http://localhost:52330/index.html",
+  "summary": {
+    "totalElements": 33,
+    "elementsWithId": 5,
+    "elementsWithClasses": 23,
+    "elementsWithCssConflicts": 9
+  },
+  "elements": [
+    {
+      "tag": "html",
+      "id": null,
+      "classes": [],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "636px",
+        "height": "906px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "dimensions": {
+        "width": 636,
+        "height": 906
+      },
+      "textContent": "Imprinted Assembly - Debug Mode\n\n    \n    \n        // Capture ALL console output from the very begin",
+      "innerHTML": "<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Imprinted Assembly - Debug Mode</title>\n\n    <!-- Early console capture - must b"
+    },
+    {
+      "tag": "head",
+      "id": null,
+      "classes": [],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "none",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "auto",
+        "height": "auto",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "dimensions": {
+        "width": 0,
+        "height": 0
+      },
+      "textContent": "Imprinted Assembly - Debug Mode\n\n    \n    \n        // Capture ALL console output from the very begin",
+      "innerHTML": "\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Imprinted Assembly - Debug Mode</title>\n\n    <!-- Early console capture - must be firs",
+      "cssConflicts": [
+        "Element hidden by display:none but visibility:visible"
+      ]
+    },
+    {
+      "tag": "meta",
+      "id": null,
+      "classes": [],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "none",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "auto",
+        "height": "auto",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "dimensions": {
+        "width": 0,
+        "height": 0
+      },
+      "textContent": null,
+      "innerHTML": null,
+      "cssConflicts": [
+        "Element hidden by display:none but visibility:visible"
+      ]
+    },
+    {
+      "tag": "meta",
+      "id": null,
+      "classes": [],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "none",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "auto",
+        "height": "auto",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "dimensions": {
+        "width": 0,
+        "height": 0
+      },
+      "textContent": null,
+      "innerHTML": null,
+      "cssConflicts": [
+        "Element hidden by display:none but visibility:visible"
+      ]
+    },
+    {
+      "tag": "title",
+      "id": null,
+      "classes": [],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "none",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "auto",
+        "height": "auto",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "dimensions": {
+        "width": 0,
+        "height": 0
+      },
+      "textContent": "Imprinted Assembly - Debug Mode",
+      "innerHTML": "Imprinted Assembly - Debug Mode",
+      "cssConflicts": [
+        "Element hidden by display:none but visibility:visible"
+      ]
+    },
+    {
+      "tag": "script",
+      "id": null,
+      "classes": [],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "none",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "auto",
+        "height": "auto",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "dimensions": {
+        "width": 0,
+        "height": 0
+      },
+      "textContent": "// Capture ALL console output from the very beginning\n        window.earlyLogs = [];\n        const o",
+      "innerHTML": "\n        // Capture ALL console output from the very beginning\n        window.earlyLogs = [];\n        const originalLog = console.log;\n        const originalWarn = console.warn;\n        const original",
+      "cssConflicts": [
+        "Element hidden by display:none but visibility:visible"
+      ]
+    },
+    {
+      "tag": "script",
+      "id": null,
+      "classes": [],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "none",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "auto",
+        "height": "auto",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "dimensions": {
+        "width": 0,
+        "height": 0
+      },
+      "textContent": null,
+      "innerHTML": null,
+      "cssConflicts": [
+        "Element hidden by display:none but visibility:visible"
+      ]
+    },
+    {
+      "tag": "style",
+      "id": null,
+      "classes": [],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "none",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "auto",
+        "height": "auto",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "dimensions": {
+        "width": 0,
+        "height": 0
+      },
+      "textContent": "/* Add any custom CSS here */",
+      "innerHTML": "\n        /* Add any custom CSS here */\n    ",
+      "cssConflicts": [
+        "Element hidden by display:none but visibility:visible"
+      ]
+    },
+    {
+      "tag": "style",
+      "id": null,
+      "classes": [],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "none",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "auto",
+        "height": "auto",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "dimensions": {
+        "width": 0,
+        "height": 0
+      },
+      "textContent": "*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-transla",
+      "innerHTML": "*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan",
+      "cssConflicts": [
+        "Element hidden by display:none but visibility:visible"
+      ]
+    },
+    {
+      "tag": "body",
+      "id": null,
+      "classes": [
+        "bg-gray-100",
+        "p-8"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "636px",
+        "height": "906px",
+        "margin": "0px",
+        "padding": "32px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgb(243, 244, 246)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "dimensions": {
+        "width": 636,
+        "height": 906
+      },
+      "textContent": "Imprinted Assembly\n\n        \n            Debug Interface\n            This page has automatic logging",
+      "innerHTML": "\n    <div class=\"max-w-4xl mx-auto\">\n        <h1 class=\"text-3xl font-bold text-gray-800 mb-8\">Imprinted Assembly</h1>\n\n        <div class=\"bg-white rounded-lg shadow-md p-6 mb-6\">\n            <h2 cla"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "max-w-4xl",
+        "mx-auto"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "572px",
+        "height": "842px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 32,
+        "y": 32
+      },
+      "dimensions": {
+        "width": 572,
+        "height": 842
+      },
+      "textContent": "Imprinted Assembly\n\n        \n            Debug Interface\n            This page has automatic logging",
+      "innerHTML": "\n        <h1 class=\"text-3xl font-bold text-gray-800 mb-8\">Imprinted Assembly</h1>\n\n        <div class=\"bg-white rounded-lg shadow-md p-6 mb-6\">\n            <h2 class=\"text-xl font-semibold mb-4\">Debu"
+    },
+    {
+      "tag": "h1",
+      "id": null,
+      "classes": [
+        "text-3xl",
+        "font-bold",
+        "text-gray-800",
+        "mb-8"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "572px",
+        "height": "36px",
+        "margin": "0px 0px 32px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(31, 41, 55)",
+        "font-size": "30px",
+        "font-weight": "700",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 32,
+        "y": 32
+      },
+      "dimensions": {
+        "width": 572,
+        "height": 36
+      },
+      "textContent": "Imprinted Assembly",
+      "innerHTML": "Imprinted Assembly"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "bg-white",
+        "rounded-lg",
+        "shadow-md",
+        "p-6",
+        "mb-6"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "572px",
+        "height": "268px",
+        "margin": "0px 0px 24px",
+        "padding": "24px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 32,
+        "y": 100
+      },
+      "dimensions": {
+        "width": 572,
+        "height": 268
+      },
+      "textContent": "Debug Interface\n            This page has automatic logging enabled. Check the logs/ directory for o",
+      "innerHTML": "\n            <h2 class=\"text-xl font-semibold mb-4\">Debug Interface</h2>\n            <p class=\"text-gray-600 mb-4\">This page has automatic logging enabled. Check the logs/ directory for output\n       "
+    },
+    {
+      "tag": "h2",
+      "id": null,
+      "classes": [
+        "text-xl",
+        "font-semibold",
+        "mb-4"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "524px",
+        "height": "28px",
+        "margin": "0px 0px 16px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "20px",
+        "font-weight": "600",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 56,
+        "y": 124
+      },
+      "dimensions": {
+        "width": 524,
+        "height": 28
+      },
+      "textContent": "Debug Interface",
+      "innerHTML": "Debug Interface"
+    },
+    {
+      "tag": "p",
+      "id": null,
+      "classes": [
+        "text-gray-600",
+        "mb-4"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "524px",
+        "height": "48px",
+        "margin": "0px 0px 16px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(75, 85, 99)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 56,
+        "y": 168
+      },
+      "dimensions": {
+        "width": 524,
+        "height": 48
+      },
+      "textContent": "This page has automatic logging enabled. Check the logs/ directory for output\n                files.",
+      "innerHTML": "This page has automatic logging enabled. Check the logs/ directory for output\n                files."
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "space-y-4"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "524px",
+        "height": "112px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 56,
+        "y": 232
+      },
+      "dimensions": {
+        "width": 524,
+        "height": 112
+      },
+      "textContent": "Test Console Log\n                \n                \n                    Test Console Warn\n           ",
+      "innerHTML": "\n                <button id=\"test-log\" class=\"bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded\">\n                    Test Console Log\n                </button>\n                <button id=\"te"
+    },
+    {
+      "tag": "button",
+      "id": "test-log",
+      "classes": [
+        "bg-blue-500",
+        "hover:bg-blue-600",
+        "text-white",
+        "px-4",
+        "py-2",
+        "rounded"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "inline-block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "152.578px",
+        "height": "40px",
+        "margin": "0px",
+        "padding": "8px 16px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgb(59, 130, 246)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 56,
+        "y": 248
+      },
+      "dimensions": {
+        "width": 153,
+        "height": 40
+      },
+      "textContent": "Test Console Log",
+      "innerHTML": "\n                    Test Console Log\n                "
+    },
+    {
+      "tag": "button",
+      "id": "test-warn",
+      "classes": [
+        "bg-yellow-500",
+        "hover:bg-yellow-600",
+        "text-white",
+        "px-4",
+        "py-2",
+        "rounded"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "inline-block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "164.344px",
+        "height": "40px",
+        "margin": "16px 0px 0px",
+        "padding": "8px 16px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgb(234, 179, 8)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 213,
+        "y": 248
+      },
+      "dimensions": {
+        "width": 164,
+        "height": 40
+      },
+      "textContent": "Test Console Warn",
+      "innerHTML": "\n                    Test Console Warn\n                "
+    },
+    {
+      "tag": "button",
+      "id": "test-error",
+      "classes": [
+        "bg-red-500",
+        "hover:bg-red-600",
+        "text-white",
+        "px-4",
+        "py-2",
+        "rounded"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "inline-block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "163.141px",
+        "height": "40px",
+        "margin": "16px 0px 0px",
+        "padding": "8px 16px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgb(239, 68, 68)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 381,
+        "y": 248
+      },
+      "dimensions": {
+        "width": 163,
+        "height": 40
+      },
+      "textContent": "Test Console Error",
+      "innerHTML": "\n                    Test Console Error\n                "
+    },
+    {
+      "tag": "button",
+      "id": "add-element",
+      "classes": [
+        "bg-green-500",
+        "hover:bg-green-600",
+        "text-white",
+        "px-4",
+        "py-2",
+        "rounded"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "inline-block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "157.508px",
+        "height": "40px",
+        "margin": "16px 0px 0px",
+        "padding": "8px 16px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgb(34, 197, 94)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 56,
+        "y": 304
+      },
+      "dimensions": {
+        "width": 158,
+        "height": 40
+      },
+      "textContent": "Add Test Element",
+      "innerHTML": "\n                    Add Test Element\n                "
+    },
+    {
+      "tag": "div",
+      "id": "dynamic-content",
+      "classes": [
+        "bg-white",
+        "rounded-lg",
+        "shadow-md",
+        "p-6"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "572px",
+        "height": "482px",
+        "margin": "0px",
+        "padding": "24px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 32,
+        "y": 392
+      },
+      "dimensions": {
+        "width": 572,
+        "height": 482
+      },
+      "textContent": "Dynamic Content Area\n            Elements added here will be captured in DOM snapshots.\n        \n   ",
+      "innerHTML": "\n            <h3 class=\"text-lg font-semibold mb-4\">Dynamic Content Area</h3>\n            <p class=\"text-gray-600\">Elements added here will be captured in DOM snapshots.</p>\n        <div class=\"bg-yel"
+    },
+    {
+      "tag": "h3",
+      "id": null,
+      "classes": [
+        "text-lg",
+        "font-semibold",
+        "mb-4"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "524px",
+        "height": "28px",
+        "margin": "0px 0px 16px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "18px",
+        "font-weight": "600",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 56,
+        "y": 416
+      },
+      "dimensions": {
+        "width": 524,
+        "height": 28
+      },
+      "textContent": "Dynamic Content Area",
+      "innerHTML": "Dynamic Content Area"
+    },
+    {
+      "tag": "p",
+      "id": null,
+      "classes": [
+        "text-gray-600"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "524px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(75, 85, 99)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 56,
+        "y": 460
+      },
+      "dimensions": {
+        "width": 524,
+        "height": 24
+      },
+      "textContent": "Elements added here will be captured in DOM snapshots.",
+      "innerHTML": "Elements added here will be captured in DOM snapshots."
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "bg-yellow-100",
+        "border",
+        "border-yellow-300",
+        "p-4",
+        "rounded",
+        "mb-4"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "524px",
+        "height": "106px",
+        "margin": "0px 0px 16px",
+        "padding": "16px",
+        "border": "1px solid rgb(253, 224, 71)",
+        "background-color": "rgb(254, 249, 195)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 56,
+        "y": 484
+      },
+      "dimensions": {
+        "width": 524,
+        "height": 106
+      },
+      "textContent": "Dynamic Element 1750855670347\n                This element was added dynamically and will be capture",
+      "innerHTML": "\n                <h4 class=\"font-semibold text-yellow-800\">Dynamic Element 1750855670347</h4>\n                <p class=\"text-yellow-700\">This element was added dynamically and will be captured in DOM "
+    },
+    {
+      "tag": "h4",
+      "id": null,
+      "classes": [
+        "font-semibold",
+        "text-yellow-800"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "490px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(133, 77, 14)",
+        "font-size": "16px",
+        "font-weight": "600",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 73,
+        "y": 501
+      },
+      "dimensions": {
+        "width": 490,
+        "height": 24
+      },
+      "textContent": "Dynamic Element 1750855670347",
+      "innerHTML": "Dynamic Element 1750855670347"
+    },
+    {
+      "tag": "p",
+      "id": null,
+      "classes": [
+        "text-yellow-700"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "490px",
+        "height": "48px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(161, 98, 7)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 73,
+        "y": 525
+      },
+      "dimensions": {
+        "width": 490,
+        "height": 48
+      },
+      "textContent": "This element was added dynamically and will be captured in DOM snapshots.",
+      "innerHTML": "This element was added dynamically and will be captured in DOM snapshots."
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "bg-yellow-100",
+        "border",
+        "border-yellow-300",
+        "p-4",
+        "rounded",
+        "mb-4"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "524px",
+        "height": "106px",
+        "margin": "0px 0px 16px",
+        "padding": "16px",
+        "border": "1px solid rgb(253, 224, 71)",
+        "background-color": "rgb(254, 249, 195)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 56,
+        "y": 606
+      },
+      "dimensions": {
+        "width": 524,
+        "height": 106
+      },
+      "textContent": "Dynamic Element 1750855670483\n                This element was added dynamically and will be capture",
+      "innerHTML": "\n                <h4 class=\"font-semibold text-yellow-800\">Dynamic Element 1750855670483</h4>\n                <p class=\"text-yellow-700\">This element was added dynamically and will be captured in DOM "
+    },
+    {
+      "tag": "h4",
+      "id": null,
+      "classes": [
+        "font-semibold",
+        "text-yellow-800"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "490px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(133, 77, 14)",
+        "font-size": "16px",
+        "font-weight": "600",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 73,
+        "y": 623
+      },
+      "dimensions": {
+        "width": 490,
+        "height": 24
+      },
+      "textContent": "Dynamic Element 1750855670483",
+      "innerHTML": "Dynamic Element 1750855670483"
+    },
+    {
+      "tag": "p",
+      "id": null,
+      "classes": [
+        "text-yellow-700"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "490px",
+        "height": "48px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(161, 98, 7)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 73,
+        "y": 647
+      },
+      "dimensions": {
+        "width": 490,
+        "height": 48
+      },
+      "textContent": "This element was added dynamically and will be captured in DOM snapshots.",
+      "innerHTML": "This element was added dynamically and will be captured in DOM snapshots."
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "bg-yellow-100",
+        "border",
+        "border-yellow-300",
+        "p-4",
+        "rounded",
+        "mb-4"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "524px",
+        "height": "106px",
+        "margin": "0px 0px 16px",
+        "padding": "16px",
+        "border": "1px solid rgb(253, 224, 71)",
+        "background-color": "rgb(254, 249, 195)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 56,
+        "y": 728
+      },
+      "dimensions": {
+        "width": 524,
+        "height": 106
+      },
+      "textContent": "Dynamic Element 1750855670619\n                This element was added dynamically and will be capture",
+      "innerHTML": "\n                <h4 class=\"font-semibold text-yellow-800\">Dynamic Element 1750855670619</h4>\n                <p class=\"text-yellow-700\">This element was added dynamically and will be captured in DOM "
+    },
+    {
+      "tag": "h4",
+      "id": null,
+      "classes": [
+        "font-semibold",
+        "text-yellow-800"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "490px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(133, 77, 14)",
+        "font-size": "16px",
+        "font-weight": "600",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 73,
+        "y": 745
+      },
+      "dimensions": {
+        "width": 490,
+        "height": 24
+      },
+      "textContent": "Dynamic Element 1750855670619",
+      "innerHTML": "Dynamic Element 1750855670619"
+    },
+    {
+      "tag": "p",
+      "id": null,
+      "classes": [
+        "text-yellow-700"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "490px",
+        "height": "48px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(161, 98, 7)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 73,
+        "y": 769
+      },
+      "dimensions": {
+        "width": 490,
+        "height": 48
+      },
+      "textContent": "This element was added dynamically and will be captured in DOM snapshots.",
+      "innerHTML": "This element was added dynamically and will be captured in DOM snapshots."
+    },
+    {
+      "tag": "script",
+      "id": null,
+      "classes": [],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "none",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "auto",
+        "height": "auto",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "dimensions": {
+        "width": 0,
+        "height": 0
+      },
+      "textContent": null,
+      "innerHTML": null,
+      "cssConflicts": [
+        "Element hidden by display:none but visibility:visible"
+      ]
+    }
+  ]
+}

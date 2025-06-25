@@ -3,6 +3,6 @@ description:
 globs: 
 alwaysApply: true
 ---
-In this project we are creating a prototype for a "multi-track audio editor". In this prototype we will NOT work with any audio-files or do any audio-playback. Instead we will just mock up the UI, so that later the whole thing can be implemented in our Unity video game which is supposed to make the player "feel like an audio engineer".
-
 We are using vanilla HTML and JS as well as Tailwind CSS for this prototype.
+
+Never start your own web server (python3 -m http.server 8000). I will run the site in my browser and you will get logs via the logging system.
