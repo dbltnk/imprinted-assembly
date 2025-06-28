@@ -1,5 +1,69 @@
-=== SESSION START: session-1751142377041 ===
-[21:26:16] WARN: cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation
-  @62:index.html → @64:https://cdn.tailwindcss.com/ → @64:https://cdn.tailwindcss.com/
-[21:26:17] LOG: Browser logging system initialized
-  @92:app.js → @35:app.js → @12:app.js → @346:app.js
+=== SESSION START: session-1751142960868 ===
+[21:36:00] LOG: ✅ Configuration validation passed
+  @57:index.html → @392:config.js → @420:config.js
+[21:36:00] LOG: Browser logging system initialized
+  @99:app.js → @42:app.js → @19:app.js → @342:app.js → @667:app.js
+[21:36:00] LOG: Initializing Assembly Audio Editor
+  @99:app.js → @348:app.js → @344:app.js → @667:app.js
+[21:36:00] LOG: Loading project: band
+  @99:app.js → @428:app.js → @360:app.js → @344:app.js → @667:app.js
+[21:36:00] LOG: Project 'Choose instrument options' loaded successfully
+  @99:app.js → @442:app.js → @360:app.js → @344:app.js → @667:app.js
+[21:36:00] LOG: Assembly Audio Editor initialized successfully
+  @99:app.js → @362:app.js → @344:app.js → @667:app.js
+[21:36:17] LOG: Transport action: stop
+  @99:app.js → @453:app.js → @405:app.js → @314:components.js → @294:components.js
+[21:36:17] LOG: Stopping playback
+  @99:app.js → @598:app.js → @460:app.js → @405:app.js → @314:components.js → @294:components.js
+[21:36:17] LOG: Pausing playback
+  @99:app.js → @590:app.js → @603:app.js → @460:app.js → @405:app.js → @314:components.js → @294:components.js
+[21:36:18] LOG: Transport action: loop
+  @99:app.js → @453:app.js → @405:app.js → @314:components.js → @294:components.js
+[21:36:18] WARN: Unknown transport action: loop
+  @104:app.js → @472:app.js → @405:app.js → @314:components.js → @294:components.js
+[21:36:19] LOG: Transport action: loop
+  @99:app.js → @453:app.js → @405:app.js → @314:components.js → @294:components.js
+[21:36:19] WARN: Unknown transport action: loop
+  @104:app.js → @472:app.js → @405:app.js → @314:components.js → @294:components.js
+[21:36:39] LOG: Loading project: song
+  @99:app.js → @428:app.js → @399:app.js → @183:components.js → @163:components.js
+[21:36:39] LOG: Project 'THE SONG' loaded successfully
+  @99:app.js → @442:app.js → @399:app.js → @183:components.js → @163:components.js
+[21:36:41] ERROR: Uncaught error: Uncaught NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node. at http://localhost:52330/components.js:171
+  @80:app.js
+[21:36:43] LOG: Loading project: ambient
+  @99:app.js → @428:app.js → @399:app.js → @183:components.js → @163:components.js
+[21:36:43] LOG: Project 'Vince's ambient sandbox' loaded successfully
+  @99:app.js → @442:app.js → @399:app.js → @183:components.js → @163:components.js
+[21:36:43] ERROR: Uncaught error: Uncaught NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node. at http://localhost:52330/components.js:171
+  @80:app.js
+[21:36:47] LOG: Loading project: band
+  @99:app.js → @428:app.js → @399:app.js → @183:components.js → @163:components.js
+[21:36:47] LOG: Project 'Choose instrument options' loaded successfully
+  @99:app.js → @442:app.js → @399:app.js → @183:components.js → @163:components.js
+[21:36:47] ERROR: Uncaught error: Uncaught NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node. at http://localhost:52330/components.js:171
+  @80:app.js
+[21:36:47] ERROR: Uncaught error: Uncaught NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node. at http://localhost:52330/components.js:171
+  @80:app.js
+[21:36:50] LOG: Loading project: sentence
+  @99:app.js → @428:app.js → @399:app.js → @183:components.js → @163:components.js
+[21:36:50] LOG: Project 'Piece together a linear sentence' loaded successfully
+  @99:app.js → @442:app.js → @399:app.js → @183:components.js → @163:components.js
+[21:36:50] ERROR: Uncaught error: Uncaught NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node. at http://localhost:52330/components.js:171
+  @80:app.js
+[21:36:50] ERROR: Uncaught error: Uncaught NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node. at http://localhost:52330/components.js:171
+  @80:app.js
+[21:36:50] ERROR: Uncaught error: Uncaught NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node. at http://localhost:52330/components.js:171
+  @80:app.js
+[21:36:54] LOG: Loading project: song
+  @99:app.js → @428:app.js → @399:app.js → @183:components.js → @163:components.js
+[21:36:54] LOG: Project 'THE SONG' loaded successfully
+  @99:app.js → @442:app.js → @399:app.js → @183:components.js → @163:components.js
+[21:36:54] ERROR: Uncaught error: Uncaught NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node. at http://localhost:52330/components.js:171
+  @80:app.js
+[21:36:54] ERROR: Uncaught error: Uncaught NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node. at http://localhost:52330/components.js:171
+  @80:app.js
+[21:36:54] ERROR: Uncaught error: Uncaught NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node. at http://localhost:52330/components.js:171
+  @80:app.js
+[21:36:54] ERROR: Uncaught error: Uncaught NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node. at http://localhost:52330/components.js:171
+  @80:app.js

@@ -1,6 +1,13 @@
-// Browser Logging System for LLM Debugging
-// Captures console output and DOM state with minimal performance impact
+/**
+ * Assembly Audio Editor - Main Application
+ * Modular audio editor with component-based architecture
+ */
 
+import { PROJECT_CONFIG, PROJECT_DATA, getProjectById } from './config.js';
+import { HeaderComponent, SidebarComponent, TimelineComponent, VUMeterComponent } from './components.js';
+
+// ===== BROWSER LOGGING SYSTEM =====
+// Keep the existing logging system intact for debugging
 class BrowserLogger {
     constructor() {
         this.logBuffer = [];
@@ -156,7 +163,6 @@ class BrowserLogger {
         });
 
         this.logCount++;
-        this.updateDebugPanel();
     }
 
     startPeriodicLogging() {
@@ -193,7 +199,6 @@ class BrowserLogger {
 
             this.lastDomSnapshot = snapshotStr;
             this.domUpdateCount++;
-            this.updateDebugPanel();
 
             await fetch(`${this.serverUrl}/dom-snapshot`, {
                 method: 'POST',
@@ -309,12 +314,8 @@ class BrowserLogger {
         return conflicts;
     }
 
-    updateDebugPanel() {
-        // Debug panel removed - no longer needed
-    }
-
     setupEventListeners() {
-        // Test buttons
+        // Test buttons for debugging
         document.getElementById('test-log')?.addEventListener('click', () => {
             console.log('Test log message from button click');
         });
@@ -326,24 +327,352 @@ class BrowserLogger {
         document.getElementById('test-error')?.addEventListener('click', () => {
             console.error('Test error message from button click');
         });
-
-        document.getElementById('add-element')?.addEventListener('click', () => {
-            const container = document.getElementById('dynamic-content');
-            const newElement = document.createElement('div');
-            newElement.className = 'bg-yellow-100 border border-yellow-300 p-4 rounded mb-4';
-            newElement.innerHTML = `
-                <h4 class="font-semibold text-yellow-800">Dynamic Element ${Date.now()}</h4>
-                <p class="text-yellow-700">This element was added dynamically and will be captured in DOM snapshots.</p>
-            `;
-            container.appendChild(newElement);
-            console.log('Added dynamic element to DOM');
-        });
     }
 }
 
-// Initialize logging system when DOM is ready
+// ===== MAIN APPLICATION CLASS =====
+class AssemblyApp {
+    constructor() {
+        this.currentProject = null;
+        this.isPlaying = false;
+        this.currentTime = 0;
+        this.components = new Map();
+
+        // Initialize logging system first
+        this.logger = new BrowserLogger();
+
+        this.init();
+    }
+
+    init() {
+        console.log('Initializing Assembly Audio Editor');
+
+        // Validate configuration
+        this.validateConfiguration();
+
+        // Initialize components
+        this.initializeComponents();
+
+        // Set up event listeners
+        this.setupEventListeners();
+
+        // Load default project
+        this.loadProject('band');
+
+        console.log('Assembly Audio Editor initialized successfully');
+    }
+
+    validateConfiguration() {
+        assert(PROJECT_CONFIG, 'PROJECT_CONFIG is required');
+        assert(PROJECT_DATA, 'PROJECT_DATA is required');
+
+        // Validate that all required DOM elements exist
+        const requiredElements = ['header', 'sidebar', 'timeline', 'vu-meter'];
+        requiredElements.forEach(id => {
+            const element = document.getElementById(id);
+            assert(element, `Required element with id '${id}' not found`);
+        });
+    }
+
+    initializeComponents() {
+        // Initialize header component
+        const headerElement = document.getElementById('header');
+        this.components.set('header', new HeaderComponent(headerElement));
+
+        // Initialize sidebar component
+        const sidebarElement = document.getElementById('sidebar');
+        this.components.set('sidebar', new SidebarComponent(sidebarElement));
+
+        // Initialize timeline component
+        const timelineElement = document.getElementById('timeline');
+        this.components.set('timeline', new TimelineComponent(timelineElement));
+
+        // Initialize VU meter component
+        const vuMeterElement = document.getElementById('vu-meter');
+        this.components.set('vuMeter', new VUMeterComponent(vuMeterElement));
+    }
+
+    setupEventListeners() {
+        // Project selection
+        const header = this.components.get('header');
+        header.addEventListener('projectSelected', (e) => {
+            this.loadProject(e.detail.projectId);
+        });
+
+        // Transport controls
+        const sidebar = this.components.get('sidebar');
+        sidebar.addEventListener('transportAction', (e) => {
+            this.handleTransportAction(e.detail.action);
+        });
+
+        // Track actions
+        const timeline = this.components.get('timeline');
+        timeline.addEventListener('trackAction', (e) => {
+            this.handleTrackAction(e.detail.action, e.detail.trackId);
+        });
+
+        timeline.addEventListener('trackNameChange', (e) => {
+            this.handleTrackNameChange(e.detail.trackId, e.detail.newName);
+        });
+
+        timeline.addEventListener('addTrack', () => {
+            this.handleAddTrack();
+        });
+
+        timeline.addEventListener('clipDrop', (e) => {
+            this.handleClipDrop(e.detail.clipId, e.detail.trackId, e.detail.x);
+        });
+    }
+
+    loadProject(projectId) {
+        console.log(`Loading project: ${projectId}`);
+
+        const project = getProjectById(projectId);
+        assert(project, `Project with id '${projectId}' not found`);
+
+        this.currentProject = project;
+
+        // Update components with new project data
+        this.components.get('sidebar').setProject(project);
+        this.components.get('timeline').setProject(project);
+
+        // Update file info
+        this.updateFileInfo(project);
+
+        console.log(`Project '${project.name}' loaded successfully`);
+    }
+
+    updateFileInfo(project) {
+        const fileInfoElement = document.querySelector('.file-info__name');
+        if (fileInfoElement) {
+            fileInfoElement.textContent = `${project.id}.ass`;
+        }
+    }
+
+    handleTransportAction(action) {
+        console.log(`Transport action: ${action}`);
+
+        switch (action) {
+            case 'playPause':
+                this.togglePlayback();
+                break;
+            case 'stop':
+                this.stopPlayback();
+                break;
+            case 'rewind':
+                this.rewind();
+                break;
+            case 'fastForward':
+                this.fastForward();
+                break;
+            case 'toggleLoop':
+                this.toggleLoop();
+                break;
+            default:
+                console.warn(`Unknown transport action: ${action}`);
+        }
+    }
+
+    handleTrackAction(action, trackId) {
+        console.log(`Track action: ${action} for track: ${trackId}`);
+
+        switch (action) {
+            case 'toggleSolo':
+                this.toggleTrackSolo(trackId);
+                break;
+            case 'toggleMute':
+                this.toggleTrackMute(trackId);
+                break;
+            default:
+                console.warn(`Unknown track action: ${action}`);
+        }
+    }
+
+    handleTrackNameChange(trackId, newName) {
+        console.log(`Track name change: ${trackId} -> ${newName}`);
+
+        // Update the track name in the current project
+        const track = this.currentProject.tracks.find(t => t.id === trackId);
+        if (track) {
+            track.name = newName;
+        }
+    }
+
+    handleAddTrack() {
+        console.log('Adding new track');
+
+        if (!this.currentProject.allowTrackManagement) {
+            console.warn('Track management not allowed for this project');
+            return;
+        }
+
+        // Create new track
+        const newTrack = {
+            id: `track-${Date.now()}`,
+            name: 'New Track',
+            type: 'instrument',
+            clips: []
+        };
+
+        this.currentProject.tracks.push(newTrack);
+
+        // Re-render timeline
+        this.components.get('timeline').setProject(this.currentProject);
+    }
+
+    handleClipDrop(clipId, trackId, x) {
+        console.log(`Clip drop: ${clipId} -> ${trackId} at x=${x}`);
+
+        // Find the clip and track
+        const clip = this.findClipById(clipId);
+        const track = this.currentProject.tracks.find(t => t.id === trackId);
+
+        if (!clip || !track) {
+            console.warn('Clip or track not found');
+            return;
+        }
+
+        // Calculate start time based on x position
+        const startTime = Math.floor(x / PROJECT_CONFIG.layout.gridBeatWidth);
+
+        // Create new clip instance
+        const newClip = {
+            ...clip,
+            id: `${clip.id}-${Date.now()}`,
+            startTime: startTime
+        };
+
+        // Add to track
+        track.clips.push(newClip);
+
+        // Re-render timeline
+        this.components.get('timeline').setProject(this.currentProject);
+    }
+
+    findClipById(clipId) {
+        // Search through all tracks for the clip
+        for (const track of this.currentProject.tracks) {
+            const clip = track.clips.find(c => c.id === clipId);
+            if (clip) return clip;
+        }
+
+        // Check extra clips for ambient project
+        if (this.currentProject.extraClips) {
+            return this.currentProject.extraClips.find(c => c.id === clipId);
+        }
+
+        return null;
+    }
+
+    // Playback control methods
+    togglePlayback() {
+        this.isPlaying = !this.isPlaying;
+        this.components.get('timeline').setPlaying(this.isPlaying);
+
+        if (this.isPlaying) {
+            this.startPlayback();
+        } else {
+            this.pausePlayback();
+        }
+    }
+
+    startPlayback() {
+        console.log('Starting playback');
+        // In a real implementation, this would start audio playback
+        // For now, just simulate time progression
+        this.playbackInterval = setInterval(() => {
+            this.currentTime += 0.1;
+            this.components.get('timeline').setCurrentTime(this.currentTime);
+        }, 100);
+    }
+
+    pausePlayback() {
+        console.log('Pausing playback');
+        if (this.playbackInterval) {
+            clearInterval(this.playbackInterval);
+            this.playbackInterval = null;
+        }
+    }
+
+    stopPlayback() {
+        console.log('Stopping playback');
+        this.isPlaying = false;
+        this.currentTime = 0;
+        this.components.get('timeline').setPlaying(false);
+        this.components.get('timeline').setCurrentTime(0);
+        this.pausePlayback();
+    }
+
+    rewind() {
+        console.log('Rewinding');
+        this.currentTime = Math.max(0, this.currentTime - 1);
+        this.components.get('timeline').setCurrentTime(this.currentTime);
+    }
+
+    fastForward() {
+        console.log('Fast forwarding');
+        this.currentTime += 1;
+        this.components.get('timeline').setCurrentTime(this.currentTime);
+    }
+
+    toggleLoop() {
+        console.log('Toggling loop');
+        // Loop functionality would be implemented here
+    }
+
+    toggleTrackSolo(trackId) {
+        console.log(`Toggling solo for track: ${trackId}`);
+        // Solo functionality would be implemented here
+    }
+
+    toggleTrackMute(trackId) {
+        console.log(`Toggling mute for track: ${trackId}`);
+        // Mute functionality would be implemented here
+    }
+
+    destroy() {
+        // Clean up components
+        this.components.forEach(component => {
+            if (component.destroy) {
+                component.destroy();
+            }
+        });
+        this.components.clear();
+
+        // Clean up playback
+        if (this.playbackInterval) {
+            clearInterval(this.playbackInterval);
+        }
+
+        console.log('Assembly Audio Editor destroyed');
+    }
+}
+
+// ===== UTILITY FUNCTIONS =====
+function assert(condition, message) {
+    if (!condition) {
+        throw new Error(`Assembly App Error: ${message}`);
+    }
+}
+
+// ===== INITIALIZATION =====
+let app = null;
+
+// Initialize when DOM is ready
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => new BrowserLogger());
+    document.addEventListener('DOMContentLoaded', () => {
+        app = new AssemblyApp();
+    });
 } else {
-    new BrowserLogger();
-} 
+    app = new AssemblyApp();
+}
+
+// Clean up on page unload
+window.addEventListener('beforeunload', () => {
+    if (app) {
+        app.destroy();
+    }
+});
+
+// Export for debugging
+window.AssemblyApp = AssemblyApp; 
