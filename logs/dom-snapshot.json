@@ -1,12 +1,12 @@
 {
-  "session": "session-1751136595269",
-  "sessionStart": "2025-06-28T18:49:55.269Z",
-  "timestamp": "2025-06-28T18:51:51.268Z",
+  "session": "session-1751137422163",
+  "sessionStart": "2025-06-28T19:03:42.163Z",
+  "timestamp": "2025-06-28T19:03:50.155Z",
   "url": "http://localhost:52330/index.html",
   "summary": {
-    "totalElements": 139,
-    "elementsWithId": 0,
-    "elementsWithClasses": 129,
+    "totalElements": 151,
+    "elementsWithId": 2,
+    "elementsWithClasses": 141,
     "elementsWithCssConflicts": 9
   },
   "elements": [
@@ -1193,8 +1193,8 @@
         "width": 1128,
         "height": 581
       },
-      "textContent": "▶\n                ⏹\n                ⏮\n                ⏭\n            \n            \n                \n ",
-      "innerHTML": "\n        <!-- LEFT SIDEBAR -->\n        <aside class=\"w-64 bg-gray-800 border-r border-gray-700 flex flex-col py-4 px-2 mr-6 rounded-lg shadow-lg h-full overflow-y-auto\">\n            <!-- TRANSPORT CON"
+      "textContent": "File: my_project.ass\n            \n            \n                ▶\n                ⏹\n                ⏮",
+      "innerHTML": "\n        <!-- LEFT SIDEBAR -->\n        <aside class=\"w-64 bg-gray-800 border-r border-gray-700 flex flex-col py-4 px-2 mr-6 rounded-lg shadow-lg h-full overflow-y-auto custom-scrollbar\">\n            <"
     },
     {
       "tag": "aside",
@@ -1212,7 +1212,8 @@
         "rounded-lg",
         "shadow-lg",
         "h-full",
-        "overflow-y-auto"
+        "overflow-y-auto",
+        "custom-scrollbar"
       ],
       "dataAttributes": null,
       "computedStyles": {
@@ -1245,8 +1246,93 @@
         "width": 256,
         "height": 581
       },
-      "textContent": "▶\n                ⏹\n                ⏮\n                ⏭\n            \n            \n                \n ",
-      "innerHTML": "\n            <!-- TRANSPORT CONTROLS -->\n            <div class=\"flex flex-row items-center space-x-2 mb-6 justify-center\">\n                <button class=\"w-10 h-10 bg-gray-700 border-2 border-gray-60"
+      "textContent": "File: my_project.ass\n            \n            \n                ▶\n                ⏹\n                ⏮",
+      "innerHTML": "\n            <!-- FILE INFO -->\n            <div class=\"text-xs text-gray-400 mb-4 pl-1\">File: <span class=\"text-gray-200\">my_project.ass</span></div>\n            <!-- TRANSPORT CONTROLS -->\n         "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "text-xs",
+        "text-gray-400",
+        "mb-4",
+        "pl-1"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "239px",
+        "height": "16px",
+        "margin": "0px 0px 16px",
+        "padding": "0px 0px 0px 4px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(156, 163, 175)",
+        "font-size": "12px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 8,
+        "y": 65
+      },
+      "dimensions": {
+        "width": 239,
+        "height": 16
+      },
+      "textContent": "File: my_project.ass",
+      "innerHTML": "File: <span class=\"text-gray-200\">my_project.ass</span>"
+    },
+    {
+      "tag": "span",
+      "id": null,
+      "classes": [
+        "text-gray-200"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "inline",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "auto",
+        "height": "auto",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(229, 231, 235)",
+        "font-size": "12px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 37,
+        "y": 66
+      },
+      "dimensions": {
+        "width": 81,
+        "height": 14
+      },
+      "textContent": "my_project.ass",
+      "innerHTML": "my_project.ass"
     },
     {
       "tag": "div",
@@ -1256,7 +1342,7 @@
         "flex-row",
         "items-center",
         "space-x-2",
-        "mb-6",
+        "mb-4",
         "justify-center"
       ],
       "dataAttributes": null,
@@ -1269,7 +1355,7 @@
         "bottom": "auto",
         "width": "239px",
         "height": "40px",
-        "margin": "0px 0px 24px",
+        "margin": "0px 0px 16px",
         "padding": "0px",
         "border": "0px solid rgb(229, 231, 235)",
         "background-color": "rgba(0, 0, 0, 0)",
@@ -1287,7 +1373,7 @@
       },
       "position": {
         "x": 8,
-        "y": 65
+        "y": 97
       },
       "dimensions": {
         "width": 239,
@@ -1341,7 +1427,7 @@
       },
       "position": {
         "x": 36,
-        "y": 65
+        "y": 97
       },
       "dimensions": {
         "width": 40,
@@ -1395,7 +1481,7 @@
       },
       "position": {
         "x": 84,
-        "y": 65
+        "y": 97
       },
       "dimensions": {
         "width": 40,
@@ -1449,7 +1535,7 @@
       },
       "position": {
         "x": 132,
-        "y": 65
+        "y": 97
       },
       "dimensions": {
         "width": 40,
@@ -1503,7 +1589,7 @@
       },
       "position": {
         "x": 180,
-        "y": 65
+        "y": 97
       },
       "dimensions": {
         "width": 40,
@@ -1520,7 +1606,7 @@
         "flex-row",
         "items-center",
         "space-x-2",
-        "mb-8",
+        "mb-4",
         "justify-center"
       ],
       "dataAttributes": null,
@@ -1533,7 +1619,7 @@
         "bottom": "auto",
         "width": "239px",
         "height": "20px",
-        "margin": "0px 0px 32px",
+        "margin": "0px 0px 16px",
         "padding": "0px",
         "border": "0px solid rgb(229, 231, 235)",
         "background-color": "rgba(0, 0, 0, 0)",
@@ -1551,7 +1637,7 @@
       },
       "position": {
         "x": 8,
-        "y": 129
+        "y": 153
       },
       "dimensions": {
         "width": 239,
@@ -1597,7 +1683,7 @@
       },
       "position": {
         "x": 98,
-        "y": 129
+        "y": 153
       },
       "dimensions": {
         "width": 59,
@@ -1641,7 +1727,7 @@
       },
       "position": {
         "x": 98,
-        "y": 129
+        "y": 153
       },
       "dimensions": {
         "width": 20,
@@ -1683,7 +1769,7 @@
       },
       "position": {
         "x": 126,
-        "y": 129
+        "y": 153
       },
       "dimensions": {
         "width": 31,
@@ -1696,8 +1782,9 @@
       "tag": "div",
       "id": null,
       "classes": [
-        "flex-1",
-        "overflow-y-auto"
+        "border-t",
+        "border-gray-700",
+        "my-2"
       ],
       "dataAttributes": null,
       "computedStyles": {
@@ -1708,9 +1795,96 @@
         "right": "auto",
         "bottom": "auto",
         "width": "239px",
-        "height": "433px",
-        "margin": "0px",
+        "height": "1px",
+        "margin": "8px 0px",
         "padding": "0px",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(243, 244, 246)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 8,
+        "y": 197
+      },
+      "dimensions": {
+        "width": 239,
+        "height": 1
+      },
+      "textContent": null,
+      "innerHTML": null
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "text-sm",
+        "font-bold",
+        "text-sky-400",
+        "mb-2",
+        "pl-1"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "239px",
+        "height": "20px",
+        "margin": "0px 0px 8px",
+        "padding": "0px 0px 0px 4px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(56, 189, 248)",
+        "font-size": "14px",
+        "font-weight": "700",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 8,
+        "y": 206
+      },
+      "dimensions": {
+        "width": 239,
+        "height": 20
+      },
+      "textContent": "Clips",
+      "innerHTML": "Clips"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "flex-1",
+        "overflow-y-auto",
+        "pr-1"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "239px",
+        "height": "380px",
+        "margin": "0px",
+        "padding": "0px 4px 0px 0px",
         "border": "0px solid rgb(229, 231, 235)",
         "background-color": "rgba(0, 0, 0, 0)",
         "color": "rgb(243, 244, 246)",
@@ -1725,11 +1899,11 @@
       },
       "position": {
         "x": 8,
-        "y": 181
+        "y": 234
       },
       "dimensions": {
         "width": 239,
-        "height": 433
+        "height": 380
       },
       "textContent": "🎤Vocals\n                    \n                    \n                        Lead Take 1\n             ",
       "innerHTML": "\n                <div class=\"mb-4\">\n                    <div class=\"flex items-center mb-2 text-sky-400 font-semibold\"><span class=\"mr-2\">🎤</span>Vocals\n                    </div>\n                   "
@@ -1748,7 +1922,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "224px",
+        "width": "220px",
         "height": "88px",
         "margin": "0px 0px 16px",
         "padding": "0px",
@@ -1766,10 +1940,10 @@
       },
       "position": {
         "x": 8,
-        "y": 181
+        "y": 234
       },
       "dimensions": {
-        "width": 224,
+        "width": 220,
         "height": 88
       },
       "textContent": "🎤Vocals\n                    \n                    \n                        Lead Take 1\n             ",
@@ -1793,7 +1967,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "224px",
+        "width": "220px",
         "height": "24px",
         "margin": "0px 0px 8px",
         "padding": "0px",
@@ -1812,10 +1986,10 @@
       },
       "position": {
         "x": 8,
-        "y": 181
+        "y": 234
       },
       "dimensions": {
-        "width": 224,
+        "width": 220,
         "height": 24
       },
       "textContent": "🎤Vocals",
@@ -1853,7 +2027,7 @@
       },
       "position": {
         "x": 8,
-        "y": 181
+        "y": 234
       },
       "dimensions": {
         "width": 20,
@@ -1879,7 +2053,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "200px",
+        "width": "196px",
         "height": "56px",
         "margin": "0px 0px 0px 24px",
         "padding": "0px",
@@ -1897,10 +2071,10 @@
       },
       "position": {
         "x": 32,
-        "y": 213
+        "y": 266
       },
       "dimensions": {
-        "width": 200,
+        "width": 196,
         "height": 56
       },
       "textContent": "Lead Take 1\n                        Lead Take 2",
@@ -1924,7 +2098,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "200px",
+        "width": "196px",
         "height": "24px",
         "margin": "0px",
         "padding": "4px 8px",
@@ -1942,10 +2116,10 @@
       },
       "position": {
         "x": 32,
-        "y": 213
+        "y": 266
       },
       "dimensions": {
-        "width": 200,
+        "width": 196,
         "height": 24
       },
       "textContent": "Lead Take 1",
@@ -1969,7 +2143,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "200px",
+        "width": "196px",
         "height": "24px",
         "margin": "8px 0px 0px",
         "padding": "4px 8px",
@@ -1987,10 +2161,10 @@
       },
       "position": {
         "x": 32,
-        "y": 245
+        "y": 298
       },
       "dimensions": {
-        "width": 200,
+        "width": 196,
         "height": 24
       },
       "textContent": "Lead Take 2",
@@ -2010,7 +2184,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "224px",
+        "width": "220px",
         "height": "120px",
         "margin": "0px 0px 16px",
         "padding": "0px",
@@ -2028,10 +2202,10 @@
       },
       "position": {
         "x": 8,
-        "y": 285
+        "y": 338
       },
       "dimensions": {
-        "width": 224,
+        "width": 220,
         "height": 120
       },
       "textContent": "🥁Drums\n                    \n                    \n                        Rock Beat\n                ",
@@ -2055,7 +2229,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "224px",
+        "width": "220px",
         "height": "24px",
         "margin": "0px 0px 8px",
         "padding": "0px",
@@ -2074,10 +2248,10 @@
       },
       "position": {
         "x": 8,
-        "y": 285
+        "y": 338
       },
       "dimensions": {
-        "width": 224,
+        "width": 220,
         "height": 24
       },
       "textContent": "🥁Drums",
@@ -2115,7 +2289,7 @@
       },
       "position": {
         "x": 8,
-        "y": 285
+        "y": 338
       },
       "dimensions": {
         "width": 20,
@@ -2141,7 +2315,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "200px",
+        "width": "196px",
         "height": "88px",
         "margin": "0px 0px 0px 24px",
         "padding": "0px",
@@ -2159,10 +2333,10 @@
       },
       "position": {
         "x": 32,
-        "y": 317
+        "y": 370
       },
       "dimensions": {
-        "width": 200,
+        "width": 196,
         "height": 88
       },
       "textContent": "Rock Beat\n                        Funk Groove\n                        Jazz Shuffle",
@@ -2186,7 +2360,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "200px",
+        "width": "196px",
         "height": "24px",
         "margin": "0px",
         "padding": "4px 8px",
@@ -2204,10 +2378,10 @@
       },
       "position": {
         "x": 32,
-        "y": 317
+        "y": 370
       },
       "dimensions": {
-        "width": 200,
+        "width": 196,
         "height": 24
       },
       "textContent": "Rock Beat",
@@ -2231,7 +2405,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "200px",
+        "width": "196px",
         "height": "24px",
         "margin": "8px 0px 0px",
         "padding": "4px 8px",
@@ -2249,10 +2423,10 @@
       },
       "position": {
         "x": 32,
-        "y": 349
+        "y": 402
       },
       "dimensions": {
-        "width": 200,
+        "width": 196,
         "height": 24
       },
       "textContent": "Funk Groove",
@@ -2276,7 +2450,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "200px",
+        "width": "196px",
         "height": "24px",
         "margin": "8px 0px 0px",
         "padding": "4px 8px",
@@ -2294,10 +2468,10 @@
       },
       "position": {
         "x": 32,
-        "y": 381
+        "y": 434
       },
       "dimensions": {
-        "width": 200,
+        "width": 196,
         "height": 24
       },
       "textContent": "Jazz Shuffle",
@@ -2317,7 +2491,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "224px",
+        "width": "220px",
         "height": "120px",
         "margin": "0px 0px 16px",
         "padding": "0px",
@@ -2335,10 +2509,10 @@
       },
       "position": {
         "x": 8,
-        "y": 421
+        "y": 474
       },
       "dimensions": {
-        "width": 224,
+        "width": 220,
         "height": 120
       },
       "textContent": "🎸Bass\n                    \n                    \n                        Walking Bass\n              ",
@@ -2362,7 +2536,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "224px",
+        "width": "220px",
         "height": "24px",
         "margin": "0px 0px 8px",
         "padding": "0px",
@@ -2381,10 +2555,10 @@
       },
       "position": {
         "x": 8,
-        "y": 421
+        "y": 474
       },
       "dimensions": {
-        "width": 224,
+        "width": 220,
         "height": 24
       },
       "textContent": "🎸Bass",
@@ -2422,7 +2596,7 @@
       },
       "position": {
         "x": 8,
-        "y": 421
+        "y": 474
       },
       "dimensions": {
         "width": 20,
@@ -2448,7 +2622,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "200px",
+        "width": "196px",
         "height": "88px",
         "margin": "0px 0px 0px 24px",
         "padding": "0px",
@@ -2466,10 +2640,10 @@
       },
       "position": {
         "x": 32,
-        "y": 453
+        "y": 506
       },
       "dimensions": {
-        "width": 200,
+        "width": 196,
         "height": 88
       },
       "textContent": "Walking Bass\n                        Synth Bass\n                        Slap Bass",
@@ -2493,7 +2667,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "200px",
+        "width": "196px",
         "height": "24px",
         "margin": "0px",
         "padding": "4px 8px",
@@ -2511,10 +2685,10 @@
       },
       "position": {
         "x": 32,
-        "y": 453
+        "y": 506
       },
       "dimensions": {
-        "width": 200,
+        "width": 196,
         "height": 24
       },
       "textContent": "Walking Bass",
@@ -2538,7 +2712,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "200px",
+        "width": "196px",
         "height": "24px",
         "margin": "8px 0px 0px",
         "padding": "4px 8px",
@@ -2556,10 +2730,10 @@
       },
       "position": {
         "x": 32,
-        "y": 485
+        "y": 538
       },
       "dimensions": {
-        "width": 200,
+        "width": 196,
         "height": 24
       },
       "textContent": "Synth Bass",
@@ -2583,7 +2757,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "200px",
+        "width": "196px",
         "height": "24px",
         "margin": "8px 0px 0px",
         "padding": "4px 8px",
@@ -2601,10 +2775,10 @@
       },
       "position": {
         "x": 32,
-        "y": 517
+        "y": 570
       },
       "dimensions": {
-        "width": 200,
+        "width": 196,
         "height": 24
       },
       "textContent": "Slap Bass",
@@ -2624,7 +2798,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "224px",
+        "width": "220px",
         "height": "120px",
         "margin": "0px 0px 16px",
         "padding": "0px",
@@ -2642,10 +2816,10 @@
       },
       "position": {
         "x": 8,
-        "y": 557
+        "y": 610
       },
       "dimensions": {
-        "width": 224,
+        "width": 220,
         "height": 120
       },
       "textContent": "🎹Guitar\n                    \n                    \n                        Clean Chords\n            ",
@@ -2669,7 +2843,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "224px",
+        "width": "220px",
         "height": "24px",
         "margin": "0px 0px 8px",
         "padding": "0px",
@@ -2688,10 +2862,10 @@
       },
       "position": {
         "x": 8,
-        "y": 557
+        "y": 610
       },
       "dimensions": {
-        "width": 224,
+        "width": 220,
         "height": 24
       },
       "textContent": "🎹Guitar",
@@ -2729,7 +2903,7 @@
       },
       "position": {
         "x": 8,
-        "y": 557
+        "y": 610
       },
       "dimensions": {
         "width": 20,
@@ -2755,7 +2929,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "200px",
+        "width": "196px",
         "height": "88px",
         "margin": "0px 0px 0px 24px",
         "padding": "0px",
@@ -2773,10 +2947,10 @@
       },
       "position": {
         "x": 32,
-        "y": 589
+        "y": 642
       },
       "dimensions": {
-        "width": 200,
+        "width": 196,
         "height": 88
       },
       "textContent": "Clean Chords\n                        Distorted Riff\n                        Arpeggio",
@@ -2800,7 +2974,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "200px",
+        "width": "196px",
         "height": "24px",
         "margin": "0px",
         "padding": "4px 8px",
@@ -2818,10 +2992,10 @@
       },
       "position": {
         "x": 32,
-        "y": 589
+        "y": 642
       },
       "dimensions": {
-        "width": 200,
+        "width": 196,
         "height": 24
       },
       "textContent": "Clean Chords",
@@ -2845,7 +3019,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "200px",
+        "width": "196px",
         "height": "24px",
         "margin": "8px 0px 0px",
         "padding": "4px 8px",
@@ -2863,10 +3037,10 @@
       },
       "position": {
         "x": 32,
-        "y": 621
+        "y": 674
       },
       "dimensions": {
-        "width": 200,
+        "width": 196,
         "height": 24
       },
       "textContent": "Distorted Riff",
@@ -2890,7 +3064,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "200px",
+        "width": "196px",
         "height": "24px",
         "margin": "8px 0px 0px",
         "padding": "4px 8px",
@@ -2908,10 +3082,10 @@
       },
       "position": {
         "x": 32,
-        "y": 653
+        "y": 706
       },
       "dimensions": {
-        "width": 200,
+        "width": 196,
         "height": 24
       },
       "textContent": "Arpeggio",
@@ -2931,7 +3105,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "224px",
+        "width": "220px",
         "height": "120px",
         "margin": "0px 0px 16px",
         "padding": "0px",
@@ -2949,10 +3123,10 @@
       },
       "position": {
         "x": 8,
-        "y": 693
+        "y": 746
       },
       "dimensions": {
-        "width": 224,
+        "width": 220,
         "height": 120
       },
       "textContent": "🔊FX\n                    \n                        Reverb\n                        Delay\n             ",
@@ -2976,7 +3150,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "224px",
+        "width": "220px",
         "height": "24px",
         "margin": "0px 0px 8px",
         "padding": "0px",
@@ -2995,10 +3169,10 @@
       },
       "position": {
         "x": 8,
-        "y": 693
+        "y": 746
       },
       "dimensions": {
-        "width": 224,
+        "width": 220,
         "height": 24
       },
       "textContent": "🔊FX",
@@ -3036,7 +3210,7 @@
       },
       "position": {
         "x": 8,
-        "y": 693
+        "y": 746
       },
       "dimensions": {
         "width": 20,
@@ -3062,7 +3236,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "200px",
+        "width": "196px",
         "height": "88px",
         "margin": "0px 0px 0px 24px",
         "padding": "0px",
@@ -3080,10 +3254,10 @@
       },
       "position": {
         "x": 32,
-        "y": 725
+        "y": 778
       },
       "dimensions": {
-        "width": 200,
+        "width": 196,
         "height": 88
       },
       "textContent": "Reverb\n                        Delay\n                        Filter",
@@ -3107,7 +3281,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "200px",
+        "width": "196px",
         "height": "24px",
         "margin": "0px",
         "padding": "4px 8px",
@@ -3125,10 +3299,10 @@
       },
       "position": {
         "x": 32,
-        "y": 725
+        "y": 778
       },
       "dimensions": {
-        "width": 200,
+        "width": 196,
         "height": 24
       },
       "textContent": "Reverb",
@@ -3152,7 +3326,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "200px",
+        "width": "196px",
         "height": "24px",
         "margin": "8px 0px 0px",
         "padding": "4px 8px",
@@ -3170,10 +3344,10 @@
       },
       "position": {
         "x": 32,
-        "y": 757
+        "y": 810
       },
       "dimensions": {
-        "width": 200,
+        "width": 196,
         "height": 24
       },
       "textContent": "Delay",
@@ -3197,7 +3371,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "200px",
+        "width": "196px",
         "height": "24px",
         "margin": "8px 0px 0px",
         "padding": "4px 8px",
@@ -3215,10 +3389,10 @@
       },
       "position": {
         "x": 32,
-        "y": 789
+        "y": 842
       },
       "dimensions": {
-        "width": 200,
+        "width": 196,
         "height": 24
       },
       "textContent": "Filter",
@@ -3267,93 +3441,8 @@
         "width": 784,
         "height": 581
       },
-      "textContent": "File: my_project.ass\n            \n            \n                \n                \n                   ",
-      "innerHTML": "\n            <!-- FILENAME -->\n            <div class=\"text-sm text-gray-400 mb-2 pl-2\">File: <span class=\"text-gray-200\">my_project.ass</span></div>\n            <!-- TIMELINE AREA -->\n            <di"
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "text-sm",
-        "text-gray-400",
-        "mb-2",
-        "pl-2"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "760px",
-        "height": "20px",
-        "margin": "0px 0px 8px",
-        "padding": "0px 0px 0px 8px",
-        "border": "0px solid rgb(229, 231, 235)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(156, 163, 175)",
-        "font-size": "14px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 280,
-        "y": 49
-      },
-      "dimensions": {
-        "width": 760,
-        "height": 20
-      },
-      "textContent": "File: my_project.ass",
-      "innerHTML": "File: <span class=\"text-gray-200\">my_project.ass</span>"
-    },
-    {
-      "tag": "span",
-      "id": null,
-      "classes": [
-        "text-gray-200"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "inline",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "auto",
-        "height": "auto",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px solid rgb(229, 231, 235)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(229, 231, 235)",
-        "font-size": "14px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 317,
-        "y": 51
-      },
-      "dimensions": {
-        "width": 94,
-        "height": 17
-      },
-      "textContent": "my_project.ass",
-      "innerHTML": "my_project.ass"
+      "textContent": "00:17.6 / 01:45.0\n                    BPM: 110\n                \n                \n                \n  ",
+      "innerHTML": "\n            <!-- TIMELINE AREA -->\n            <div class=\"bg-gray-800 rounded-lg shadow-lg relative overflow-hidden flex flex-col h-full\">\n                <!-- TIMESTAMP & TIMELINE HEADER -->\n      "
     },
     {
       "tag": "div",
@@ -3377,7 +3466,7 @@
         "right": "0px",
         "bottom": "0px",
         "width": "760px",
-        "height": "553px",
+        "height": "581px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px solid rgb(229, 231, 235)",
@@ -3394,14 +3483,14 @@
       },
       "position": {
         "x": 280,
-        "y": 77
+        "y": 49
       },
       "dimensions": {
         "width": 760,
-        "height": 553
+        "height": 581
       },
       "textContent": "00:17.6 / 01:45.0\n                    BPM: 110\n                \n                \n                \n  ",
-      "innerHTML": "\n                <!-- TIMESTAMP & TIMELINE HEADER -->\n                <div class=\"flex items-center justify-between px-4 pt-3 pb-1 border-b border-gray-700\">\n                    <div class=\"font-mono "
+      "innerHTML": "\n                <!-- TIMESTAMP & TIMELINE HEADER -->\n                <div class=\"flex items-center justify-between px-4 pt-3 pb-1 border-b border-gray-700 shrink-0\">\n                    <div class=\"f"
     },
     {
       "tag": "div",
@@ -3414,7 +3503,8 @@
         "pt-3",
         "pb-1",
         "border-b",
-        "border-gray-700"
+        "border-gray-700",
+        "shrink-0"
       ],
       "dataAttributes": null,
       "computedStyles": {
@@ -3443,7 +3533,7 @@
       },
       "position": {
         "x": 280,
-        "y": 77
+        "y": 49
       },
       "dimensions": {
         "width": 760,
@@ -3486,7 +3576,7 @@
       },
       "position": {
         "x": 296,
-        "y": 89
+        "y": 61
       },
       "dimensions": {
         "width": 122,
@@ -3529,7 +3619,7 @@
       },
       "position": {
         "x": 977,
-        "y": 89
+        "y": 61
       },
       "dimensions": {
         "width": 47,
@@ -3540,10 +3630,55 @@
     },
     {
       "tag": "div",
-      "id": null,
+      "id": "tracks-area",
       "classes": [
         "relative",
         "flex-1",
+        "flex",
+        "flex-col",
+        "overflow-y-auto"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "flex",
+        "position": "relative",
+        "top": "0px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "width": "760px",
+        "height": "548px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(243, 244, 246)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "column",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 280,
+        "y": 82
+      },
+      "dimensions": {
+        "width": 760,
+        "height": 548
+      },
+      "textContent": "🎧\n                                🔇\n                                TRACK 1\n                      ",
+      "innerHTML": "\n                    <!-- Tracks with grid background -->\n                    <div class=\"relative z-20 flex flex-col\">\n                        <!-- 6 tracks -->\n                        <div class=\"fl"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "relative",
+        "z-20",
         "flex",
         "flex-col"
       ],
@@ -3556,145 +3691,7 @@
         "right": "0px",
         "bottom": "0px",
         "width": "760px",
-        "height": "520px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px solid rgb(229, 231, 235)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(243, 244, 246)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "column",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 280,
-        "y": 110
-      },
-      "dimensions": {
-        "width": 760,
-        "height": 520
-      },
-      "textContent": "🎧\n                                🔇\n                            \n                            TRACK",
-      "innerHTML": "\n                    <!-- Playhead (vertical line) -->\n                    <div class=\"absolute top-0 left-[120px] w-1 h-full assembly-accent opacity-80 z-20\"></div>\n                    <!-- Grid (ver"
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "absolute",
-        "top-0",
-        "left-[120px]",
-        "w-1",
-        "h-full",
-        "assembly-accent",
-        "opacity-80",
-        "z-20"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "120px",
-        "right": "636px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "520px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px solid rgb(229, 231, 235)",
-        "background-color": "rgb(56, 189, 248)",
-        "color": "rgb(243, 244, 246)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "20",
-        "opacity": "0.8",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 400,
-        "y": 110
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 520
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "absolute",
-        "inset-0",
-        "z-10",
-        "track-grid-bg",
-        "pointer-events-none"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "0px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "760px",
-        "height": "520px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px solid rgb(229, 231, 235)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(243, 244, 246)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "10",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 280,
-        "y": 110
-      },
-      "dimensions": {
-        "width": 760,
-        "height": 520
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "relative",
-        "z-20",
-        "flex",
-        "flex-col",
-        "h-full"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "flex",
-        "position": "relative",
-        "top": "0px",
-        "left": "0px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "760px",
-        "height": "472px",
+        "height": "336px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px solid rgb(229, 231, 235)",
@@ -3711,26 +3708,27 @@
       },
       "position": {
         "x": 280,
-        "y": 110
+        "y": 82
       },
       "dimensions": {
         "width": 760,
-        "height": 472
+        "height": 336
       },
-      "textContent": "🎧\n                                🔇\n                            \n                            TRACK",
-      "innerHTML": "\n                        <!-- 6 tracks -->\n                        <div class=\"flex-1 flex items-center border-b border-gray-700 last:border-b-0 min-h-[48px]\" style=\"height:16.6%\">\n                   "
+      "textContent": "🎧\n                                🔇\n                                TRACK 1\n                      ",
+      "innerHTML": "\n                        <!-- 6 tracks -->\n                        <div class=\"flex items-center border-b border-gray-700 last:border-b-0 h-14 min-h-[48px] max-h-[56px]\">\n                            <"
     },
     {
       "tag": "div",
       "id": null,
       "classes": [
-        "flex-1",
         "flex",
         "items-center",
         "border-b",
         "border-gray-700",
         "last:border-b-0",
-        "min-h-[48px]"
+        "h-14",
+        "min-h-[48px]",
+        "max-h-[56px]"
       ],
       "dataAttributes": null,
       "computedStyles": {
@@ -3741,7 +3739,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "760px",
-        "height": "78.8359px",
+        "height": "56px",
         "margin": "0px",
         "padding": "0px",
         "background-color": "rgba(0, 0, 0, 0)",
@@ -3758,14 +3756,14 @@
       },
       "position": {
         "x": 280,
-        "y": 110
+        "y": 82
       },
       "dimensions": {
         "width": 760,
-        "height": 79
+        "height": 56
       },
-      "textContent": "🎧\n                                🔇\n                            \n                            TRACK",
-      "innerHTML": "\n                            <div class=\"flex items-center w-24 pl-2 space-x-2 min-w-[90px]\">\n                                <button class=\"w-7 h-7 flex items-center justify-center text-lg text-sky-4"
+      "textContent": "🎧\n                                🔇\n                                TRACK 1",
+      "innerHTML": "\n                            <!-- Left: controls and track name, solid bg -->\n                            <div class=\"flex items-center w-60 pl-2 space-x-2 min-w-[150px] bg-gray-800 h-full rounded-l-l"
     },
     {
       "tag": "div",
@@ -3773,10 +3771,13 @@
       "classes": [
         "flex",
         "items-center",
-        "w-24",
+        "w-60",
         "pl-2",
         "space-x-2",
-        "min-w-[90px]"
+        "min-w-[150px]",
+        "bg-gray-800",
+        "h-full",
+        "rounded-l-lg"
       ],
       "dataAttributes": null,
       "computedStyles": {
@@ -3786,12 +3787,12 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "96px",
-        "height": "28px",
+        "width": "240px",
+        "height": "55px",
         "margin": "0px",
         "padding": "0px 0px 0px 8px",
         "border": "0px solid rgb(229, 231, 235)",
-        "background-color": "rgba(0, 0, 0, 0)",
+        "background-color": "rgb(31, 41, 55)",
         "color": "rgb(243, 244, 246)",
         "font-size": "16px",
         "font-weight": "400",
@@ -3805,13 +3806,13 @@
       },
       "position": {
         "x": 280,
-        "y": 135
+        "y": 82
       },
       "dimensions": {
-        "width": 96,
-        "height": 28
+        "width": 240,
+        "height": 55
       },
-      "textContent": "🎧\n                                🔇",
+      "textContent": "🎧\n                                🔇\n                                TRACK 1",
       "innerHTML": "\n                                <button class=\"w-7 h-7 flex items-center justify-center text-lg text-sky-400 hover:bg-gray-700 rounded\" title=\"Solo\">🎧</button>\n                                <butto"
     },
     {
@@ -3856,7 +3857,7 @@
       },
       "position": {
         "x": 288,
-        "y": 135
+        "y": 96
       },
       "dimensions": {
         "width": 28,
@@ -3907,7 +3908,7 @@
       },
       "position": {
         "x": 324,
-        "y": 135
+        "y": 96
       },
       "dimensions": {
         "width": 28,
@@ -3917,10 +3918,10 @@
       "innerHTML": "🔇"
     },
     {
-      "tag": "div",
+      "tag": "span",
       "id": null,
       "classes": [
-        "w-36",
+        "w-32",
         "text-xs",
         "font-bold",
         "text-gray-300",
@@ -3934,9 +3935,9 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "144px",
+        "width": "128px",
         "height": "16px",
-        "margin": "0px",
+        "margin": "0px 0px 0px 8px",
         "padding": "0px",
         "border": "0px solid rgb(229, 231, 235)",
         "background-color": "rgba(0, 0, 0, 0)",
@@ -3951,11 +3952,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 376,
-        "y": 141
+        "x": 360,
+        "y": 102
       },
       "dimensions": {
-        "width": 144,
+        "width": 128,
         "height": 16
       },
       "textContent": "TRACK 1",
@@ -3965,9 +3966,104 @@
       "tag": "div",
       "id": null,
       "classes": [
+        "relative",
         "flex-1",
+        "h-full",
+        "track-grid-bg",
+        "overflow-hidden"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "relative",
+        "top": "0px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "width": "520px",
+        "height": "55px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(243, 244, 246)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 520,
+        "y": 82
+      },
+      "dimensions": {
+        "width": 520,
+        "height": 55
+      },
+      "textContent": null,
+      "innerHTML": "\n                                <!-- Playhead (vertical line) only in clips area for this track -->\n                                <div class=\"absolute top-0 left-[40px] w-1 h-full assembly-accent o"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "absolute",
+        "top-0",
+        "left-[40px]",
+        "w-1",
+        "h-full",
+        "assembly-accent",
+        "opacity-80",
+        "z-20",
+        "pointer-events-none"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "40px",
+        "right": "476px",
+        "bottom": "0px",
+        "width": "4px",
+        "height": "55px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgb(56, 189, 248)",
+        "color": "rgb(243, 244, 246)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "20",
+        "opacity": "0.8",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 560,
+        "y": 82
+      },
+      "dimensions": {
+        "width": 4,
+        "height": 55
+      },
+      "textContent": null,
+      "innerHTML": "\n                                "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
         "flex",
         "items-center",
+        "h-full",
+        "pl-10",
         "space-x-2",
         "min-w-0"
       ],
@@ -3980,9 +4076,9 @@
         "right": "auto",
         "bottom": "auto",
         "width": "520px",
-        "height": "24px",
+        "height": "55px",
         "margin": "0px",
-        "padding": "0px",
+        "padding": "0px 0px 0px 40px",
         "border": "0px solid rgb(229, 231, 235)",
         "background-color": "rgba(0, 0, 0, 0)",
         "color": "rgb(243, 244, 246)",
@@ -3998,14 +4094,14 @@
       },
       "position": {
         "x": 520,
-        "y": 137
+        "y": 82
       },
       "dimensions": {
         "width": 520,
-        "height": 24
+        "height": 55
       },
       "textContent": null,
-      "innerHTML": "\n                                <div class=\"h-6 w-16 bg-sky-900 rounded mr-2\"></div>\n                                <div class=\"h-6 w-24 bg-sky-700 rounded\"></div>\n                            "
+      "innerHTML": "\n                                    <div class=\"h-6 w-16 bg-sky-900 rounded mr-2\"></div>\n                                    <div class=\"h-6 w-24 bg-sky-700 rounded\"></div>\n                          "
     },
     {
       "tag": "div",
@@ -4042,8 +4138,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 520,
-        "y": 137
+        "x": 560,
+        "y": 98
       },
       "dimensions": {
         "width": 64,
@@ -4086,8 +4182,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 600,
-        "y": 137
+        "x": 640,
+        "y": 98
       },
       "dimensions": {
         "width": 96,
@@ -4100,13 +4196,14 @@
       "tag": "div",
       "id": null,
       "classes": [
-        "flex-1",
         "flex",
         "items-center",
         "border-b",
         "border-gray-700",
         "last:border-b-0",
-        "min-h-[48px]"
+        "h-14",
+        "min-h-[48px]",
+        "max-h-[56px]"
       ],
       "dataAttributes": null,
       "computedStyles": {
@@ -4117,7 +4214,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "760px",
-        "height": "78.8359px",
+        "height": "56px",
         "margin": "0px",
         "padding": "0px",
         "background-color": "rgba(0, 0, 0, 0)",
@@ -4134,14 +4231,14 @@
       },
       "position": {
         "x": 280,
-        "y": 189
+        "y": 138
       },
       "dimensions": {
         "width": 760,
-        "height": 79
+        "height": 56
       },
-      "textContent": "🎧\n                                🔇\n                            \n                            TRACK",
-      "innerHTML": "\n                            <div class=\"flex items-center w-24 pl-2 space-x-2 min-w-[90px]\">\n                                <button class=\"w-7 h-7 flex items-center justify-center text-lg text-sky-4"
+      "textContent": "🎧\n                                🔇\n                                TRACK 2",
+      "innerHTML": "\n                            <!-- Left: controls and track name, solid bg -->\n                            <div class=\"flex items-center w-60 pl-2 space-x-2 min-w-[150px] bg-gray-800 h-full rounded-l-l"
     },
     {
       "tag": "div",
@@ -4149,10 +4246,13 @@
       "classes": [
         "flex",
         "items-center",
-        "w-24",
+        "w-60",
         "pl-2",
         "space-x-2",
-        "min-w-[90px]"
+        "min-w-[150px]",
+        "bg-gray-800",
+        "h-full",
+        "rounded-l-lg"
       ],
       "dataAttributes": null,
       "computedStyles": {
@@ -4162,12 +4262,12 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "96px",
-        "height": "28px",
+        "width": "240px",
+        "height": "55px",
         "margin": "0px",
         "padding": "0px 0px 0px 8px",
         "border": "0px solid rgb(229, 231, 235)",
-        "background-color": "rgba(0, 0, 0, 0)",
+        "background-color": "rgb(31, 41, 55)",
         "color": "rgb(243, 244, 246)",
         "font-size": "16px",
         "font-weight": "400",
@@ -4181,13 +4281,13 @@
       },
       "position": {
         "x": 280,
-        "y": 214
+        "y": 138
       },
       "dimensions": {
-        "width": 96,
-        "height": 28
+        "width": 240,
+        "height": 55
       },
-      "textContent": "🎧\n                                🔇",
+      "textContent": "🎧\n                                🔇\n                                TRACK 2",
       "innerHTML": "\n                                <button class=\"w-7 h-7 flex items-center justify-center text-lg text-sky-400 hover:bg-gray-700 rounded\" title=\"Solo\">🎧</button>\n                                <butto"
     },
     {
@@ -4232,7 +4332,7 @@
       },
       "position": {
         "x": 288,
-        "y": 214
+        "y": 152
       },
       "dimensions": {
         "width": 28,
@@ -4283,7 +4383,7 @@
       },
       "position": {
         "x": 324,
-        "y": 214
+        "y": 152
       },
       "dimensions": {
         "width": 28,
@@ -4293,10 +4393,10 @@
       "innerHTML": "🔇"
     },
     {
-      "tag": "div",
+      "tag": "span",
       "id": null,
       "classes": [
-        "w-36",
+        "w-32",
         "text-xs",
         "font-bold",
         "text-gray-300",
@@ -4310,9 +4410,9 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "144px",
+        "width": "128px",
         "height": "16px",
-        "margin": "0px",
+        "margin": "0px 0px 0px 8px",
         "padding": "0px",
         "border": "0px solid rgb(229, 231, 235)",
         "background-color": "rgba(0, 0, 0, 0)",
@@ -4327,11 +4427,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 376,
-        "y": 220
+        "x": 360,
+        "y": 158
       },
       "dimensions": {
-        "width": 144,
+        "width": 128,
         "height": 16
       },
       "textContent": "TRACK 2",
@@ -4341,9 +4441,104 @@
       "tag": "div",
       "id": null,
       "classes": [
+        "relative",
         "flex-1",
+        "h-full",
+        "track-grid-bg",
+        "overflow-hidden"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "relative",
+        "top": "0px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "width": "520px",
+        "height": "55px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(243, 244, 246)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 520,
+        "y": 138
+      },
+      "dimensions": {
+        "width": 520,
+        "height": 55
+      },
+      "textContent": null,
+      "innerHTML": "\n                                <!-- Playhead (vertical line) only in clips area for this track -->\n                                <div class=\"absolute top-0 left-[40px] w-1 h-full assembly-accent o"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "absolute",
+        "top-0",
+        "left-[40px]",
+        "w-1",
+        "h-full",
+        "assembly-accent",
+        "opacity-80",
+        "z-20",
+        "pointer-events-none"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "40px",
+        "right": "476px",
+        "bottom": "0px",
+        "width": "4px",
+        "height": "55px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgb(56, 189, 248)",
+        "color": "rgb(243, 244, 246)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "20",
+        "opacity": "0.8",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 560,
+        "y": 138
+      },
+      "dimensions": {
+        "width": 4,
+        "height": 55
+      },
+      "textContent": null,
+      "innerHTML": "\n                                "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
         "flex",
         "items-center",
+        "h-full",
+        "pl-10",
         "space-x-2",
         "min-w-0"
       ],
@@ -4356,9 +4551,9 @@
         "right": "auto",
         "bottom": "auto",
         "width": "520px",
-        "height": "24px",
+        "height": "55px",
         "margin": "0px",
-        "padding": "0px",
+        "padding": "0px 0px 0px 40px",
         "border": "0px solid rgb(229, 231, 235)",
         "background-color": "rgba(0, 0, 0, 0)",
         "color": "rgb(243, 244, 246)",
@@ -4374,14 +4569,14 @@
       },
       "position": {
         "x": 520,
-        "y": 216
+        "y": 138
       },
       "dimensions": {
         "width": 520,
-        "height": 24
+        "height": 55
       },
       "textContent": null,
-      "innerHTML": "\n                                <div class=\"h-6 w-20 bg-sky-900 rounded mr-2\"></div>\n                                <div class=\"h-6 w-16 bg-sky-700 rounded\"></div>\n                            "
+      "innerHTML": "\n                                    <div class=\"h-6 w-20 bg-sky-900 rounded mr-2\"></div>\n                                    <div class=\"h-6 w-16 bg-sky-700 rounded\"></div>\n                          "
     },
     {
       "tag": "div",
@@ -4418,8 +4613,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 520,
-        "y": 216
+        "x": 560,
+        "y": 154
       },
       "dimensions": {
         "width": 80,
@@ -4462,8 +4657,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 616,
-        "y": 216
+        "x": 656,
+        "y": 154
       },
       "dimensions": {
         "width": 64,
@@ -4476,13 +4671,14 @@
       "tag": "div",
       "id": null,
       "classes": [
-        "flex-1",
         "flex",
         "items-center",
         "border-b",
         "border-gray-700",
         "last:border-b-0",
-        "min-h-[48px]"
+        "h-14",
+        "min-h-[48px]",
+        "max-h-[56px]"
       ],
       "dataAttributes": null,
       "computedStyles": {
@@ -4493,7 +4689,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "760px",
-        "height": "78.8359px",
+        "height": "56px",
         "margin": "0px",
         "padding": "0px",
         "background-color": "rgba(0, 0, 0, 0)",
@@ -4510,14 +4706,14 @@
       },
       "position": {
         "x": 280,
-        "y": 268
+        "y": 194
       },
       "dimensions": {
         "width": 760,
-        "height": 79
+        "height": 56
       },
-      "textContent": "🎧\n                                🔇\n                            \n                            TRACK",
-      "innerHTML": "\n                            <div class=\"flex items-center w-24 pl-2 space-x-2 min-w-[90px]\">\n                                <button class=\"w-7 h-7 flex items-center justify-center text-lg text-sky-4"
+      "textContent": "🎧\n                                🔇\n                                TRACK 3",
+      "innerHTML": "\n                            <!-- Left: controls and track name, solid bg -->\n                            <div class=\"flex items-center w-60 pl-2 space-x-2 min-w-[150px] bg-gray-800 h-full rounded-l-l"
     },
     {
       "tag": "div",
@@ -4525,10 +4721,13 @@
       "classes": [
         "flex",
         "items-center",
-        "w-24",
+        "w-60",
         "pl-2",
         "space-x-2",
-        "min-w-[90px]"
+        "min-w-[150px]",
+        "bg-gray-800",
+        "h-full",
+        "rounded-l-lg"
       ],
       "dataAttributes": null,
       "computedStyles": {
@@ -4538,12 +4737,12 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "96px",
-        "height": "28px",
+        "width": "240px",
+        "height": "55px",
         "margin": "0px",
         "padding": "0px 0px 0px 8px",
         "border": "0px solid rgb(229, 231, 235)",
-        "background-color": "rgba(0, 0, 0, 0)",
+        "background-color": "rgb(31, 41, 55)",
         "color": "rgb(243, 244, 246)",
         "font-size": "16px",
         "font-weight": "400",
@@ -4557,13 +4756,13 @@
       },
       "position": {
         "x": 280,
-        "y": 293
+        "y": 194
       },
       "dimensions": {
-        "width": 96,
-        "height": 28
+        "width": 240,
+        "height": 55
       },
-      "textContent": "🎧\n                                🔇",
+      "textContent": "🎧\n                                🔇\n                                TRACK 3",
       "innerHTML": "\n                                <button class=\"w-7 h-7 flex items-center justify-center text-lg text-sky-400 hover:bg-gray-700 rounded\" title=\"Solo\">🎧</button>\n                                <butto"
     },
     {
@@ -4608,7 +4807,7 @@
       },
       "position": {
         "x": 288,
-        "y": 293
+        "y": 208
       },
       "dimensions": {
         "width": 28,
@@ -4659,7 +4858,7 @@
       },
       "position": {
         "x": 324,
-        "y": 293
+        "y": 208
       },
       "dimensions": {
         "width": 28,
@@ -4669,10 +4868,10 @@
       "innerHTML": "🔇"
     },
     {
-      "tag": "div",
+      "tag": "span",
       "id": null,
       "classes": [
-        "w-36",
+        "w-32",
         "text-xs",
         "font-bold",
         "text-gray-300",
@@ -4686,9 +4885,9 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "144px",
+        "width": "128px",
         "height": "16px",
-        "margin": "0px",
+        "margin": "0px 0px 0px 8px",
         "padding": "0px",
         "border": "0px solid rgb(229, 231, 235)",
         "background-color": "rgba(0, 0, 0, 0)",
@@ -4703,11 +4902,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 376,
-        "y": 299
+        "x": 360,
+        "y": 214
       },
       "dimensions": {
-        "width": 144,
+        "width": 128,
         "height": 16
       },
       "textContent": "TRACK 3",
@@ -4717,9 +4916,104 @@
       "tag": "div",
       "id": null,
       "classes": [
+        "relative",
         "flex-1",
+        "h-full",
+        "track-grid-bg",
+        "overflow-hidden"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "relative",
+        "top": "0px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "width": "520px",
+        "height": "55px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(243, 244, 246)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 520,
+        "y": 194
+      },
+      "dimensions": {
+        "width": 520,
+        "height": 55
+      },
+      "textContent": null,
+      "innerHTML": "\n                                <!-- Playhead (vertical line) only in clips area for this track -->\n                                <div class=\"absolute top-0 left-[40px] w-1 h-full assembly-accent o"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "absolute",
+        "top-0",
+        "left-[40px]",
+        "w-1",
+        "h-full",
+        "assembly-accent",
+        "opacity-80",
+        "z-20",
+        "pointer-events-none"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "40px",
+        "right": "476px",
+        "bottom": "0px",
+        "width": "4px",
+        "height": "55px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgb(56, 189, 248)",
+        "color": "rgb(243, 244, 246)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "20",
+        "opacity": "0.8",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 560,
+        "y": 194
+      },
+      "dimensions": {
+        "width": 4,
+        "height": 55
+      },
+      "textContent": null,
+      "innerHTML": "\n                                "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
         "flex",
         "items-center",
+        "h-full",
+        "pl-10",
         "space-x-2",
         "min-w-0"
       ],
@@ -4732,9 +5026,9 @@
         "right": "auto",
         "bottom": "auto",
         "width": "520px",
-        "height": "24px",
+        "height": "55px",
         "margin": "0px",
-        "padding": "0px",
+        "padding": "0px 0px 0px 40px",
         "border": "0px solid rgb(229, 231, 235)",
         "background-color": "rgba(0, 0, 0, 0)",
         "color": "rgb(243, 244, 246)",
@@ -4750,14 +5044,14 @@
       },
       "position": {
         "x": 520,
-        "y": 295
+        "y": 194
       },
       "dimensions": {
         "width": 520,
-        "height": 24
+        "height": 55
       },
       "textContent": null,
-      "innerHTML": "\n                                <div class=\"h-6 w-24 bg-sky-900 rounded mr-2\"></div>\n                                <div class=\"h-6 w-12 bg-sky-700 rounded\"></div>\n                            "
+      "innerHTML": "\n                                    <div class=\"h-6 w-24 bg-sky-900 rounded mr-2\"></div>\n                                    <div class=\"h-6 w-12 bg-sky-700 rounded\"></div>\n                          "
     },
     {
       "tag": "div",
@@ -4794,8 +5088,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 520,
-        "y": 295
+        "x": 560,
+        "y": 210
       },
       "dimensions": {
         "width": 96,
@@ -4838,8 +5132,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 632,
-        "y": 295
+        "x": 672,
+        "y": 210
       },
       "dimensions": {
         "width": 48,
@@ -4852,13 +5146,14 @@
       "tag": "div",
       "id": null,
       "classes": [
-        "flex-1",
         "flex",
         "items-center",
         "border-b",
         "border-gray-700",
         "last:border-b-0",
-        "min-h-[48px]"
+        "h-14",
+        "min-h-[48px]",
+        "max-h-[56px]"
       ],
       "dataAttributes": null,
       "computedStyles": {
@@ -4869,7 +5164,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "760px",
-        "height": "78.8359px",
+        "height": "56px",
         "margin": "0px",
         "padding": "0px",
         "background-color": "rgba(0, 0, 0, 0)",
@@ -4886,14 +5181,14 @@
       },
       "position": {
         "x": 280,
-        "y": 347
+        "y": 250
       },
       "dimensions": {
         "width": 760,
-        "height": 79
+        "height": 56
       },
-      "textContent": "🎧\n                                🔇\n                            \n                            TRACK",
-      "innerHTML": "\n                            <div class=\"flex items-center w-24 pl-2 space-x-2 min-w-[90px]\">\n                                <button class=\"w-7 h-7 flex items-center justify-center text-lg text-sky-4"
+      "textContent": "🎧\n                                🔇\n                                TRACK 4",
+      "innerHTML": "\n                            <!-- Left: controls and track name, solid bg -->\n                            <div class=\"flex items-center w-60 pl-2 space-x-2 min-w-[150px] bg-gray-800 h-full rounded-l-l"
     },
     {
       "tag": "div",
@@ -4901,10 +5196,13 @@
       "classes": [
         "flex",
         "items-center",
-        "w-24",
+        "w-60",
         "pl-2",
         "space-x-2",
-        "min-w-[90px]"
+        "min-w-[150px]",
+        "bg-gray-800",
+        "h-full",
+        "rounded-l-lg"
       ],
       "dataAttributes": null,
       "computedStyles": {
@@ -4914,12 +5212,12 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "96px",
-        "height": "28px",
+        "width": "240px",
+        "height": "55px",
         "margin": "0px",
         "padding": "0px 0px 0px 8px",
         "border": "0px solid rgb(229, 231, 235)",
-        "background-color": "rgba(0, 0, 0, 0)",
+        "background-color": "rgb(31, 41, 55)",
         "color": "rgb(243, 244, 246)",
         "font-size": "16px",
         "font-weight": "400",
@@ -4933,13 +5231,13 @@
       },
       "position": {
         "x": 280,
-        "y": 371
+        "y": 250
       },
       "dimensions": {
-        "width": 96,
-        "height": 28
+        "width": 240,
+        "height": 55
       },
-      "textContent": "🎧\n                                🔇",
+      "textContent": "🎧\n                                🔇\n                                TRACK 4",
       "innerHTML": "\n                                <button class=\"w-7 h-7 flex items-center justify-center text-lg text-sky-400 hover:bg-gray-700 rounded\" title=\"Solo\">🎧</button>\n                                <butto"
     },
     {
@@ -4984,7 +5282,7 @@
       },
       "position": {
         "x": 288,
-        "y": 371
+        "y": 264
       },
       "dimensions": {
         "width": 28,
@@ -5035,7 +5333,7 @@
       },
       "position": {
         "x": 324,
-        "y": 371
+        "y": 264
       },
       "dimensions": {
         "width": 28,
@@ -5045,10 +5343,10 @@
       "innerHTML": "🔇"
     },
     {
-      "tag": "div",
+      "tag": "span",
       "id": null,
       "classes": [
-        "w-36",
+        "w-32",
         "text-xs",
         "font-bold",
         "text-gray-300",
@@ -5062,9 +5360,9 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "144px",
+        "width": "128px",
         "height": "16px",
-        "margin": "0px",
+        "margin": "0px 0px 0px 8px",
         "padding": "0px",
         "border": "0px solid rgb(229, 231, 235)",
         "background-color": "rgba(0, 0, 0, 0)",
@@ -5079,11 +5377,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 376,
-        "y": 377
+        "x": 360,
+        "y": 270
       },
       "dimensions": {
-        "width": 144,
+        "width": 128,
         "height": 16
       },
       "textContent": "TRACK 4",
@@ -5093,9 +5391,104 @@
       "tag": "div",
       "id": null,
       "classes": [
+        "relative",
         "flex-1",
+        "h-full",
+        "track-grid-bg",
+        "overflow-hidden"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "relative",
+        "top": "0px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "width": "520px",
+        "height": "55px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(243, 244, 246)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 520,
+        "y": 250
+      },
+      "dimensions": {
+        "width": 520,
+        "height": 55
+      },
+      "textContent": null,
+      "innerHTML": "\n                                <!-- Playhead (vertical line) only in clips area for this track -->\n                                <div class=\"absolute top-0 left-[40px] w-1 h-full assembly-accent o"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "absolute",
+        "top-0",
+        "left-[40px]",
+        "w-1",
+        "h-full",
+        "assembly-accent",
+        "opacity-80",
+        "z-20",
+        "pointer-events-none"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "40px",
+        "right": "476px",
+        "bottom": "0px",
+        "width": "4px",
+        "height": "55px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgb(56, 189, 248)",
+        "color": "rgb(243, 244, 246)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "20",
+        "opacity": "0.8",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 560,
+        "y": 250
+      },
+      "dimensions": {
+        "width": 4,
+        "height": 55
+      },
+      "textContent": null,
+      "innerHTML": "\n                                "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
         "flex",
         "items-center",
+        "h-full",
+        "pl-10",
         "space-x-2",
         "min-w-0"
       ],
@@ -5108,9 +5501,9 @@
         "right": "auto",
         "bottom": "auto",
         "width": "520px",
-        "height": "24px",
+        "height": "55px",
         "margin": "0px",
-        "padding": "0px",
+        "padding": "0px 0px 0px 40px",
         "border": "0px solid rgb(229, 231, 235)",
         "background-color": "rgba(0, 0, 0, 0)",
         "color": "rgb(243, 244, 246)",
@@ -5126,14 +5519,14 @@
       },
       "position": {
         "x": 520,
-        "y": 373
+        "y": 250
       },
       "dimensions": {
         "width": 520,
-        "height": 24
+        "height": 55
       },
       "textContent": null,
-      "innerHTML": "\n                                <div class=\"h-6 w-16 bg-sky-900 rounded mr-2\"></div>\n                                <div class=\"h-6 w-20 bg-sky-700 rounded\"></div>\n                            "
+      "innerHTML": "\n                                    <div class=\"h-6 w-16 bg-sky-900 rounded mr-2\"></div>\n                                    <div class=\"h-6 w-20 bg-sky-700 rounded\"></div>\n                          "
     },
     {
       "tag": "div",
@@ -5170,8 +5563,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 520,
-        "y": 373
+        "x": 560,
+        "y": 266
       },
       "dimensions": {
         "width": 64,
@@ -5214,8 +5607,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 600,
-        "y": 373
+        "x": 640,
+        "y": 266
       },
       "dimensions": {
         "width": 80,
@@ -5228,13 +5621,14 @@
       "tag": "div",
       "id": null,
       "classes": [
-        "flex-1",
         "flex",
         "items-center",
         "border-b",
         "border-gray-700",
         "last:border-b-0",
-        "min-h-[48px]"
+        "h-14",
+        "min-h-[48px]",
+        "max-h-[56px]"
       ],
       "dataAttributes": null,
       "computedStyles": {
@@ -5245,7 +5639,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "760px",
-        "height": "78.8359px",
+        "height": "56px",
         "margin": "0px",
         "padding": "0px",
         "background-color": "rgba(0, 0, 0, 0)",
@@ -5262,14 +5656,14 @@
       },
       "position": {
         "x": 280,
-        "y": 425
+        "y": 306
       },
       "dimensions": {
         "width": 760,
-        "height": 79
+        "height": 56
       },
-      "textContent": "🎧\n                                🔇\n                            \n                            TRACK",
-      "innerHTML": "\n                            <div class=\"flex items-center w-24 pl-2 space-x-2 min-w-[90px]\">\n                                <button class=\"w-7 h-7 flex items-center justify-center text-lg text-sky-4"
+      "textContent": "🎧\n                                🔇\n                                TRACK 5",
+      "innerHTML": "\n                            <!-- Left: controls and track name, solid bg -->\n                            <div class=\"flex items-center w-60 pl-2 space-x-2 min-w-[150px] bg-gray-800 h-full rounded-l-l"
     },
     {
       "tag": "div",
@@ -5277,10 +5671,13 @@
       "classes": [
         "flex",
         "items-center",
-        "w-24",
+        "w-60",
         "pl-2",
         "space-x-2",
-        "min-w-[90px]"
+        "min-w-[150px]",
+        "bg-gray-800",
+        "h-full",
+        "rounded-l-lg"
       ],
       "dataAttributes": null,
       "computedStyles": {
@@ -5290,12 +5687,12 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "96px",
-        "height": "28px",
+        "width": "240px",
+        "height": "55px",
         "margin": "0px",
         "padding": "0px 0px 0px 8px",
         "border": "0px solid rgb(229, 231, 235)",
-        "background-color": "rgba(0, 0, 0, 0)",
+        "background-color": "rgb(31, 41, 55)",
         "color": "rgb(243, 244, 246)",
         "font-size": "16px",
         "font-weight": "400",
@@ -5309,13 +5706,13 @@
       },
       "position": {
         "x": 280,
-        "y": 450
+        "y": 306
       },
       "dimensions": {
-        "width": 96,
-        "height": 28
+        "width": 240,
+        "height": 55
       },
-      "textContent": "🎧\n                                🔇",
+      "textContent": "🎧\n                                🔇\n                                TRACK 5",
       "innerHTML": "\n                                <button class=\"w-7 h-7 flex items-center justify-center text-lg text-sky-400 hover:bg-gray-700 rounded\" title=\"Solo\">🎧</button>\n                                <butto"
     },
     {
@@ -5360,7 +5757,7 @@
       },
       "position": {
         "x": 288,
-        "y": 450
+        "y": 320
       },
       "dimensions": {
         "width": 28,
@@ -5411,7 +5808,7 @@
       },
       "position": {
         "x": 324,
-        "y": 450
+        "y": 320
       },
       "dimensions": {
         "width": 28,
@@ -5421,10 +5818,10 @@
       "innerHTML": "🔇"
     },
     {
-      "tag": "div",
+      "tag": "span",
       "id": null,
       "classes": [
-        "w-36",
+        "w-32",
         "text-xs",
         "font-bold",
         "text-gray-300",
@@ -5438,9 +5835,9 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "144px",
+        "width": "128px",
         "height": "16px",
-        "margin": "0px",
+        "margin": "0px 0px 0px 8px",
         "padding": "0px",
         "border": "0px solid rgb(229, 231, 235)",
         "background-color": "rgba(0, 0, 0, 0)",
@@ -5455,11 +5852,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 376,
-        "y": 456
+        "x": 360,
+        "y": 326
       },
       "dimensions": {
-        "width": 144,
+        "width": 128,
         "height": 16
       },
       "textContent": "TRACK 5",
@@ -5469,9 +5866,104 @@
       "tag": "div",
       "id": null,
       "classes": [
+        "relative",
         "flex-1",
+        "h-full",
+        "track-grid-bg",
+        "overflow-hidden"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "relative",
+        "top": "0px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "width": "520px",
+        "height": "55px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(243, 244, 246)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 520,
+        "y": 306
+      },
+      "dimensions": {
+        "width": 520,
+        "height": 55
+      },
+      "textContent": null,
+      "innerHTML": "\n                                <!-- Playhead (vertical line) only in clips area for this track -->\n                                <div class=\"absolute top-0 left-[40px] w-1 h-full assembly-accent o"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "absolute",
+        "top-0",
+        "left-[40px]",
+        "w-1",
+        "h-full",
+        "assembly-accent",
+        "opacity-80",
+        "z-20",
+        "pointer-events-none"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "40px",
+        "right": "476px",
+        "bottom": "0px",
+        "width": "4px",
+        "height": "55px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgb(56, 189, 248)",
+        "color": "rgb(243, 244, 246)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "20",
+        "opacity": "0.8",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 560,
+        "y": 306
+      },
+      "dimensions": {
+        "width": 4,
+        "height": 55
+      },
+      "textContent": null,
+      "innerHTML": "\n                                "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
         "flex",
         "items-center",
+        "h-full",
+        "pl-10",
         "space-x-2",
         "min-w-0"
       ],
@@ -5484,9 +5976,9 @@
         "right": "auto",
         "bottom": "auto",
         "width": "520px",
-        "height": "24px",
+        "height": "55px",
         "margin": "0px",
-        "padding": "0px",
+        "padding": "0px 0px 0px 40px",
         "border": "0px solid rgb(229, 231, 235)",
         "background-color": "rgba(0, 0, 0, 0)",
         "color": "rgb(243, 244, 246)",
@@ -5502,14 +5994,14 @@
       },
       "position": {
         "x": 520,
-        "y": 452
+        "y": 306
       },
       "dimensions": {
         "width": 520,
-        "height": 24
+        "height": 55
       },
       "textContent": null,
-      "innerHTML": "\n                                <div class=\"h-6 w-20 bg-sky-900 rounded mr-2\"></div>\n                                <div class=\"h-6 w-24 bg-sky-700 rounded\"></div>\n                            "
+      "innerHTML": "\n                                    <div class=\"h-6 w-20 bg-sky-900 rounded mr-2\"></div>\n                                    <div class=\"h-6 w-24 bg-sky-700 rounded\"></div>\n                          "
     },
     {
       "tag": "div",
@@ -5546,8 +6038,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 520,
-        "y": 452
+        "x": 560,
+        "y": 322
       },
       "dimensions": {
         "width": 80,
@@ -5590,8 +6082,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 616,
-        "y": 452
+        "x": 656,
+        "y": 322
       },
       "dimensions": {
         "width": 96,
@@ -5604,10 +6096,11 @@
       "tag": "div",
       "id": null,
       "classes": [
-        "flex-1",
         "flex",
         "items-center",
-        "min-h-[48px]"
+        "h-14",
+        "min-h-[48px]",
+        "max-h-[56px]"
       ],
       "dataAttributes": null,
       "computedStyles": {
@@ -5618,7 +6111,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "760px",
-        "height": "77.8359px",
+        "height": "56px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px solid rgb(229, 231, 235)",
@@ -5636,14 +6129,14 @@
       },
       "position": {
         "x": 280,
-        "y": 504
+        "y": 362
       },
       "dimensions": {
         "width": 760,
-        "height": 78
+        "height": 56
       },
-      "textContent": "🎧\n                                🔇\n                            \n                            TRACK",
-      "innerHTML": "\n                            <div class=\"flex items-center w-24 pl-2 space-x-2 min-w-[90px]\">\n                                <button class=\"w-7 h-7 flex items-center justify-center text-lg text-sky-4"
+      "textContent": "🎧\n                                🔇\n                                TRACK 6",
+      "innerHTML": "\n                            <!-- Left: controls and track name, solid bg -->\n                            <div class=\"flex items-center w-60 pl-2 space-x-2 min-w-[150px] bg-gray-800 h-full rounded-l-l"
     },
     {
       "tag": "div",
@@ -5651,10 +6144,13 @@
       "classes": [
         "flex",
         "items-center",
-        "w-24",
+        "w-60",
         "pl-2",
         "space-x-2",
-        "min-w-[90px]"
+        "min-w-[150px]",
+        "bg-gray-800",
+        "h-full",
+        "rounded-l-lg"
       ],
       "dataAttributes": null,
       "computedStyles": {
@@ -5664,12 +6160,12 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "96px",
-        "height": "28px",
+        "width": "240px",
+        "height": "56px",
         "margin": "0px",
         "padding": "0px 0px 0px 8px",
         "border": "0px solid rgb(229, 231, 235)",
-        "background-color": "rgba(0, 0, 0, 0)",
+        "background-color": "rgb(31, 41, 55)",
         "color": "rgb(243, 244, 246)",
         "font-size": "16px",
         "font-weight": "400",
@@ -5683,13 +6179,13 @@
       },
       "position": {
         "x": 280,
-        "y": 529
+        "y": 362
       },
       "dimensions": {
-        "width": 96,
-        "height": 28
+        "width": 240,
+        "height": 56
       },
-      "textContent": "🎧\n                                🔇",
+      "textContent": "🎧\n                                🔇\n                                TRACK 6",
       "innerHTML": "\n                                <button class=\"w-7 h-7 flex items-center justify-center text-lg text-sky-400 hover:bg-gray-700 rounded\" title=\"Solo\">🎧</button>\n                                <butto"
     },
     {
@@ -5734,7 +6230,7 @@
       },
       "position": {
         "x": 288,
-        "y": 529
+        "y": 376
       },
       "dimensions": {
         "width": 28,
@@ -5785,7 +6281,7 @@
       },
       "position": {
         "x": 324,
-        "y": 529
+        "y": 376
       },
       "dimensions": {
         "width": 28,
@@ -5795,10 +6291,10 @@
       "innerHTML": "🔇"
     },
     {
-      "tag": "div",
+      "tag": "span",
       "id": null,
       "classes": [
-        "w-36",
+        "w-32",
         "text-xs",
         "font-bold",
         "text-gray-300",
@@ -5812,9 +6308,9 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "144px",
+        "width": "128px",
         "height": "16px",
-        "margin": "0px",
+        "margin": "0px 0px 0px 8px",
         "padding": "0px",
         "border": "0px solid rgb(229, 231, 235)",
         "background-color": "rgba(0, 0, 0, 0)",
@@ -5829,11 +6325,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 376,
-        "y": 535
+        "x": 360,
+        "y": 382
       },
       "dimensions": {
-        "width": 144,
+        "width": 128,
         "height": 16
       },
       "textContent": "TRACK 6",
@@ -5843,9 +6339,104 @@
       "tag": "div",
       "id": null,
       "classes": [
+        "relative",
         "flex-1",
+        "h-full",
+        "track-grid-bg",
+        "overflow-hidden"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "relative",
+        "top": "0px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "width": "520px",
+        "height": "56px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(243, 244, 246)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 520,
+        "y": 362
+      },
+      "dimensions": {
+        "width": 520,
+        "height": 56
+      },
+      "textContent": null,
+      "innerHTML": "\n                                <!-- Playhead (vertical line) only in clips area for this track -->\n                                <div class=\"absolute top-0 left-[40px] w-1 h-full assembly-accent o"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "absolute",
+        "top-0",
+        "left-[40px]",
+        "w-1",
+        "h-full",
+        "assembly-accent",
+        "opacity-80",
+        "z-20",
+        "pointer-events-none"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "40px",
+        "right": "476px",
+        "bottom": "0px",
+        "width": "4px",
+        "height": "56px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px solid rgb(229, 231, 235)",
+        "background-color": "rgb(56, 189, 248)",
+        "color": "rgb(243, 244, 246)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "20",
+        "opacity": "0.8",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 560,
+        "y": 362
+      },
+      "dimensions": {
+        "width": 4,
+        "height": 56
+      },
+      "textContent": null,
+      "innerHTML": "\n                                "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
         "flex",
         "items-center",
+        "h-full",
+        "pl-10",
         "space-x-2",
         "min-w-0"
       ],
@@ -5858,9 +6449,9 @@
         "right": "auto",
         "bottom": "auto",
         "width": "520px",
-        "height": "24px",
+        "height": "56px",
         "margin": "0px",
-        "padding": "0px",
+        "padding": "0px 0px 0px 40px",
         "border": "0px solid rgb(229, 231, 235)",
         "background-color": "rgba(0, 0, 0, 0)",
         "color": "rgb(243, 244, 246)",
@@ -5876,14 +6467,14 @@
       },
       "position": {
         "x": 520,
-        "y": 531
+        "y": 362
       },
       "dimensions": {
         "width": 520,
-        "height": 24
+        "height": 56
       },
       "textContent": null,
-      "innerHTML": "\n                                <div class=\"h-6 w-24 bg-sky-900 rounded mr-2\"></div>\n                                <div class=\"h-6 w-16 bg-sky-700 rounded\"></div>\n                            "
+      "innerHTML": "\n                                    <div class=\"h-6 w-24 bg-sky-900 rounded mr-2\"></div>\n                                    <div class=\"h-6 w-16 bg-sky-700 rounded\"></div>\n                          "
     },
     {
       "tag": "div",
@@ -5920,8 +6511,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 520,
-        "y": 531
+        "x": 560,
+        "y": 378
       },
       "dimensions": {
         "width": 96,
@@ -5964,8 +6555,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 632,
-        "y": 531
+        "x": 672,
+        "y": 378
       },
       "dimensions": {
         "width": 64,
@@ -5981,7 +6572,12 @@
         "w-full",
         "flex",
         "justify-center",
-        "mt-2"
+        "mt-2",
+        "mb-2",
+        "bg-gray-800",
+        "border-t",
+        "border-gray-700",
+        "pt-2"
       ],
       "dataAttributes": null,
       "computedStyles": {
@@ -5992,11 +6588,10 @@
         "right": "auto",
         "bottom": "auto",
         "width": "760px",
-        "height": "40px",
-        "margin": "8px 0px 0px",
-        "padding": "0px",
-        "border": "0px solid rgb(229, 231, 235)",
-        "background-color": "rgba(0, 0, 0, 0)",
+        "height": "49px",
+        "margin": "8px 0px",
+        "padding": "8px 0px 0px",
+        "background-color": "rgb(31, 41, 55)",
         "color": "rgb(243, 244, 246)",
         "font-size": "16px",
         "font-weight": "400",
@@ -6010,11 +6605,11 @@
       },
       "position": {
         "x": 280,
-        "y": 590
+        "y": 426
       },
       "dimensions": {
         "width": 760,
-        "height": 40
+        "height": 49
       },
       "textContent": "+\n                            Add Track",
       "innerHTML": "\n                        <button class=\"bg-sky-700 hover:bg-sky-600 text-white font-semibold py-2 px-8 rounded shadow\">+\n                            Add Track</button>\n                    "
@@ -6058,7 +6653,7 @@
       },
       "position": {
         "x": 586,
-        "y": 590
+        "y": 435
       },
       "dimensions": {
         "width": 148,
@@ -6114,11 +6709,11 @@
         "height": 581
       },
       "textContent": "L  R",
-      "innerHTML": "\n            <div class=\"h-full w-6 rounded bg-gray-700 mt-12 flex flex-col-reverse overflow-hidden border border-sky-400\">\n                <div class=\"assembly-vu w-full\" style=\"height: 60%\"></div>\n "
+      "innerHTML": "\n            <div class=\"h-full w-6 rounded bg-gray-700 mt-12 flex flex-col-reverse overflow-hidden border border-sky-400\" id=\"vu-meter\">\n                <div class=\"assembly-vu w-full\" style=\"height:"
     },
     {
       "tag": "div",
-      "id": null,
+      "id": "vu-meter",
       "classes": [
         "h-full",
         "w-6",
