@@ -1,12 +1,12 @@
 {
-  "session": "session-1751142960868",
-  "sessionStart": "2025-06-28T20:36:00.868Z",
-  "timestamp": "2025-06-28T20:38:42.833Z",
+  "session": "session-1751144185414",
+  "sessionStart": "2025-06-28T20:56:25.414Z",
+  "timestamp": "2025-06-28T20:57:09.412Z",
   "url": "http://localhost:52330/index.html",
   "summary": {
-    "totalElements": 188,
+    "totalElements": 180,
     "elementsWithId": 6,
-    "elementsWithClasses": 180,
+    "elementsWithClasses": 172,
     "elementsWithCssConflicts": 7
   },
   "elements": [
@@ -1066,8 +1066,8 @@
         "width": 1128,
         "height": 581
       },
-      "textContent": "File: song.ass\n            \n            \n                \n            \n                \n            ",
-      "innerHTML": "\n        <!-- LEFT SIDEBAR -->\n        <aside id=\"sidebar\" class=\"sidebar sidebar__scrollbar\">\n            <div class=\"file-info\">\n                File: <span class=\"file-info__name\">song.ass</span>\n "
+      "textContent": "File: band.ass\n            \n            \n                \n            \n                \n            ",
+      "innerHTML": "\n        <!-- LEFT SIDEBAR -->\n        <aside id=\"sidebar\" class=\"sidebar sidebar__scrollbar\">\n            <div class=\"file-info\">\n                File: <span class=\"file-info__name\">band.ass</span>\n "
     },
     {
       "tag": "aside",
@@ -1107,8 +1107,8 @@
         "width": 240,
         "height": 581
       },
-      "textContent": "File: song.ass\n            \n            \n                \n            \n                \n            ",
-      "innerHTML": "\n            <div class=\"file-info\">\n                File: <span class=\"file-info__name\">song.ass</span>\n            </div>\n            <div class=\"transport-controls\">\n                \n            <d"
+      "textContent": "File: band.ass\n            \n            \n                \n            \n                \n            ",
+      "innerHTML": "\n            <div class=\"file-info\">\n                File: <span class=\"file-info__name\">band.ass</span>\n            </div>\n            <div class=\"transport-controls\">\n                \n            <d"
     },
     {
       "tag": "div",
@@ -1148,8 +1148,8 @@
         "width": 223,
         "height": 14
       },
-      "textContent": "File: song.ass",
-      "innerHTML": "\n                File: <span class=\"file-info__name\">song.ass</span>\n            "
+      "textContent": "File: band.ass",
+      "innerHTML": "\n                File: <span class=\"file-info__name\">band.ass</span>\n            "
     },
     {
       "tag": "span",
@@ -1186,11 +1186,11 @@
         "y": 80
       },
       "dimensions": {
-        "width": 48,
+        "width": 49,
         "height": 14
       },
-      "textContent": "song.ass",
-      "innerHTML": "song.ass"
+      "textContent": "band.ass",
+      "innerHTML": "band.ass"
     },
     {
       "tag": "div",
@@ -1207,7 +1207,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "223px",
-        "height": "82px",
+        "height": "90px",
         "margin": "0px 0px 24px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -1229,10 +1229,10 @@
       },
       "dimensions": {
         "width": 223,
-        "height": 82
+        "height": 90
       },
-      "textContent": "▶\n                    \n                \n                    \n                        ⏹\n             ",
-      "innerHTML": "\n                \n            <div class=\"transport-controls__row\">\n                \n                    <button class=\"transport-button transport-button--play\" title=\"Play/Pause\" data-transport=\"play"
+      "textContent": "▶\n                \n                    \n                        ⏹\n                    \n             ",
+      "innerHTML": "\n                \n            <div class=\"transport-controls__row\">\n                \n                    <button class=\"transport-button\" title=\"Play/Pause\" data-transport=\"play\">▶</button>\n          "
     },
     {
       "tag": "div",
@@ -1272,15 +1272,14 @@
         "width": 184,
         "height": 40
       },
-      "textContent": "▶\n                    \n                \n                    \n                        ⏹\n             ",
-      "innerHTML": "\n                \n                    <button class=\"transport-button transport-button--play\" title=\"Play/Pause\" data-transport=\"play\">\n                        ▶\n                    </button>\n        "
+      "textContent": "▶\n                \n                    \n                        ⏹\n                    \n             ",
+      "innerHTML": "\n                \n                    <button class=\"transport-button\" title=\"Play/Pause\" data-transport=\"play\">▶</button>\n                \n                    <button class=\"transport-button \" title="
     },
     {
       "tag": "button",
       "id": null,
       "classes": [
-        "transport-button",
-        "transport-button--play"
+        "transport-button"
       ],
       "dataAttributes": {
         "data-transport": "play"
@@ -1297,8 +1296,8 @@
         "margin": "0px",
         "padding": "1px 6px",
         "border": "2px solid rgb(75, 85, 99)",
-        "background-color": "rgb(56, 189, 248)",
-        "color": "rgb(255, 255, 255)",
+        "background-color": "rgb(55, 65, 81)",
+        "color": "rgb(56, 189, 248)",
         "font-size": "20px",
         "font-weight": "400",
         "flex-direction": "row",
@@ -1319,7 +1318,7 @@
         "height": 40
       },
       "textContent": "▶",
-      "innerHTML": "\n                        ▶\n                    "
+      "innerHTML": "▶"
     },
     {
       "tag": "button",
@@ -1470,8 +1469,8 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "66.1484px",
-        "height": "26px",
+        "width": "74.1484px",
+        "height": "34px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -1487,15 +1486,15 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 86,
+        "x": 82,
         "y": 174
       },
       "dimensions": {
-        "width": 66,
-        "height": 26
+        "width": 74,
+        "height": 34
       },
       "textContent": "Loop",
-      "innerHTML": "\n                <label class=\"loop-toggle\">\n                    <input type=\"checkbox\" class=\"loop-toggle__checkbox\" data-transport=\"loop\">\n                    <span class=\"loop-toggle__label\">Loop</"
+      "innerHTML": "\n                <label class=\"loop-toggle\">\n                    <input type=\"checkbox\" class=\"loop-toggle__checkbox\">\n                    <span class=\"loop-toggle__label\">Loop</span>\n                "
     },
     {
       "tag": "label",
@@ -1511,10 +1510,10 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "66.1484px",
-        "height": "26px",
+        "width": "74.1484px",
+        "height": "34px",
         "margin": "0px",
-        "padding": "0px",
+        "padding": "4px",
         "border": "0px none rgb(249, 250, 251)",
         "background-color": "rgba(0, 0, 0, 0)",
         "color": "rgb(249, 250, 251)",
@@ -1529,15 +1528,15 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 86,
+        "x": 82,
         "y": 174
       },
       "dimensions": {
-        "width": 66,
-        "height": 26
+        "width": 74,
+        "height": 34
       },
       "textContent": "Loop",
-      "innerHTML": "\n                    <input type=\"checkbox\" class=\"loop-toggle__checkbox\" data-transport=\"loop\">\n                    <span class=\"loop-toggle__label\">Loop</span>\n                "
+      "innerHTML": "\n                    <input type=\"checkbox\" class=\"loop-toggle__checkbox\">\n                    <span class=\"loop-toggle__label\">Loop</span>\n                "
     },
     {
       "tag": "input",
@@ -1545,9 +1544,7 @@
       "classes": [
         "loop-toggle__checkbox"
       ],
-      "dataAttributes": {
-        "data-transport": "loop"
-      },
+      "dataAttributes": null,
       "computedStyles": {
         "display": "block",
         "position": "static",
@@ -1573,7 +1570,7 @@
       },
       "position": {
         "x": 90,
-        "y": 177
+        "y": 181
       },
       "dimensions": {
         "width": 20,
@@ -1614,7 +1611,7 @@
       },
       "position": {
         "x": 121,
-        "y": 179
+        "y": 183
       },
       "dimensions": {
         "width": 31,
@@ -1654,7 +1651,7 @@
       },
       "position": {
         "x": 8,
-        "y": 232
+        "y": 240
       },
       "dimensions": {
         "width": 223,
@@ -1678,7 +1675,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "223px",
-        "height": "372px",
+        "height": "364px",
         "margin": "0px",
         "padding": "0px 4px 0px 0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -1695,13 +1692,13 @@
       },
       "position": {
         "x": 8,
-        "y": 241
+        "y": 249
       },
       "dimensions": {
         "width": 223,
-        "height": 372
+        "height": 364
       },
-      "textContent": "Clips\n                \n                \n                    \n                        🎼\n            ",
+      "textContent": "Clips\n                \n                \n                    \n                        🥁\n            ",
       "innerHTML": "\n                <div class=\"clip-repository__header\">Clips</div>\n                \n                <div class=\"clip-category\">\n                    <div class=\"clip-category__header\">\n                 "
     },
     {
@@ -1736,7 +1733,7 @@
       },
       "position": {
         "x": 8,
-        "y": 241
+        "y": 249
       },
       "dimensions": {
         "width": 204,
@@ -1760,7 +1757,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "204px",
-        "height": "79px",
+        "height": "109px",
         "margin": "0px 0px 24px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -1777,14 +1774,14 @@
       },
       "position": {
         "x": 8,
-        "y": 265
+        "y": 273
       },
       "dimensions": {
         "width": 204,
-        "height": 79
+        "height": 109
       },
-      "textContent": "🎼\n                        Instrument\n                    \n                    \n                    ",
-      "innerHTML": "\n                    <div class=\"clip-category__header\">\n                        <span class=\"clip-category__icon\">🎼</span>\n                        Instrument\n                    </div>\n             "
+      "textContent": "🥁\n                        Drums\n                    \n                    \n                        \n",
+      "innerHTML": "\n                    <div class=\"clip-category__header\">\n                        <span class=\"clip-category__icon\">🥁</span>\n                        Drums\n                    </div>\n                  "
     },
     {
       "tag": "div",
@@ -1819,14 +1816,14 @@
       },
       "position": {
         "x": 8,
-        "y": 265
+        "y": 273
       },
       "dimensions": {
         "width": 204,
         "height": 19
       },
-      "textContent": "🎼\n                        Instrument",
-      "innerHTML": "\n                        <span class=\"clip-category__icon\">🎼</span>\n                        Instrument\n                    "
+      "textContent": "🥁\n                        Drums",
+      "innerHTML": "\n                        <span class=\"clip-category__icon\">🥁</span>\n                        Drums\n                    "
     },
     {
       "tag": "span",
@@ -1860,14 +1857,14 @@
       },
       "position": {
         "x": 8,
-        "y": 265
+        "y": 273
       },
       "dimensions": {
         "width": 20,
         "height": 19
       },
-      "textContent": "🎼",
-      "innerHTML": "🎼"
+      "textContent": "🥁",
+      "innerHTML": "🥁"
     },
     {
       "tag": "div",
@@ -1884,7 +1881,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "52px",
+        "height": "82px",
         "margin": "0px 0px 0px 24px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -1901,14 +1898,14 @@
       },
       "position": {
         "x": 32,
-        "y": 292
+        "y": 300
       },
       "dimensions": {
         "width": 180,
-        "height": 52
+        "height": 82
       },
-      "textContent": "Piano Intro\n                            \n                        \n                            \n     ",
-      "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"piano-intro\" draggable=\"true\">\n                                Piano Intro\n                            </div>"
+      "textContent": "Rock Beat\n                            \n                        \n                            \n       ",
+      "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"rock-beat\" draggable=\"true\">\n                                Rock Beat\n                            </div>\n   "
     },
     {
       "tag": "div",
@@ -1917,7 +1914,7 @@
         "clip-item"
       ],
       "dataAttributes": {
-        "data-clip-id": "piano-intro"
+        "data-clip-id": "rock-beat"
       },
       "computedStyles": {
         "display": "block",
@@ -1944,14 +1941,14 @@
       },
       "position": {
         "x": 32,
-        "y": 292
+        "y": 300
       },
       "dimensions": {
         "width": 180,
         "height": 22
       },
-      "textContent": "Piano Intro",
-      "innerHTML": "\n                                Piano Intro\n                            "
+      "textContent": "Rock Beat",
+      "innerHTML": "\n                                Rock Beat\n                            "
     },
     {
       "tag": "div",
@@ -1960,7 +1957,7 @@
         "clip-item"
       ],
       "dataAttributes": {
-        "data-clip-id": "guitar-verse"
+        "data-clip-id": "funk-groove"
       },
       "computedStyles": {
         "display": "block",
@@ -1987,14 +1984,645 @@
       },
       "position": {
         "x": 32,
-        "y": 322
+        "y": 330
       },
       "dimensions": {
         "width": 180,
         "height": 22
       },
-      "textContent": "Guitar Verse",
-      "innerHTML": "\n                                Guitar Verse\n                            "
+      "textContent": "Funk Groove",
+      "innerHTML": "\n                                Funk Groove\n                            "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item"
+      ],
+      "dataAttributes": {
+        "data-clip-id": "jazz-shuffle"
+      },
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "180px",
+        "height": "22px",
+        "margin": "0px",
+        "padding": "4px 8px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgb(55, 65, 81)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "12px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 32,
+        "y": 360
+      },
+      "dimensions": {
+        "width": 180,
+        "height": 22
+      },
+      "textContent": "Jazz Shuffle",
+      "innerHTML": "\n                                Jazz Shuffle\n                            "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-category"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "204px",
+        "height": "109px",
+        "margin": "0px 0px 24px",
+        "padding": "0px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 8,
+        "y": 406
+      },
+      "dimensions": {
+        "width": 204,
+        "height": 109
+      },
+      "textContent": "🎸\n                        Bass\n                    \n                    \n                        \n ",
+      "innerHTML": "\n                    <div class=\"clip-category__header\">\n                        <span class=\"clip-category__icon\">🎸</span>\n                        Bass\n                    </div>\n                   "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-category__header"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "flex",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "204px",
+        "height": "19px",
+        "margin": "0px 0px 8px",
+        "padding": "0px",
+        "border": "0px none rgb(56, 189, 248)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(56, 189, 248)",
+        "font-size": "16px",
+        "font-weight": "600",
+        "flex-direction": "row",
+        "align-items": "center",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 8,
+        "y": 406
+      },
+      "dimensions": {
+        "width": 204,
+        "height": 19
+      },
+      "textContent": "🎸\n                        Bass",
+      "innerHTML": "\n                        <span class=\"clip-category__icon\">🎸</span>\n                        Bass\n                    "
+    },
+    {
+      "tag": "span",
+      "id": null,
+      "classes": [
+        "clip-category__icon"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "19.9688px",
+        "height": "19px",
+        "margin": "0px 8px 0px 0px",
+        "padding": "0px",
+        "border": "0px none rgb(56, 189, 248)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(56, 189, 248)",
+        "font-size": "16px",
+        "font-weight": "600",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 8,
+        "y": 406
+      },
+      "dimensions": {
+        "width": 20,
+        "height": 19
+      },
+      "textContent": "🎸",
+      "innerHTML": "🎸"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-category__clips"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "flex",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "180px",
+        "height": "82px",
+        "margin": "0px 0px 0px 24px",
+        "padding": "0px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "column",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 32,
+        "y": 433
+      },
+      "dimensions": {
+        "width": 180,
+        "height": 82
+      },
+      "textContent": "Walking Bass\n                            \n                        \n                            \n    ",
+      "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"walking-bass\" draggable=\"true\">\n                                Walking Bass\n                            </di"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item"
+      ],
+      "dataAttributes": {
+        "data-clip-id": "walking-bass"
+      },
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "180px",
+        "height": "22px",
+        "margin": "0px",
+        "padding": "4px 8px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgb(55, 65, 81)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "12px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 32,
+        "y": 433
+      },
+      "dimensions": {
+        "width": 180,
+        "height": 22
+      },
+      "textContent": "Walking Bass",
+      "innerHTML": "\n                                Walking Bass\n                            "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item"
+      ],
+      "dataAttributes": {
+        "data-clip-id": "synth-bass"
+      },
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "180px",
+        "height": "22px",
+        "margin": "0px",
+        "padding": "4px 8px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgb(55, 65, 81)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "12px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 32,
+        "y": 463
+      },
+      "dimensions": {
+        "width": 180,
+        "height": 22
+      },
+      "textContent": "Synth Bass",
+      "innerHTML": "\n                                Synth Bass\n                            "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item"
+      ],
+      "dataAttributes": {
+        "data-clip-id": "slap-bass"
+      },
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "180px",
+        "height": "22px",
+        "margin": "0px",
+        "padding": "4px 8px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgb(55, 65, 81)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "12px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 32,
+        "y": 493
+      },
+      "dimensions": {
+        "width": 180,
+        "height": 22
+      },
+      "textContent": "Slap Bass",
+      "innerHTML": "\n                                Slap Bass\n                            "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-category"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "204px",
+        "height": "109px",
+        "margin": "0px 0px 24px",
+        "padding": "0px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 8,
+        "y": 539
+      },
+      "dimensions": {
+        "width": 204,
+        "height": 109
+      },
+      "textContent": "🎹\n                        Guitar\n                    \n                    \n                        ",
+      "innerHTML": "\n                    <div class=\"clip-category__header\">\n                        <span class=\"clip-category__icon\">🎹</span>\n                        Guitar\n                    </div>\n                 "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-category__header"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "flex",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "204px",
+        "height": "19px",
+        "margin": "0px 0px 8px",
+        "padding": "0px",
+        "border": "0px none rgb(56, 189, 248)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(56, 189, 248)",
+        "font-size": "16px",
+        "font-weight": "600",
+        "flex-direction": "row",
+        "align-items": "center",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 8,
+        "y": 539
+      },
+      "dimensions": {
+        "width": 204,
+        "height": 19
+      },
+      "textContent": "🎹\n                        Guitar",
+      "innerHTML": "\n                        <span class=\"clip-category__icon\">🎹</span>\n                        Guitar\n                    "
+    },
+    {
+      "tag": "span",
+      "id": null,
+      "classes": [
+        "clip-category__icon"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "19.9688px",
+        "height": "19px",
+        "margin": "0px 8px 0px 0px",
+        "padding": "0px",
+        "border": "0px none rgb(56, 189, 248)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(56, 189, 248)",
+        "font-size": "16px",
+        "font-weight": "600",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 8,
+        "y": 539
+      },
+      "dimensions": {
+        "width": 20,
+        "height": 19
+      },
+      "textContent": "🎹",
+      "innerHTML": "🎹"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-category__clips"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "flex",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "180px",
+        "height": "82px",
+        "margin": "0px 0px 0px 24px",
+        "padding": "0px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "column",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 32,
+        "y": 566
+      },
+      "dimensions": {
+        "width": 180,
+        "height": 82
+      },
+      "textContent": "Clean Chords\n                            \n                        \n                            \n    ",
+      "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"clean-chords\" draggable=\"true\">\n                                Clean Chords\n                            </di"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item"
+      ],
+      "dataAttributes": {
+        "data-clip-id": "clean-chords"
+      },
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "180px",
+        "height": "22px",
+        "margin": "0px",
+        "padding": "4px 8px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgb(55, 65, 81)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "12px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 32,
+        "y": 566
+      },
+      "dimensions": {
+        "width": 180,
+        "height": 22
+      },
+      "textContent": "Clean Chords",
+      "innerHTML": "\n                                Clean Chords\n                            "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item"
+      ],
+      "dataAttributes": {
+        "data-clip-id": "distorted-riff"
+      },
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "180px",
+        "height": "22px",
+        "margin": "0px",
+        "padding": "4px 8px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgb(55, 65, 81)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "12px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 32,
+        "y": 596
+      },
+      "dimensions": {
+        "width": 180,
+        "height": 22
+      },
+      "textContent": "Distorted Riff",
+      "innerHTML": "\n                                Distorted Riff\n                            "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item"
+      ],
+      "dataAttributes": {
+        "data-clip-id": "arpeggio"
+      },
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "180px",
+        "height": "22px",
+        "margin": "0px",
+        "padding": "4px 8px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgb(55, 65, 81)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "12px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 32,
+        "y": 626
+      },
+      "dimensions": {
+        "width": 180,
+        "height": 22
+      },
+      "textContent": "Arpeggio",
+      "innerHTML": "\n                                Arpeggio\n                            "
     },
     {
       "tag": "div",
@@ -2028,7 +2656,7 @@
       },
       "position": {
         "x": 8,
-        "y": 368
+        "y": 672
       },
       "dimensions": {
         "width": 204,
@@ -2070,7 +2698,7 @@
       },
       "position": {
         "x": 8,
-        "y": 368
+        "y": 672
       },
       "dimensions": {
         "width": 204,
@@ -2111,7 +2739,7 @@
       },
       "position": {
         "x": 8,
-        "y": 368
+        "y": 672
       },
       "dimensions": {
         "width": 20,
@@ -2152,14 +2780,14 @@
       },
       "position": {
         "x": 32,
-        "y": 395
+        "y": 699
       },
       "dimensions": {
         "width": 180,
         "height": 52
       },
-      "textContent": "Vince's Take\n                            \n                        \n                            \n    ",
-      "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"vince-take\" draggable=\"true\">\n                                Vince's Take\n                            </div>"
+      "textContent": "Lead Take 1\n                            \n                        \n                            \n     ",
+      "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"lead-take-1\" draggable=\"true\">\n                                Lead Take 1\n                            </div>"
     },
     {
       "tag": "div",
@@ -2168,7 +2796,7 @@
         "clip-item"
       ],
       "dataAttributes": {
-        "data-clip-id": "vince-take"
+        "data-clip-id": "lead-take-1"
       },
       "computedStyles": {
         "display": "block",
@@ -2195,14 +2823,14 @@
       },
       "position": {
         "x": 32,
-        "y": 395
+        "y": 699
       },
       "dimensions": {
         "width": 180,
         "height": 22
       },
-      "textContent": "Vince's Take",
-      "innerHTML": "\n                                Vince's Take\n                            "
+      "textContent": "Lead Take 1",
+      "innerHTML": "\n                                Lead Take 1\n                            "
     },
     {
       "tag": "div",
@@ -2211,7 +2839,7 @@
         "clip-item"
       ],
       "dataAttributes": {
-        "data-clip-id": "viola-take"
+        "data-clip-id": "lead-take-2"
       },
       "computedStyles": {
         "display": "block",
@@ -2238,767 +2866,14 @@
       },
       "position": {
         "x": 32,
-        "y": 425
+        "y": 729
       },
       "dimensions": {
         "width": 180,
         "height": 22
       },
-      "textContent": "Viola's Take",
-      "innerHTML": "\n                                Viola's Take\n                            "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip-category"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "204px",
-        "height": "79px",
-        "margin": "0px 0px 24px",
-        "padding": "0px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 8,
-        "y": 471
-      },
-      "dimensions": {
-        "width": 204,
-        "height": 79
-      },
-      "textContent": "🎵\n                        Rhythm\n                    \n                    \n                        ",
-      "innerHTML": "\n                    <div class=\"clip-category__header\">\n                        <span class=\"clip-category__icon\">🎵</span>\n                        Rhythm\n                    </div>\n                 "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip-category__header"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "flex",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "204px",
-        "height": "19px",
-        "margin": "0px 0px 8px",
-        "padding": "0px",
-        "border": "0px none rgb(56, 189, 248)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(56, 189, 248)",
-        "font-size": "16px",
-        "font-weight": "600",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 8,
-        "y": 471
-      },
-      "dimensions": {
-        "width": 204,
-        "height": 19
-      },
-      "textContent": "🎵\n                        Rhythm",
-      "innerHTML": "\n                        <span class=\"clip-category__icon\">🎵</span>\n                        Rhythm\n                    "
-    },
-    {
-      "tag": "span",
-      "id": null,
-      "classes": [
-        "clip-category__icon"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "19.9688px",
-        "height": "19px",
-        "margin": "0px 8px 0px 0px",
-        "padding": "0px",
-        "border": "0px none rgb(56, 189, 248)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(56, 189, 248)",
-        "font-size": "16px",
-        "font-weight": "600",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 8,
-        "y": 471
-      },
-      "dimensions": {
-        "width": 20,
-        "height": 19
-      },
-      "textContent": "🎵",
-      "innerHTML": "🎵"
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip-category__clips"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "flex",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "180px",
-        "height": "52px",
-        "margin": "0px 0px 0px 24px",
-        "padding": "0px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "column",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 32,
-        "y": 498
-      },
-      "dimensions": {
-        "width": 180,
-        "height": 52
-      },
-      "textContent": "Drum Groove\n                            \n                        \n                            \n     ",
-      "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"drum-groove\" draggable=\"true\">\n                                Drum Groove\n                            </div>"
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip-item"
-      ],
-      "dataAttributes": {
-        "data-clip-id": "drum-groove"
-      },
-      "computedStyles": {
-        "display": "block",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "180px",
-        "height": "22px",
-        "margin": "0px",
-        "padding": "4px 8px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgb(55, 65, 81)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "12px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 32,
-        "y": 498
-      },
-      "dimensions": {
-        "width": 180,
-        "height": 22
-      },
-      "textContent": "Drum Groove",
-      "innerHTML": "\n                                Drum Groove\n                            "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip-item"
-      ],
-      "dataAttributes": {
-        "data-clip-id": "percussion"
-      },
-      "computedStyles": {
-        "display": "block",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "180px",
-        "height": "22px",
-        "margin": "0px",
-        "padding": "4px 8px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgb(55, 65, 81)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "12px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 32,
-        "y": 528
-      },
-      "dimensions": {
-        "width": 180,
-        "height": 22
-      },
-      "textContent": "Percussion",
-      "innerHTML": "\n                                Percussion\n                            "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip-category"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "204px",
-        "height": "79px",
-        "margin": "0px 0px 24px",
-        "padding": "0px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 8,
-        "y": 574
-      },
-      "dimensions": {
-        "width": 204,
-        "height": 79
-      },
-      "textContent": "🎻\n                        Viola\n                    \n                    \n                        \n",
-      "innerHTML": "\n                    <div class=\"clip-category__header\">\n                        <span class=\"clip-category__icon\">🎻</span>\n                        Viola\n                    </div>\n                  "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip-category__header"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "flex",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "204px",
-        "height": "19px",
-        "margin": "0px 0px 8px",
-        "padding": "0px",
-        "border": "0px none rgb(56, 189, 248)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(56, 189, 248)",
-        "font-size": "16px",
-        "font-weight": "600",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 8,
-        "y": 574
-      },
-      "dimensions": {
-        "width": 204,
-        "height": 19
-      },
-      "textContent": "🎻\n                        Viola",
-      "innerHTML": "\n                        <span class=\"clip-category__icon\">🎻</span>\n                        Viola\n                    "
-    },
-    {
-      "tag": "span",
-      "id": null,
-      "classes": [
-        "clip-category__icon"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "19.9688px",
-        "height": "19px",
-        "margin": "0px 8px 0px 0px",
-        "padding": "0px",
-        "border": "0px none rgb(56, 189, 248)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(56, 189, 248)",
-        "font-size": "16px",
-        "font-weight": "600",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 8,
-        "y": 574
-      },
-      "dimensions": {
-        "width": 20,
-        "height": 19
-      },
-      "textContent": "🎻",
-      "innerHTML": "🎻"
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip-category__clips"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "flex",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "180px",
-        "height": "52px",
-        "margin": "0px 0px 0px 24px",
-        "padding": "0px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "column",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 32,
-        "y": 601
-      },
-      "dimensions": {
-        "width": 180,
-        "height": 52
-      },
-      "textContent": "Viola Melody\n                            \n                        \n                            \n    ",
-      "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"viola-melody\" draggable=\"true\">\n                                Viola Melody\n                            </di"
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip-item"
-      ],
-      "dataAttributes": {
-        "data-clip-id": "viola-melody"
-      },
-      "computedStyles": {
-        "display": "block",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "180px",
-        "height": "22px",
-        "margin": "0px",
-        "padding": "4px 8px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgb(55, 65, 81)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "12px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 32,
-        "y": 601
-      },
-      "dimensions": {
-        "width": 180,
-        "height": 22
-      },
-      "textContent": "Viola Melody",
-      "innerHTML": "\n                                Viola Melody\n                            "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip-item"
-      ],
-      "dataAttributes": {
-        "data-clip-id": "viola-harmony"
-      },
-      "computedStyles": {
-        "display": "block",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "180px",
-        "height": "22px",
-        "margin": "0px",
-        "padding": "4px 8px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgb(55, 65, 81)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "12px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 32,
-        "y": 631
-      },
-      "dimensions": {
-        "width": 180,
-        "height": 22
-      },
-      "textContent": "Viola Harmony",
-      "innerHTML": "\n                                Viola Harmony\n                            "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip-category"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "204px",
-        "height": "79px",
-        "margin": "0px 0px 24px",
-        "padding": "0px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 8,
-        "y": 677
-      },
-      "dimensions": {
-        "width": 204,
-        "height": 79
-      },
-      "textContent": "🎸\n                        Bass\n                    \n                    \n                        \n ",
-      "innerHTML": "\n                    <div class=\"clip-category__header\">\n                        <span class=\"clip-category__icon\">🎸</span>\n                        Bass\n                    </div>\n                   "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip-category__header"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "flex",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "204px",
-        "height": "19px",
-        "margin": "0px 0px 8px",
-        "padding": "0px",
-        "border": "0px none rgb(56, 189, 248)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(56, 189, 248)",
-        "font-size": "16px",
-        "font-weight": "600",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 8,
-        "y": 677
-      },
-      "dimensions": {
-        "width": 204,
-        "height": 19
-      },
-      "textContent": "🎸\n                        Bass",
-      "innerHTML": "\n                        <span class=\"clip-category__icon\">🎸</span>\n                        Bass\n                    "
-    },
-    {
-      "tag": "span",
-      "id": null,
-      "classes": [
-        "clip-category__icon"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "19.9688px",
-        "height": "19px",
-        "margin": "0px 8px 0px 0px",
-        "padding": "0px",
-        "border": "0px none rgb(56, 189, 248)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(56, 189, 248)",
-        "font-size": "16px",
-        "font-weight": "600",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 8,
-        "y": 677
-      },
-      "dimensions": {
-        "width": 20,
-        "height": 19
-      },
-      "textContent": "🎸",
-      "innerHTML": "🎸"
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip-category__clips"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "flex",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "180px",
-        "height": "52px",
-        "margin": "0px 0px 0px 24px",
-        "padding": "0px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "column",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 32,
-        "y": 704
-      },
-      "dimensions": {
-        "width": 180,
-        "height": 52
-      },
-      "textContent": "Electric Bass\n                            \n                        \n                            \n   ",
-      "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"electric-bass\" draggable=\"true\">\n                                Electric Bass\n                            </"
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip-item"
-      ],
-      "dataAttributes": {
-        "data-clip-id": "electric-bass"
-      },
-      "computedStyles": {
-        "display": "block",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "180px",
-        "height": "22px",
-        "margin": "0px",
-        "padding": "4px 8px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgb(55, 65, 81)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "12px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 32,
-        "y": 704
-      },
-      "dimensions": {
-        "width": 180,
-        "height": 22
-      },
-      "textContent": "Electric Bass",
-      "innerHTML": "\n                                Electric Bass\n                            "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip-item"
-      ],
-      "dataAttributes": {
-        "data-clip-id": "synth-bass"
-      },
-      "computedStyles": {
-        "display": "block",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "180px",
-        "height": "22px",
-        "margin": "0px",
-        "padding": "4px 8px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgb(55, 65, 81)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "12px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 32,
-        "y": 734
-      },
-      "dimensions": {
-        "width": 180,
-        "height": 22
-      },
-      "textContent": "Synth Bass",
-      "innerHTML": "\n                                Synth Bass\n                            "
+      "textContent": "Lead Take 2",
+      "innerHTML": "\n                                Lead Take 2\n                            "
     },
     {
       "tag": "section",
@@ -3038,8 +2913,8 @@
         "width": 800,
         "height": 581
       },
-      "textContent": "00:00.0\n                    BPM: 120\n                \n                \n                    \n        ",
-      "innerHTML": "\n            <div class=\"timeline-container\">\n                <div class=\"timeline-header\">\n                    <div class=\"timeline-header__time\">00:00.0</div>\n                    <div class=\"timelin"
+      "textContent": "00:00.7\n                    BPM: 110\n                \n                \n                    \n        ",
+      "innerHTML": "\n            <div class=\"timeline-container\">\n                <div class=\"timeline-header\">\n                    <div class=\"timeline-header__time\">00:00.7</div>\n                    <div class=\"timelin"
     },
     {
       "tag": "div",
@@ -3079,8 +2954,8 @@
         "width": 776,
         "height": 581
       },
-      "textContent": "00:00.0\n                    BPM: 120\n                \n                \n                    \n        ",
-      "innerHTML": "\n                <div class=\"timeline-header\">\n                    <div class=\"timeline-header__time\">00:00.0</div>\n                    <div class=\"timeline-header__bpm\">BPM: 120</div>\n               "
+      "textContent": "00:00.7\n                    BPM: 110\n                \n                \n                    \n        ",
+      "innerHTML": "\n                <div class=\"timeline-header\">\n                    <div class=\"timeline-header__time\">00:00.7</div>\n                    <div class=\"timeline-header__bpm\">BPM: 110</div>\n               "
     },
     {
       "tag": "div",
@@ -3121,8 +2996,8 @@
         "width": 776,
         "height": 35
       },
-      "textContent": "00:00.0\n                    BPM: 120",
-      "innerHTML": "\n                    <div class=\"timeline-header__time\">00:00.0</div>\n                    <div class=\"timeline-header__bpm\">BPM: 120</div>\n                "
+      "textContent": "00:00.7\n                    BPM: 110",
+      "innerHTML": "\n                    <div class=\"timeline-header__time\">00:00.7</div>\n                    <div class=\"timeline-header__bpm\">BPM: 110</div>\n                "
     },
     {
       "tag": "div",
@@ -3162,8 +3037,8 @@
         "width": 50,
         "height": 14
       },
-      "textContent": "00:00.0",
-      "innerHTML": "00:00.0"
+      "textContent": "00:00.7",
+      "innerHTML": "00:00.7"
     },
     {
       "tag": "div",
@@ -3179,7 +3054,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "54.0234px",
+        "width": "53.3594px",
         "height": "14px",
         "margin": "0px",
         "padding": "0px",
@@ -3196,15 +3071,15 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 962,
+        "x": 963,
         "y": 72
       },
       "dimensions": {
-        "width": 54,
+        "width": 53,
         "height": 14
       },
-      "textContent": "BPM: 120",
-      "innerHTML": "BPM: 120"
+      "textContent": "BPM: 110",
+      "innerHTML": "BPM: 110"
     },
     {
       "tag": "div",
@@ -4768,7 +4643,7 @@
         "track"
       ],
       "dataAttributes": {
-        "data-track-id": "main-instrument"
+        "data-track-id": "drums"
       },
       "computedStyles": {
         "display": "flex",
@@ -4802,7 +4677,7 @@
         "height": 56
       },
       "textContent": "🎧\n                        \n                    \n                        \n                          ",
-      "innerHTML": "\n                <div class=\"track__controls\">\n                    \n                        <button class=\"track__button\" title=\"Solo\" data-track-action=\"solo\" data-track-id=\"main-instrument\">\n       "
+      "innerHTML": "\n                <div class=\"track__controls\">\n                    \n                        <button class=\"track__button\" title=\"Solo\" data-track-action=\"solo\" data-track-id=\"drums\">\n                 "
     },
     {
       "tag": "div",
@@ -4844,7 +4719,7 @@
         "height": 55
       },
       "textContent": "🎧\n                        \n                    \n                        \n                          ",
-      "innerHTML": "\n                    \n                        <button class=\"track__button\" title=\"Solo\" data-track-action=\"solo\" data-track-id=\"main-instrument\">\n                            🎧\n                      "
+      "innerHTML": "\n                    \n                        <button class=\"track__button\" title=\"Solo\" data-track-action=\"solo\" data-track-id=\"drums\">\n                            🎧\n                        </button"
     },
     {
       "tag": "button",
@@ -4854,7 +4729,7 @@
       ],
       "dataAttributes": {
         "data-track-action": "solo",
-        "data-track-id": "main-instrument"
+        "data-track-id": "drums"
       },
       "computedStyles": {
         "display": "flex",
@@ -4900,7 +4775,7 @@
       ],
       "dataAttributes": {
         "data-track-action": "mute",
-        "data-track-id": "main-instrument"
+        "data-track-id": "drums"
       },
       "computedStyles": {
         "display": "flex",
@@ -4945,7 +4820,7 @@
         "track__name"
       ],
       "dataAttributes": {
-        "data-track-id": "main-instrument"
+        "data-track-id": "drums"
       },
       "computedStyles": {
         "display": "block",
@@ -4978,8 +4853,8 @@
         "width": 128,
         "height": 24
       },
-      "textContent": "Main Instrument",
-      "innerHTML": "\n                        Main Instrument\n                    "
+      "textContent": "Drums",
+      "innerHTML": "\n                        Drums\n                    "
     },
     {
       "tag": "div",
@@ -5019,8 +4894,8 @@
         "width": 536,
         "height": 55
       },
-      "textContent": "Piano Intro\n            \n        \n            \n                \n                \n                Gui",
-      "innerHTML": "\n                    <div class=\"track__playhead\"></div>\n                    <div class=\"track__clips\">\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"piano-intro\" dat"
+      "textContent": "Rock Beat\n            \n        \n            \n                \n                \n                Funk ",
+      "innerHTML": "\n                    <div class=\"track__playhead\" style=\"left: 32px; opacity: 0.4;\"></div>\n                    <div class=\"track__clips\">\n                        \n            <div class=\"clip clip--da"
     },
     {
       "tag": "div",
@@ -5033,10 +4908,10 @@
         "display": "block",
         "position": "absolute",
         "top": "0px",
-        "left": "40px",
-        "right": "495px",
+        "left": "32px",
+        "right": "502px",
         "bottom": "0px",
-        "width": "1px",
+        "width": "2px",
         "height": "55px",
         "margin": "0px",
         "padding": "0px",
@@ -5049,15 +4924,15 @@
         "grid-template-columns": "none",
         "grid-template-rows": "none",
         "z-index": "20",
-        "opacity": "0.8",
+        "opacity": "0.4",
         "visibility": "visible"
       },
       "position": {
-        "x": 544,
+        "x": 536,
         "y": 123
       },
       "dimensions": {
-        "width": 1,
+        "width": 2,
         "height": 55
       },
       "textContent": null,
@@ -5102,8 +4977,8 @@
         "width": 536,
         "height": 55
       },
-      "textContent": "Piano Intro\n            \n        \n            \n                \n                \n                Gui",
-      "innerHTML": "\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"piano-intro\" data-track-id=\"main-instrument\" style=\"width: 160px; left: 0px;\" draggable=\"true\">\n                <div cl"
+      "textContent": "Rock Beat\n            \n        \n            \n                \n                \n                Funk ",
+      "innerHTML": "\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"rock-beat\" data-track-id=\"drums\" style=\"width: 160px; left: 0px;\" draggable=\"true\">\n                <div class=\"clip__r"
     },
     {
       "tag": "div",
@@ -5113,8 +4988,8 @@
         "clip--dark"
       ],
       "dataAttributes": {
-        "data-clip-id": "piano-intro",
-        "data-track-id": "main-instrument"
+        "data-clip-id": "rock-beat",
+        "data-track-id": "drums"
       },
       "computedStyles": {
         "display": "flex",
@@ -5148,8 +5023,8 @@
         "width": 160,
         "height": 24
       },
-      "textContent": "Piano Intro",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Piano Intro\n      "
+      "textContent": "Rock Beat",
+      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Rock Beat\n        "
     },
     {
       "tag": "div",
@@ -5243,482 +5118,8 @@
         "clip--dark"
       ],
       "dataAttributes": {
-        "data-clip-id": "guitar-verse",
-        "data-track-id": "main-instrument"
-      },
-      "computedStyles": {
-        "display": "flex",
-        "position": "absolute",
-        "top": "15.5px",
-        "left": "160px",
-        "right": "216px",
-        "bottom": "15.5px",
-        "width": "160px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px 4px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgb(12, 74, 110)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 664,
-        "y": 139
-      },
-      "dimensions": {
-        "width": 160,
-        "height": 24
-      },
-      "textContent": "Guitar Verse",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Guitar Verse\n     "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--left"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "0px",
-        "right": "156px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 664,
-        "y": 139
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--right"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "156px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 820,
-        "y": 139
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "track"
-      ],
-      "dataAttributes": {
-        "data-track-id": "vocals"
-      },
-      "computedStyles": {
-        "display": "flex",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "776px",
-        "height": "56px",
-        "margin": "0px",
-        "padding": "0px",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 264,
-        "y": 179
-      },
-      "dimensions": {
-        "width": 776,
-        "height": 56
-      },
-      "textContent": "🎧\n                        \n                    \n                        \n                          ",
-      "innerHTML": "\n                <div class=\"track__controls\">\n                    \n                        <button class=\"track__button\" title=\"Solo\" data-track-action=\"solo\" data-track-id=\"vocals\">\n                "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "track__controls"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "flex",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "240px",
-        "height": "55px",
-        "margin": "0px",
-        "padding": "0px 0px 0px 8px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgb(31, 41, 55)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 264,
-        "y": 179
-      },
-      "dimensions": {
-        "width": 240,
-        "height": 55
-      },
-      "textContent": "🎧\n                        \n                    \n                        \n                          ",
-      "innerHTML": "\n                    \n                        <button class=\"track__button\" title=\"Solo\" data-track-action=\"solo\" data-track-id=\"vocals\">\n                            🎧\n                        </butto"
-    },
-    {
-      "tag": "button",
-      "id": null,
-      "classes": [
-        "track__button"
-      ],
-      "dataAttributes": {
-        "data-track-action": "solo",
-        "data-track-id": "vocals"
-      },
-      "computedStyles": {
-        "display": "flex",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "28px",
-        "height": "28px",
-        "margin": "0px",
-        "padding": "1px 6px",
-        "border": "0px none rgb(56, 189, 248)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(56, 189, 248)",
-        "font-size": "18px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "justify-content": "center",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 272,
-        "y": 193
-      },
-      "dimensions": {
-        "width": 28,
-        "height": 28
-      },
-      "textContent": "🎧",
-      "innerHTML": "\n                            🎧\n                        "
-    },
-    {
-      "tag": "button",
-      "id": null,
-      "classes": [
-        "track__button"
-      ],
-      "dataAttributes": {
-        "data-track-action": "mute",
-        "data-track-id": "vocals"
-      },
-      "computedStyles": {
-        "display": "flex",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "28px",
-        "height": "28px",
-        "margin": "0px",
-        "padding": "1px 6px",
-        "border": "0px none rgb(56, 189, 248)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(56, 189, 248)",
-        "font-size": "18px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "justify-content": "center",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 308,
-        "y": 193
-      },
-      "dimensions": {
-        "width": 28,
-        "height": 28
-      },
-      "textContent": "🔇",
-      "innerHTML": "\n                            🔇\n                        "
-    },
-    {
-      "tag": "span",
-      "id": null,
-      "classes": [
-        "track__name"
-      ],
-      "dataAttributes": {
-        "data-track-id": "vocals"
-      },
-      "computedStyles": {
-        "display": "block",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "128px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "4px",
-        "border": "1px solid rgba(0, 0, 0, 0)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(209, 213, 219)",
-        "font-size": "12px",
-        "font-weight": "700",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 344,
-        "y": 195
-      },
-      "dimensions": {
-        "width": 128,
-        "height": 24
-      },
-      "textContent": "Vocals",
-      "innerHTML": "\n                        Vocals\n                    "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "track__clips-area"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "relative",
-        "top": "0px",
-        "left": "0px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "536px",
-        "height": "55px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 504,
-        "y": 179
-      },
-      "dimensions": {
-        "width": 536,
-        "height": 55
-      },
-      "textContent": "Vince's Take\n            \n        \n            \n                \n                \n                Vi",
-      "innerHTML": "\n                    <div class=\"track__playhead\"></div>\n                    <div class=\"track__clips\">\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"vince-take\" data"
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "track__playhead"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "40px",
-        "right": "495px",
-        "bottom": "0px",
-        "width": "1px",
-        "height": "55px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgb(56, 189, 248)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "20",
-        "opacity": "0.8",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 544,
-        "y": 179
-      },
-      "dimensions": {
-        "width": 1,
-        "height": 55
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "track__clips"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "flex",
-        "position": "relative",
-        "top": "0px",
-        "left": "0px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "536px",
-        "height": "55px",
-        "margin": "0px",
-        "padding": "0px 0px 0px 48px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 504,
-        "y": 179
-      },
-      "dimensions": {
-        "width": 536,
-        "height": 55
-      },
-      "textContent": "Vince's Take\n            \n        \n            \n                \n                \n                Vi",
-      "innerHTML": "\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"vince-take\" data-track-id=\"vocals\" style=\"width: 160px; left: 0px;\" draggable=\"true\">\n                <div class=\"clip_"
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip",
-        "clip--dark"
-      ],
-      "dataAttributes": {
-        "data-clip-id": "vince-take",
-        "data-track-id": "vocals"
+        "data-clip-id": "funk-groove",
+        "data-track-id": "drums"
       },
       "computedStyles": {
         "display": "flex",
@@ -5746,14 +5147,14 @@
       },
       "position": {
         "x": 504,
-        "y": 195
+        "y": 139
       },
       "dimensions": {
         "width": 160,
         "height": 24
       },
-      "textContent": "Vince's Take",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Vince's Take\n     "
+      "textContent": "Funk Groove",
+      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Funk Groove\n      "
     },
     {
       "tag": "div",
@@ -5788,7 +5189,7 @@
       },
       "position": {
         "x": 504,
-        "y": 195
+        "y": 139
       },
       "dimensions": {
         "width": 4,
@@ -5830,7 +5231,7 @@
       },
       "position": {
         "x": 660,
-        "y": 195
+        "y": 139
       },
       "dimensions": {
         "width": 4,
@@ -5847,482 +5248,8 @@
         "clip--dark"
       ],
       "dataAttributes": {
-        "data-clip-id": "viola-take",
-        "data-track-id": "vocals"
-      },
-      "computedStyles": {
-        "display": "flex",
-        "position": "absolute",
-        "top": "15.5px",
-        "left": "160px",
-        "right": "216px",
-        "bottom": "15.5px",
-        "width": "160px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px 4px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgb(12, 74, 110)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 664,
-        "y": 195
-      },
-      "dimensions": {
-        "width": 160,
-        "height": 24
-      },
-      "textContent": "Viola's Take",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Viola's Take\n     "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--left"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "0px",
-        "right": "156px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 664,
-        "y": 195
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--right"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "156px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 820,
-        "y": 195
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "track"
-      ],
-      "dataAttributes": {
-        "data-track-id": "rhythm-section"
-      },
-      "computedStyles": {
-        "display": "flex",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "776px",
-        "height": "56px",
-        "margin": "0px",
-        "padding": "0px",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 264,
-        "y": 235
-      },
-      "dimensions": {
-        "width": 776,
-        "height": 56
-      },
-      "textContent": "🎧\n                        \n                    \n                        \n                          ",
-      "innerHTML": "\n                <div class=\"track__controls\">\n                    \n                        <button class=\"track__button\" title=\"Solo\" data-track-action=\"solo\" data-track-id=\"rhythm-section\">\n        "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "track__controls"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "flex",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "240px",
-        "height": "55px",
-        "margin": "0px",
-        "padding": "0px 0px 0px 8px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgb(31, 41, 55)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 264,
-        "y": 235
-      },
-      "dimensions": {
-        "width": 240,
-        "height": 55
-      },
-      "textContent": "🎧\n                        \n                    \n                        \n                          ",
-      "innerHTML": "\n                    \n                        <button class=\"track__button\" title=\"Solo\" data-track-action=\"solo\" data-track-id=\"rhythm-section\">\n                            🎧\n                       "
-    },
-    {
-      "tag": "button",
-      "id": null,
-      "classes": [
-        "track__button"
-      ],
-      "dataAttributes": {
-        "data-track-action": "solo",
-        "data-track-id": "rhythm-section"
-      },
-      "computedStyles": {
-        "display": "flex",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "28px",
-        "height": "28px",
-        "margin": "0px",
-        "padding": "1px 6px",
-        "border": "0px none rgb(56, 189, 248)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(56, 189, 248)",
-        "font-size": "18px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "justify-content": "center",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 272,
-        "y": 249
-      },
-      "dimensions": {
-        "width": 28,
-        "height": 28
-      },
-      "textContent": "🎧",
-      "innerHTML": "\n                            🎧\n                        "
-    },
-    {
-      "tag": "button",
-      "id": null,
-      "classes": [
-        "track__button"
-      ],
-      "dataAttributes": {
-        "data-track-action": "mute",
-        "data-track-id": "rhythm-section"
-      },
-      "computedStyles": {
-        "display": "flex",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "28px",
-        "height": "28px",
-        "margin": "0px",
-        "padding": "1px 6px",
-        "border": "0px none rgb(56, 189, 248)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(56, 189, 248)",
-        "font-size": "18px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "justify-content": "center",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 308,
-        "y": 249
-      },
-      "dimensions": {
-        "width": 28,
-        "height": 28
-      },
-      "textContent": "🔇",
-      "innerHTML": "\n                            🔇\n                        "
-    },
-    {
-      "tag": "span",
-      "id": null,
-      "classes": [
-        "track__name"
-      ],
-      "dataAttributes": {
-        "data-track-id": "rhythm-section"
-      },
-      "computedStyles": {
-        "display": "block",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "128px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "4px",
-        "border": "1px solid rgba(0, 0, 0, 0)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(209, 213, 219)",
-        "font-size": "12px",
-        "font-weight": "700",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 344,
-        "y": 251
-      },
-      "dimensions": {
-        "width": 128,
-        "height": 24
-      },
-      "textContent": "Rhythm Section",
-      "innerHTML": "\n                        Rhythm Section\n                    "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "track__clips-area"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "relative",
-        "top": "0px",
-        "left": "0px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "536px",
-        "height": "55px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 504,
-        "y": 235
-      },
-      "dimensions": {
-        "width": 536,
-        "height": 55
-      },
-      "textContent": "Drum Groove\n            \n        \n            \n                \n                \n                Per",
-      "innerHTML": "\n                    <div class=\"track__playhead\"></div>\n                    <div class=\"track__clips\">\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"drum-groove\" dat"
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "track__playhead"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "40px",
-        "right": "495px",
-        "bottom": "0px",
-        "width": "1px",
-        "height": "55px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgb(56, 189, 248)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "20",
-        "opacity": "0.8",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 544,
-        "y": 235
-      },
-      "dimensions": {
-        "width": 1,
-        "height": 55
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "track__clips"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "flex",
-        "position": "relative",
-        "top": "0px",
-        "left": "0px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "536px",
-        "height": "55px",
-        "margin": "0px",
-        "padding": "0px 0px 0px 48px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 504,
-        "y": 235
-      },
-      "dimensions": {
-        "width": 536,
-        "height": 55
-      },
-      "textContent": "Drum Groove\n            \n        \n            \n                \n                \n                Per",
-      "innerHTML": "\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"drum-groove\" data-track-id=\"rhythm-section\" style=\"width: 160px; left: 0px;\" draggable=\"true\">\n                <div cla"
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip",
-        "clip--dark"
-      ],
-      "dataAttributes": {
-        "data-clip-id": "drum-groove",
-        "data-track-id": "rhythm-section"
+        "data-clip-id": "jazz-shuffle",
+        "data-track-id": "drums"
       },
       "computedStyles": {
         "display": "flex",
@@ -6350,14 +5277,14 @@
       },
       "position": {
         "x": 504,
-        "y": 251
+        "y": 139
       },
       "dimensions": {
         "width": 160,
         "height": 24
       },
-      "textContent": "Drum Groove",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Drum Groove\n      "
+      "textContent": "Jazz Shuffle",
+      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Jazz Shuffle\n     "
     },
     {
       "tag": "div",
@@ -6392,7 +5319,7 @@
       },
       "position": {
         "x": 504,
-        "y": 251
+        "y": 139
       },
       "dimensions": {
         "width": 4,
@@ -6434,741 +5361,7 @@
       },
       "position": {
         "x": 660,
-        "y": 251
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip",
-        "clip--dark"
-      ],
-      "dataAttributes": {
-        "data-clip-id": "percussion",
-        "data-track-id": "rhythm-section"
-      },
-      "computedStyles": {
-        "display": "flex",
-        "position": "absolute",
-        "top": "15.5px",
-        "left": "160px",
-        "right": "216px",
-        "bottom": "15.5px",
-        "width": "160px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px 4px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgb(12, 74, 110)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 664,
-        "y": 251
-      },
-      "dimensions": {
-        "width": 160,
-        "height": 24
-      },
-      "textContent": "Percussion",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Percussion\n       "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--left"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "0px",
-        "right": "156px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 664,
-        "y": 251
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--right"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "156px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 820,
-        "y": 251
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "track"
-      ],
-      "dataAttributes": {
-        "data-track-id": "viola-material"
-      },
-      "computedStyles": {
-        "display": "flex",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "776px",
-        "height": "56px",
-        "margin": "0px",
-        "padding": "0px",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 264,
-        "y": 291
-      },
-      "dimensions": {
-        "width": 776,
-        "height": 56
-      },
-      "textContent": "🎧\n                        \n                    \n                        \n                          ",
-      "innerHTML": "\n                <div class=\"track__controls\">\n                    \n                        <button class=\"track__button\" title=\"Solo\" data-track-action=\"solo\" data-track-id=\"viola-material\">\n        "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "track__controls"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "flex",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "240px",
-        "height": "55px",
-        "margin": "0px",
-        "padding": "0px 0px 0px 8px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgb(31, 41, 55)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 264,
-        "y": 291
-      },
-      "dimensions": {
-        "width": 240,
-        "height": 55
-      },
-      "textContent": "🎧\n                        \n                    \n                        \n                          ",
-      "innerHTML": "\n                    \n                        <button class=\"track__button\" title=\"Solo\" data-track-action=\"solo\" data-track-id=\"viola-material\">\n                            🎧\n                       "
-    },
-    {
-      "tag": "button",
-      "id": null,
-      "classes": [
-        "track__button"
-      ],
-      "dataAttributes": {
-        "data-track-action": "solo",
-        "data-track-id": "viola-material"
-      },
-      "computedStyles": {
-        "display": "flex",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "28px",
-        "height": "28px",
-        "margin": "0px",
-        "padding": "1px 6px",
-        "border": "0px none rgb(56, 189, 248)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(56, 189, 248)",
-        "font-size": "18px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "justify-content": "center",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 272,
-        "y": 305
-      },
-      "dimensions": {
-        "width": 28,
-        "height": 28
-      },
-      "textContent": "🎧",
-      "innerHTML": "\n                            🎧\n                        "
-    },
-    {
-      "tag": "button",
-      "id": null,
-      "classes": [
-        "track__button"
-      ],
-      "dataAttributes": {
-        "data-track-action": "mute",
-        "data-track-id": "viola-material"
-      },
-      "computedStyles": {
-        "display": "flex",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "28px",
-        "height": "28px",
-        "margin": "0px",
-        "padding": "1px 6px",
-        "border": "0px none rgb(56, 189, 248)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(56, 189, 248)",
-        "font-size": "18px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "justify-content": "center",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 308,
-        "y": 305
-      },
-      "dimensions": {
-        "width": 28,
-        "height": 28
-      },
-      "textContent": "🔇",
-      "innerHTML": "\n                            🔇\n                        "
-    },
-    {
-      "tag": "span",
-      "id": null,
-      "classes": [
-        "track__name"
-      ],
-      "dataAttributes": {
-        "data-track-id": "viola-material"
-      },
-      "computedStyles": {
-        "display": "block",
-        "position": "static",
-        "top": "auto",
-        "left": "auto",
-        "right": "auto",
-        "bottom": "auto",
-        "width": "128px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "4px",
-        "border": "1px solid rgba(0, 0, 0, 0)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(209, 213, 219)",
-        "font-size": "12px",
-        "font-weight": "700",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 344,
-        "y": 307
-      },
-      "dimensions": {
-        "width": 128,
-        "height": 24
-      },
-      "textContent": "Viola Material",
-      "innerHTML": "\n                        Viola Material\n                    "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "track__clips-area"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "relative",
-        "top": "0px",
-        "left": "0px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "536px",
-        "height": "55px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 504,
-        "y": 291
-      },
-      "dimensions": {
-        "width": 536,
-        "height": 55
-      },
-      "textContent": "Viola Melody\n            \n        \n            \n                \n                \n                Vi",
-      "innerHTML": "\n                    <div class=\"track__playhead\"></div>\n                    <div class=\"track__clips\">\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"viola-melody\" da"
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "track__playhead"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "40px",
-        "right": "495px",
-        "bottom": "0px",
-        "width": "1px",
-        "height": "55px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgb(56, 189, 248)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "20",
-        "opacity": "0.8",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 544,
-        "y": 291
-      },
-      "dimensions": {
-        "width": 1,
-        "height": 55
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "track__clips"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "flex",
-        "position": "relative",
-        "top": "0px",
-        "left": "0px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "536px",
-        "height": "55px",
-        "margin": "0px",
-        "padding": "0px 0px 0px 48px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgba(0, 0, 0, 0)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "16px",
-        "font-weight": "400",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 504,
-        "y": 291
-      },
-      "dimensions": {
-        "width": 536,
-        "height": 55
-      },
-      "textContent": "Viola Melody\n            \n        \n            \n                \n                \n                Vi",
-      "innerHTML": "\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"viola-melody\" data-track-id=\"viola-material\" style=\"width: 160px; left: 0px;\" draggable=\"true\">\n                <div cl"
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip",
-        "clip--dark"
-      ],
-      "dataAttributes": {
-        "data-clip-id": "viola-melody",
-        "data-track-id": "viola-material"
-      },
-      "computedStyles": {
-        "display": "flex",
-        "position": "absolute",
-        "top": "15.5px",
-        "left": "0px",
-        "right": "376px",
-        "bottom": "15.5px",
-        "width": "160px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px 4px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgb(12, 74, 110)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 504,
-        "y": 307
-      },
-      "dimensions": {
-        "width": 160,
-        "height": 24
-      },
-      "textContent": "Viola Melody",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Viola Melody\n     "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--left"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "0px",
-        "right": "156px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 504,
-        "y": 307
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--right"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "156px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 660,
-        "y": 307
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip",
-        "clip--dark"
-      ],
-      "dataAttributes": {
-        "data-clip-id": "viola-harmony",
-        "data-track-id": "viola-material"
-      },
-      "computedStyles": {
-        "display": "flex",
-        "position": "absolute",
-        "top": "15.5px",
-        "left": "160px",
-        "right": "216px",
-        "bottom": "15.5px",
-        "width": "160px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px 4px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgb(12, 74, 110)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 664,
-        "y": 307
-      },
-      "dimensions": {
-        "width": 160,
-        "height": 24
-      },
-      "textContent": "Viola Harmony",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Viola Harmony\n    "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--left"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "0px",
-        "right": "156px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 664,
-        "y": 307
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--right"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "156px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 820,
-        "y": 307
+        "y": 139
       },
       "dimensions": {
         "width": 4,
@@ -7197,7 +5390,6 @@
         "height": "56px",
         "margin": "0px",
         "padding": "0px",
-        "border": "0px none rgb(249, 250, 251)",
         "background-color": "rgba(0, 0, 0, 0)",
         "color": "rgb(249, 250, 251)",
         "font-size": "16px",
@@ -7212,7 +5404,7 @@
       },
       "position": {
         "x": 264,
-        "y": 347
+        "y": 179
       },
       "dimensions": {
         "width": 776,
@@ -7236,7 +5428,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "240px",
-        "height": "56px",
+        "height": "55px",
         "margin": "0px",
         "padding": "0px 0px 0px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -7254,11 +5446,11 @@
       },
       "position": {
         "x": 264,
-        "y": 347
+        "y": 179
       },
       "dimensions": {
         "width": 240,
-        "height": 56
+        "height": 55
       },
       "textContent": "🎧\n                        \n                    \n                        \n                          ",
       "innerHTML": "\n                    \n                        <button class=\"track__button\" title=\"Solo\" data-track-action=\"solo\" data-track-id=\"bass\">\n                            🎧\n                        </button>"
@@ -7300,7 +5492,7 @@
       },
       "position": {
         "x": 272,
-        "y": 361
+        "y": 193
       },
       "dimensions": {
         "width": 28,
@@ -7346,7 +5538,7 @@
       },
       "position": {
         "x": 308,
-        "y": 361
+        "y": 193
       },
       "dimensions": {
         "width": 28,
@@ -7389,7 +5581,7 @@
       },
       "position": {
         "x": 344,
-        "y": 363
+        "y": 195
       },
       "dimensions": {
         "width": 128,
@@ -7413,7 +5605,7 @@
         "right": "0px",
         "bottom": "0px",
         "width": "536px",
-        "height": "56px",
+        "height": "55px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -7430,14 +5622,14 @@
       },
       "position": {
         "x": 504,
-        "y": 347
+        "y": 179
       },
       "dimensions": {
         "width": 536,
-        "height": 56
+        "height": 55
       },
-      "textContent": "Electric Bass\n            \n        \n            \n                \n                \n                S",
-      "innerHTML": "\n                    <div class=\"track__playhead\"></div>\n                    <div class=\"track__clips\">\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"electric-bass\" d"
+      "textContent": "Walking Bass\n            \n        \n            \n                \n                \n                Sy",
+      "innerHTML": "\n                    <div class=\"track__playhead\" style=\"left: 32px; opacity: 0.4;\"></div>\n                    <div class=\"track__clips\">\n                        \n            <div class=\"clip clip--da"
     },
     {
       "tag": "div",
@@ -7450,11 +5642,11 @@
         "display": "block",
         "position": "absolute",
         "top": "0px",
-        "left": "40px",
-        "right": "495px",
+        "left": "32px",
+        "right": "502px",
         "bottom": "0px",
-        "width": "1px",
-        "height": "56px",
+        "width": "2px",
+        "height": "55px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -7466,16 +5658,16 @@
         "grid-template-columns": "none",
         "grid-template-rows": "none",
         "z-index": "20",
-        "opacity": "0.8",
+        "opacity": "0.4",
         "visibility": "visible"
       },
       "position": {
-        "x": 544,
-        "y": 347
+        "x": 536,
+        "y": 179
       },
       "dimensions": {
-        "width": 1,
-        "height": 56
+        "width": 2,
+        "height": 55
       },
       "textContent": null,
       "innerHTML": null
@@ -7495,7 +5687,7 @@
         "right": "0px",
         "bottom": "0px",
         "width": "536px",
-        "height": "56px",
+        "height": "55px",
         "margin": "0px",
         "padding": "0px 0px 0px 48px",
         "border": "0px none rgb(249, 250, 251)",
@@ -7513,14 +5705,14 @@
       },
       "position": {
         "x": 504,
-        "y": 347
+        "y": 179
       },
       "dimensions": {
         "width": 536,
-        "height": 56
+        "height": 55
       },
-      "textContent": "Electric Bass\n            \n        \n            \n                \n                \n                S",
-      "innerHTML": "\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"electric-bass\" data-track-id=\"bass\" style=\"width: 160px; left: 0px;\" draggable=\"true\">\n                <div class=\"clip"
+      "textContent": "Walking Bass\n            \n        \n            \n                \n                \n                Sy",
+      "innerHTML": "\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"walking-bass\" data-track-id=\"bass\" style=\"width: 160px; left: 0px;\" draggable=\"true\">\n                <div class=\"clip_"
     },
     {
       "tag": "div",
@@ -7530,16 +5722,16 @@
         "clip--dark"
       ],
       "dataAttributes": {
-        "data-clip-id": "electric-bass",
+        "data-clip-id": "walking-bass",
         "data-track-id": "bass"
       },
       "computedStyles": {
         "display": "flex",
         "position": "absolute",
-        "top": "16px",
+        "top": "15.5px",
         "left": "0px",
         "right": "376px",
-        "bottom": "16px",
+        "bottom": "15.5px",
         "width": "160px",
         "height": "24px",
         "margin": "0px",
@@ -7559,14 +5751,14 @@
       },
       "position": {
         "x": 504,
-        "y": 363
+        "y": 195
       },
       "dimensions": {
         "width": 160,
         "height": 24
       },
-      "textContent": "Electric Bass",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Electric Bass\n    "
+      "textContent": "Walking Bass",
+      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Walking Bass\n     "
     },
     {
       "tag": "div",
@@ -7601,7 +5793,7 @@
       },
       "position": {
         "x": 504,
-        "y": 363
+        "y": 195
       },
       "dimensions": {
         "width": 4,
@@ -7643,7 +5835,7 @@
       },
       "position": {
         "x": 660,
-        "y": 363
+        "y": 195
       },
       "dimensions": {
         "width": 4,
@@ -7666,10 +5858,10 @@
       "computedStyles": {
         "display": "flex",
         "position": "absolute",
-        "top": "16px",
-        "left": "160px",
-        "right": "216px",
-        "bottom": "16px",
+        "top": "15.5px",
+        "left": "0px",
+        "right": "376px",
+        "bottom": "15.5px",
         "width": "160px",
         "height": "24px",
         "margin": "0px",
@@ -7688,8 +5880,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 664,
-        "y": 363
+        "x": 504,
+        "y": 195
       },
       "dimensions": {
         "width": 160,
@@ -7730,8 +5922,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 664,
-        "y": 363
+        "x": 504,
+        "y": 195
       },
       "dimensions": {
         "width": 4,
@@ -7772,8 +5964,1477 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 820,
-        "y": 363
+        "x": 660,
+        "y": 195
+      },
+      "dimensions": {
+        "width": 4,
+        "height": 24
+      },
+      "textContent": null,
+      "innerHTML": null
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip",
+        "clip--dark"
+      ],
+      "dataAttributes": {
+        "data-clip-id": "slap-bass",
+        "data-track-id": "bass"
+      },
+      "computedStyles": {
+        "display": "flex",
+        "position": "absolute",
+        "top": "15.5px",
+        "left": "0px",
+        "right": "376px",
+        "bottom": "15.5px",
+        "width": "160px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px 4px",
+        "border": "0px none rgb(255, 255, 255)",
+        "background-color": "rgb(12, 74, 110)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "12px",
+        "font-weight": "500",
+        "flex-direction": "row",
+        "align-items": "center",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 504,
+        "y": 195
+      },
+      "dimensions": {
+        "width": 160,
+        "height": 24
+      },
+      "textContent": "Slap Bass",
+      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Slap Bass\n        "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip__resize-handle",
+        "clip__resize-handle--left"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "0px",
+        "right": "156px",
+        "bottom": "0px",
+        "width": "4px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "background-color": "rgba(255, 255, 255, 0.2)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "12px",
+        "font-weight": "500",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 504,
+        "y": 195
+      },
+      "dimensions": {
+        "width": 4,
+        "height": 24
+      },
+      "textContent": null,
+      "innerHTML": null
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip__resize-handle",
+        "clip__resize-handle--right"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "156px",
+        "right": "0px",
+        "bottom": "0px",
+        "width": "4px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "background-color": "rgba(255, 255, 255, 0.2)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "12px",
+        "font-weight": "500",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 660,
+        "y": 195
+      },
+      "dimensions": {
+        "width": 4,
+        "height": 24
+      },
+      "textContent": null,
+      "innerHTML": null
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "track"
+      ],
+      "dataAttributes": {
+        "data-track-id": "guitar"
+      },
+      "computedStyles": {
+        "display": "flex",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "776px",
+        "height": "56px",
+        "margin": "0px",
+        "padding": "0px",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "align-items": "center",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 264,
+        "y": 235
+      },
+      "dimensions": {
+        "width": 776,
+        "height": 56
+      },
+      "textContent": "🎧\n                        \n                    \n                        \n                          ",
+      "innerHTML": "\n                <div class=\"track__controls\">\n                    \n                        <button class=\"track__button\" title=\"Solo\" data-track-action=\"solo\" data-track-id=\"guitar\">\n                "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "track__controls"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "flex",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "240px",
+        "height": "55px",
+        "margin": "0px",
+        "padding": "0px 0px 0px 8px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgb(31, 41, 55)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "align-items": "center",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 264,
+        "y": 235
+      },
+      "dimensions": {
+        "width": 240,
+        "height": 55
+      },
+      "textContent": "🎧\n                        \n                    \n                        \n                          ",
+      "innerHTML": "\n                    \n                        <button class=\"track__button\" title=\"Solo\" data-track-action=\"solo\" data-track-id=\"guitar\">\n                            🎧\n                        </butto"
+    },
+    {
+      "tag": "button",
+      "id": null,
+      "classes": [
+        "track__button"
+      ],
+      "dataAttributes": {
+        "data-track-action": "solo",
+        "data-track-id": "guitar"
+      },
+      "computedStyles": {
+        "display": "flex",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "28px",
+        "height": "28px",
+        "margin": "0px",
+        "padding": "1px 6px",
+        "border": "0px none rgb(56, 189, 248)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(56, 189, 248)",
+        "font-size": "18px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "justify-content": "center",
+        "align-items": "center",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 272,
+        "y": 249
+      },
+      "dimensions": {
+        "width": 28,
+        "height": 28
+      },
+      "textContent": "🎧",
+      "innerHTML": "\n                            🎧\n                        "
+    },
+    {
+      "tag": "button",
+      "id": null,
+      "classes": [
+        "track__button"
+      ],
+      "dataAttributes": {
+        "data-track-action": "mute",
+        "data-track-id": "guitar"
+      },
+      "computedStyles": {
+        "display": "flex",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "28px",
+        "height": "28px",
+        "margin": "0px",
+        "padding": "1px 6px",
+        "border": "0px none rgb(56, 189, 248)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(56, 189, 248)",
+        "font-size": "18px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "justify-content": "center",
+        "align-items": "center",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 308,
+        "y": 249
+      },
+      "dimensions": {
+        "width": 28,
+        "height": 28
+      },
+      "textContent": "🔇",
+      "innerHTML": "\n                            🔇\n                        "
+    },
+    {
+      "tag": "span",
+      "id": null,
+      "classes": [
+        "track__name"
+      ],
+      "dataAttributes": {
+        "data-track-id": "guitar"
+      },
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "128px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "4px",
+        "border": "1px solid rgba(0, 0, 0, 0)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(209, 213, 219)",
+        "font-size": "12px",
+        "font-weight": "700",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 344,
+        "y": 251
+      },
+      "dimensions": {
+        "width": 128,
+        "height": 24
+      },
+      "textContent": "Guitar",
+      "innerHTML": "\n                        Guitar\n                    "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "track__clips-area"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "relative",
+        "top": "0px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "width": "536px",
+        "height": "55px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 504,
+        "y": 235
+      },
+      "dimensions": {
+        "width": 536,
+        "height": 55
+      },
+      "textContent": "Clean Chords\n            \n        \n            \n                \n                \n                Di",
+      "innerHTML": "\n                    <div class=\"track__playhead\" style=\"left: 32px; opacity: 0.4;\"></div>\n                    <div class=\"track__clips\">\n                        \n            <div class=\"clip clip--da"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "track__playhead"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "32px",
+        "right": "502px",
+        "bottom": "0px",
+        "width": "2px",
+        "height": "55px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgb(56, 189, 248)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "20",
+        "opacity": "0.4",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 536,
+        "y": 235
+      },
+      "dimensions": {
+        "width": 2,
+        "height": 55
+      },
+      "textContent": null,
+      "innerHTML": null
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "track__clips"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "flex",
+        "position": "relative",
+        "top": "0px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "width": "536px",
+        "height": "55px",
+        "margin": "0px",
+        "padding": "0px 0px 0px 48px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "align-items": "center",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 504,
+        "y": 235
+      },
+      "dimensions": {
+        "width": 536,
+        "height": 55
+      },
+      "textContent": "Clean Chords\n            \n        \n            \n                \n                \n                Di",
+      "innerHTML": "\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"clean-chords\" data-track-id=\"guitar\" style=\"width: 160px; left: 0px;\" draggable=\"true\">\n                <div class=\"cli"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip",
+        "clip--dark"
+      ],
+      "dataAttributes": {
+        "data-clip-id": "clean-chords",
+        "data-track-id": "guitar"
+      },
+      "computedStyles": {
+        "display": "flex",
+        "position": "absolute",
+        "top": "15.5px",
+        "left": "0px",
+        "right": "376px",
+        "bottom": "15.5px",
+        "width": "160px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px 4px",
+        "border": "0px none rgb(255, 255, 255)",
+        "background-color": "rgb(12, 74, 110)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "12px",
+        "font-weight": "500",
+        "flex-direction": "row",
+        "align-items": "center",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 504,
+        "y": 251
+      },
+      "dimensions": {
+        "width": 160,
+        "height": 24
+      },
+      "textContent": "Clean Chords",
+      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Clean Chords\n     "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip__resize-handle",
+        "clip__resize-handle--left"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "0px",
+        "right": "156px",
+        "bottom": "0px",
+        "width": "4px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "background-color": "rgba(255, 255, 255, 0.2)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "12px",
+        "font-weight": "500",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 504,
+        "y": 251
+      },
+      "dimensions": {
+        "width": 4,
+        "height": 24
+      },
+      "textContent": null,
+      "innerHTML": null
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip__resize-handle",
+        "clip__resize-handle--right"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "156px",
+        "right": "0px",
+        "bottom": "0px",
+        "width": "4px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "background-color": "rgba(255, 255, 255, 0.2)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "12px",
+        "font-weight": "500",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 660,
+        "y": 251
+      },
+      "dimensions": {
+        "width": 4,
+        "height": 24
+      },
+      "textContent": null,
+      "innerHTML": null
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip",
+        "clip--dark"
+      ],
+      "dataAttributes": {
+        "data-clip-id": "distorted-riff",
+        "data-track-id": "guitar"
+      },
+      "computedStyles": {
+        "display": "flex",
+        "position": "absolute",
+        "top": "15.5px",
+        "left": "0px",
+        "right": "376px",
+        "bottom": "15.5px",
+        "width": "160px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px 4px",
+        "border": "0px none rgb(255, 255, 255)",
+        "background-color": "rgb(12, 74, 110)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "12px",
+        "font-weight": "500",
+        "flex-direction": "row",
+        "align-items": "center",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 504,
+        "y": 251
+      },
+      "dimensions": {
+        "width": 160,
+        "height": 24
+      },
+      "textContent": "Distorted Riff",
+      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Distorted Riff\n   "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip__resize-handle",
+        "clip__resize-handle--left"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "0px",
+        "right": "156px",
+        "bottom": "0px",
+        "width": "4px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "background-color": "rgba(255, 255, 255, 0.2)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "12px",
+        "font-weight": "500",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 504,
+        "y": 251
+      },
+      "dimensions": {
+        "width": 4,
+        "height": 24
+      },
+      "textContent": null,
+      "innerHTML": null
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip__resize-handle",
+        "clip__resize-handle--right"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "156px",
+        "right": "0px",
+        "bottom": "0px",
+        "width": "4px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "background-color": "rgba(255, 255, 255, 0.2)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "12px",
+        "font-weight": "500",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 660,
+        "y": 251
+      },
+      "dimensions": {
+        "width": 4,
+        "height": 24
+      },
+      "textContent": null,
+      "innerHTML": null
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip",
+        "clip--dark"
+      ],
+      "dataAttributes": {
+        "data-clip-id": "arpeggio",
+        "data-track-id": "guitar"
+      },
+      "computedStyles": {
+        "display": "flex",
+        "position": "absolute",
+        "top": "15.5px",
+        "left": "0px",
+        "right": "376px",
+        "bottom": "15.5px",
+        "width": "160px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px 4px",
+        "border": "0px none rgb(255, 255, 255)",
+        "background-color": "rgb(12, 74, 110)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "12px",
+        "font-weight": "500",
+        "flex-direction": "row",
+        "align-items": "center",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 504,
+        "y": 251
+      },
+      "dimensions": {
+        "width": 160,
+        "height": 24
+      },
+      "textContent": "Arpeggio",
+      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Arpeggio\n         "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip__resize-handle",
+        "clip__resize-handle--left"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "0px",
+        "right": "156px",
+        "bottom": "0px",
+        "width": "4px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "background-color": "rgba(255, 255, 255, 0.2)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "12px",
+        "font-weight": "500",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 504,
+        "y": 251
+      },
+      "dimensions": {
+        "width": 4,
+        "height": 24
+      },
+      "textContent": null,
+      "innerHTML": null
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip__resize-handle",
+        "clip__resize-handle--right"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "156px",
+        "right": "0px",
+        "bottom": "0px",
+        "width": "4px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "background-color": "rgba(255, 255, 255, 0.2)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "12px",
+        "font-weight": "500",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 660,
+        "y": 251
+      },
+      "dimensions": {
+        "width": 4,
+        "height": 24
+      },
+      "textContent": null,
+      "innerHTML": null
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "track"
+      ],
+      "dataAttributes": {
+        "data-track-id": "vocals"
+      },
+      "computedStyles": {
+        "display": "flex",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "776px",
+        "height": "56px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "align-items": "center",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 264,
+        "y": 291
+      },
+      "dimensions": {
+        "width": 776,
+        "height": 56
+      },
+      "textContent": "🎧\n                        \n                    \n                        \n                          ",
+      "innerHTML": "\n                <div class=\"track__controls\">\n                    \n                        <button class=\"track__button\" title=\"Solo\" data-track-action=\"solo\" data-track-id=\"vocals\">\n                "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "track__controls"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "flex",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "240px",
+        "height": "56px",
+        "margin": "0px",
+        "padding": "0px 0px 0px 8px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgb(31, 41, 55)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "align-items": "center",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 264,
+        "y": 291
+      },
+      "dimensions": {
+        "width": 240,
+        "height": 56
+      },
+      "textContent": "🎧\n                        \n                    \n                        \n                          ",
+      "innerHTML": "\n                    \n                        <button class=\"track__button\" title=\"Solo\" data-track-action=\"solo\" data-track-id=\"vocals\">\n                            🎧\n                        </butto"
+    },
+    {
+      "tag": "button",
+      "id": null,
+      "classes": [
+        "track__button"
+      ],
+      "dataAttributes": {
+        "data-track-action": "solo",
+        "data-track-id": "vocals"
+      },
+      "computedStyles": {
+        "display": "flex",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "28px",
+        "height": "28px",
+        "margin": "0px",
+        "padding": "1px 6px",
+        "border": "0px none rgb(56, 189, 248)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(56, 189, 248)",
+        "font-size": "18px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "justify-content": "center",
+        "align-items": "center",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 272,
+        "y": 305
+      },
+      "dimensions": {
+        "width": 28,
+        "height": 28
+      },
+      "textContent": "🎧",
+      "innerHTML": "\n                            🎧\n                        "
+    },
+    {
+      "tag": "button",
+      "id": null,
+      "classes": [
+        "track__button"
+      ],
+      "dataAttributes": {
+        "data-track-action": "mute",
+        "data-track-id": "vocals"
+      },
+      "computedStyles": {
+        "display": "flex",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "28px",
+        "height": "28px",
+        "margin": "0px",
+        "padding": "1px 6px",
+        "border": "0px none rgb(56, 189, 248)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(56, 189, 248)",
+        "font-size": "18px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "justify-content": "center",
+        "align-items": "center",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 308,
+        "y": 305
+      },
+      "dimensions": {
+        "width": 28,
+        "height": 28
+      },
+      "textContent": "🔇",
+      "innerHTML": "\n                            🔇\n                        "
+    },
+    {
+      "tag": "span",
+      "id": null,
+      "classes": [
+        "track__name"
+      ],
+      "dataAttributes": {
+        "data-track-id": "vocals"
+      },
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "128px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "4px",
+        "border": "1px solid rgba(0, 0, 0, 0)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(209, 213, 219)",
+        "font-size": "12px",
+        "font-weight": "700",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 344,
+        "y": 307
+      },
+      "dimensions": {
+        "width": 128,
+        "height": 24
+      },
+      "textContent": "Vocals",
+      "innerHTML": "\n                        Vocals\n                    "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "track__clips-area"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "relative",
+        "top": "0px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "width": "536px",
+        "height": "56px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 504,
+        "y": 291
+      },
+      "dimensions": {
+        "width": 536,
+        "height": 56
+      },
+      "textContent": "Lead Take 1\n            \n        \n            \n                \n                \n                Lea",
+      "innerHTML": "\n                    <div class=\"track__playhead\" style=\"left: 32px; opacity: 0.4;\"></div>\n                    <div class=\"track__clips\">\n                        \n            <div class=\"clip clip--da"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "track__playhead"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "32px",
+        "right": "502px",
+        "bottom": "0px",
+        "width": "2px",
+        "height": "56px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgb(56, 189, 248)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "20",
+        "opacity": "0.4",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 536,
+        "y": 291
+      },
+      "dimensions": {
+        "width": 2,
+        "height": 56
+      },
+      "textContent": null,
+      "innerHTML": null
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "track__clips"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "flex",
+        "position": "relative",
+        "top": "0px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "width": "536px",
+        "height": "56px",
+        "margin": "0px",
+        "padding": "0px 0px 0px 48px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "16px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "align-items": "center",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 504,
+        "y": 291
+      },
+      "dimensions": {
+        "width": 536,
+        "height": 56
+      },
+      "textContent": "Lead Take 1\n            \n        \n            \n                \n                \n                Lea",
+      "innerHTML": "\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"lead-take-1\" data-track-id=\"vocals\" style=\"width: 160px; left: 0px;\" draggable=\"true\">\n                <div class=\"clip"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip",
+        "clip--dark"
+      ],
+      "dataAttributes": {
+        "data-clip-id": "lead-take-1",
+        "data-track-id": "vocals"
+      },
+      "computedStyles": {
+        "display": "flex",
+        "position": "absolute",
+        "top": "16px",
+        "left": "0px",
+        "right": "376px",
+        "bottom": "16px",
+        "width": "160px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px 4px",
+        "border": "0px none rgb(255, 255, 255)",
+        "background-color": "rgb(12, 74, 110)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "12px",
+        "font-weight": "500",
+        "flex-direction": "row",
+        "align-items": "center",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 504,
+        "y": 307
+      },
+      "dimensions": {
+        "width": 160,
+        "height": 24
+      },
+      "textContent": "Lead Take 1",
+      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Lead Take 1\n      "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip__resize-handle",
+        "clip__resize-handle--left"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "0px",
+        "right": "156px",
+        "bottom": "0px",
+        "width": "4px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "background-color": "rgba(255, 255, 255, 0.2)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "12px",
+        "font-weight": "500",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 504,
+        "y": 307
+      },
+      "dimensions": {
+        "width": 4,
+        "height": 24
+      },
+      "textContent": null,
+      "innerHTML": null
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip__resize-handle",
+        "clip__resize-handle--right"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "156px",
+        "right": "0px",
+        "bottom": "0px",
+        "width": "4px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "background-color": "rgba(255, 255, 255, 0.2)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "12px",
+        "font-weight": "500",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 660,
+        "y": 307
+      },
+      "dimensions": {
+        "width": 4,
+        "height": 24
+      },
+      "textContent": null,
+      "innerHTML": null
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip",
+        "clip--dark"
+      ],
+      "dataAttributes": {
+        "data-clip-id": "lead-take-2",
+        "data-track-id": "vocals"
+      },
+      "computedStyles": {
+        "display": "flex",
+        "position": "absolute",
+        "top": "16px",
+        "left": "0px",
+        "right": "376px",
+        "bottom": "16px",
+        "width": "160px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px 4px",
+        "border": "0px none rgb(255, 255, 255)",
+        "background-color": "rgb(12, 74, 110)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "12px",
+        "font-weight": "500",
+        "flex-direction": "row",
+        "align-items": "center",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 504,
+        "y": 307
+      },
+      "dimensions": {
+        "width": 160,
+        "height": 24
+      },
+      "textContent": "Lead Take 2",
+      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Lead Take 2\n      "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip__resize-handle",
+        "clip__resize-handle--left"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "0px",
+        "right": "156px",
+        "bottom": "0px",
+        "width": "4px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "background-color": "rgba(255, 255, 255, 0.2)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "12px",
+        "font-weight": "500",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 504,
+        "y": 307
+      },
+      "dimensions": {
+        "width": 4,
+        "height": 24
+      },
+      "textContent": null,
+      "innerHTML": null
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip__resize-handle",
+        "clip__resize-handle--right"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "absolute",
+        "top": "0px",
+        "left": "156px",
+        "right": "0px",
+        "bottom": "0px",
+        "width": "4px",
+        "height": "24px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "background-color": "rgba(255, 255, 255, 0.2)",
+        "color": "rgb(255, 255, 255)",
+        "font-size": "12px",
+        "font-weight": "500",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 660,
+        "y": 307
       },
       "dimensions": {
         "width": 4,
@@ -7823,7 +7484,7 @@
         "height": 581
       },
       "textContent": "L  R",
-      "innerHTML": "\n            <div class=\"vu-meter\" id=\"vu-meter\">\n                <div class=\"vu-meter__level\" style=\"height: 26.338484957210216%\"></div>\n            </div>\n            <div class=\"vu-meter__label\">L&"
+      "innerHTML": "\n            <div class=\"vu-meter\" id=\"vu-meter\">\n                <div class=\"vu-meter__level\" style=\"height: 0%\"></div>\n            </div>\n            <div class=\"vu-meter__label\">L&nbsp;&nbsp;R</div"
     },
     {
       "tag": "div",
@@ -7864,7 +7525,7 @@
         "height": 511
       },
       "textContent": null,
-      "innerHTML": "\n                <div class=\"vu-meter__level\" style=\"height: 26.338484957210216%\"></div>\n            "
+      "innerHTML": "\n                <div class=\"vu-meter__level\" style=\"height: 0%\"></div>\n            "
     },
     {
       "tag": "div",
@@ -7881,7 +7542,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "22px",
-        "height": "134.062px",
+        "height": "0px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -7898,11 +7559,11 @@
       },
       "position": {
         "x": 1085,
-        "y": 480
+        "y": 614
       },
       "dimensions": {
         "width": 22,
-        "height": 134
+        "height": 0
       },
       "textContent": null,
       "innerHTML": null

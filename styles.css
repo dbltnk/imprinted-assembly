@@ -44,6 +44,7 @@
     --spacing-xl: 2rem;
 
     /* Border Radius */
+    --radius-xs: 0.125rem;
     --radius-sm: 0.25rem;
     --radius-md: 0.5rem;
     --radius-lg: 0.75rem;
@@ -298,17 +299,35 @@ body {
     gap: var(--spacing-sm);
     cursor: pointer;
     user-select: none;
+    transition: all 0.2s ease;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-sm);
+}
+
+.loop-toggle:hover {
+    opacity: 0.8;
+    background-color: var(--color-bg-tertiary);
 }
 
 .loop-toggle__checkbox {
     accent-color: var(--color-accent-primary);
     width: 20px;
     height: 20px;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.loop-toggle__checkbox:checked+.loop-toggle__label {
+    color: var(--color-accent-secondary);
+    font-weight: 600;
 }
 
 .loop-toggle__label {
     color: var(--color-accent-primary);
     font-size: 0.875rem;
+    transition: color 0.2s ease;
+    cursor: pointer;
+    pointer-events: auto;
 }
 
 /* Divider */
@@ -398,6 +417,11 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
+    transition: all 0.3s ease;
+}
+
+.timeline-container--playing {
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
 }
 
 /* Timeline Header */
@@ -571,13 +595,15 @@ body {
 .track__playhead {
     position: absolute;
     top: 0;
-    left: var(--grid-beat-width);
-    width: 1px;
+    left: 0;
+    width: 2px;
     height: 100%;
     background-color: var(--color-accent-primary);
-    opacity: 0.8;
+    opacity: 0.4;
     z-index: 20;
     pointer-events: none;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 0 4px rgba(56, 189, 248, 0.5);
 }
 
 .track__clips {

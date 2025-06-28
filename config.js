@@ -62,7 +62,7 @@ export const PROJECT_CONFIG = {
     // Transport controls configuration
     transport: {
         buttons: [
-            { id: 'play', icon: '▶', title: 'Play/Pause', action: 'playPause' },
+            { id: 'play', icon: '▶', title: 'Play/Pause', action: 'play' },
             { id: 'stop', icon: '⏹', title: 'Stop', action: 'stop' },
             { id: 'rewind', icon: '⏮', title: 'Rewind', action: 'rewind' },
             { id: 'fastForward', icon: '⏭', title: 'Fast Forward', action: 'fastForward' }

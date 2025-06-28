@@ -25,19 +25,19 @@ class Component {
     }
 
     destroy() {
-        // Clean up event listeners
-        this.eventListeners.forEach((listener, event) => {
-            this.element.removeEventListener(event, listener);
-        });
-        this.eventListeners.clear();
+        // Remove event listeners if they exist
+        if (this._boundClickHandler) {
+            this.element.removeEventListener('click', this._boundClickHandler);
+        }
+        if (this._boundChangeHandler) {
+            this.element.removeEventListener('change', this._boundChangeHandler);
+        }
+        if (this._boundDragStartHandler) {
+            this.element.removeEventListener('dragstart', this._boundDragStartHandler);
+        }
 
-        // Destroy children
-        this.children.forEach(child => {
-            if (child.destroy) {
-                child.destroy();
-            }
-        });
-        this.children.clear();
+        // Clear the element
+        this.element.innerHTML = '';
     }
 
     addEventListener(event, listener) {
@@ -130,6 +130,12 @@ class HeaderComponent extends Component {
     }
 
     showProjectDropdown() {
+        // Remove any existing dropdown first
+        const existingDropdown = document.querySelector('.project-dropdown');
+        if (existingDropdown && existingDropdown.parentNode) {
+            existingDropdown.parentNode.removeChild(existingDropdown);
+        }
+
         // Create dropdown with project options
         const dropdown = document.createElement('div');
         dropdown.className = 'project-dropdown';
@@ -161,18 +167,25 @@ class HeaderComponent extends Component {
             if (projectItem) {
                 const projectId = projectItem.dataset.projectId;
                 this.selectProject(projectId);
-                document.body.removeChild(dropdown);
+                this.removeDropdown(dropdown);
             }
         });
 
         // Close dropdown when clicking outside
         const closeDropdown = (e) => {
             if (!dropdown.contains(e.target) && !loadButton.contains(e.target)) {
-                document.body.removeChild(dropdown);
+                this.removeDropdown(dropdown);
                 document.removeEventListener('click', closeDropdown);
             }
         };
         document.addEventListener('click', closeDropdown);
+    }
+
+    removeDropdown(dropdown) {
+        // Safe removal with proper checks
+        if (dropdown && dropdown.parentNode) {
+            dropdown.parentNode.removeChild(dropdown);
+        }
     }
 
     selectProject(projectId) {
@@ -188,6 +201,7 @@ class HeaderComponent extends Component {
 class SidebarComponent extends Component {
     init() {
         this.currentProject = null;
+        this.isLooping = false;
         this.render();
         this.setupEventListeners();
     }
@@ -223,7 +237,7 @@ class SidebarComponent extends Component {
             </div>
             <div class="transport-controls__row">
                 <label class="loop-toggle">
-                    <input type="checkbox" class="loop-toggle__checkbox" data-transport="loop">
+                    <input type="checkbox" class="loop-toggle__checkbox" ${this.isLooping ? 'checked' : ''}>
                     <span class="loop-toggle__label">${transport.loopToggle.label}</span>
                 </label>
             </div>
@@ -286,27 +300,74 @@ class SidebarComponent extends Component {
     }
 
     setupEventListeners() {
-        // Transport controls
-        this.element.addEventListener('click', (e) => {
-            const transportButton = e.target.closest('[data-transport]');
-            if (transportButton) {
-                const action = transportButton.dataset.transport;
-                this.handleTransportAction(action);
-            }
-        });
+        // Remove any existing listeners to prevent duplicates
+        this.element.removeEventListener('click', this._boundClickHandler);
+        this.element.removeEventListener('change', this._boundChangeHandler);
+        this.element.removeEventListener('dragstart', this._boundDragStartHandler);
 
-        // Clip drag and drop
-        this.element.addEventListener('dragstart', (e) => {
-            const clipItem = e.target.closest('[data-clip-id]');
-            if (clipItem) {
-                const clipId = clipItem.dataset.clipId;
-                e.dataTransfer.setData('text/plain', clipId);
-                e.dataTransfer.effectAllowed = 'copy';
+        // Bind handlers to this instance
+        this._boundClickHandler = this.handleClick.bind(this);
+        this._boundChangeHandler = this.handleChange.bind(this);
+        this._boundDragStartHandler = this.handleDragStart.bind(this);
+
+        // Add event listeners
+        this.element.addEventListener('click', this._boundClickHandler);
+        this.element.addEventListener('change', this._boundChangeHandler);
+        this.element.addEventListener('dragstart', this._boundDragStartHandler);
+    }
+
+    handleClick(e) {
+        console.log('Sidebar click event:', e.target);
+
+        // Handle checkbox clicks first (prevent them from being treated as transport buttons)
+        if (e.target.classList.contains('loop-toggle__checkbox')) {
+            console.log('Checkbox clicked directly');
+            // Let the change event handle the action
+            return;
+        }
+
+        const transportButton = e.target.closest('[data-transport]');
+        if (transportButton) {
+            const action = transportButton.dataset.transport;
+            console.log('Transport button clicked:', action);
+            this.handleTransportAction(action);
+        }
+
+        // Handle label clicks for loop toggle
+        if (e.target.closest('.loop-toggle')) {
+            console.log('Loop toggle area clicked');
+            const checkbox = e.target.closest('.loop-toggle').querySelector('.loop-toggle__checkbox');
+            if (checkbox) {
+                console.log('Checkbox found, current state:', checkbox.checked);
+                // Toggle the checkbox manually if it's a label click
+                if (e.target.tagName === 'LABEL' || e.target.classList.contains('loop-toggle__label')) {
+                    checkbox.checked = !checkbox.checked;
+                    console.log('Checkbox toggled to:', checkbox.checked);
+                    this.handleTransportAction('toggleLoop');
+                }
             }
-        });
+        }
+    }
+
+    handleChange(e) {
+        console.log('Sidebar change event:', e.target);
+        if (e.target.classList.contains('loop-toggle__checkbox')) {
+            console.log('Checkbox change detected: toggleLoop checked:', e.target.checked);
+            this.handleTransportAction('toggleLoop');
+        }
+    }
+
+    handleDragStart(e) {
+        const clipItem = e.target.closest('[data-clip-id]');
+        if (clipItem) {
+            const clipId = clipItem.dataset.clipId;
+            e.dataTransfer.setData('text/plain', clipId);
+            e.dataTransfer.effectAllowed = 'copy';
+        }
     }
 
     handleTransportAction(action) {
+        console.log('Sidebar dispatching transport action:', action);
         // Dispatch custom event for transport actions
         const event = new CustomEvent('transportAction', {
             detail: { action }
@@ -316,7 +377,17 @@ class SidebarComponent extends Component {
 
     setProject(project) {
         this.currentProject = project;
+        // Reset loop state when changing projects
+        this.isLooping = false;
         this.render();
+    }
+
+    setLoopState(isLooping) {
+        this.isLooping = isLooping;
+        const loopCheckbox = this.element.querySelector('.loop-toggle__checkbox');
+        if (loopCheckbox && loopCheckbox.checked !== isLooping) {
+            loopCheckbox.checked = isLooping;
+        }
     }
 }
 
@@ -534,15 +605,49 @@ class TimelineComponent extends Component {
 
     setCurrentTime(time) {
         this.currentTime = time;
+
+        // Update time display
         const timeDisplay = this.element.querySelector('.timeline-header__time');
         if (timeDisplay) {
             timeDisplay.textContent = this.formatCurrentTime();
         }
+
+        // Update playhead position
+        this.updatePlayheadPosition(time);
+    }
+
+    updatePlayheadPosition(time) {
+        const playheads = this.element.querySelectorAll('.track__playhead');
+        const beatWidth = PROJECT_CONFIG.layout.gridBeatWidth;
+        const leftPosition = time * beatWidth;
+
+        playheads.forEach(playhead => {
+            playhead.style.left = `${leftPosition}px`;
+        });
     }
 
     setPlaying(playing) {
         this.isPlaying = playing;
-        // Update playhead animation or other visual indicators
+
+        // Add visual feedback for playing state
+        const timelineContainer = this.element.querySelector('.timeline-container');
+        if (timelineContainer) {
+            if (playing) {
+                timelineContainer.classList.add('timeline-container--playing');
+            } else {
+                timelineContainer.classList.remove('timeline-container--playing');
+            }
+        }
+
+        // Update playhead visibility
+        const playheads = this.element.querySelectorAll('.track__playhead');
+        playheads.forEach(playhead => {
+            if (playing) {
+                playhead.style.opacity = '0.8';
+            } else {
+                playhead.style.opacity = '0.4';
+            }
+        });
     }
 }
 
@@ -550,8 +655,9 @@ class TimelineComponent extends Component {
 class VUMeterComponent extends Component {
     init() {
         this.level = 0;
+        this.animationInterval = null;
+        this.isAnimating = false;
         this.render();
-        this.startAnimation();
     }
 
     render() {
@@ -564,16 +670,45 @@ class VUMeterComponent extends Component {
     }
 
     startAnimation() {
-        // Simulate VU meter movement
-        setInterval(() => {
-            this.level = Math.random() * 100;
+        if (this.isAnimating) return;
+
+        this.isAnimating = true;
+        console.log('VU meter animation started');
+
+        // Start the animation interval
+        this.animationInterval = setInterval(() => {
+            // Only animate when playing - the level will be set externally
+            if (this.level === 0) {
+                // Fallback animation when no external level is set
+                this.level = Math.random() * 30; // Low level when not playing
+            }
             this.render();
-        }, 100);
+        }, 50); // Faster update rate for smoother animation
+    }
+
+    stopAnimation() {
+        if (!this.isAnimating) return;
+
+        this.isAnimating = false;
+        this.level = 0;
+
+        if (this.animationInterval) {
+            clearInterval(this.animationInterval);
+            this.animationInterval = null;
+        }
+
+        this.render();
+        console.log('VU meter animation stopped');
     }
 
     setLevel(level) {
         this.level = Math.max(0, Math.min(100, level));
-        this.render();
+        // Don't render here - let the animation interval handle it
+    }
+
+    destroy() {
+        this.stopAnimation();
+        super.destroy();
     }
 }
 

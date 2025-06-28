@@ -335,7 +335,10 @@ class AssemblyApp {
     constructor() {
         this.currentProject = null;
         this.isPlaying = false;
+        this.isLooping = false;
         this.currentTime = 0;
+        this.totalDuration = 0;
+        this.playbackInterval = null;
         this.components = new Map();
 
         // Initialize logging system first
@@ -430,16 +433,45 @@ class AssemblyApp {
         const project = getProjectById(projectId);
         assert(project, `Project with id '${projectId}' not found`);
 
+        // Stop any current playback
+        this.stopPlayback();
+
+        // Reset loop state when changing projects
+        this.isLooping = false;
+
         this.currentProject = project;
+        this.currentTime = 0;
+
+        // Calculate total duration based on project clips
+        this.calculateTotalDuration();
 
         // Update components with new project data
         this.components.get('sidebar').setProject(project);
         this.components.get('timeline').setProject(project);
+        this.components.get('timeline').setCurrentTime(0);
 
         // Update file info
         this.updateFileInfo(project);
 
+        // Update loop checkbox UI to reflect reset state
+        this.updateLoopUI();
+
         console.log(`Project '${project.name}' loaded successfully`);
+    }
+
+    calculateTotalDuration() {
+        if (!this.currentProject) return;
+
+        let maxDuration = 0;
+        this.currentProject.tracks.forEach(track => {
+            track.clips.forEach(clip => {
+                const clipEnd = clip.startTime + clip.duration;
+                maxDuration = Math.max(maxDuration, clipEnd);
+            });
+        });
+
+        this.totalDuration = maxDuration;
+        console.log(`Project duration: ${this.totalDuration} beats`);
     }
 
     updateFileInfo(project) {
@@ -453,17 +485,17 @@ class AssemblyApp {
         console.log(`Transport action: ${action}`);
 
         switch (action) {
-            case 'playPause':
+            case 'play':
                 this.togglePlayback();
                 break;
             case 'stop':
                 this.stopPlayback();
                 break;
             case 'rewind':
-                this.rewind();
+                this.seek(-1);
                 break;
             case 'fastForward':
-                this.fastForward();
+                this.seek(1);
                 break;
             case 'toggleLoop':
                 this.toggleLoop();
@@ -564,30 +596,65 @@ class AssemblyApp {
         return null;
     }
 
-    // Playback control methods
-    togglePlayback() {
-        this.isPlaying = !this.isPlaying;
-        this.components.get('timeline').setPlaying(this.isPlaying);
+    // ===== PLAYBACK CONTROL METHODS =====
 
+    togglePlayback() {
         if (this.isPlaying) {
-            this.startPlayback();
-        } else {
             this.pausePlayback();
+        } else {
+            this.startPlayback();
         }
     }
 
     startPlayback() {
+        if (this.isPlaying) return;
+
         console.log('Starting playback');
-        // In a real implementation, this would start audio playback
-        // For now, just simulate time progression
+        this.isPlaying = true;
+
+        // Update UI
+        this.updateTransportUI();
+        this.components.get('timeline').setPlaying(true);
+
+        // Start VU meter animation
+        this.components.get('vuMeter').startAnimation();
+
+        // Start time progression
         this.playbackInterval = setInterval(() => {
             this.currentTime += 0.1;
+
+            // Check for loop
+            if (this.currentTime >= this.totalDuration) {
+                if (this.isLooping) {
+                    this.currentTime = 0;
+                } else {
+                    this.stopPlayback();
+                    return;
+                }
+            }
+
+            // Update timeline
             this.components.get('timeline').setCurrentTime(this.currentTime);
+
+            // Update VU meter with simulated levels
+            this.updateVUMeter();
         }, 100);
     }
 
     pausePlayback() {
+        if (!this.isPlaying) return;
+
         console.log('Pausing playback');
+        this.isPlaying = false;
+
+        // Update UI
+        this.updateTransportUI();
+        this.components.get('timeline').setPlaying(false);
+
+        // Stop VU meter animation
+        this.components.get('vuMeter').stopAnimation();
+
+        // Stop time progression
         if (this.playbackInterval) {
             clearInterval(this.playbackInterval);
             this.playbackInterval = null;
@@ -598,39 +665,85 @@ class AssemblyApp {
         console.log('Stopping playback');
         this.isPlaying = false;
         this.currentTime = 0;
+
+        // Update UI
+        this.updateTransportUI();
         this.components.get('timeline').setPlaying(false);
         this.components.get('timeline').setCurrentTime(0);
-        this.pausePlayback();
+
+        // Stop VU meter animation
+        this.components.get('vuMeter').stopAnimation();
+
+        // Stop time progression
+        if (this.playbackInterval) {
+            clearInterval(this.playbackInterval);
+            this.playbackInterval = null;
+        }
     }
 
-    rewind() {
-        console.log('Rewinding');
-        this.currentTime = Math.max(0, this.currentTime - 1);
-        this.components.get('timeline').setCurrentTime(this.currentTime);
-    }
+    seek(direction) {
+        const seekAmount = direction * 1; // 1 beat per seek
+        this.currentTime = Math.max(0, Math.min(this.totalDuration, this.currentTime + seekAmount));
 
-    fastForward() {
-        console.log('Fast forwarding');
-        this.currentTime += 1;
+        console.log(`Seeking ${direction > 0 ? 'forward' : 'backward'} to ${this.currentTime.toFixed(1)}`);
+
+        // Update timeline
         this.components.get('timeline').setCurrentTime(this.currentTime);
     }
 
     toggleLoop() {
-        console.log('Toggling loop');
-        // Loop functionality would be implemented here
+        this.isLooping = !this.isLooping;
+        console.log(`Loop ${this.isLooping ? 'enabled' : 'disabled'}`);
+
+        // Update loop toggle UI
+        this.updateLoopUI();
+    }
+
+    updateLoopUI() {
+        // Update the sidebar component's loop state
+        this.components.get('sidebar').setLoopState(this.isLooping);
+    }
+
+    updateTransportUI() {
+        // Update play button appearance
+        const playButton = document.querySelector('[data-transport="play"]');
+        if (playButton) {
+            if (this.isPlaying) {
+                playButton.classList.add('transport-button--play');
+                playButton.textContent = '⏸'; // Pause icon
+            } else {
+                playButton.classList.remove('transport-button--play');
+                playButton.textContent = '▶'; // Play icon
+            }
+        }
+    }
+
+    updateVUMeter() {
+        // Simulate VU meter levels based on current playback
+        // In a real implementation, this would come from audio analysis
+        const baseLevel = 30 + Math.sin(this.currentTime * 0.5) * 20;
+        const randomVariation = Math.random() * 20;
+        const level = Math.max(0, Math.min(100, baseLevel + randomVariation));
+
+        this.components.get('vuMeter').setLevel(level);
     }
 
     toggleTrackSolo(trackId) {
         console.log(`Toggling solo for track: ${trackId}`);
         // Solo functionality would be implemented here
+        // For now, just log the action
     }
 
     toggleTrackMute(trackId) {
         console.log(`Toggling mute for track: ${trackId}`);
         // Mute functionality would be implemented here
+        // For now, just log the action
     }
 
     destroy() {
+        // Stop playback
+        this.stopPlayback();
+
         // Clean up components
         this.components.forEach(component => {
             if (component.destroy) {
@@ -638,11 +751,6 @@ class AssemblyApp {
             }
         });
         this.components.clear();
-
-        // Clean up playback
-        if (this.playbackInterval) {
-            clearInterval(this.playbackInterval);
-        }
 
         console.log('Assembly Audio Editor destroyed');
     }
