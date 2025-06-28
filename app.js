@@ -35,9 +35,6 @@ class BrowserLogger {
         // Set up periodic logging
         this.startPeriodicLogging();
 
-        // Set up event listeners
-        this.setupEventListeners();
-
         // Initial log
         console.log('Browser logging system initialized');
     }
@@ -313,21 +310,6 @@ class BrowserLogger {
 
         return conflicts;
     }
-
-    setupEventListeners() {
-        // Test buttons for debugging
-        document.getElementById('test-log')?.addEventListener('click', () => {
-            console.log('Test log message from button click');
-        });
-
-        document.getElementById('test-warn')?.addEventListener('click', () => {
-            console.warn('Test warning message from button click');
-        });
-
-        document.getElementById('test-error')?.addEventListener('click', () => {
-            console.error('Test error message from button click');
-        });
-    }
 }
 
 // ===== MAIN APPLICATION CLASS =====
@@ -378,38 +360,53 @@ class AssemblyApp {
     }
 
     initializeComponents() {
-        // Initialize header component
+        // Initialize header
         const headerElement = document.getElementById('header');
-        this.components.set('header', new HeaderComponent(headerElement));
+        assert(headerElement, 'Header element not found');
+        this.headerComponent = new HeaderComponent(headerElement);
 
-        // Initialize sidebar component
+        // Initialize sidebar
         const sidebarElement = document.getElementById('sidebar');
-        this.components.set('sidebar', new SidebarComponent(sidebarElement));
+        assert(sidebarElement, 'Sidebar element not found');
+        this.sidebarComponent = new SidebarComponent(sidebarElement);
 
-        // Initialize timeline component
+        // Initialize timeline
         const timelineElement = document.getElementById('timeline');
-        this.components.set('timeline', new TimelineComponent(timelineElement));
+        assert(timelineElement, 'Timeline element not found');
+        this.timelineComponent = new TimelineComponent(timelineElement);
 
-        // Initialize VU meter component
+        // Initialize VU meter
         const vuMeterElement = document.getElementById('vu-meter');
-        this.components.set('vuMeter', new VUMeterComponent(vuMeterElement));
+        assert(vuMeterElement, 'VU meter element not found');
+        this.vuMeterComponent = new VUMeterComponent(vuMeterElement);
+
+        // Make timeline component globally accessible for inline event handlers
+        window.assemblyApp = this;
     }
 
     setupEventListeners() {
-        // Project selection
-        const header = this.components.get('header');
+        // Header events
+        const header = this.headerComponent;
+        header.addEventListener('menuItemClick', (e) => {
+            this.handleMenuItemClick(e.detail.itemId);
+        });
+
+        header.addEventListener('windowControlClick', (e) => {
+            this.handleWindowControlClick(e.detail.controlId);
+        });
+
         header.addEventListener('projectSelected', (e) => {
             this.loadProject(e.detail.projectId);
         });
 
-        // Transport controls
-        const sidebar = this.components.get('sidebar');
+        // Sidebar events
+        const sidebar = this.sidebarComponent;
         sidebar.addEventListener('transportAction', (e) => {
             this.handleTransportAction(e.detail.action);
         });
 
-        // Track actions
-        const timeline = this.components.get('timeline');
+        // Timeline events
+        const timeline = this.timelineComponent;
         timeline.addEventListener('trackAction', (e) => {
             this.handleTrackAction(e.detail.action, e.detail.trackId);
         });
@@ -422,8 +419,13 @@ class AssemblyApp {
             this.handleAddTrack();
         });
 
-        timeline.addEventListener('clipDrop', (e) => {
-            this.handleClipDrop(e.detail.clipId, e.detail.trackId, e.detail.x);
+        // Project update events
+        sidebar.addEventListener('projectUpdated', (e) => {
+            this.sidebarComponent.setProject(e.detail.project);
+        });
+
+        timeline.addEventListener('projectUpdated', (e) => {
+            this.timelineComponent.setProject(e.detail.project);
         });
     }
 
@@ -446,9 +448,9 @@ class AssemblyApp {
         this.calculateTotalDuration();
 
         // Update components with new project data
-        this.components.get('sidebar').setProject(project);
-        this.components.get('timeline').setProject(project);
-        this.components.get('timeline').setCurrentTime(0);
+        this.sidebarComponent.setProject(project);
+        this.timelineComponent.setProject(project);
+        this.timelineComponent.setCurrentTime(0);
 
         // Update file info
         this.updateFileInfo(project);
@@ -463,12 +465,19 @@ class AssemblyApp {
         if (!this.currentProject) return;
 
         let maxDuration = 0;
+
+        // Check clips in tracks
         this.currentProject.tracks.forEach(track => {
             track.clips.forEach(clip => {
                 const clipEnd = clip.startTime + clip.duration;
                 maxDuration = Math.max(maxDuration, clipEnd);
             });
         });
+
+        // For projects with no clips in tracks, use a default duration
+        if (maxDuration === 0) {
+            maxDuration = 16; // Default 16 beats
+        }
 
         this.totalDuration = maxDuration;
         console.log(`Project duration: ${this.totalDuration} beats`);
@@ -549,48 +558,19 @@ class AssemblyApp {
         this.currentProject.tracks.push(newTrack);
 
         // Re-render timeline
-        this.components.get('timeline').setProject(this.currentProject);
-    }
-
-    handleClipDrop(clipId, trackId, x) {
-        console.log(`Clip drop: ${clipId} -> ${trackId} at x=${x}`);
-
-        // Find the clip and track
-        const clip = this.findClipById(clipId);
-        const track = this.currentProject.tracks.find(t => t.id === trackId);
-
-        if (!clip || !track) {
-            console.warn('Clip or track not found');
-            return;
-        }
-
-        // Calculate start time based on x position
-        const startTime = Math.floor(x / PROJECT_CONFIG.layout.gridBeatWidth);
-
-        // Create new clip instance
-        const newClip = {
-            ...clip,
-            id: `${clip.id}-${Date.now()}`,
-            startTime: startTime
-        };
-
-        // Add to track
-        track.clips.push(newClip);
-
-        // Re-render timeline
-        this.components.get('timeline').setProject(this.currentProject);
+        this.timelineComponent.setProject(this.currentProject);
     }
 
     findClipById(clipId) {
-        // Search through all tracks for the clip
+        // Search in all tracks
         for (const track of this.currentProject.tracks) {
             const clip = track.clips.find(c => c.id === clipId);
             if (clip) return clip;
         }
 
-        // Check extra clips for ambient project
-        if (this.currentProject.extraClips) {
-            return this.currentProject.extraClips.find(c => c.id === clipId);
+        // Search in sidebar clips
+        if (this.currentProject.sidebarClips) {
+            return this.currentProject.sidebarClips.find(c => c.id === clipId);
         }
 
         return null;
@@ -614,10 +594,10 @@ class AssemblyApp {
 
         // Update UI
         this.updateTransportUI();
-        this.components.get('timeline').setPlaying(true);
+        this.timelineComponent.setPlaying(true);
 
         // Start VU meter animation
-        this.components.get('vuMeter').startAnimation();
+        this.vuMeterComponent.startAnimation();
 
         // Start time progression
         this.playbackInterval = setInterval(() => {
@@ -634,7 +614,7 @@ class AssemblyApp {
             }
 
             // Update timeline
-            this.components.get('timeline').setCurrentTime(this.currentTime);
+            this.timelineComponent.setCurrentTime(this.currentTime);
 
             // Update VU meter with simulated levels
             this.updateVUMeter();
@@ -649,10 +629,10 @@ class AssemblyApp {
 
         // Update UI
         this.updateTransportUI();
-        this.components.get('timeline').setPlaying(false);
+        this.timelineComponent.setPlaying(false);
 
         // Stop VU meter animation
-        this.components.get('vuMeter').stopAnimation();
+        this.vuMeterComponent.stopAnimation();
 
         // Stop time progression
         if (this.playbackInterval) {
@@ -662,17 +642,19 @@ class AssemblyApp {
     }
 
     stopPlayback() {
+        if (!this.isPlaying && this.currentTime === 0) return;
+
         console.log('Stopping playback');
         this.isPlaying = false;
         this.currentTime = 0;
 
         // Update UI
         this.updateTransportUI();
-        this.components.get('timeline').setPlaying(false);
-        this.components.get('timeline').setCurrentTime(0);
+        this.timelineComponent.setPlaying(false);
+        this.timelineComponent.setCurrentTime(0);
 
         // Stop VU meter animation
-        this.components.get('vuMeter').stopAnimation();
+        this.vuMeterComponent.stopAnimation();
 
         // Stop time progression
         if (this.playbackInterval) {
@@ -682,50 +664,32 @@ class AssemblyApp {
     }
 
     seek(direction) {
-        const seekAmount = direction * 1; // 1 beat per seek
-        this.currentTime = Math.max(0, Math.min(this.totalDuration, this.currentTime + seekAmount));
-
-        console.log(`Seeking ${direction > 0 ? 'forward' : 'backward'} to ${this.currentTime.toFixed(1)}`);
-
-        // Update timeline
-        this.components.get('timeline').setCurrentTime(this.currentTime);
+        const seekAmount = 1; // 1 beat
+        this.currentTime = Math.max(0, this.currentTime + (direction * seekAmount));
+        this.timelineComponent.setCurrentTime(this.currentTime);
     }
 
     toggleLoop() {
         this.isLooping = !this.isLooping;
-        console.log(`Loop ${this.isLooping ? 'enabled' : 'disabled'}`);
-
-        // Update loop toggle UI
         this.updateLoopUI();
     }
 
     updateLoopUI() {
-        // Update the sidebar component's loop state
-        this.components.get('sidebar').setLoopState(this.isLooping);
+        this.sidebarComponent.setLoopState(this.isLooping);
     }
 
     updateTransportUI() {
-        // Update play button appearance
+        // Update play button state
         const playButton = document.querySelector('[data-transport="play"]');
         if (playButton) {
-            if (this.isPlaying) {
-                playButton.classList.add('transport-button--play');
-                playButton.textContent = '⏸'; // Pause icon
-            } else {
-                playButton.classList.remove('transport-button--play');
-                playButton.textContent = '▶'; // Play icon
-            }
+            playButton.textContent = this.isPlaying ? '⏸' : '▶';
         }
     }
 
     updateVUMeter() {
-        // Simulate VU meter levels based on current playback
-        // In a real implementation, this would come from audio analysis
-        const baseLevel = 30 + Math.sin(this.currentTime * 0.5) * 20;
-        const randomVariation = Math.random() * 20;
-        const level = Math.max(0, Math.min(100, baseLevel + randomVariation));
-
-        this.components.get('vuMeter').setLevel(level);
+        // Simulate VU meter levels based on current time and clips
+        const level = Math.random() * 0.8 + 0.2; // Random level between 0.2 and 1.0
+        this.vuMeterComponent.setLevel(level);
     }
 
     toggleTrackSolo(trackId) {
@@ -741,18 +705,144 @@ class AssemblyApp {
     }
 
     destroy() {
-        // Stop playback
-        this.stopPlayback();
-
-        // Clean up components
+        // Clean up event listeners
         this.components.forEach(component => {
             if (component.destroy) {
                 component.destroy();
             }
         });
-        this.components.clear();
+
+        // Clear intervals
+        if (this.playbackInterval) {
+            clearInterval(this.playbackInterval);
+        }
+        if (this.vuMeterInterval) {
+            clearInterval(this.vuMeterInterval);
+        }
 
         console.log('Assembly Audio Editor destroyed');
+    }
+
+    // ===== DROP HANDLERS =====
+    handleSidebarClipDrop(dragData, trackId, startTime) {
+        console.log('Handling sidebar clip drop:', { dragData, trackId, startTime });
+
+        // Find the clip in sidebar clips
+        const sidebarClipIndex = this.currentProject.sidebarClips.findIndex(c => c.id === dragData.clipId);
+        if (sidebarClipIndex === -1) {
+            console.error('Clip not found in sidebar:', dragData.clipId);
+            return;
+        }
+
+        const sidebarClip = this.currentProject.sidebarClips[sidebarClipIndex];
+
+        // Create new clip instance for the track
+        const newClip = {
+            ...sidebarClip,
+            startTime: startTime
+        };
+
+        // Add to track
+        const track = this.currentProject.tracks.find(t => t.id === trackId);
+        if (track) {
+            track.clips.push(newClip);
+
+            // Remove from sidebar clips
+            this.currentProject.sidebarClips.splice(sidebarClipIndex, 1);
+
+            console.log('Added clip to track:', { trackId, clipId: newClip.id, startTime });
+
+            // Update components
+            this.updateComponents();
+        }
+    }
+
+    handleTimelineClipMove(dragData, targetTrackId, newStartTime) {
+        console.log('Handling timeline clip move:', { dragData, targetTrackId, newStartTime });
+
+        // Remove from original track
+        const sourceTrack = this.currentProject.tracks.find(t => t.id === dragData.trackId);
+        if (sourceTrack) {
+            const clipIndex = sourceTrack.clips.findIndex(c => c.id === dragData.clipId);
+            if (clipIndex !== -1) {
+                const clip = sourceTrack.clips.splice(clipIndex, 1)[0];
+
+                // Update clip start time
+                clip.startTime = newStartTime;
+
+                // Add to target track
+                const targetTrack = this.currentProject.tracks.find(t => t.id === targetTrackId);
+                if (targetTrack) {
+                    targetTrack.clips.push(clip);
+                    console.log('Moved clip:', {
+                        fromTrack: dragData.trackId,
+                        toTrack: targetTrackId,
+                        clipId: clip.id,
+                        newStartTime
+                    });
+
+                    // Update components
+                    this.updateComponents();
+                }
+            }
+        }
+    }
+
+    updateComponents() {
+        // Update timeline
+        if (this.timelineComponent) {
+            this.timelineComponent.setProject(this.currentProject);
+        }
+
+        // Update sidebar
+        if (this.sidebarComponent) {
+            this.sidebarComponent.setProject(this.currentProject);
+        }
+    }
+
+    cleanupDropPreviews() {
+        // Clean up all drop previews from the timeline
+        if (this.timelineComponent) {
+            const previews = document.querySelectorAll('.clip-drop-preview');
+            previews.forEach(preview => preview.remove());
+        }
+    }
+
+    handleMenuItemClick(itemId) {
+        console.log(`Menu item clicked: ${itemId}`);
+
+        if (itemId === 'load') {
+            // Load dropdown is handled by the header component
+            return;
+        }
+
+        // Handle other menu items
+        switch (itemId) {
+            case 'save':
+            case 'analyze':
+            case 'details':
+            case 'settings':
+            case 'help':
+            case 'license':
+                console.log(`Menu item '${itemId}' is not implemented yet`);
+                break;
+            default:
+                console.warn(`Unknown menu item: ${itemId}`);
+        }
+    }
+
+    handleWindowControlClick(controlId) {
+        console.log(`Window control clicked: ${controlId}`);
+
+        switch (controlId) {
+            case 'minimize':
+            case 'maximize':
+            case 'close':
+                console.log(`Window control '${controlId}' is not implemented yet`);
+                break;
+            default:
+                console.warn(`Unknown window control: ${controlId}`);
+        }
     }
 }
 
@@ -783,4 +873,84 @@ window.addEventListener('beforeunload', () => {
 });
 
 // Export for debugging
-window.AssemblyApp = AssemblyApp; 
+window.AssemblyApp = AssemblyApp;
+
+// ===== GLOBAL DROP HANDLER =====
+// This function is called by the inline ondrop handlers in track clips areas
+window.handleTrackDrop = function (event, trackId) {
+    console.log('Global drop handler called for track:', trackId);
+    event.preventDefault();
+
+    try {
+        const dragData = JSON.parse(event.dataTransfer.getData('application/json'));
+        console.log('Drag data in global handler:', dragData);
+
+        // Calculate drop position
+        const trackElement = event.target.closest('.track__clips-area');
+        const rect = trackElement.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+
+        // Snap to beat grid
+        const beatWidth = PROJECT_CONFIG.layout.gridBeatWidth;
+        const startTime = Math.round(x / beatWidth);
+
+        // Get clip duration from drag data
+        const clipDuration = dragData.clipDuration || 1;
+        const endTime = startTime + clipDuration;
+
+        // Check for collisions (excluding the dragged clip)
+        const existingClips = trackElement.querySelectorAll('[data-clip-id]');
+        let hasCollision = false;
+
+        existingClips.forEach(clipElement => {
+            // Skip the clip being dragged
+            if (dragData.type === 'timeline-clip' &&
+                clipElement.dataset.clipId === dragData.clipId) {
+                return; // Skip this clip
+            }
+
+            const existingStart = parseFloat(clipElement.dataset.clipStartTime);
+            const existingDuration = parseFloat(clipElement.dataset.clipDuration);
+            const existingEnd = existingStart + existingDuration;
+
+            // Check if new clip overlaps with existing clip
+            if ((startTime < existingEnd) && (endTime > existingStart)) {
+                hasCollision = true;
+            }
+        });
+
+        const dropPosition = {
+            startTime,
+            endTime,
+            isValid: !hasCollision && startTime >= 0
+        };
+
+        console.log('Drop position calculated:', dropPosition);
+
+        if (dropPosition.isValid) {
+            // Handle the drop based on type
+            if (dragData.type === 'sidebar-clip') {
+                // Adding new clip from sidebar
+                window.assemblyApp.handleSidebarClipDrop(dragData, trackId, dropPosition.startTime);
+            } else if (dragData.type === 'timeline-clip') {
+                // Moving existing clip
+                window.assemblyApp.handleTimelineClipMove(dragData, trackId, dropPosition.startTime);
+            }
+        } else {
+            console.log('Invalid drop position - collision detected');
+        }
+
+        // Clean up drop previews
+        window.assemblyApp.cleanupDropPreviews();
+
+    } catch (error) {
+        console.error('Error in global drop handler:', error);
+    }
+
+    // Clear global drag data
+    if (window.globalDragData) {
+        window.globalDragData = null;
+    }
+};
+
+// ===== APPLICATION INITIALIZATION ===== 

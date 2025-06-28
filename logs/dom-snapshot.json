@@ -1,13 +1,13 @@
 {
-  "session": "session-1751144185414",
-  "sessionStart": "2025-06-28T20:56:25.414Z",
-  "timestamp": "2025-06-28T20:57:09.412Z",
+  "session": "session-1751147395699",
+  "sessionStart": "2025-06-28T21:49:55.699Z",
+  "timestamp": "2025-06-28T21:50:23.691Z",
   "url": "http://localhost:52330/index.html",
   "summary": {
-    "totalElements": 180,
+    "totalElements": 178,
     "elementsWithId": 6,
-    "elementsWithClasses": 172,
-    "elementsWithCssConflicts": 7
+    "elementsWithClasses": 170,
+    "elementsWithCssConflicts": 13
   },
   "elements": [
     {
@@ -1066,8 +1066,8 @@
         "width": 1128,
         "height": 581
       },
-      "textContent": "File: band.ass\n            \n            \n                \n            \n                \n            ",
-      "innerHTML": "\n        <!-- LEFT SIDEBAR -->\n        <aside id=\"sidebar\" class=\"sidebar sidebar__scrollbar\">\n            <div class=\"file-info\">\n                File: <span class=\"file-info__name\">band.ass</span>\n "
+      "textContent": "File: my_project.ass\n            \n            \n                \n            \n                \n      ",
+      "innerHTML": "\n        <!-- LEFT SIDEBAR -->\n        <aside id=\"sidebar\" class=\"sidebar sidebar__scrollbar\">\n            <div class=\"file-info\">\n                File: <span class=\"file-info__name\">my_project.ass</s"
     },
     {
       "tag": "aside",
@@ -1107,8 +1107,8 @@
         "width": 240,
         "height": 581
       },
-      "textContent": "File: band.ass\n            \n            \n                \n            \n                \n            ",
-      "innerHTML": "\n            <div class=\"file-info\">\n                File: <span class=\"file-info__name\">band.ass</span>\n            </div>\n            <div class=\"transport-controls\">\n                \n            <d"
+      "textContent": "File: my_project.ass\n            \n            \n                \n            \n                \n      ",
+      "innerHTML": "\n            <div class=\"file-info\">\n                File: <span class=\"file-info__name\">my_project.ass</span>\n            </div>\n            <div class=\"transport-controls\">\n                \n        "
     },
     {
       "tag": "div",
@@ -1148,8 +1148,8 @@
         "width": 223,
         "height": 14
       },
-      "textContent": "File: band.ass",
-      "innerHTML": "\n                File: <span class=\"file-info__name\">band.ass</span>\n            "
+      "textContent": "File: my_project.ass",
+      "innerHTML": "\n                File: <span class=\"file-info__name\">my_project.ass</span>\n            "
     },
     {
       "tag": "span",
@@ -1186,11 +1186,11 @@
         "y": 80
       },
       "dimensions": {
-        "width": 49,
+        "width": 81,
         "height": 14
       },
-      "textContent": "band.ass",
-      "innerHTML": "band.ass"
+      "textContent": "my_project.ass",
+      "innerHTML": "my_project.ass"
     },
     {
       "tag": "div",
@@ -1231,8 +1231,8 @@
         "width": 223,
         "height": 90
       },
-      "textContent": "▶\n                \n                    \n                        ⏹\n                    \n             ",
-      "innerHTML": "\n                \n            <div class=\"transport-controls__row\">\n                \n                    <button class=\"transport-button\" title=\"Play/Pause\" data-transport=\"play\">▶</button>\n          "
+      "textContent": "▶\n                    \n                \n                    \n                        ⏹\n             ",
+      "innerHTML": "\n                \n            <div class=\"transport-controls__row\">\n                \n                    <button class=\"transport-button transport-button--play\" title=\"Play/Pause\" data-transport=\"play"
     },
     {
       "tag": "div",
@@ -1272,14 +1272,15 @@
         "width": 184,
         "height": 40
       },
-      "textContent": "▶\n                \n                    \n                        ⏹\n                    \n             ",
-      "innerHTML": "\n                \n                    <button class=\"transport-button\" title=\"Play/Pause\" data-transport=\"play\">▶</button>\n                \n                    <button class=\"transport-button \" title="
+      "textContent": "▶\n                    \n                \n                    \n                        ⏹\n             ",
+      "innerHTML": "\n                \n                    <button class=\"transport-button transport-button--play\" title=\"Play/Pause\" data-transport=\"play\">\n                        ▶\n                    </button>\n        "
     },
     {
       "tag": "button",
       "id": null,
       "classes": [
-        "transport-button"
+        "transport-button",
+        "transport-button--play"
       ],
       "dataAttributes": {
         "data-transport": "play"
@@ -1296,8 +1297,8 @@
         "margin": "0px",
         "padding": "1px 6px",
         "border": "2px solid rgb(75, 85, 99)",
-        "background-color": "rgb(55, 65, 81)",
-        "color": "rgb(56, 189, 248)",
+        "background-color": "rgb(56, 189, 248)",
+        "color": "rgb(255, 255, 255)",
         "font-size": "20px",
         "font-weight": "400",
         "flex-direction": "row",
@@ -1318,7 +1319,7 @@
         "height": 40
       },
       "textContent": "▶",
-      "innerHTML": "▶"
+      "innerHTML": "\n                        ▶\n                    "
     },
     {
       "tag": "button",
@@ -1757,7 +1758,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "204px",
-        "height": "109px",
+        "height": "64.5px",
         "margin": "0px 0px 24px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -1778,7 +1779,7 @@
       },
       "dimensions": {
         "width": 204,
-        "height": 109
+        "height": 65
       },
       "textContent": "🥁\n                        Drums\n                    \n                    \n                        \n",
       "innerHTML": "\n                    <div class=\"clip-category__header\">\n                        <span class=\"clip-category__icon\">🥁</span>\n                        Drums\n                    </div>\n                  "
@@ -1881,7 +1882,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "82px",
+        "height": "37.5px",
         "margin": "0px 0px 0px 24px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -1902,10 +1903,10 @@
       },
       "dimensions": {
         "width": 180,
-        "height": 82
+        "height": 38
       },
-      "textContent": "Rock Beat\n                            \n                        \n                            \n       ",
-      "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"rock-beat\" draggable=\"true\">\n                                Rock Beat\n                            </div>\n   "
+      "textContent": "Funk Groove\n                                4 beats",
+      "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"funk-groove\" data-clip-type=\"drums\" data-clip-duration=\"4\" draggable=\"true\">\n                                "
     },
     {
       "tag": "div",
@@ -1914,17 +1915,19 @@
         "clip-item"
       ],
       "dataAttributes": {
-        "data-clip-id": "rock-beat"
+        "data-clip-id": "funk-groove",
+        "data-clip-type": "drums",
+        "data-clip-duration": "4"
       },
       "computedStyles": {
-        "display": "block",
+        "display": "flex",
         "position": "static",
         "top": "auto",
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "22px",
+        "height": "37.5px",
         "margin": "0px",
         "padding": "4px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -1932,7 +1935,7 @@
         "color": "rgb(249, 250, 251)",
         "font-size": "12px",
         "font-weight": "400",
-        "flex-direction": "row",
+        "flex-direction": "column",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
         "z-index": "auto",
@@ -1945,20 +1948,18 @@
       },
       "dimensions": {
         "width": 180,
-        "height": 22
+        "height": 38
       },
-      "textContent": "Rock Beat",
-      "innerHTML": "\n                                Rock Beat\n                            "
+      "textContent": "Funk Groove\n                                4 beats",
+      "innerHTML": "\n                                <div class=\"clip-item__name\">Funk Groove</div>\n                                <div class=\"clip-item__duration\">4 beats</div>\n                            "
     },
     {
       "tag": "div",
       "id": null,
       "classes": [
-        "clip-item"
+        "clip-item__name"
       ],
-      "dataAttributes": {
-        "data-clip-id": "funk-groove"
-      },
+      "dataAttributes": null,
       "computedStyles": {
         "display": "block",
         "position": "static",
@@ -1966,15 +1967,15 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "180px",
-        "height": "22px",
+        "width": "164px",
+        "height": "14px",
         "margin": "0px",
-        "padding": "4px 8px",
+        "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgb(55, 65, 81)",
+        "background-color": "rgba(0, 0, 0, 0)",
         "color": "rgb(249, 250, 251)",
         "font-size": "12px",
-        "font-weight": "400",
+        "font-weight": "600",
         "flex-direction": "row",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
@@ -1983,25 +1984,23 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 32,
-        "y": 330
+        "x": 40,
+        "y": 304
       },
       "dimensions": {
-        "width": 180,
-        "height": 22
+        "width": 164,
+        "height": 14
       },
       "textContent": "Funk Groove",
-      "innerHTML": "\n                                Funk Groove\n                            "
+      "innerHTML": "Funk Groove"
     },
     {
       "tag": "div",
       "id": null,
       "classes": [
-        "clip-item"
+        "clip-item__duration"
       ],
-      "dataAttributes": {
-        "data-clip-id": "jazz-shuffle"
-      },
+      "dataAttributes": null,
       "computedStyles": {
         "display": "block",
         "position": "static",
@@ -2009,32 +2008,32 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "180px",
-        "height": "22px",
+        "width": "164px",
+        "height": "11.5px",
         "margin": "0px",
-        "padding": "4px 8px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgb(55, 65, 81)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "12px",
+        "padding": "0px",
+        "border": "0px none rgb(156, 163, 175)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(156, 163, 175)",
+        "font-size": "10px",
         "font-weight": "400",
         "flex-direction": "row",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
         "z-index": "auto",
-        "opacity": "1",
+        "opacity": "0.8",
         "visibility": "visible"
       },
       "position": {
-        "x": 32,
-        "y": 360
+        "x": 40,
+        "y": 322
       },
       "dimensions": {
-        "width": 180,
-        "height": 22
+        "width": 164,
+        "height": 12
       },
-      "textContent": "Jazz Shuffle",
-      "innerHTML": "\n                                Jazz Shuffle\n                            "
+      "textContent": "4 beats",
+      "innerHTML": "4 beats"
     },
     {
       "tag": "div",
@@ -2051,7 +2050,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "204px",
-        "height": "109px",
+        "height": "110px",
         "margin": "0px 0px 24px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2068,11 +2067,11 @@
       },
       "position": {
         "x": 8,
-        "y": 406
+        "y": 362
       },
       "dimensions": {
         "width": 204,
-        "height": 109
+        "height": 110
       },
       "textContent": "🎸\n                        Bass\n                    \n                    \n                        \n ",
       "innerHTML": "\n                    <div class=\"clip-category__header\">\n                        <span class=\"clip-category__icon\">🎸</span>\n                        Bass\n                    </div>\n                   "
@@ -2110,7 +2109,7 @@
       },
       "position": {
         "x": 8,
-        "y": 406
+        "y": 362
       },
       "dimensions": {
         "width": 204,
@@ -2151,7 +2150,7 @@
       },
       "position": {
         "x": 8,
-        "y": 406
+        "y": 362
       },
       "dimensions": {
         "width": 20,
@@ -2175,7 +2174,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "82px",
+        "height": "83px",
         "margin": "0px 0px 0px 24px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2192,14 +2191,14 @@
       },
       "position": {
         "x": 32,
-        "y": 433
+        "y": 389
       },
       "dimensions": {
         "width": 180,
-        "height": 82
+        "height": 83
       },
-      "textContent": "Walking Bass\n                            \n                        \n                            \n    ",
-      "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"walking-bass\" draggable=\"true\">\n                                Walking Bass\n                            </di"
+      "textContent": "Walking Bass\n                                4 beats\n                            \n                  ",
+      "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"walking-bass\" data-clip-type=\"bass\" data-clip-duration=\"4\" draggable=\"true\">\n                                "
     },
     {
       "tag": "div",
@@ -2208,17 +2207,19 @@
         "clip-item"
       ],
       "dataAttributes": {
-        "data-clip-id": "walking-bass"
+        "data-clip-id": "walking-bass",
+        "data-clip-type": "bass",
+        "data-clip-duration": "4"
       },
       "computedStyles": {
-        "display": "block",
+        "display": "flex",
         "position": "static",
         "top": "auto",
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "22px",
+        "height": "37.5px",
         "margin": "0px",
         "padding": "4px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2226,7 +2227,7 @@
         "color": "rgb(249, 250, 251)",
         "font-size": "12px",
         "font-weight": "400",
-        "flex-direction": "row",
+        "flex-direction": "column",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
         "z-index": "auto",
@@ -2235,14 +2236,96 @@
       },
       "position": {
         "x": 32,
-        "y": 433
+        "y": 389
       },
       "dimensions": {
         "width": 180,
-        "height": 22
+        "height": 38
+      },
+      "textContent": "Walking Bass\n                                4 beats",
+      "innerHTML": "\n                                <div class=\"clip-item__name\">Walking Bass</div>\n                                <div class=\"clip-item__duration\">4 beats</div>\n                            "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item__name"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "164px",
+        "height": "14px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "12px",
+        "font-weight": "600",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 40,
+        "y": 393
+      },
+      "dimensions": {
+        "width": 164,
+        "height": 14
       },
       "textContent": "Walking Bass",
-      "innerHTML": "\n                                Walking Bass\n                            "
+      "innerHTML": "Walking Bass"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item__duration"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "164px",
+        "height": "11.5px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(156, 163, 175)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(156, 163, 175)",
+        "font-size": "10px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "0.8",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 40,
+        "y": 411
+      },
+      "dimensions": {
+        "width": 164,
+        "height": 12
+      },
+      "textContent": "4 beats",
+      "innerHTML": "4 beats"
     },
     {
       "tag": "div",
@@ -2251,17 +2334,19 @@
         "clip-item"
       ],
       "dataAttributes": {
-        "data-clip-id": "synth-bass"
+        "data-clip-id": "synth-bass",
+        "data-clip-type": "bass",
+        "data-clip-duration": "2"
       },
       "computedStyles": {
-        "display": "block",
+        "display": "flex",
         "position": "static",
         "top": "auto",
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "22px",
+        "height": "37.5px",
         "margin": "0px",
         "padding": "4px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2269,7 +2354,7 @@
         "color": "rgb(249, 250, 251)",
         "font-size": "12px",
         "font-weight": "400",
-        "flex-direction": "row",
+        "flex-direction": "column",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
         "z-index": "auto",
@@ -2278,24 +2363,63 @@
       },
       "position": {
         "x": 32,
-        "y": 463
+        "y": 434
       },
       "dimensions": {
         "width": 180,
-        "height": 22
+        "height": 38
+      },
+      "textContent": "Synth Bass\n                                2 beats",
+      "innerHTML": "\n                                <div class=\"clip-item__name\">Synth Bass</div>\n                                <div class=\"clip-item__duration\">2 beats</div>\n                            "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item__name"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "164px",
+        "height": "14px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "12px",
+        "font-weight": "600",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 40,
+        "y": 438
+      },
+      "dimensions": {
+        "width": 164,
+        "height": 14
       },
       "textContent": "Synth Bass",
-      "innerHTML": "\n                                Synth Bass\n                            "
+      "innerHTML": "Synth Bass"
     },
     {
       "tag": "div",
       "id": null,
       "classes": [
-        "clip-item"
+        "clip-item__duration"
       ],
-      "dataAttributes": {
-        "data-clip-id": "slap-bass"
-      },
+      "dataAttributes": null,
       "computedStyles": {
         "display": "block",
         "position": "static",
@@ -2303,32 +2427,32 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "180px",
-        "height": "22px",
+        "width": "164px",
+        "height": "11.5px",
         "margin": "0px",
-        "padding": "4px 8px",
-        "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgb(55, 65, 81)",
-        "color": "rgb(249, 250, 251)",
-        "font-size": "12px",
+        "padding": "0px",
+        "border": "0px none rgb(156, 163, 175)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(156, 163, 175)",
+        "font-size": "10px",
         "font-weight": "400",
         "flex-direction": "row",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
         "z-index": "auto",
-        "opacity": "1",
+        "opacity": "0.8",
         "visibility": "visible"
       },
       "position": {
-        "x": 32,
-        "y": 493
+        "x": 40,
+        "y": 456
       },
       "dimensions": {
-        "width": 180,
-        "height": 22
+        "width": 164,
+        "height": 12
       },
-      "textContent": "Slap Bass",
-      "innerHTML": "\n                                Slap Bass\n                            "
+      "textContent": "2 beats",
+      "innerHTML": "2 beats"
     },
     {
       "tag": "div",
@@ -2345,7 +2469,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "204px",
-        "height": "109px",
+        "height": "155.5px",
         "margin": "0px 0px 24px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2362,11 +2486,11 @@
       },
       "position": {
         "x": 8,
-        "y": 539
+        "y": 496
       },
       "dimensions": {
         "width": 204,
-        "height": 109
+        "height": 156
       },
       "textContent": "🎹\n                        Guitar\n                    \n                    \n                        ",
       "innerHTML": "\n                    <div class=\"clip-category__header\">\n                        <span class=\"clip-category__icon\">🎹</span>\n                        Guitar\n                    </div>\n                 "
@@ -2404,7 +2528,7 @@
       },
       "position": {
         "x": 8,
-        "y": 539
+        "y": 496
       },
       "dimensions": {
         "width": 204,
@@ -2445,7 +2569,7 @@
       },
       "position": {
         "x": 8,
-        "y": 539
+        "y": 496
       },
       "dimensions": {
         "width": 20,
@@ -2469,7 +2593,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "82px",
+        "height": "128.5px",
         "margin": "0px 0px 0px 24px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2486,14 +2610,14 @@
       },
       "position": {
         "x": 32,
-        "y": 566
+        "y": 523
       },
       "dimensions": {
         "width": 180,
-        "height": 82
+        "height": 129
       },
-      "textContent": "Clean Chords\n                            \n                        \n                            \n    ",
-      "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"clean-chords\" draggable=\"true\">\n                                Clean Chords\n                            </di"
+      "textContent": "Clean Chords\n                                4 beats\n                            \n                  ",
+      "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"clean-chords\" data-clip-type=\"guitar\" data-clip-duration=\"4\" draggable=\"true\">\n                              "
     },
     {
       "tag": "div",
@@ -2502,17 +2626,19 @@
         "clip-item"
       ],
       "dataAttributes": {
-        "data-clip-id": "clean-chords"
+        "data-clip-id": "clean-chords",
+        "data-clip-type": "guitar",
+        "data-clip-duration": "4"
       },
       "computedStyles": {
-        "display": "block",
+        "display": "flex",
         "position": "static",
         "top": "auto",
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "22px",
+        "height": "37.5px",
         "margin": "0px",
         "padding": "4px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2520,7 +2646,7 @@
         "color": "rgb(249, 250, 251)",
         "font-size": "12px",
         "font-weight": "400",
-        "flex-direction": "row",
+        "flex-direction": "column",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
         "z-index": "auto",
@@ -2529,14 +2655,96 @@
       },
       "position": {
         "x": 32,
-        "y": 566
+        "y": 523
       },
       "dimensions": {
         "width": 180,
-        "height": 22
+        "height": 38
+      },
+      "textContent": "Clean Chords\n                                4 beats",
+      "innerHTML": "\n                                <div class=\"clip-item__name\">Clean Chords</div>\n                                <div class=\"clip-item__duration\">4 beats</div>\n                            "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item__name"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "164px",
+        "height": "14px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "12px",
+        "font-weight": "600",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 40,
+        "y": 527
+      },
+      "dimensions": {
+        "width": 164,
+        "height": 14
       },
       "textContent": "Clean Chords",
-      "innerHTML": "\n                                Clean Chords\n                            "
+      "innerHTML": "Clean Chords"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item__duration"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "164px",
+        "height": "11.5px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(156, 163, 175)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(156, 163, 175)",
+        "font-size": "10px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "0.8",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 40,
+        "y": 545
+      },
+      "dimensions": {
+        "width": 164,
+        "height": 12
+      },
+      "textContent": "4 beats",
+      "innerHTML": "4 beats"
     },
     {
       "tag": "div",
@@ -2545,17 +2753,19 @@
         "clip-item"
       ],
       "dataAttributes": {
-        "data-clip-id": "distorted-riff"
+        "data-clip-id": "distorted-riff",
+        "data-clip-type": "guitar",
+        "data-clip-duration": "2"
       },
       "computedStyles": {
-        "display": "block",
+        "display": "flex",
         "position": "static",
         "top": "auto",
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "22px",
+        "height": "37.5px",
         "margin": "0px",
         "padding": "4px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2563,7 +2773,7 @@
         "color": "rgb(249, 250, 251)",
         "font-size": "12px",
         "font-weight": "400",
-        "flex-direction": "row",
+        "flex-direction": "column",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
         "z-index": "auto",
@@ -2572,14 +2782,96 @@
       },
       "position": {
         "x": 32,
-        "y": 596
+        "y": 568
       },
       "dimensions": {
         "width": 180,
-        "height": 22
+        "height": 38
+      },
+      "textContent": "Distorted Riff\n                                2 beats",
+      "innerHTML": "\n                                <div class=\"clip-item__name\">Distorted Riff</div>\n                                <div class=\"clip-item__duration\">2 beats</div>\n                            "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item__name"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "164px",
+        "height": "14px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "12px",
+        "font-weight": "600",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 40,
+        "y": 572
+      },
+      "dimensions": {
+        "width": 164,
+        "height": 14
       },
       "textContent": "Distorted Riff",
-      "innerHTML": "\n                                Distorted Riff\n                            "
+      "innerHTML": "Distorted Riff"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item__duration"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "164px",
+        "height": "11.5px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(156, 163, 175)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(156, 163, 175)",
+        "font-size": "10px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "0.8",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 40,
+        "y": 590
+      },
+      "dimensions": {
+        "width": 164,
+        "height": 12
+      },
+      "textContent": "2 beats",
+      "innerHTML": "2 beats"
     },
     {
       "tag": "div",
@@ -2588,17 +2880,19 @@
         "clip-item"
       ],
       "dataAttributes": {
-        "data-clip-id": "arpeggio"
+        "data-clip-id": "arpeggio",
+        "data-clip-type": "guitar",
+        "data-clip-duration": "3"
       },
       "computedStyles": {
-        "display": "block",
+        "display": "flex",
         "position": "static",
         "top": "auto",
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "22px",
+        "height": "37.5px",
         "margin": "0px",
         "padding": "4px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2606,7 +2900,7 @@
         "color": "rgb(249, 250, 251)",
         "font-size": "12px",
         "font-weight": "400",
-        "flex-direction": "row",
+        "flex-direction": "column",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
         "z-index": "auto",
@@ -2615,14 +2909,96 @@
       },
       "position": {
         "x": 32,
-        "y": 626
+        "y": 614
       },
       "dimensions": {
         "width": 180,
-        "height": 22
+        "height": 38
+      },
+      "textContent": "Arpeggio\n                                3 beats",
+      "innerHTML": "\n                                <div class=\"clip-item__name\">Arpeggio</div>\n                                <div class=\"clip-item__duration\">3 beats</div>\n                            "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item__name"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "164px",
+        "height": "14px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "12px",
+        "font-weight": "600",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 40,
+        "y": 618
+      },
+      "dimensions": {
+        "width": 164,
+        "height": 14
       },
       "textContent": "Arpeggio",
-      "innerHTML": "\n                                Arpeggio\n                            "
+      "innerHTML": "Arpeggio"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item__duration"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "164px",
+        "height": "11.5px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(156, 163, 175)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(156, 163, 175)",
+        "font-size": "10px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "0.8",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 40,
+        "y": 636
+      },
+      "dimensions": {
+        "width": 164,
+        "height": 12
+      },
+      "textContent": "3 beats",
+      "innerHTML": "3 beats"
     },
     {
       "tag": "div",
@@ -2639,7 +3015,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "204px",
-        "height": "79px",
+        "height": "110px",
         "margin": "0px 0px 24px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2656,11 +3032,11 @@
       },
       "position": {
         "x": 8,
-        "y": 672
+        "y": 675
       },
       "dimensions": {
         "width": 204,
-        "height": 79
+        "height": 110
       },
       "textContent": "🎤\n                        Vocals\n                    \n                    \n                        ",
       "innerHTML": "\n                    <div class=\"clip-category__header\">\n                        <span class=\"clip-category__icon\">🎤</span>\n                        Vocals\n                    </div>\n                 "
@@ -2698,7 +3074,7 @@
       },
       "position": {
         "x": 8,
-        "y": 672
+        "y": 675
       },
       "dimensions": {
         "width": 204,
@@ -2739,7 +3115,7 @@
       },
       "position": {
         "x": 8,
-        "y": 672
+        "y": 675
       },
       "dimensions": {
         "width": 20,
@@ -2763,7 +3139,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "52px",
+        "height": "83px",
         "margin": "0px 0px 0px 24px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2780,14 +3156,14 @@
       },
       "position": {
         "x": 32,
-        "y": 699
+        "y": 702
       },
       "dimensions": {
         "width": 180,
-        "height": 52
+        "height": 83
       },
-      "textContent": "Lead Take 1\n                            \n                        \n                            \n     ",
-      "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"lead-take-1\" draggable=\"true\">\n                                Lead Take 1\n                            </div>"
+      "textContent": "Lead Take 1\n                                4 beats\n                            \n                   ",
+      "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"lead-take-1\" data-clip-type=\"vocals\" data-clip-duration=\"4\" draggable=\"true\">\n                               "
     },
     {
       "tag": "div",
@@ -2796,17 +3172,19 @@
         "clip-item"
       ],
       "dataAttributes": {
-        "data-clip-id": "lead-take-1"
+        "data-clip-id": "lead-take-1",
+        "data-clip-type": "vocals",
+        "data-clip-duration": "4"
       },
       "computedStyles": {
-        "display": "block",
+        "display": "flex",
         "position": "static",
         "top": "auto",
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "22px",
+        "height": "37.5px",
         "margin": "0px",
         "padding": "4px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2814,7 +3192,7 @@
         "color": "rgb(249, 250, 251)",
         "font-size": "12px",
         "font-weight": "400",
-        "flex-direction": "row",
+        "flex-direction": "column",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
         "z-index": "auto",
@@ -2823,14 +3201,96 @@
       },
       "position": {
         "x": 32,
-        "y": 699
+        "y": 702
       },
       "dimensions": {
         "width": 180,
-        "height": 22
+        "height": 38
+      },
+      "textContent": "Lead Take 1\n                                4 beats",
+      "innerHTML": "\n                                <div class=\"clip-item__name\">Lead Take 1</div>\n                                <div class=\"clip-item__duration\">4 beats</div>\n                            "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item__name"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "164px",
+        "height": "14px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "12px",
+        "font-weight": "600",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 40,
+        "y": 706
+      },
+      "dimensions": {
+        "width": 164,
+        "height": 14
       },
       "textContent": "Lead Take 1",
-      "innerHTML": "\n                                Lead Take 1\n                            "
+      "innerHTML": "Lead Take 1"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item__duration"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "164px",
+        "height": "11.5px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(156, 163, 175)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(156, 163, 175)",
+        "font-size": "10px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "0.8",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 40,
+        "y": 724
+      },
+      "dimensions": {
+        "width": 164,
+        "height": 12
+      },
+      "textContent": "4 beats",
+      "innerHTML": "4 beats"
     },
     {
       "tag": "div",
@@ -2839,17 +3299,19 @@
         "clip-item"
       ],
       "dataAttributes": {
-        "data-clip-id": "lead-take-2"
+        "data-clip-id": "lead-take-2",
+        "data-clip-type": "vocals",
+        "data-clip-duration": "3"
       },
       "computedStyles": {
-        "display": "block",
+        "display": "flex",
         "position": "static",
         "top": "auto",
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "22px",
+        "height": "37.5px",
         "margin": "0px",
         "padding": "4px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2857,7 +3319,7 @@
         "color": "rgb(249, 250, 251)",
         "font-size": "12px",
         "font-weight": "400",
-        "flex-direction": "row",
+        "flex-direction": "column",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
         "z-index": "auto",
@@ -2866,14 +3328,96 @@
       },
       "position": {
         "x": 32,
-        "y": 729
+        "y": 748
       },
       "dimensions": {
         "width": 180,
-        "height": 22
+        "height": 38
+      },
+      "textContent": "Lead Take 2\n                                3 beats",
+      "innerHTML": "\n                                <div class=\"clip-item__name\">Lead Take 2</div>\n                                <div class=\"clip-item__duration\">3 beats</div>\n                            "
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item__name"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "164px",
+        "height": "14px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "12px",
+        "font-weight": "600",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 40,
+        "y": 752
+      },
+      "dimensions": {
+        "width": 164,
+        "height": 14
       },
       "textContent": "Lead Take 2",
-      "innerHTML": "\n                                Lead Take 2\n                            "
+      "innerHTML": "Lead Take 2"
+    },
+    {
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "clip-item__duration"
+      ],
+      "dataAttributes": null,
+      "computedStyles": {
+        "display": "block",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "164px",
+        "height": "11.5px",
+        "margin": "0px",
+        "padding": "0px",
+        "border": "0px none rgb(156, 163, 175)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(156, 163, 175)",
+        "font-size": "10px",
+        "font-weight": "400",
+        "flex-direction": "row",
+        "grid-template-columns": "none",
+        "grid-template-rows": "none",
+        "z-index": "auto",
+        "opacity": "0.8",
+        "visibility": "visible"
+      },
+      "position": {
+        "x": 40,
+        "y": 770
+      },
+      "dimensions": {
+        "width": 164,
+        "height": 12
+      },
+      "textContent": "3 beats",
+      "innerHTML": "3 beats"
     },
     {
       "tag": "section",
@@ -2913,8 +3457,8 @@
         "width": 800,
         "height": 581
       },
-      "textContent": "00:00.7\n                    BPM: 110\n                \n                \n                    \n        ",
-      "innerHTML": "\n            <div class=\"timeline-container\">\n                <div class=\"timeline-header\">\n                    <div class=\"timeline-header__time\">00:00.7</div>\n                    <div class=\"timelin"
+      "textContent": "00:00\n                    BPM: 110\n                \n                \n                    \n          ",
+      "innerHTML": "\n            <div class=\"timeline-container\">\n                <div class=\"timeline-header\">\n                    <div class=\"timeline-header__time\">00:00</div>\n                    <div class=\"timeline-"
     },
     {
       "tag": "div",
@@ -2954,8 +3498,8 @@
         "width": 776,
         "height": 581
       },
-      "textContent": "00:00.7\n                    BPM: 110\n                \n                \n                    \n        ",
-      "innerHTML": "\n                <div class=\"timeline-header\">\n                    <div class=\"timeline-header__time\">00:00.7</div>\n                    <div class=\"timeline-header__bpm\">BPM: 110</div>\n               "
+      "textContent": "00:00\n                    BPM: 110\n                \n                \n                    \n          ",
+      "innerHTML": "\n                <div class=\"timeline-header\">\n                    <div class=\"timeline-header__time\">00:00</div>\n                    <div class=\"timeline-header__bpm\">BPM: 110</div>\n                <"
     },
     {
       "tag": "div",
@@ -2996,8 +3540,8 @@
         "width": 776,
         "height": 35
       },
-      "textContent": "00:00.7\n                    BPM: 110",
-      "innerHTML": "\n                    <div class=\"timeline-header__time\">00:00.7</div>\n                    <div class=\"timeline-header__bpm\">BPM: 110</div>\n                "
+      "textContent": "00:00\n                    BPM: 110",
+      "innerHTML": "\n                    <div class=\"timeline-header__time\">00:00</div>\n                    <div class=\"timeline-header__bpm\">BPM: 110</div>\n                "
     },
     {
       "tag": "div",
@@ -3013,7 +3557,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "50.4141px",
+        "width": "36.0078px",
         "height": "13.5px",
         "margin": "0px",
         "padding": "0px",
@@ -3034,11 +3578,11 @@
         "y": 72
       },
       "dimensions": {
-        "width": 50,
+        "width": 36,
         "height": 14
       },
-      "textContent": "00:00.7",
-      "innerHTML": "00:00.7"
+      "textContent": "00:00",
+      "innerHTML": "00:00"
     },
     {
       "tag": "div",
@@ -4862,7 +5406,9 @@
       "classes": [
         "track__clips-area"
       ],
-      "dataAttributes": null,
+      "dataAttributes": {
+        "data-track-id": "drums"
+      },
       "computedStyles": {
         "display": "block",
         "position": "relative",
@@ -4871,11 +5417,11 @@
         "right": "0px",
         "bottom": "0px",
         "width": "536px",
-        "height": "55px",
+        "height": "48px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgba(0, 0, 0, 0)",
+        "background-color": "rgb(55, 65, 81)",
         "color": "rgb(249, 250, 251)",
         "font-size": "16px",
         "font-weight": "400",
@@ -4888,14 +5434,14 @@
       },
       "position": {
         "x": 504,
-        "y": 123
+        "y": 127
       },
       "dimensions": {
         "width": 536,
-        "height": 55
+        "height": 48
       },
-      "textContent": "Rock Beat\n            \n        \n            \n                \n                \n                Funk ",
-      "innerHTML": "\n                    <div class=\"track__playhead\" style=\"left: 32px; opacity: 0.4;\"></div>\n                    <div class=\"track__clips\">\n                        \n            <div class=\"clip clip--da"
+      "textContent": "Slap Bass\n                    3 beats",
+      "innerHTML": "\n                    <div class=\"track__playhead\"></div>\n                    <div class=\"track__clips\">\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"slap-bass\" data-"
     },
     {
       "tag": "div",
@@ -4908,11 +5454,11 @@
         "display": "block",
         "position": "absolute",
         "top": "0px",
-        "left": "32px",
-        "right": "502px",
+        "left": "0px",
+        "right": "534px",
         "bottom": "0px",
         "width": "2px",
-        "height": "55px",
+        "height": "48px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -4928,12 +5474,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 536,
-        "y": 123
+        "x": 504,
+        "y": 127
       },
       "dimensions": {
         "width": 2,
-        "height": 55
+        "height": 48
       },
       "textContent": null,
       "innerHTML": null
@@ -4953,7 +5499,7 @@
         "right": "0px",
         "bottom": "0px",
         "width": "536px",
-        "height": "55px",
+        "height": "0px",
         "margin": "0px",
         "padding": "0px 0px 0px 48px",
         "border": "0px none rgb(249, 250, 251)",
@@ -4971,14 +5517,14 @@
       },
       "position": {
         "x": 504,
-        "y": 123
+        "y": 127
       },
       "dimensions": {
         "width": 536,
-        "height": 55
+        "height": 0
       },
-      "textContent": "Rock Beat\n            \n        \n            \n                \n                \n                Funk ",
-      "innerHTML": "\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"rock-beat\" data-track-id=\"drums\" style=\"width: 160px; left: 0px;\" draggable=\"true\">\n                <div class=\"clip__r"
+      "textContent": "Slap Bass\n                    3 beats",
+      "innerHTML": "\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"slap-bass\" data-track-id=\"drums\" data-clip-type=\"bass\" data-clip-duration=\"3\" data-clip-start-time=\"2\" style=\"width: 12"
     },
     {
       "tag": "div",
@@ -4988,26 +5534,30 @@
         "clip--dark"
       ],
       "dataAttributes": {
-        "data-clip-id": "rock-beat",
-        "data-track-id": "drums"
+        "data-clip-id": "slap-bass",
+        "data-track-id": "drums",
+        "data-clip-type": "bass",
+        "data-clip-duration": "3",
+        "data-clip-start-time": "2"
       },
       "computedStyles": {
         "display": "flex",
         "position": "absolute",
-        "top": "15.5px",
-        "left": "0px",
-        "right": "376px",
-        "bottom": "15.5px",
-        "width": "160px",
-        "height": "24px",
+        "top": "8px",
+        "left": "80px",
+        "right": "336px",
+        "bottom": "-40px",
+        "width": "120px",
+        "height": "32px",
         "margin": "0px",
-        "padding": "0px 4px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgb(12, 74, 110)",
-        "color": "rgb(255, 255, 255)",
+        "padding": "4px 8px",
+        "border": "1px solid rgb(75, 85, 99)",
+        "background-color": "rgb(55, 65, 81)",
+        "color": "rgb(249, 250, 251)",
         "font-size": "12px",
-        "font-weight": "500",
+        "font-weight": "400",
         "flex-direction": "row",
+        "justify-content": "center",
         "align-items": "center",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
@@ -5016,15 +5566,15 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 504,
-        "y": 139
+        "x": 584,
+        "y": 135
       },
       "dimensions": {
-        "width": 160,
-        "height": 24
+        "width": 120,
+        "height": 32
       },
-      "textContent": "Rock Beat",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Rock Beat\n        "
+      "textContent": "Slap Bass\n                    3 beats",
+      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                <div class=\"clip__"
     },
     {
       "tag": "div",
@@ -5036,20 +5586,20 @@
       "dataAttributes": null,
       "computedStyles": {
         "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "0px",
-        "right": "156px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "0px",
+        "height": "0px",
         "margin": "0px",
         "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
         "font-size": "12px",
-        "font-weight": "500",
+        "font-weight": "400",
         "flex-direction": "row",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
@@ -5058,15 +5608,18 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 504,
-        "y": 139
+        "x": 593,
+        "y": 151
       },
       "dimensions": {
-        "width": 4,
-        "height": 24
+        "width": 0,
+        "height": 0
       },
       "textContent": null,
-      "innerHTML": null
+      "innerHTML": null,
+      "cssConflicts": [
+        "Element has zero width but non-zero min-width"
+      ]
     },
     {
       "tag": "div",
@@ -5078,20 +5631,20 @@
       "dataAttributes": null,
       "computedStyles": {
         "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "156px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "0px",
+        "height": "0px",
         "margin": "0px",
         "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
         "font-size": "12px",
-        "font-weight": "500",
+        "font-weight": "400",
         "flex-direction": "row",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
@@ -5100,44 +5653,44 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 660,
-        "y": 139
+        "x": 593,
+        "y": 151
       },
       "dimensions": {
-        "width": 4,
-        "height": 24
+        "width": 0,
+        "height": 0
       },
       "textContent": null,
-      "innerHTML": null
+      "innerHTML": null,
+      "cssConflicts": [
+        "Element has zero width but non-zero min-width"
+      ]
     },
     {
       "tag": "div",
       "id": null,
       "classes": [
-        "clip",
-        "clip--dark"
+        "clip__content"
       ],
-      "dataAttributes": {
-        "data-clip-id": "funk-groove",
-        "data-track-id": "drums"
-      },
+      "dataAttributes": null,
       "computedStyles": {
         "display": "flex",
-        "position": "absolute",
-        "top": "15.5px",
-        "left": "0px",
-        "right": "376px",
-        "bottom": "15.5px",
-        "width": "160px",
-        "height": "24px",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "102px",
+        "height": "22px",
         "margin": "0px",
-        "padding": "0px 4px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgb(12, 74, 110)",
-        "color": "rgb(255, 255, 255)",
+        "padding": "0px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
         "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
+        "font-weight": "400",
+        "flex-direction": "column",
+        "justify-content": "center",
         "align-items": "center",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
@@ -5146,40 +5699,39 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 504,
-        "y": 139
+        "x": 593,
+        "y": 140
       },
       "dimensions": {
-        "width": 160,
-        "height": 24
+        "width": 102,
+        "height": 22
       },
-      "textContent": "Funk Groove",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Funk Groove\n      "
+      "textContent": "Slap Bass\n                    3 beats",
+      "innerHTML": "\n                    <div class=\"clip__name\">Slap Bass</div>\n                    <div class=\"clip__duration\">3 beats</div>\n                "
     },
     {
       "tag": "div",
       "id": null,
       "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--left"
+        "clip__name"
       ],
       "dataAttributes": null,
       "computedStyles": {
         "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "0px",
-        "right": "156px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "47.8047px",
+        "height": "10px",
+        "margin": "0px 0px 2px",
         "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "10px",
+        "font-weight": "600",
         "flex-direction": "row",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
@@ -5188,187 +5740,56 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 504,
-        "y": 139
+        "x": 620,
+        "y": 141
       },
       "dimensions": {
-        "width": 4,
-        "height": 24
+        "width": 48,
+        "height": 10
       },
-      "textContent": null,
-      "innerHTML": null
+      "textContent": "Slap Bass",
+      "innerHTML": "Slap Bass"
     },
     {
       "tag": "div",
       "id": null,
       "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--right"
+        "clip__duration"
       ],
       "dataAttributes": null,
       "computedStyles": {
         "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "156px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "26.2422px",
+        "height": "8px",
         "margin": "0px",
         "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "8px",
+        "font-weight": "400",
         "flex-direction": "row",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
         "z-index": "auto",
-        "opacity": "1",
+        "opacity": "0.7",
         "visibility": "visible"
       },
       "position": {
-        "x": 660,
-        "y": 139
+        "x": 631,
+        "y": 153
       },
       "dimensions": {
-        "width": 4,
-        "height": 24
+        "width": 26,
+        "height": 8
       },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip",
-        "clip--dark"
-      ],
-      "dataAttributes": {
-        "data-clip-id": "jazz-shuffle",
-        "data-track-id": "drums"
-      },
-      "computedStyles": {
-        "display": "flex",
-        "position": "absolute",
-        "top": "15.5px",
-        "left": "0px",
-        "right": "376px",
-        "bottom": "15.5px",
-        "width": "160px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px 4px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgb(12, 74, 110)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 504,
-        "y": 139
-      },
-      "dimensions": {
-        "width": 160,
-        "height": 24
-      },
-      "textContent": "Jazz Shuffle",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Jazz Shuffle\n     "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--left"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "0px",
-        "right": "156px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 504,
-        "y": 139
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--right"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "156px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 660,
-        "y": 139
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
-      },
-      "textContent": null,
-      "innerHTML": null
+      "textContent": "3 beats",
+      "innerHTML": "3 beats"
     },
     {
       "tag": "div",
@@ -5596,7 +6017,9 @@
       "classes": [
         "track__clips-area"
       ],
-      "dataAttributes": null,
+      "dataAttributes": {
+        "data-track-id": "bass"
+      },
       "computedStyles": {
         "display": "block",
         "position": "relative",
@@ -5605,11 +6028,11 @@
         "right": "0px",
         "bottom": "0px",
         "width": "536px",
-        "height": "55px",
+        "height": "48px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgba(0, 0, 0, 0)",
+        "background-color": "rgb(55, 65, 81)",
         "color": "rgb(249, 250, 251)",
         "font-size": "16px",
         "font-weight": "400",
@@ -5622,14 +6045,14 @@
       },
       "position": {
         "x": 504,
-        "y": 179
+        "y": 183
       },
       "dimensions": {
         "width": 536,
-        "height": 55
+        "height": 48
       },
-      "textContent": "Walking Bass\n            \n        \n            \n                \n                \n                Sy",
-      "innerHTML": "\n                    <div class=\"track__playhead\" style=\"left: 32px; opacity: 0.4;\"></div>\n                    <div class=\"track__clips\">\n                        \n            <div class=\"clip clip--da"
+      "textContent": "Rock Beat\n                    2 beats",
+      "innerHTML": "\n                    <div class=\"track__playhead\"></div>\n                    <div class=\"track__clips\">\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"rock-beat\" data-"
     },
     {
       "tag": "div",
@@ -5642,11 +6065,11 @@
         "display": "block",
         "position": "absolute",
         "top": "0px",
-        "left": "32px",
-        "right": "502px",
+        "left": "0px",
+        "right": "534px",
         "bottom": "0px",
         "width": "2px",
-        "height": "55px",
+        "height": "48px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -5662,12 +6085,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 536,
-        "y": 179
+        "x": 504,
+        "y": 183
       },
       "dimensions": {
         "width": 2,
-        "height": 55
+        "height": 48
       },
       "textContent": null,
       "innerHTML": null
@@ -5687,7 +6110,7 @@
         "right": "0px",
         "bottom": "0px",
         "width": "536px",
-        "height": "55px",
+        "height": "0px",
         "margin": "0px",
         "padding": "0px 0px 0px 48px",
         "border": "0px none rgb(249, 250, 251)",
@@ -5705,14 +6128,14 @@
       },
       "position": {
         "x": 504,
-        "y": 179
+        "y": 183
       },
       "dimensions": {
         "width": 536,
-        "height": 55
+        "height": 0
       },
-      "textContent": "Walking Bass\n            \n        \n            \n                \n                \n                Sy",
-      "innerHTML": "\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"walking-bass\" data-track-id=\"bass\" style=\"width: 160px; left: 0px;\" draggable=\"true\">\n                <div class=\"clip_"
+      "textContent": "Rock Beat\n                    2 beats",
+      "innerHTML": "\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"rock-beat\" data-track-id=\"bass\" data-clip-type=\"drums\" data-clip-duration=\"2\" data-clip-start-time=\"6\" style=\"width: 80"
     },
     {
       "tag": "div",
@@ -5722,26 +6145,30 @@
         "clip--dark"
       ],
       "dataAttributes": {
-        "data-clip-id": "walking-bass",
-        "data-track-id": "bass"
+        "data-clip-id": "rock-beat",
+        "data-track-id": "bass",
+        "data-clip-type": "drums",
+        "data-clip-duration": "2",
+        "data-clip-start-time": "6"
       },
       "computedStyles": {
         "display": "flex",
         "position": "absolute",
-        "top": "15.5px",
-        "left": "0px",
-        "right": "376px",
-        "bottom": "15.5px",
-        "width": "160px",
-        "height": "24px",
+        "top": "8px",
+        "left": "240px",
+        "right": "216px",
+        "bottom": "-40px",
+        "width": "80px",
+        "height": "32px",
         "margin": "0px",
-        "padding": "0px 4px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgb(12, 74, 110)",
-        "color": "rgb(255, 255, 255)",
+        "padding": "4px 8px",
+        "border": "1px solid rgb(75, 85, 99)",
+        "background-color": "rgb(55, 65, 81)",
+        "color": "rgb(249, 250, 251)",
         "font-size": "12px",
-        "font-weight": "500",
+        "font-weight": "400",
         "flex-direction": "row",
+        "justify-content": "center",
         "align-items": "center",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
@@ -5750,15 +6177,15 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 504,
-        "y": 195
+        "x": 744,
+        "y": 191
       },
       "dimensions": {
-        "width": 160,
-        "height": 24
+        "width": 80,
+        "height": 32
       },
-      "textContent": "Walking Bass",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Walking Bass\n     "
+      "textContent": "Rock Beat\n                    2 beats",
+      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                <div class=\"clip__"
     },
     {
       "tag": "div",
@@ -5770,20 +6197,20 @@
       "dataAttributes": null,
       "computedStyles": {
         "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "0px",
-        "right": "156px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "0px",
+        "height": "0px",
         "margin": "0px",
         "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
         "font-size": "12px",
-        "font-weight": "500",
+        "font-weight": "400",
         "flex-direction": "row",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
@@ -5792,15 +6219,18 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 504,
-        "y": 195
+        "x": 753,
+        "y": 207
       },
       "dimensions": {
-        "width": 4,
-        "height": 24
+        "width": 0,
+        "height": 0
       },
       "textContent": null,
-      "innerHTML": null
+      "innerHTML": null,
+      "cssConflicts": [
+        "Element has zero width but non-zero min-width"
+      ]
     },
     {
       "tag": "div",
@@ -5812,20 +6242,20 @@
       "dataAttributes": null,
       "computedStyles": {
         "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "156px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "0px",
+        "height": "0px",
         "margin": "0px",
         "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
         "font-size": "12px",
-        "font-weight": "500",
+        "font-weight": "400",
         "flex-direction": "row",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
@@ -5834,44 +6264,44 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 660,
-        "y": 195
+        "x": 753,
+        "y": 207
       },
       "dimensions": {
-        "width": 4,
-        "height": 24
+        "width": 0,
+        "height": 0
       },
       "textContent": null,
-      "innerHTML": null
+      "innerHTML": null,
+      "cssConflicts": [
+        "Element has zero width but non-zero min-width"
+      ]
     },
     {
       "tag": "div",
       "id": null,
       "classes": [
-        "clip",
-        "clip--dark"
+        "clip__content"
       ],
-      "dataAttributes": {
-        "data-clip-id": "synth-bass",
-        "data-track-id": "bass"
-      },
+      "dataAttributes": null,
       "computedStyles": {
         "display": "flex",
-        "position": "absolute",
-        "top": "15.5px",
-        "left": "0px",
-        "right": "376px",
-        "bottom": "15.5px",
-        "width": "160px",
-        "height": "24px",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "62px",
+        "height": "22px",
         "margin": "0px",
-        "padding": "0px 4px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgb(12, 74, 110)",
-        "color": "rgb(255, 255, 255)",
+        "padding": "0px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
         "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
+        "font-weight": "400",
+        "flex-direction": "column",
+        "justify-content": "center",
         "align-items": "center",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
@@ -5880,40 +6310,39 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 504,
-        "y": 195
+        "x": 753,
+        "y": 196
       },
       "dimensions": {
-        "width": 160,
-        "height": 24
+        "width": 62,
+        "height": 22
       },
-      "textContent": "Synth Bass",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Synth Bass\n       "
+      "textContent": "Rock Beat\n                    2 beats",
+      "innerHTML": "\n                    <div class=\"clip__name\">Rock Beat</div>\n                    <div class=\"clip__duration\">2 beats</div>\n                "
     },
     {
       "tag": "div",
       "id": null,
       "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--left"
+        "clip__name"
       ],
       "dataAttributes": null,
       "computedStyles": {
         "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "0px",
-        "right": "156px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "48.9062px",
+        "height": "10px",
+        "margin": "0px 0px 2px",
         "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "10px",
+        "font-weight": "600",
         "flex-direction": "row",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
@@ -5922,187 +6351,56 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 504,
-        "y": 195
+        "x": 760,
+        "y": 197
       },
       "dimensions": {
-        "width": 4,
-        "height": 24
+        "width": 49,
+        "height": 10
       },
-      "textContent": null,
-      "innerHTML": null
+      "textContent": "Rock Beat",
+      "innerHTML": "Rock Beat"
     },
     {
       "tag": "div",
       "id": null,
       "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--right"
+        "clip__duration"
       ],
       "dataAttributes": null,
       "computedStyles": {
         "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "156px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "26.2422px",
+        "height": "8px",
         "margin": "0px",
         "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "8px",
+        "font-weight": "400",
         "flex-direction": "row",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
         "z-index": "auto",
-        "opacity": "1",
+        "opacity": "0.7",
         "visibility": "visible"
       },
       "position": {
-        "x": 660,
-        "y": 195
+        "x": 771,
+        "y": 209
       },
       "dimensions": {
-        "width": 4,
-        "height": 24
+        "width": 26,
+        "height": 8
       },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip",
-        "clip--dark"
-      ],
-      "dataAttributes": {
-        "data-clip-id": "slap-bass",
-        "data-track-id": "bass"
-      },
-      "computedStyles": {
-        "display": "flex",
-        "position": "absolute",
-        "top": "15.5px",
-        "left": "0px",
-        "right": "376px",
-        "bottom": "15.5px",
-        "width": "160px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px 4px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgb(12, 74, 110)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 504,
-        "y": 195
-      },
-      "dimensions": {
-        "width": 160,
-        "height": 24
-      },
-      "textContent": "Slap Bass",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Slap Bass\n        "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--left"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "0px",
-        "right": "156px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 504,
-        "y": 195
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--right"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "156px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 660,
-        "y": 195
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
-      },
-      "textContent": null,
-      "innerHTML": null
+      "textContent": "2 beats",
+      "innerHTML": "2 beats"
     },
     {
       "tag": "div",
@@ -6330,7 +6628,9 @@
       "classes": [
         "track__clips-area"
       ],
-      "dataAttributes": null,
+      "dataAttributes": {
+        "data-track-id": "guitar"
+      },
       "computedStyles": {
         "display": "block",
         "position": "relative",
@@ -6339,11 +6639,11 @@
         "right": "0px",
         "bottom": "0px",
         "width": "536px",
-        "height": "55px",
+        "height": "48px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgba(0, 0, 0, 0)",
+        "background-color": "rgb(55, 65, 81)",
         "color": "rgb(249, 250, 251)",
         "font-size": "16px",
         "font-weight": "400",
@@ -6356,14 +6656,14 @@
       },
       "position": {
         "x": 504,
-        "y": 235
+        "y": 239
       },
       "dimensions": {
         "width": 536,
-        "height": 55
+        "height": 48
       },
-      "textContent": "Clean Chords\n            \n        \n            \n                \n                \n                Di",
-      "innerHTML": "\n                    <div class=\"track__playhead\" style=\"left: 32px; opacity: 0.4;\"></div>\n                    <div class=\"track__clips\">\n                        \n            <div class=\"clip clip--da"
+      "textContent": "Jazz Shuffle\n                    3 beats",
+      "innerHTML": "\n                    <div class=\"track__playhead\"></div>\n                    <div class=\"track__clips\">\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"jazz-shuffle\" da"
     },
     {
       "tag": "div",
@@ -6376,11 +6676,11 @@
         "display": "block",
         "position": "absolute",
         "top": "0px",
-        "left": "32px",
-        "right": "502px",
+        "left": "0px",
+        "right": "534px",
         "bottom": "0px",
         "width": "2px",
-        "height": "55px",
+        "height": "48px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -6396,12 +6696,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 536,
-        "y": 235
+        "x": 504,
+        "y": 239
       },
       "dimensions": {
         "width": 2,
-        "height": 55
+        "height": 48
       },
       "textContent": null,
       "innerHTML": null
@@ -6421,7 +6721,7 @@
         "right": "0px",
         "bottom": "0px",
         "width": "536px",
-        "height": "55px",
+        "height": "0px",
         "margin": "0px",
         "padding": "0px 0px 0px 48px",
         "border": "0px none rgb(249, 250, 251)",
@@ -6439,14 +6739,14 @@
       },
       "position": {
         "x": 504,
-        "y": 235
+        "y": 239
       },
       "dimensions": {
         "width": 536,
-        "height": 55
+        "height": 0
       },
-      "textContent": "Clean Chords\n            \n        \n            \n                \n                \n                Di",
-      "innerHTML": "\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"clean-chords\" data-track-id=\"guitar\" style=\"width: 160px; left: 0px;\" draggable=\"true\">\n                <div class=\"cli"
+      "textContent": "Jazz Shuffle\n                    3 beats",
+      "innerHTML": "\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"jazz-shuffle\" data-track-id=\"guitar\" data-clip-type=\"drums\" data-clip-duration=\"3\" data-clip-start-time=\"4\" style=\"widt"
     },
     {
       "tag": "div",
@@ -6456,26 +6756,30 @@
         "clip--dark"
       ],
       "dataAttributes": {
-        "data-clip-id": "clean-chords",
-        "data-track-id": "guitar"
+        "data-clip-id": "jazz-shuffle",
+        "data-track-id": "guitar",
+        "data-clip-type": "drums",
+        "data-clip-duration": "3",
+        "data-clip-start-time": "4"
       },
       "computedStyles": {
         "display": "flex",
         "position": "absolute",
-        "top": "15.5px",
-        "left": "0px",
-        "right": "376px",
-        "bottom": "15.5px",
-        "width": "160px",
-        "height": "24px",
+        "top": "8px",
+        "left": "160px",
+        "right": "256px",
+        "bottom": "-40px",
+        "width": "120px",
+        "height": "32px",
         "margin": "0px",
-        "padding": "0px 4px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgb(12, 74, 110)",
-        "color": "rgb(255, 255, 255)",
+        "padding": "4px 8px",
+        "border": "1px solid rgb(75, 85, 99)",
+        "background-color": "rgb(55, 65, 81)",
+        "color": "rgb(249, 250, 251)",
         "font-size": "12px",
-        "font-weight": "500",
+        "font-weight": "400",
         "flex-direction": "row",
+        "justify-content": "center",
         "align-items": "center",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
@@ -6484,15 +6788,15 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 504,
-        "y": 251
+        "x": 664,
+        "y": 247
       },
       "dimensions": {
-        "width": 160,
-        "height": 24
+        "width": 120,
+        "height": 32
       },
-      "textContent": "Clean Chords",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Clean Chords\n     "
+      "textContent": "Jazz Shuffle\n                    3 beats",
+      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                <div class=\"clip__"
     },
     {
       "tag": "div",
@@ -6504,20 +6808,20 @@
       "dataAttributes": null,
       "computedStyles": {
         "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "0px",
-        "right": "156px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "0px",
+        "height": "0px",
         "margin": "0px",
         "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
         "font-size": "12px",
-        "font-weight": "500",
+        "font-weight": "400",
         "flex-direction": "row",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
@@ -6526,15 +6830,18 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 504,
-        "y": 251
+        "x": 673,
+        "y": 263
       },
       "dimensions": {
-        "width": 4,
-        "height": 24
+        "width": 0,
+        "height": 0
       },
       "textContent": null,
-      "innerHTML": null
+      "innerHTML": null,
+      "cssConflicts": [
+        "Element has zero width but non-zero min-width"
+      ]
     },
     {
       "tag": "div",
@@ -6546,20 +6853,20 @@
       "dataAttributes": null,
       "computedStyles": {
         "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "156px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "0px",
+        "height": "0px",
         "margin": "0px",
         "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
         "font-size": "12px",
-        "font-weight": "500",
+        "font-weight": "400",
         "flex-direction": "row",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
@@ -6568,44 +6875,44 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 660,
-        "y": 251
+        "x": 673,
+        "y": 263
       },
       "dimensions": {
-        "width": 4,
-        "height": 24
+        "width": 0,
+        "height": 0
       },
       "textContent": null,
-      "innerHTML": null
+      "innerHTML": null,
+      "cssConflicts": [
+        "Element has zero width but non-zero min-width"
+      ]
     },
     {
       "tag": "div",
       "id": null,
       "classes": [
-        "clip",
-        "clip--dark"
+        "clip__content"
       ],
-      "dataAttributes": {
-        "data-clip-id": "distorted-riff",
-        "data-track-id": "guitar"
-      },
+      "dataAttributes": null,
       "computedStyles": {
         "display": "flex",
-        "position": "absolute",
-        "top": "15.5px",
-        "left": "0px",
-        "right": "376px",
-        "bottom": "15.5px",
-        "width": "160px",
-        "height": "24px",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "102px",
+        "height": "22px",
         "margin": "0px",
-        "padding": "0px 4px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgb(12, 74, 110)",
-        "color": "rgb(255, 255, 255)",
+        "padding": "0px",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
         "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
+        "font-weight": "400",
+        "flex-direction": "column",
+        "justify-content": "center",
         "align-items": "center",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
@@ -6614,40 +6921,39 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 504,
-        "y": 251
+        "x": 673,
+        "y": 252
       },
       "dimensions": {
-        "width": 160,
-        "height": 24
+        "width": 102,
+        "height": 22
       },
-      "textContent": "Distorted Riff",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Distorted Riff\n   "
+      "textContent": "Jazz Shuffle\n                    3 beats",
+      "innerHTML": "\n                    <div class=\"clip__name\">Jazz Shuffle</div>\n                    <div class=\"clip__duration\">3 beats</div>\n                "
     },
     {
       "tag": "div",
       "id": null,
       "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--left"
+        "clip__name"
       ],
       "dataAttributes": null,
       "computedStyles": {
         "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "0px",
-        "right": "156px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "57.7891px",
+        "height": "10px",
+        "margin": "0px 0px 2px",
         "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "10px",
+        "font-weight": "600",
         "flex-direction": "row",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
@@ -6656,187 +6962,56 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 504,
-        "y": 251
+        "x": 695,
+        "y": 253
       },
       "dimensions": {
-        "width": 4,
-        "height": 24
+        "width": 58,
+        "height": 10
       },
-      "textContent": null,
-      "innerHTML": null
+      "textContent": "Jazz Shuffle",
+      "innerHTML": "Jazz Shuffle"
     },
     {
       "tag": "div",
       "id": null,
       "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--right"
+        "clip__duration"
       ],
       "dataAttributes": null,
       "computedStyles": {
         "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "156px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "width": "26.2422px",
+        "height": "8px",
         "margin": "0px",
         "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
+        "border": "0px none rgb(249, 250, 251)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "color": "rgb(249, 250, 251)",
+        "font-size": "8px",
+        "font-weight": "400",
         "flex-direction": "row",
         "grid-template-columns": "none",
         "grid-template-rows": "none",
         "z-index": "auto",
-        "opacity": "1",
+        "opacity": "0.7",
         "visibility": "visible"
       },
       "position": {
-        "x": 660,
-        "y": 251
+        "x": 711,
+        "y": 265
       },
       "dimensions": {
-        "width": 4,
-        "height": 24
+        "width": 26,
+        "height": 8
       },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip",
-        "clip--dark"
-      ],
-      "dataAttributes": {
-        "data-clip-id": "arpeggio",
-        "data-track-id": "guitar"
-      },
-      "computedStyles": {
-        "display": "flex",
-        "position": "absolute",
-        "top": "15.5px",
-        "left": "0px",
-        "right": "376px",
-        "bottom": "15.5px",
-        "width": "160px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px 4px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgb(12, 74, 110)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 504,
-        "y": 251
-      },
-      "dimensions": {
-        "width": 160,
-        "height": 24
-      },
-      "textContent": "Arpeggio",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Arpeggio\n         "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--left"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "0px",
-        "right": "156px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 504,
-        "y": 251
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--right"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "156px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 660,
-        "y": 251
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
-      },
-      "textContent": null,
-      "innerHTML": null
+      "textContent": "3 beats",
+      "innerHTML": "3 beats"
     },
     {
       "tag": "div",
@@ -7065,7 +7240,9 @@
       "classes": [
         "track__clips-area"
       ],
-      "dataAttributes": null,
+      "dataAttributes": {
+        "data-track-id": "vocals"
+      },
       "computedStyles": {
         "display": "block",
         "position": "relative",
@@ -7074,11 +7251,11 @@
         "right": "0px",
         "bottom": "0px",
         "width": "536px",
-        "height": "56px",
+        "height": "48px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
-        "background-color": "rgba(0, 0, 0, 0)",
+        "background-color": "rgb(55, 65, 81)",
         "color": "rgb(249, 250, 251)",
         "font-size": "16px",
         "font-weight": "400",
@@ -7091,14 +7268,14 @@
       },
       "position": {
         "x": 504,
-        "y": 291
+        "y": 295
       },
       "dimensions": {
         "width": 536,
-        "height": 56
+        "height": 48
       },
-      "textContent": "Lead Take 1\n            \n        \n            \n                \n                \n                Lea",
-      "innerHTML": "\n                    <div class=\"track__playhead\" style=\"left: 32px; opacity: 0.4;\"></div>\n                    <div class=\"track__clips\">\n                        \n            <div class=\"clip clip--da"
+      "textContent": null,
+      "innerHTML": "\n                    <div class=\"track__playhead\"></div>\n                    <div class=\"track__clips\">\n                        \n                    </div>\n                "
     },
     {
       "tag": "div",
@@ -7111,11 +7288,11 @@
         "display": "block",
         "position": "absolute",
         "top": "0px",
-        "left": "32px",
-        "right": "502px",
+        "left": "0px",
+        "right": "534px",
         "bottom": "0px",
         "width": "2px",
-        "height": "56px",
+        "height": "48px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -7131,12 +7308,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 536,
-        "y": 291
+        "x": 504,
+        "y": 295
       },
       "dimensions": {
         "width": 2,
-        "height": 56
+        "height": 48
       },
       "textContent": null,
       "innerHTML": null
@@ -7156,7 +7333,7 @@
         "right": "0px",
         "bottom": "0px",
         "width": "536px",
-        "height": "56px",
+        "height": "0px",
         "margin": "0px",
         "padding": "0px 0px 0px 48px",
         "border": "0px none rgb(249, 250, 251)",
@@ -7174,274 +7351,14 @@
       },
       "position": {
         "x": 504,
-        "y": 291
+        "y": 295
       },
       "dimensions": {
         "width": 536,
-        "height": 56
-      },
-      "textContent": "Lead Take 1\n            \n        \n            \n                \n                \n                Lea",
-      "innerHTML": "\n                        \n            <div class=\"clip clip--dark\" data-clip-id=\"lead-take-1\" data-track-id=\"vocals\" style=\"width: 160px; left: 0px;\" draggable=\"true\">\n                <div class=\"clip"
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip",
-        "clip--dark"
-      ],
-      "dataAttributes": {
-        "data-clip-id": "lead-take-1",
-        "data-track-id": "vocals"
-      },
-      "computedStyles": {
-        "display": "flex",
-        "position": "absolute",
-        "top": "16px",
-        "left": "0px",
-        "right": "376px",
-        "bottom": "16px",
-        "width": "160px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px 4px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgb(12, 74, 110)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 504,
-        "y": 307
-      },
-      "dimensions": {
-        "width": 160,
-        "height": 24
-      },
-      "textContent": "Lead Take 1",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Lead Take 1\n      "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--left"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "0px",
-        "right": "156px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 504,
-        "y": 307
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
+        "height": 0
       },
       "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--right"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "156px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 660,
-        "y": 307
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip",
-        "clip--dark"
-      ],
-      "dataAttributes": {
-        "data-clip-id": "lead-take-2",
-        "data-track-id": "vocals"
-      },
-      "computedStyles": {
-        "display": "flex",
-        "position": "absolute",
-        "top": "16px",
-        "left": "0px",
-        "right": "376px",
-        "bottom": "16px",
-        "width": "160px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px 4px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgb(12, 74, 110)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "align-items": "center",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 504,
-        "y": 307
-      },
-      "dimensions": {
-        "width": 160,
-        "height": 24
-      },
-      "textContent": "Lead Take 2",
-      "innerHTML": "\n                <div class=\"clip__resize-handle clip__resize-handle--left\"></div>\n                <div class=\"clip__resize-handle clip__resize-handle--right\"></div>\n                Lead Take 2\n      "
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--left"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "0px",
-        "right": "156px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 504,
-        "y": 307
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
-      },
-      "textContent": null,
-      "innerHTML": null
-    },
-    {
-      "tag": "div",
-      "id": null,
-      "classes": [
-        "clip__resize-handle",
-        "clip__resize-handle--right"
-      ],
-      "dataAttributes": null,
-      "computedStyles": {
-        "display": "block",
-        "position": "absolute",
-        "top": "0px",
-        "left": "156px",
-        "right": "0px",
-        "bottom": "0px",
-        "width": "4px",
-        "height": "24px",
-        "margin": "0px",
-        "padding": "0px",
-        "border": "0px none rgb(255, 255, 255)",
-        "background-color": "rgba(255, 255, 255, 0.2)",
-        "color": "rgb(255, 255, 255)",
-        "font-size": "12px",
-        "font-weight": "500",
-        "flex-direction": "row",
-        "grid-template-columns": "none",
-        "grid-template-rows": "none",
-        "z-index": "auto",
-        "opacity": "1",
-        "visibility": "visible"
-      },
-      "position": {
-        "x": 660,
-        "y": 307
-      },
-      "dimensions": {
-        "width": 4,
-        "height": 24
-      },
-      "textContent": null,
-      "innerHTML": null
+      "innerHTML": "\n                        \n                    "
     },
     {
       "tag": "aside",

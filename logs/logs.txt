@@ -1,243 +1,67 @@
-=== SESSION START: session-1751144185414 ===
-[21:56:25] LOG: ✅ Configuration validation passed
-  @57:index.html → @392:config.js → @420:config.js
-[21:56:25] LOG: Browser logging system initialized
-  @99:app.js → @42:app.js → @19:app.js → @345:app.js → @775:app.js
-[21:56:25] LOG: Initializing Assembly Audio Editor
-  @99:app.js → @351:app.js → @347:app.js → @775:app.js
-[21:56:25] LOG: Loading project: band
-  @99:app.js → @431:app.js → @363:app.js → @347:app.js → @775:app.js
-[21:56:25] LOG: Stopping playback
-  @99:app.js → @665:app.js → @437:app.js → @363:app.js → @347:app.js → @775:app.js
-[21:56:25] LOG: Project duration: 4 beats
-  @99:app.js → @474:app.js → @446:app.js → @363:app.js → @347:app.js → @775:app.js
-[21:56:25] LOG: Project 'Choose instrument options' loaded successfully
-  @99:app.js → @459:app.js → @363:app.js → @347:app.js → @775:app.js
-[21:56:25] LOG: Assembly Audio Editor initialized successfully
-  @99:app.js → @365:app.js → @347:app.js → @775:app.js
-[21:56:27] LOG: Sidebar click event: {}
-  @99:app.js → @320:components.js
-[21:56:27] LOG: Checkbox clicked directly
-  @99:app.js → @324:components.js
-[21:56:27] LOG: Sidebar change event: {}
-  @99:app.js → @353:components.js
-[21:56:27] LOG: Checkbox change detected: toggleLoop checked: true
-  @99:app.js → @355:components.js
-[21:56:27] LOG: Sidebar dispatching transport action: toggleLoop
-  @99:app.js → @370:components.js → @356:components.js
-[21:56:27] LOG: Transport action: toggleLoop
-  @99:app.js → @485:app.js → @408:app.js → @375:components.js → @356:components.js
-[21:56:27] LOG: Loop enabled
-  @99:app.js → @696:app.js → @501:app.js → @408:app.js → @375:components.js → @356:components.js
-[21:56:27] LOG: Sidebar click event: {}
-  @99:app.js → @320:components.js
-[21:56:27] LOG: Checkbox clicked directly
-  @99:app.js → @324:components.js
-[21:56:27] LOG: Sidebar change event: {}
-  @99:app.js → @353:components.js
-[21:56:27] LOG: Checkbox change detected: toggleLoop checked: false
-  @99:app.js → @355:components.js
-[21:56:27] LOG: Sidebar dispatching transport action: toggleLoop
-  @99:app.js → @370:components.js → @356:components.js
-[21:56:27] LOG: Transport action: toggleLoop
-  @99:app.js → @485:app.js → @408:app.js → @375:components.js → @356:components.js
-[21:56:27] LOG: Loop disabled
-  @99:app.js → @696:app.js → @501:app.js → @408:app.js → @375:components.js → @356:components.js
-[21:56:28] LOG: Sidebar click event: {}
-  @99:app.js → @320:components.js
-[21:56:28] LOG: Checkbox clicked directly
-  @99:app.js → @324:components.js
-[21:56:28] LOG: Sidebar change event: {}
-  @99:app.js → @353:components.js
-[21:56:28] LOG: Checkbox change detected: toggleLoop checked: true
-  @99:app.js → @355:components.js
-[21:56:28] LOG: Sidebar dispatching transport action: toggleLoop
-  @99:app.js → @370:components.js → @356:components.js
-[21:56:28] LOG: Transport action: toggleLoop
-  @99:app.js → @485:app.js → @408:app.js → @375:components.js → @356:components.js
-[21:56:28] LOG: Loop enabled
-  @99:app.js → @696:app.js → @501:app.js → @408:app.js → @375:components.js → @356:components.js
-[21:56:28] LOG: Sidebar click event: {}
-  @99:app.js → @320:components.js
-[21:56:28] LOG: Transport button clicked: play
-  @99:app.js → @332:components.js
-[21:56:28] LOG: Sidebar dispatching transport action: play
-  @99:app.js → @370:components.js → @333:components.js
-[21:56:28] LOG: Transport action: play
-  @99:app.js → @485:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:56:28] LOG: Starting playback
-  @99:app.js → @612:app.js → @605:app.js → @489:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:56:28] LOG: VU meter animation started
-  @99:app.js → @676:components.js → @620:app.js → @605:app.js → @489:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:56:35] LOG: Loading project: song
-  @99:app.js → @431:app.js → @402:app.js → @196:components.js → @169:components.js
-[21:56:35] LOG: Stopping playback
-  @99:app.js → @665:app.js → @437:app.js → @402:app.js → @196:components.js → @169:components.js
-[21:56:35] LOG: VU meter animation stopped
-  @99:app.js → @701:components.js → @675:app.js → @437:app.js → @402:app.js → @196:components.js → @169:components.js
-[21:56:35] LOG: Project duration: 8 beats
-  @99:app.js → @474:app.js → @446:app.js → @402:app.js → @196:components.js → @169:components.js
-[21:56:35] LOG: Project 'THE SONG' loaded successfully
-  @99:app.js → @459:app.js → @402:app.js → @196:components.js → @169:components.js
-[21:56:36] LOG: Sidebar click event: {}
-  @99:app.js → @320:components.js
-[21:56:36] LOG: Transport button clicked: play
-  @99:app.js → @332:components.js
-[21:56:36] LOG: Sidebar dispatching transport action: play
-  @99:app.js → @370:components.js → @333:components.js
-[21:56:36] LOG: Transport action: play
-  @99:app.js → @485:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:56:36] LOG: Starting playback
-  @99:app.js → @612:app.js → @605:app.js → @489:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:56:36] LOG: VU meter animation started
-  @99:app.js → @676:components.js → @620:app.js → @605:app.js → @489:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:56:44] LOG: Stopping playback
-  @99:app.js → @665:app.js → @631:app.js
-[21:56:44] LOG: VU meter animation stopped
-  @99:app.js → @701:components.js → @675:app.js → @631:app.js
-[21:56:45] LOG: Sidebar click event: {}
-  @99:app.js → @320:components.js
-[21:56:45] LOG: Loop toggle area clicked
-  @99:app.js → @338:components.js
-[21:56:45] LOG: Checkbox found, current state: false
-  @99:app.js → @341:components.js
-[21:56:45] LOG: Checkbox toggled to: true
-  @99:app.js → @345:components.js
-[21:56:45] LOG: Sidebar dispatching transport action: toggleLoop
-  @99:app.js → @370:components.js → @346:components.js
-[21:56:45] LOG: Transport action: toggleLoop
-  @99:app.js → @485:app.js → @408:app.js → @375:components.js → @346:components.js
-[21:56:45] LOG: Loop enabled
-  @99:app.js → @696:app.js → @501:app.js → @408:app.js → @375:components.js → @346:components.js
-[21:56:45] LOG: Sidebar click event: {}
-  @99:app.js → @320:components.js
-[21:56:45] LOG: Checkbox clicked directly
-  @99:app.js → @324:components.js
-[21:56:45] LOG: Sidebar change event: {}
-  @99:app.js → @353:components.js
-[21:56:45] LOG: Checkbox change detected: toggleLoop checked: false
-  @99:app.js → @355:components.js
-[21:56:45] LOG: Sidebar dispatching transport action: toggleLoop
-  @99:app.js → @370:components.js → @356:components.js
-[21:56:45] LOG: Transport action: toggleLoop
-  @99:app.js → @485:app.js → @408:app.js → @375:components.js → @356:components.js
-[21:56:45] LOG: Loop disabled
-  @99:app.js → @696:app.js → @501:app.js → @408:app.js → @375:components.js → @356:components.js
-[21:56:47] LOG: Sidebar click event: {}
-  @99:app.js → @320:components.js
-[21:56:47] LOG: Loop toggle area clicked
-  @99:app.js → @338:components.js
-[21:56:47] LOG: Checkbox found, current state: false
-  @99:app.js → @341:components.js
-[21:56:47] LOG: Checkbox toggled to: true
-  @99:app.js → @345:components.js
-[21:56:47] LOG: Sidebar dispatching transport action: toggleLoop
-  @99:app.js → @370:components.js → @346:components.js
-[21:56:47] LOG: Transport action: toggleLoop
-  @99:app.js → @485:app.js → @408:app.js → @375:components.js → @346:components.js
-[21:56:47] LOG: Loop enabled
-  @99:app.js → @696:app.js → @501:app.js → @408:app.js → @375:components.js → @346:components.js
-[21:56:47] LOG: Sidebar click event: {}
-  @99:app.js → @320:components.js
-[21:56:47] LOG: Checkbox clicked directly
-  @99:app.js → @324:components.js
-[21:56:47] LOG: Sidebar change event: {}
-  @99:app.js → @353:components.js
-[21:56:47] LOG: Checkbox change detected: toggleLoop checked: false
-  @99:app.js → @355:components.js
-[21:56:47] LOG: Sidebar dispatching transport action: toggleLoop
-  @99:app.js → @370:components.js → @356:components.js
-[21:56:47] LOG: Transport action: toggleLoop
-  @99:app.js → @485:app.js → @408:app.js → @375:components.js → @356:components.js
-[21:56:47] LOG: Loop disabled
-  @99:app.js → @696:app.js → @501:app.js → @408:app.js → @375:components.js → @356:components.js
-[21:56:47] LOG: Sidebar click event: {}
-  @99:app.js → @320:components.js
-[21:56:47] LOG: Checkbox clicked directly
-  @99:app.js → @324:components.js
-[21:56:47] LOG: Sidebar change event: {}
-  @99:app.js → @353:components.js
-[21:56:47] LOG: Checkbox change detected: toggleLoop checked: true
-  @99:app.js → @355:components.js
-[21:56:47] LOG: Sidebar dispatching transport action: toggleLoop
-  @99:app.js → @370:components.js → @356:components.js
-[21:56:47] LOG: Transport action: toggleLoop
-  @99:app.js → @485:app.js → @408:app.js → @375:components.js → @356:components.js
-[21:56:47] LOG: Loop enabled
-  @99:app.js → @696:app.js → @501:app.js → @408:app.js → @375:components.js → @356:components.js
-[21:56:49] LOG: Sidebar click event: {}
-  @99:app.js → @320:components.js
-[21:56:49] LOG: Transport button clicked: play
-  @99:app.js → @332:components.js
-[21:56:49] LOG: Sidebar dispatching transport action: play
-  @99:app.js → @370:components.js → @333:components.js
-[21:56:49] LOG: Transport action: play
-  @99:app.js → @485:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:56:49] LOG: Starting playback
-  @99:app.js → @612:app.js → @605:app.js → @489:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:56:49] LOG: VU meter animation started
-  @99:app.js → @676:components.js → @620:app.js → @605:app.js → @489:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:56:52] LOG: Sidebar click event: {}
-  @99:app.js → @320:components.js
-[21:56:52] LOG: Transport button clicked: fastForward
-  @99:app.js → @332:components.js
-[21:56:52] LOG: Sidebar dispatching transport action: fastForward
-  @99:app.js → @370:components.js → @333:components.js
-[21:56:52] LOG: Transport action: fastForward
-  @99:app.js → @485:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:56:52] LOG: Seeking forward to 3.9
-  @99:app.js → @688:app.js → @498:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:56:52] LOG: Sidebar click event: {}
-  @99:app.js → @320:components.js
-[21:56:52] LOG: Transport button clicked: fastForward
-  @99:app.js → @332:components.js
-[21:56:52] LOG: Sidebar dispatching transport action: fastForward
-  @99:app.js → @370:components.js → @333:components.js
-[21:56:52] LOG: Transport action: fastForward
-  @99:app.js → @485:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:56:52] LOG: Seeking forward to 5.4
-  @99:app.js → @688:app.js → @498:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:56:55] LOG: Sidebar click event: {}
-  @99:app.js → @320:components.js
-[21:56:55] LOG: Transport button clicked: stop
-  @99:app.js → @332:components.js
-[21:56:55] LOG: Sidebar dispatching transport action: stop
-  @99:app.js → @370:components.js → @333:components.js
-[21:56:55] LOG: Transport action: stop
-  @99:app.js → @485:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:56:55] LOG: Stopping playback
-  @99:app.js → @665:app.js → @492:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:56:55] LOG: VU meter animation stopped
-  @99:app.js → @701:components.js → @675:app.js → @492:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:56:59] LOG: Loading project: band
-  @99:app.js → @431:app.js → @402:app.js → @196:components.js → @169:components.js
-[21:56:59] LOG: Stopping playback
-  @99:app.js → @665:app.js → @437:app.js → @402:app.js → @196:components.js → @169:components.js
-[21:56:59] LOG: Project duration: 4 beats
-  @99:app.js → @474:app.js → @446:app.js → @402:app.js → @196:components.js → @169:components.js
-[21:56:59] LOG: Project 'Choose instrument options' loaded successfully
-  @99:app.js → @459:app.js → @402:app.js → @196:components.js → @169:components.js
-[21:57:02] LOG: Sidebar click event: {}
-  @99:app.js → @320:components.js
-[21:57:02] LOG: Transport button clicked: play
-  @99:app.js → @332:components.js
-[21:57:02] LOG: Sidebar dispatching transport action: play
-  @99:app.js → @370:components.js → @333:components.js
-[21:57:02] LOG: Transport action: play
-  @99:app.js → @485:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:57:02] LOG: Starting playback
-  @99:app.js → @612:app.js → @605:app.js → @489:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:57:02] LOG: VU meter animation started
-  @99:app.js → @676:components.js → @620:app.js → @605:app.js → @489:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:57:03] LOG: Sidebar click event: {}
-  @99:app.js → @320:components.js
-[21:57:03] LOG: Transport button clicked: play
-  @99:app.js → @332:components.js
-[21:57:03] LOG: Sidebar dispatching transport action: play
-  @99:app.js → @370:components.js → @333:components.js
-[21:57:03] LOG: Transport action: play
-  @99:app.js → @485:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:57:03] LOG: Pausing playback
-  @99:app.js → @647:app.js → @603:app.js → @489:app.js → @408:app.js → @375:components.js → @333:components.js
-[21:57:03] LOG: VU meter animation stopped
-  @99:app.js → @701:components.js → @655:app.js → @603:app.js → @489:app.js → @408:app.js → @375:components.js → @333:components.js
+=== SESSION START: session-1751147395699 ===
+[22:49:55] LOG: ✅ Configuration validation passed
+  @57:index.html → @398:config.js → @426:config.js
+[22:49:55] LOG: Browser logging system initialized
+  @96:app.js → @39:app.js → @19:app.js → @327:app.js → @865:app.js
+[22:49:55] LOG: Initializing Assembly Audio Editor
+  @96:app.js → @333:app.js → @329:app.js → @865:app.js
+[22:49:55] LOG: Loading project: band
+  @96:app.js → @433:app.js → @345:app.js → @329:app.js → @865:app.js
+[22:49:55] LOG: Project duration: 16 beats
+  @96:app.js → @483:app.js → @448:app.js → @345:app.js → @329:app.js → @865:app.js
+[22:49:55] LOG: Project 'Choose instrument options' loaded successfully
+  @96:app.js → @461:app.js → @345:app.js → @329:app.js → @865:app.js
+[22:49:55] LOG: Assembly Audio Editor initialized successfully
+  @96:app.js → @347:app.js → @329:app.js → @865:app.js
+[22:49:57] LOG: Sidebar drag start: {"clipId":"jazz-shuffle","clipType":"drums","clipDuration":3}
+  @96:app.js → @399:components.js
+[22:49:58] LOG: Global drop handler called for track: guitar
+  @96:app.js → @881:app.js → @108:index.html
+[22:49:58] LOG: Drag data in global handler: {"type":"sidebar-clip","clipId":"jazz-shuffle","clipType":"drums","clipDuration":3}
+  @96:app.js → @886:app.js → @108:index.html
+[22:49:58] LOG: Drop position calculated: {"startTime":4,"endTime":7,"isValid":true}
+  @96:app.js → @928:app.js → @108:index.html
+[22:49:58] LOG: Handling sidebar clip drop: {"dragData":{"type":"sidebar-clip","clipId":"jazz-shuffle","clipType":"drums","clipDuration":3},"trackId":"guitar","startTime":4}
+  @96:app.js → @728:app.js → @934:app.js → @108:index.html
+[22:49:58] LOG: Added clip to track: {"trackId":"guitar","clipId":"jazz-shuffle","startTime":4}
+  @96:app.js → @753:app.js → @934:app.js → @108:index.html
+[22:49:59] LOG: Drag start from timeline: {"clipId":"jazz-shuffle","trackId":"guitar","clipType":"drums","clipDuration":3}
+  @96:app.js → @679:components.js
+[22:50:00] LOG: Drag end event triggered
+  @96:app.js → @718:components.js
+[22:50:01] LOG: Drag start from timeline: {"clipId":"jazz-shuffle","trackId":"guitar","clipType":"drums","clipDuration":3}
+  @96:app.js → @679:components.js
+[22:50:02] LOG: Drag end event triggered
+  @96:app.js → @718:components.js
+[22:50:05] LOG: Sidebar drag start: {"clipId":"slap-bass","clipType":"bass","clipDuration":3}
+  @96:app.js → @399:components.js
+[22:50:06] LOG: Global drop handler called for track: drums
+  @96:app.js → @881:app.js → @1:index.html
+[22:50:06] LOG: Drag data in global handler: {"type":"sidebar-clip","clipId":"slap-bass","clipType":"bass","clipDuration":3}
+  @96:app.js → @886:app.js → @1:index.html
+[22:50:06] LOG: Drop position calculated: {"startTime":2,"endTime":5,"isValid":true}
+  @96:app.js → @928:app.js → @1:index.html
+[22:50:06] LOG: Handling sidebar clip drop: {"dragData":{"type":"sidebar-clip","clipId":"slap-bass","clipType":"bass","clipDuration":3},"trackId":"drums","startTime":2}
+  @96:app.js → @728:app.js → @934:app.js → @1:index.html
+[22:50:06] LOG: Added clip to track: {"trackId":"drums","clipId":"slap-bass","startTime":2}
+  @96:app.js → @753:app.js → @934:app.js → @1:index.html
+[22:50:08] LOG: Sidebar drag start: {"clipId":"rock-beat","clipType":"drums","clipDuration":2}
+  @96:app.js → @399:components.js
+[22:50:09] LOG: Global drop handler called for track: bass
+  @96:app.js → @881:app.js → @1:index.html
+[22:50:09] LOG: Drag data in global handler: {"type":"sidebar-clip","clipId":"rock-beat","clipType":"drums","clipDuration":2}
+  @96:app.js → @886:app.js → @1:index.html
+[22:50:09] LOG: Drop position calculated: {"startTime":6,"endTime":8,"isValid":true}
+  @96:app.js → @928:app.js → @1:index.html
+[22:50:09] LOG: Handling sidebar clip drop: {"dragData":{"type":"sidebar-clip","clipId":"rock-beat","clipType":"drums","clipDuration":2},"trackId":"bass","startTime":6}
+  @96:app.js → @728:app.js → @934:app.js → @1:index.html
+[22:50:09] LOG: Added clip to track: {"trackId":"bass","clipId":"rock-beat","startTime":6}
+  @96:app.js → @753:app.js → @934:app.js → @1:index.html
+[22:50:12] LOG: Drag start from timeline: {"clipId":"rock-beat","trackId":"bass","clipType":"drums","clipDuration":2}
+  @96:app.js → @679:components.js
+[22:50:13] LOG: Drag end event triggered
+  @96:app.js → @718:components.js
+[22:50:14] LOG: Drag start from timeline: {"clipId":"jazz-shuffle","trackId":"guitar","clipType":"drums","clipDuration":3}
+  @96:app.js → @679:components.js
+[22:50:15] LOG: Drag end event triggered
+  @96:app.js → @718:components.js

@@ -112,18 +112,19 @@ export const PROJECT_DATA = {
                 name: 'Sentence',
                 type: 'text',
                 clips: [
-                    { id: 'the', name: 'The', duration: 1, startTime: 0 },
-                    { id: 'quick', name: 'quick', duration: 1, startTime: 1 },
-                    { id: 'brown', name: 'brown', duration: 1, startTime: 2 },
-                    { id: 'fox', name: 'fox', duration: 1, startTime: 3 },
-                    { id: 'jumps', name: 'jumps', duration: 1, startTime: 4 },
-                    { id: 'over', name: 'over', duration: 1, startTime: 5 },
-                    { id: 'the2', name: 'the', duration: 1, startTime: 6 },
-                    { id: 'lazy', name: 'lazy', duration: 1, startTime: 7 },
-                    { id: 'dog', name: 'dog', duration: 1, startTime: 8 }
+                    { id: 'the', name: 'The', duration: 0.5, startTime: 0 },
+                    { id: 'quick', name: 'quick', duration: 0.75, startTime: 1 },
+                    { id: 'brown', name: 'brown', duration: 0.5, startTime: 2 },
+                    { id: 'fox', name: 'fox', duration: 0.5, startTime: 3 },
+                    { id: 'jumps', name: 'jumps', duration: 0.75, startTime: 4 },
+                    { id: 'over', name: 'over', duration: 0.5, startTime: 5 },
+                    { id: 'the2', name: 'the', duration: 0.5, startTime: 6 },
+                    { id: 'lazy', name: 'lazy', duration: 0.5, startTime: 7 },
+                    { id: 'dog', name: 'dog', duration: 0.75, startTime: 8 }
                 ]
             }
         ],
+        sidebarClips: [], // All clips are in the track
         description: 'Player must arrange clips in correct order to form the sentence.'
     },
 
@@ -137,41 +138,46 @@ export const PROJECT_DATA = {
                 id: 'drums',
                 name: 'Drums',
                 type: 'drums',
-                clips: [
-                    { id: 'rock-beat', name: 'Rock Beat', duration: 4, startTime: 0 },
-                    { id: 'funk-groove', name: 'Funk Groove', duration: 4, startTime: 0 },
-                    { id: 'jazz-shuffle', name: 'Jazz Shuffle', duration: 4, startTime: 0 }
-                ]
+                clips: [] // Start with empty tracks
             },
             {
                 id: 'bass',
                 name: 'Bass',
                 type: 'bass',
-                clips: [
-                    { id: 'walking-bass', name: 'Walking Bass', duration: 4, startTime: 0 },
-                    { id: 'synth-bass', name: 'Synth Bass', duration: 4, startTime: 0 },
-                    { id: 'slap-bass', name: 'Slap Bass', duration: 4, startTime: 0 }
-                ]
+                clips: []
             },
             {
                 id: 'guitar',
                 name: 'Guitar',
                 type: 'guitar',
-                clips: [
-                    { id: 'clean-chords', name: 'Clean Chords', duration: 4, startTime: 0 },
-                    { id: 'distorted-riff', name: 'Distorted Riff', duration: 4, startTime: 0 },
-                    { id: 'arpeggio', name: 'Arpeggio', duration: 4, startTime: 0 }
-                ]
+                clips: []
             },
             {
                 id: 'vocals',
                 name: 'Vocals',
                 type: 'vocals',
-                clips: [
-                    { id: 'lead-take-1', name: 'Lead Take 1', duration: 4, startTime: 0 },
-                    { id: 'lead-take-2', name: 'Lead Take 2', duration: 4, startTime: 0 }
-                ]
+                clips: []
             }
+        ],
+        sidebarClips: [
+            // Drum clips
+            { id: 'rock-beat', name: 'Rock Beat', duration: 2, type: 'drums' },
+            { id: 'funk-groove', name: 'Funk Groove', duration: 4, type: 'drums' },
+            { id: 'jazz-shuffle', name: 'Jazz Shuffle', duration: 3, type: 'drums' },
+
+            // Bass clips
+            { id: 'walking-bass', name: 'Walking Bass', duration: 4, type: 'bass' },
+            { id: 'synth-bass', name: 'Synth Bass', duration: 2, type: 'bass' },
+            { id: 'slap-bass', name: 'Slap Bass', duration: 3, type: 'bass' },
+
+            // Guitar clips
+            { id: 'clean-chords', name: 'Clean Chords', duration: 4, type: 'guitar' },
+            { id: 'distorted-riff', name: 'Distorted Riff', duration: 2, type: 'guitar' },
+            { id: 'arpeggio', name: 'Arpeggio', duration: 3, type: 'guitar' },
+
+            // Vocal clips
+            { id: 'lead-take-1', name: 'Lead Take 1', duration: 4, type: 'vocals' },
+            { id: 'lead-take-2', name: 'Lead Take 2', duration: 3, type: 'vocals' }
         ],
         description: 'Player chooses one clip per track to build a band arrangement.'
     },
@@ -187,34 +193,38 @@ export const PROJECT_DATA = {
                 id: 'background-loop',
                 name: 'Background Loop',
                 type: 'ambient',
-                clips: [
-                    { id: 'ambient-pad', name: 'Ambient Pad', duration: 8, startTime: 0 },
-                    { id: 'tape-loop', name: 'Tape Loop', duration: 8, startTime: 0 }
-                ]
+                clips: []
             },
             {
                 id: 'vince-guitar',
                 name: 'Vince\'s Guitar',
                 type: 'guitar',
-                clips: [
-                    { id: 'guitar-phrase-1', name: 'Guitar Phrase 1', duration: 4, startTime: 0 },
-                    { id: 'guitar-phrase-2', name: 'Guitar Phrase 2', duration: 4, startTime: 0 }
-                ]
+                clips: []
             },
             {
                 id: 'field-recording',
                 name: 'Field Recording',
                 type: 'field',
-                clips: [
-                    { id: 'birds', name: 'Birds', duration: 6, startTime: 0 },
-                    { id: 'rain', name: 'Rain', duration: 6, startTime: 0 },
-                    { id: 'street-noise', name: 'Street Noise', duration: 6, startTime: 0 }
-                ]
+                clips: []
             }
         ],
-        extraClips: [
-            { id: 'synth-texture', name: 'Synth Texture', type: 'synth', duration: 8 },
-            { id: 'perc-loop', name: 'Perc Loop', type: 'percussion', duration: 4 }
+        sidebarClips: [
+            // Ambient clips
+            { id: 'ambient-pad', name: 'Ambient Pad', duration: 8, type: 'ambient' },
+            { id: 'tape-loop', name: 'Tape Loop', duration: 6, type: 'ambient' },
+
+            // Guitar clips
+            { id: 'guitar-phrase-1', name: 'Guitar Phrase 1', duration: 4, type: 'guitar' },
+            { id: 'guitar-phrase-2', name: 'Guitar Phrase 2', duration: 3, type: 'guitar' },
+
+            // Field recording clips
+            { id: 'birds', name: 'Birds', duration: 6, type: 'field' },
+            { id: 'rain', name: 'Rain', duration: 8, type: 'field' },
+            { id: 'street-noise', name: 'Street Noise', duration: 4, type: 'field' },
+
+            // Extra clips
+            { id: 'synth-texture', name: 'Synth Texture', duration: 8, type: 'synth' },
+            { id: 'perc-loop', name: 'Perc Loop', duration: 2, type: 'percussion' }
         ],
         description: 'Player can freely add/remove tracks and clips, move and resize as desired.'
     },
@@ -229,49 +239,45 @@ export const PROJECT_DATA = {
                 id: 'main-instrument',
                 name: 'Main Instrument',
                 type: 'instrument',
-                clips: [
-                    { id: 'piano-intro', name: 'Piano Intro', duration: 4, startTime: 0 },
-                    { id: 'guitar-verse', name: 'Guitar Verse', duration: 4, startTime: 4 }
-                ]
+                clips: []
             },
             {
                 id: 'vocals',
                 name: 'Vocals',
                 type: 'vocals',
-                clips: [
-                    { id: 'vince-take', name: 'Vince\'s Take', duration: 4, startTime: 0 },
-                    { id: 'viola-take', name: 'Viola\'s Take', duration: 4, startTime: 4 }
-                ]
+                clips: []
             },
             {
                 id: 'rhythm-section',
                 name: 'Rhythm Section',
                 type: 'rhythm',
-                clips: [
-                    { id: 'drum-groove', name: 'Drum Groove', duration: 4, startTime: 0 },
-                    { id: 'percussion', name: 'Percussion', duration: 4, startTime: 4 }
-                ]
+                clips: []
             },
             {
                 id: 'viola-material',
                 name: 'Viola Material',
                 type: 'viola',
-                clips: [
-                    { id: 'viola-melody', name: 'Viola Melody', duration: 4, startTime: 0 },
-                    { id: 'viola-harmony', name: 'Viola Harmony', duration: 4, startTime: 4 }
-                ]
-            },
-            {
-                id: 'bass',
-                name: 'Bass',
-                type: 'bass',
-                clips: [
-                    { id: 'electric-bass', name: 'Electric Bass', duration: 4, startTime: 0 },
-                    { id: 'synth-bass', name: 'Synth Bass', duration: 4, startTime: 4 }
-                ]
+                clips: []
             }
         ],
-        description: 'No special mechanics, just content arrangement.'
+        sidebarClips: [
+            // Instrument clips
+            { id: 'piano-intro', name: 'Piano Intro', duration: 4, type: 'instrument' },
+            { id: 'guitar-verse', name: 'Guitar Verse', duration: 3, type: 'instrument' },
+
+            // Vocal clips
+            { id: 'vince-take', name: 'Vince\'s Take', duration: 4, type: 'vocals' },
+            { id: 'viola-take', name: 'Viola\'s Take', duration: 3, type: 'vocals' },
+
+            // Rhythm clips
+            { id: 'drum-groove', name: 'Drum Groove', duration: 4, type: 'rhythm' },
+            { id: 'percussion', name: 'Percussion', duration: 2, type: 'rhythm' },
+
+            // Viola clips
+            { id: 'viola-melody', name: 'Viola Melody', duration: 4, type: 'viola' },
+            { id: 'viola-harmony', name: 'Viola Harmony', duration: 3, type: 'viola' }
+        ],
+        description: 'Arrange clips to create the final song structure.'
     }
 };
 

@@ -5,6 +5,10 @@
 
 import { PROJECT_CONFIG, PROJECT_DATA, CLIP_CATEGORIES, getCategoryByType } from './config.js';
 
+// ===== GLOBAL VARIABLES =====
+// Remove the local globalDragData variable since we're using window.globalDragData
+// let globalDragData = null;
+
 // ===== COMPONENT BASE CLASS =====
 class Component {
     constructor(element, config = {}) {
@@ -204,6 +208,11 @@ class SidebarComponent extends Component {
         this.isLooping = false;
         this.render();
         this.setupEventListeners();
+
+        // Make handleDrop accessible globally for inline event handlers
+        if (window.assemblyApp) {
+            window.assemblyApp.sidebarComponent = this;
+        }
     }
 
     render() {
@@ -249,8 +258,8 @@ class SidebarComponent extends Component {
             return '<div class="clip-repository__empty">Select a project to view clips</div>';
         }
 
-        // Group clips by category
-        const clipsByCategory = this.groupClipsByCategory();
+        // Group sidebar clips by category
+        const clipsByCategory = this.groupSidebarClipsByCategory();
 
         return Object.entries(clipsByCategory).map(([categoryId, clips]) => {
             const category = getCategoryByType(categoryId);
@@ -266,8 +275,11 @@ class SidebarComponent extends Component {
                         ${clips.map(clip => `
                             <div class="clip-item" 
                                  data-clip-id="${clip.id}"
+                                 data-clip-type="${clip.type}"
+                                 data-clip-duration="${clip.duration}"
                                  draggable="true">
-                                ${clip.name}
+                                <div class="clip-item__name">${clip.name}</div>
+                                <div class="clip-item__duration">${this.formatDuration(clip.duration)}</div>
                             </div>
                         `).join('')}
                     </div>
@@ -276,19 +288,12 @@ class SidebarComponent extends Component {
         }).join('');
     }
 
-    groupClipsByCategory() {
+    groupSidebarClipsByCategory() {
         const clipsByCategory = {};
 
-        this.currentProject.tracks.forEach(track => {
-            if (!clipsByCategory[track.type]) {
-                clipsByCategory[track.type] = [];
-            }
-            clipsByCategory[track.type].push(...track.clips);
-        });
-
-        // Add extra clips for ambient project
-        if (this.currentProject.extraClips) {
-            this.currentProject.extraClips.forEach(clip => {
+        // Group sidebar clips by type
+        if (this.currentProject.sidebarClips) {
+            this.currentProject.sidebarClips.forEach(clip => {
                 if (!clipsByCategory[clip.type]) {
                     clipsByCategory[clip.type] = [];
                 }
@@ -299,21 +304,35 @@ class SidebarComponent extends Component {
         return clipsByCategory;
     }
 
+    formatDuration(duration) {
+        // Format duration as beats (e.g., "4 beats", "0.5 beats")
+        return `${duration} beat${duration === 1 ? '' : 's'}`;
+    }
+
     setupEventListeners() {
         // Remove any existing listeners to prevent duplicates
         this.element.removeEventListener('click', this._boundClickHandler);
         this.element.removeEventListener('change', this._boundChangeHandler);
         this.element.removeEventListener('dragstart', this._boundDragStartHandler);
+        this.element.removeEventListener('dragover', this._boundDragOverHandler);
+        this.element.removeEventListener('drop', this._boundDropHandler);
+        this.element.removeEventListener('dragend', this._boundDragEndHandler);
 
         // Bind handlers to this instance
         this._boundClickHandler = this.handleClick.bind(this);
         this._boundChangeHandler = this.handleChange.bind(this);
         this._boundDragStartHandler = this.handleDragStart.bind(this);
+        this._boundDragOverHandler = this.handleDragOver.bind(this);
+        this._boundDropHandler = this.handleDrop.bind(this);
+        this._boundDragEndHandler = this.handleDragEnd.bind(this);
 
         // Add event listeners
         this.element.addEventListener('click', this._boundClickHandler);
         this.element.addEventListener('change', this._boundChangeHandler);
         this.element.addEventListener('dragstart', this._boundDragStartHandler);
+        this.element.addEventListener('dragover', this._boundDragOverHandler);
+        this.element.addEventListener('drop', this._boundDropHandler);
+        this.element.addEventListener('dragend', this._boundDragEndHandler);
     }
 
     handleClick(e) {
@@ -359,10 +378,78 @@ class SidebarComponent extends Component {
 
     handleDragStart(e) {
         const clipItem = e.target.closest('[data-clip-id]');
-        if (clipItem) {
+        if (clipItem && !clipItem.dataset.trackId) { // Only sidebar clips
             const clipId = clipItem.dataset.clipId;
-            e.dataTransfer.setData('text/plain', clipId);
+            const clipType = clipItem.dataset.clipType;
+            const clipDuration = parseFloat(clipItem.dataset.clipDuration);
+
+            const dragData = {
+                type: 'sidebar-clip',
+                clipId,
+                clipType,
+                clipDuration
+            };
+
+            e.dataTransfer.setData('application/json', JSON.stringify(dragData));
             e.dataTransfer.effectAllowed = 'copy';
+
+            // Store global drag data for preview calculation
+            window.globalDragData = dragData;
+
+            console.log('Sidebar drag start:', { clipId, clipType, clipDuration });
+        }
+    }
+
+    handleDragOver(e) {
+        e.preventDefault();
+        // Accept drags anywhere in the sidebar
+        e.dataTransfer.dropEffect = 'copy';
+    }
+
+    handleDrop(e) {
+        e.preventDefault();
+
+        // Accept drops anywhere in the sidebar, not just on clip repository
+        try {
+            const dragData = JSON.parse(e.dataTransfer.getData('application/json'));
+            if (dragData.type === 'timeline-clip') {
+                this.moveClipToSidebar(dragData);
+            }
+        } catch (error) {
+            console.error('Error parsing drag data:', error);
+        }
+    }
+
+    moveClipToSidebar(dragData) {
+        // Find the track and remove the clip
+        const track = this.currentProject.tracks.find(t => t.id === dragData.trackId);
+        if (track) {
+            const clipIndex = track.clips.findIndex(c => c.id === dragData.clipId);
+            if (clipIndex !== -1) {
+                const clip = track.clips.splice(clipIndex, 1)[0];
+
+                // Create a new sidebar clip (without startTime)
+                const sidebarClip = {
+                    id: clip.id,
+                    name: clip.name,
+                    duration: clip.duration,
+                    type: clip.type
+                };
+
+                // Add to sidebar clips
+                this.currentProject.sidebarClips.push(sidebarClip);
+
+                console.log('Moved clip to sidebar:', { clipId: clip.id, type: clip.type });
+
+                // Re-render the sidebar
+                this.render();
+
+                // Dispatch event to update timeline
+                const event = new CustomEvent('projectUpdated', {
+                    detail: { project: this.currentProject }
+                });
+                this.element.dispatchEvent(event);
+            }
         }
     }
 
@@ -375,10 +462,12 @@ class SidebarComponent extends Component {
         this.element.dispatchEvent(event);
     }
 
+    handleDragEnd(e) {
+        window.globalDragData = null; // Clear global drag data
+    }
+
     setProject(project) {
         this.currentProject = project;
-        // Reset loop state when changing projects
-        this.isLooping = false;
         this.render();
     }
 
@@ -478,7 +567,11 @@ class TimelineComponent extends Component {
                         ${track.name}
                     </span>
                 </div>
-                <div class="track__clips-area">
+                <div class="track__clips-area" 
+                     data-track-id="${track.id}"
+                     ondragover="event.preventDefault(); if (window.assemblyApp && window.assemblyApp.timelineComponent) { const dropPosition = window.assemblyApp.timelineComponent.calculateDropPosition(event, event.target.closest('.track')); if (dropPosition.isValid) { event.dataTransfer.dropEffect='copy'; window.assemblyApp.timelineComponent.showDropPreview(event.target.closest('.track'), dropPosition); } else { event.dataTransfer.dropEffect='none'; window.assemblyApp.timelineComponent.hideDropPreview(event.target.closest('.track')); } }"
+                     ondragleave="if (window.assemblyApp && window.assemblyApp.timelineComponent) { window.assemblyApp.timelineComponent.hideDropPreview(event.target.closest('.track')); }"
+                     ondrop="window.handleTrackDrop(event, '${track.id}')">
                     <div class="track__playhead"></div>
                     <div class="track__clips">
                         ${track.clips.map(clip => this.renderClip(clip, track)).join('')}
@@ -497,11 +590,17 @@ class TimelineComponent extends Component {
             <div class="clip clip--dark"
                  data-clip-id="${clip.id}"
                  data-track-id="${track.id}"
+                 data-clip-type="${clip.type}"
+                 data-clip-duration="${clip.duration}"
+                 data-clip-start-time="${clip.startTime}"
                  style="width: ${width}px; left: ${left}px;"
                  draggable="true">
                 <div class="clip__resize-handle clip__resize-handle--left"></div>
                 <div class="clip__resize-handle clip__resize-handle--right"></div>
-                ${clip.name}
+                <div class="clip__content">
+                    <div class="clip__name">${clip.name}</div>
+                    <div class="clip__duration">${this.formatDuration(clip.duration)}</div>
+                </div>
             </div>
         `;
     }
@@ -521,7 +620,7 @@ class TimelineComponent extends Component {
     }
 
     setupEventListeners() {
-        // Track controls
+        // Track actions
         this.element.addEventListener('click', (e) => {
             const trackButton = e.target.closest('[data-track-action]');
             if (trackButton) {
@@ -529,40 +628,265 @@ class TimelineComponent extends Component {
                 const trackId = trackButton.dataset.trackId;
                 this.handleTrackAction(action, trackId);
             }
-
-            const addTrackButton = e.target.closest('[data-action="add-track"]');
-            if (addTrackButton) {
-                this.handleAddTrack();
-            }
         });
 
         // Track name editing
         this.element.addEventListener('blur', (e) => {
-            const trackName = e.target.closest('.track__name');
-            if (trackName) {
-                const trackId = trackName.dataset.trackId;
-                const newName = trackName.textContent.trim();
+            if (e.target.classList.contains('track__name')) {
+                const trackId = e.target.dataset.trackId;
+                const newName = e.target.textContent.trim();
                 this.handleTrackNameChange(trackId, newName);
             }
         }, true);
 
-        // Clip drag and drop
-        this.element.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            e.dataTransfer.dropEffect = 'copy';
-        });
-
-        this.element.addEventListener('drop', (e) => {
-            e.preventDefault();
-            const clipId = e.dataTransfer.getData('text/plain');
-            const trackElement = e.target.closest('.track');
-            if (trackElement && clipId) {
-                const trackId = trackElement.dataset.trackId;
-                const rect = trackElement.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                this.handleClipDrop(clipId, trackId, x);
+        // Add track button
+        this.element.addEventListener('click', (e) => {
+            if (e.target.closest('.add-track-button__button')) {
+                this.handleAddTrack();
             }
         });
+
+        // Drag and drop for clips
+        this.setupDragAndDrop();
+    }
+
+    setupDragAndDrop() {
+        // Drag start from timeline clips
+        this.element.addEventListener('dragstart', (e) => {
+            const clipElement = e.target.closest('[data-clip-id]');
+            if (clipElement && clipElement.dataset.trackId) { // Timeline clip (has trackId)
+                const clipId = clipElement.dataset.clipId;
+                const trackId = clipElement.dataset.trackId;
+                const clipType = clipElement.dataset.clipType;
+                const clipDuration = parseFloat(clipElement.dataset.clipDuration);
+                const clipStartTime = parseFloat(clipElement.dataset.clipStartTime);
+
+                const dragData = {
+                    type: 'timeline-clip',
+                    clipId,
+                    trackId,
+                    clipType,
+                    clipDuration,
+                    clipStartTime
+                };
+
+                e.dataTransfer.setData('application/json', JSON.stringify(dragData));
+                e.dataTransfer.effectAllowed = 'move';
+
+                // Store global drag data for preview calculation
+                window.globalDragData = dragData;
+
+                console.log('Drag start from timeline:', { clipId, trackId, clipType, clipDuration });
+            }
+        });
+
+        // Drag start from sidebar clips (this should be handled by sidebar component)
+        // We don't need to handle sidebar drags here since they're handled in the sidebar component
+
+        // Drag over tracks
+        this.element.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            const trackElement = e.target.closest('.track');
+            if (trackElement) {
+                const trackId = trackElement.dataset.trackId;
+                const dropPosition = this.calculateDropPosition(e, trackElement);
+
+                if (dropPosition.isValid) {
+                    e.dataTransfer.dropEffect = 'copy';
+                    this.showDropPreview(trackElement, dropPosition);
+                } else {
+                    e.dataTransfer.dropEffect = 'none';
+                    this.hideDropPreview(trackElement);
+                }
+            }
+        });
+
+        // Drag leave
+        this.element.addEventListener('dragleave', (e) => {
+            const trackElement = e.target.closest('.track');
+            if (trackElement) {
+                this.hideDropPreview(trackElement);
+            }
+        });
+
+        // Drop on tracks
+        // REMOVED: Using global drop handler with inline ondrop attributes instead
+        // this.element.addEventListener('drop', (e) => { ... });
+
+        // Clear global drag data when drag ends
+        this.element.addEventListener('dragend', (e) => {
+            console.log('Drag end event triggered');
+            window.globalDragData = null;
+        });
+    }
+
+    calculateDropPosition(e, trackElement) {
+        const trackClipsArea = trackElement.querySelector('.track__clips-area');
+        const rect = trackClipsArea.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+
+        // Snap to beat grid
+        const beatWidth = PROJECT_CONFIG.layout.gridBeatWidth;
+        const startTime = Math.round(x / beatWidth);
+
+        // Get clip duration from global drag data
+        let clipDuration = 1; // Default
+        if (window.globalDragData) {
+            clipDuration = window.globalDragData.clipDuration || 1;
+        }
+
+        const endTime = startTime + clipDuration;
+
+        // Check for collisions with existing clips (excluding the dragged clip)
+        const existingClips = trackElement.querySelectorAll('[data-clip-id]');
+        let hasCollision = false;
+
+        existingClips.forEach(clipElement => {
+            // Skip the clip being dragged
+            if (window.globalDragData &&
+                window.globalDragData.type === 'timeline-clip' &&
+                clipElement.dataset.clipId === window.globalDragData.clipId) {
+                return; // Skip this clip
+            }
+
+            const existingStart = parseFloat(clipElement.dataset.clipStartTime);
+            const existingDuration = parseFloat(clipElement.dataset.clipDuration);
+            const existingEnd = existingStart + existingDuration;
+
+            // Check if new clip overlaps with existing clip
+            if ((startTime < existingEnd) && (endTime > existingStart)) {
+                hasCollision = true;
+            }
+        });
+
+        return {
+            startTime,
+            endTime,
+            isValid: !hasCollision && startTime >= 0,
+            x: startTime * beatWidth,
+            width: clipDuration * beatWidth
+        };
+    }
+
+    showDropPreview(trackElement, dropPosition) {
+        // Remove existing preview
+        this.hideDropPreview(trackElement);
+
+        if (dropPosition.isValid) {
+            const preview = document.createElement('div');
+            preview.className = 'clip-drop-preview';
+            preview.style.cssText = `
+                position: absolute;
+                left: ${dropPosition.x}px;
+                width: ${dropPosition.width}px;
+                height: 100%;
+                background-color: rgba(56, 189, 248, 0.3);
+                border: 2px dashed var(--color-accent-primary);
+                pointer-events: none;
+                z-index: 10;
+            `;
+
+            const clipsArea = trackElement.querySelector('.track__clips-area');
+            if (clipsArea) {
+                clipsArea.appendChild(preview);
+            }
+        }
+    }
+
+    hideDropPreview(trackElement) {
+        const existingPreview = trackElement.querySelector('.clip-drop-preview');
+        if (existingPreview) {
+            existingPreview.remove();
+        }
+    }
+
+    handleClipDrop(dragData, targetTrackId, dropPosition) {
+        console.log('Handling clip drop:', { dragData, targetTrackId, dropPosition });
+
+        if (!dropPosition.isValid) {
+            console.log('Invalid drop position');
+            return;
+        }
+
+        if (dragData.type === 'sidebar-clip') {
+            // Adding new clip from sidebar
+            this.addClipToTrack(dragData, targetTrackId, dropPosition.startTime);
+        } else if (dragData.type === 'timeline-clip') {
+            // Moving existing clip
+            this.moveClipInTimeline(dragData, targetTrackId, dropPosition.startTime);
+        }
+    }
+
+    addClipToTrack(clipData, trackId, startTime) {
+        // Find the clip in sidebar clips
+        const sidebarClipIndex = this.currentProject.sidebarClips.findIndex(c => c.id === clipData.clipId);
+        if (sidebarClipIndex === -1) {
+            console.error('Clip not found in sidebar:', clipData.clipId);
+            return;
+        }
+
+        const sidebarClip = this.currentProject.sidebarClips[sidebarClipIndex];
+
+        // Create new clip instance for the track
+        const newClip = {
+            ...sidebarClip,
+            startTime: startTime
+        };
+
+        // Add to track
+        const track = this.currentProject.tracks.find(t => t.id === trackId);
+        if (track) {
+            track.clips.push(newClip);
+
+            // Remove from sidebar clips
+            this.currentProject.sidebarClips.splice(sidebarClipIndex, 1);
+
+            console.log('Added clip to track:', { trackId, clipId: newClip.id, startTime });
+
+            // Re-render the timeline
+            this.render();
+
+            // Dispatch event to update sidebar
+            const event = new CustomEvent('projectUpdated', {
+                detail: { project: this.currentProject }
+            });
+            this.element.dispatchEvent(event);
+        }
+    }
+
+    moveClipInTimeline(clipData, targetTrackId, newStartTime) {
+        // Remove from original track
+        const sourceTrack = this.currentProject.tracks.find(t => t.id === clipData.trackId);
+        if (sourceTrack) {
+            const clipIndex = sourceTrack.clips.findIndex(c => c.id === clipData.clipId);
+            if (clipIndex !== -1) {
+                const clip = sourceTrack.clips.splice(clipIndex, 1)[0];
+
+                // Update clip start time
+                clip.startTime = newStartTime;
+
+                // Add to target track
+                const targetTrack = this.currentProject.tracks.find(t => t.id === targetTrackId);
+                if (targetTrack) {
+                    targetTrack.clips.push(clip);
+                    console.log('Moved clip:', {
+                        fromTrack: clipData.trackId,
+                        toTrack: targetTrackId,
+                        clipId: clip.id,
+                        newStartTime
+                    });
+
+                    // Re-render the timeline
+                    this.render();
+
+                    // Dispatch event to update sidebar
+                    const event = new CustomEvent('projectUpdated', {
+                        detail: { project: this.currentProject }
+                    });
+                    this.element.dispatchEvent(event);
+                }
+            }
+        }
     }
 
     handleTrackAction(action, trackId) {
@@ -584,18 +908,15 @@ class TimelineComponent extends Component {
         this.element.dispatchEvent(event);
     }
 
-    handleClipDrop(clipId, trackId, x) {
-        const event = new CustomEvent('clipDrop', {
-            detail: { clipId, trackId, x }
-        });
-        this.element.dispatchEvent(event);
-    }
-
     formatCurrentTime() {
         const minutes = Math.floor(this.currentTime / 60);
         const seconds = Math.floor(this.currentTime % 60);
-        const tenths = Math.floor((this.currentTime % 1) * 10);
-        return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}.${tenths}`;
+        return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    formatDuration(duration) {
+        // Format duration as beats (e.g., "4 beats", "0.5 beats")
+        return `${duration} beat${duration === 1 ? '' : 's'}`;
     }
 
     setProject(project) {
