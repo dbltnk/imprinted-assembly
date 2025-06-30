@@ -111,20 +111,20 @@ export const PROJECT_DATA = {
                 id: 'sentence-track',
                 name: 'Sentence',
                 type: 'text',
-                clips: [
-                    { id: 'the', name: 'The', duration: 0.5, startTime: 0 },
-                    { id: 'quick', name: 'quick', duration: 0.75, startTime: 1 },
-                    { id: 'brown', name: 'brown', duration: 0.5, startTime: 2 },
-                    { id: 'fox', name: 'fox', duration: 0.5, startTime: 3 },
-                    { id: 'jumps', name: 'jumps', duration: 0.75, startTime: 4 },
-                    { id: 'over', name: 'over', duration: 0.5, startTime: 5 },
-                    { id: 'the2', name: 'the', duration: 0.5, startTime: 6 },
-                    { id: 'lazy', name: 'lazy', duration: 0.5, startTime: 7 },
-                    { id: 'dog', name: 'dog', duration: 0.75, startTime: 8 }
-                ]
+                clips: []
             }
         ],
-        sidebarClips: [], // All clips are in the track
+        sidebarClips: [
+            { id: 'the', name: 'The', duration: 0.5, type: 'text' },
+            { id: 'quick', name: 'quick', duration: 0.75, type: 'text' },
+            { id: 'brown', name: 'brown', duration: 0.5, type: 'text' },
+            { id: 'fox', name: 'fox', duration: 0.5, type: 'text' },
+            { id: 'jumps', name: 'jumps', duration: 0.75, type: 'text' },
+            { id: 'over', name: 'over', duration: 0.5, type: 'text' },
+            { id: 'the2', name: 'the', duration: 0.5, type: 'text' },
+            { id: 'lazy', name: 'lazy', duration: 0.5, type: 'text' },
+            { id: 'dog', name: 'dog', duration: 0.75, type: 'text' }
+        ],
         description: 'Player must arrange clips in correct order to form the sentence.'
     },
 
@@ -206,6 +206,12 @@ export const PROJECT_DATA = {
                 name: 'Field Recording',
                 type: 'field',
                 clips: []
+            },
+            {
+                id: 'bass',
+                name: 'Bass',
+                type: 'bass',
+                clips: []
             }
         ],
         sidebarClips: [
@@ -221,6 +227,11 @@ export const PROJECT_DATA = {
             { id: 'birds', name: 'Birds', duration: 6, type: 'field' },
             { id: 'rain', name: 'Rain', duration: 8, type: 'field' },
             { id: 'street-noise', name: 'Street Noise', duration: 4, type: 'field' },
+
+            // Bass clips
+            { id: 'walking-bass', name: 'Walking Bass', duration: 4, type: 'bass' },
+            { id: 'electric-bass', name: 'Electric Bass', duration: 4, type: 'bass' },
+            { id: 'synth-bass', name: 'Synth Bass', duration: 3, type: 'bass' },
 
             // Extra clips
             { id: 'synth-texture', name: 'Synth Texture', duration: 8, type: 'synth' },
@@ -258,6 +269,12 @@ export const PROJECT_DATA = {
                 name: 'Viola Material',
                 type: 'viola',
                 clips: []
+            },
+            {
+                id: 'bass',
+                name: 'Bass',
+                type: 'bass',
+                clips: []
             }
         ],
         sidebarClips: [
@@ -275,7 +292,12 @@ export const PROJECT_DATA = {
 
             // Viola clips
             { id: 'viola-melody', name: 'Viola Melody', duration: 4, type: 'viola' },
-            { id: 'viola-harmony', name: 'Viola Harmony', duration: 3, type: 'viola' }
+            { id: 'viola-harmony', name: 'Viola Harmony', duration: 3, type: 'viola' },
+
+            // Bass clips
+            { id: 'walking-bass', name: 'Walking Bass', duration: 4, type: 'bass' },
+            { id: 'electric-bass', name: 'Electric Bass', duration: 4, type: 'bass' },
+            { id: 'synth-bass', name: 'Synth Bass', duration: 3, type: 'bass' }
         ],
         description: 'Arrange clips to create the final song structure.'
     }

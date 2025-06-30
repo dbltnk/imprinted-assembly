@@ -306,7 +306,8 @@ class SidebarComponent extends Component {
 
     formatDuration(duration) {
         // Format duration as beats (e.g., "4 beats", "0.5 beats")
-        return `${duration} beat${duration === 1 ? '' : 's'}`;
+        const roundedDuration = Math.round(duration * 10) / 10; // Round to 1 decimal place
+        return `${roundedDuration} beat${roundedDuration === 1 ? '' : 's'}`;
     }
 
     setupEventListeners() {
@@ -377,27 +378,27 @@ class SidebarComponent extends Component {
     }
 
     handleDragStart(e) {
-        const clipItem = e.target.closest('[data-clip-id]');
-        if (clipItem && !clipItem.dataset.trackId) { // Only sidebar clips
-            const clipId = clipItem.dataset.clipId;
-            const clipType = clipItem.dataset.clipType;
-            const clipDuration = parseFloat(clipItem.dataset.clipDuration);
+        const clipItem = e.target.closest('.clip-item');
+        if (!clipItem) return;
 
-            const dragData = {
-                type: 'sidebar-clip',
-                clipId,
-                clipType,
-                clipDuration
-            };
+        const clipId = clipItem.dataset.clipId;
+        const clipType = clipItem.dataset.clipType;
+        const clipDuration = parseFloat(clipItem.dataset.clipDuration);
 
-            e.dataTransfer.setData('application/json', JSON.stringify(dragData));
-            e.dataTransfer.effectAllowed = 'copy';
+        // Set global drag data
+        window.globalDragData = {
+            type: 'sidebar-clip',
+            clipId,
+            clipType,
+            clipDuration,
+            clipName: clipItem.querySelector('.clip-item__name')?.textContent || clipId
+        };
 
-            // Store global drag data for preview calculation
-            window.globalDragData = dragData;
+        // Set drag image
+        e.dataTransfer.setDragImage(clipItem, 10, 10);
+        e.dataTransfer.effectAllowed = 'copy';
 
-            console.log('Sidebar drag start:', { clipId, clipType, clipDuration });
-        }
+        console.log(`Sidebar drag start:`, window.globalDragData);
     }
 
     handleDragOver(e) {
@@ -410,19 +411,14 @@ class SidebarComponent extends Component {
         e.preventDefault();
 
         // Accept drops anywhere in the sidebar, not just on clip repository
-        try {
-            const dragData = JSON.parse(e.dataTransfer.getData('application/json'));
-            if (dragData.type === 'timeline-clip') {
-                this.moveClipToSidebar(dragData);
-            }
-        } catch (error) {
-            console.error('Error parsing drag data:', error);
+        if (window.globalDragData && window.globalDragData.type === 'timeline-clip') {
+            this.moveClipToSidebar(window.globalDragData);
         }
     }
 
     moveClipToSidebar(dragData) {
         // Find the track and remove the clip
-        const track = this.currentProject.tracks.find(t => t.id === dragData.trackId);
+        const track = this.currentProject.tracks.find(t => t.id === dragData.sourceTrackId);
         if (track) {
             const clipIndex = track.clips.findIndex(c => c.id === dragData.clipId);
             if (clipIndex !== -1) {
@@ -504,6 +500,11 @@ class TimelineComponent extends Component {
                 </div>
             </div>
         `;
+
+        // Update button states after rendering
+        if (this.currentProject) {
+            this.updateTrackButtonStates();
+        }
     }
 
     renderTimeRuler() {
@@ -549,29 +550,29 @@ class TimelineComponent extends Component {
 
     renderTrack(track) {
         const category = getCategoryByType(track.type);
+        const trackColor = category ? category.color : '#6b7280';
+
+        // Check if track management is allowed and this is a custom track
+        const showRemoveButton = this.currentProject?.allowTrackManagement &&
+            track.type === 'custom'; // Show remove for custom tracks only
 
         return `
             <div class="track" data-track-id="${track.id}">
                 <div class="track__controls">
-                    ${PROJECT_CONFIG.trackControls.buttons.map(button => `
-                        <button class="track__button" 
-                                title="${button.title}"
-                                data-track-action="${button.id}"
-                                data-track-id="${track.id}">
-                            ${button.icon}
+                    <button class="track__button" title="Solo" data-track-action="solo" data-track-id="${track.id}">
+                        🎧
+                    </button>
+                    <button class="track__button" title="Mute" data-track-action="mute" data-track-id="${track.id}">
+                        🔇
+                    </button>
+                    ${showRemoveButton ? `
+                        <button class="track__button track__button--remove" title="Remove Track" data-track-action="remove" data-track-id="${track.id}">
+                            🗑️
                         </button>
-                    `).join('')}
-                    <span class="track__name" 
-                          contenteditable="true"
-                          data-track-id="${track.id}">
-                        ${track.name}
-                    </span>
+                    ` : ''}
                 </div>
-                <div class="track__clips-area" 
-                     data-track-id="${track.id}"
-                     ondragover="event.preventDefault(); if (window.assemblyApp && window.assemblyApp.timelineComponent) { const dropPosition = window.assemblyApp.timelineComponent.calculateDropPosition(event, event.target.closest('.track')); if (dropPosition.isValid) { event.dataTransfer.dropEffect='copy'; window.assemblyApp.timelineComponent.showDropPreview(event.target.closest('.track'), dropPosition); } else { event.dataTransfer.dropEffect='none'; window.assemblyApp.timelineComponent.hideDropPreview(event.target.closest('.track')); } }"
-                     ondragleave="if (window.assemblyApp && window.assemblyApp.timelineComponent) { window.assemblyApp.timelineComponent.hideDropPreview(event.target.closest('.track')); }"
-                     ondrop="window.handleTrackDrop(event, '${track.id}')">
+                <div class="track__name" data-track-id="${track.id}">${track.name}</div>
+                <div class="track__clips-area" data-track-id="${track.id}">
                     <div class="track__playhead"></div>
                     <div class="track__clips">
                         ${track.clips.map(clip => this.renderClip(clip, track)).join('')}
@@ -582,9 +583,9 @@ class TimelineComponent extends Component {
     }
 
     renderClip(clip, track) {
-        const category = getCategoryByType(track.type);
-        const width = clip.duration * PROJECT_CONFIG.layout.gridBeatWidth;
-        const left = clip.startTime * PROJECT_CONFIG.layout.gridBeatWidth;
+        const pixelsPerBeat = this.getPixelsPerBeat();
+        const width = clip.duration * pixelsPerBeat;
+        const left = clip.startTime * pixelsPerBeat;
 
         return `
             <div class="clip clip--dark"
@@ -606,6 +607,7 @@ class TimelineComponent extends Component {
     }
 
     renderAddTrackButton() {
+        // Only show add track button if project allows track management
         if (!this.currentProject?.allowTrackManagement) {
             return '';
         }
@@ -620,292 +622,436 @@ class TimelineComponent extends Component {
     }
 
     setupEventListeners() {
-        // Track actions
+        // Track actions (mute, solo, rename)
         this.element.addEventListener('click', (e) => {
-            const trackButton = e.target.closest('[data-track-action]');
-            if (trackButton) {
-                const action = trackButton.dataset.trackAction;
-                const trackId = trackButton.dataset.trackId;
+            const trackAction = e.target.closest('[data-track-action]');
+            if (trackAction) {
+                const action = trackAction.dataset.trackAction;
+                const trackId = trackAction.dataset.trackId;
                 this.handleTrackAction(action, trackId);
             }
-        });
 
-        // Track name editing
-        this.element.addEventListener('blur', (e) => {
-            if (e.target.classList.contains('track__name')) {
-                const trackId = e.target.dataset.trackId;
-                const newName = e.target.textContent.trim();
-                this.handleTrackNameChange(trackId, newName);
+            // Track name editing
+            const trackName = e.target.closest('.track__name');
+            if (trackName && !trackName.dataset.editing) {
+                this.startTrackNameEdit(trackName);
             }
-        }, true);
 
-        // Add track button
-        this.element.addEventListener('click', (e) => {
+            // Add track button
             if (e.target.closest('.add-track-button__button')) {
                 this.handleAddTrack();
             }
         });
 
-        // Drag and drop for clips
-        this.setupDragAndDrop();
-    }
-
-    setupDragAndDrop() {
-        // Drag start from timeline clips
-        this.element.addEventListener('dragstart', (e) => {
-            const clipElement = e.target.closest('[data-clip-id]');
-            if (clipElement && clipElement.dataset.trackId) { // Timeline clip (has trackId)
-                const clipId = clipElement.dataset.clipId;
-                const trackId = clipElement.dataset.trackId;
-                const clipType = clipElement.dataset.clipType;
-                const clipDuration = parseFloat(clipElement.dataset.clipDuration);
-                const clipStartTime = parseFloat(clipElement.dataset.clipStartTime);
-
-                const dragData = {
-                    type: 'timeline-clip',
-                    clipId,
-                    trackId,
-                    clipType,
-                    clipDuration,
-                    clipStartTime
-                };
-
-                e.dataTransfer.setData('application/json', JSON.stringify(dragData));
-                e.dataTransfer.effectAllowed = 'move';
-
-                // Store global drag data for preview calculation
-                window.globalDragData = dragData;
-
-                console.log('Drag start from timeline:', { clipId, trackId, clipType, clipDuration });
+        // Track name editing
+        this.element.addEventListener('blur', (e) => {
+            const trackName = e.target.closest('.track__name');
+            if (trackName && trackName.dataset.editing) {
+                this.finishTrackNameEdit(trackName);
             }
-        });
+        }, true);
 
-        // Drag start from sidebar clips (this should be handled by sidebar component)
-        // We don't need to handle sidebar drags here since they're handled in the sidebar component
-
-        // Drag over tracks
-        this.element.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            const trackElement = e.target.closest('.track');
-            if (trackElement) {
-                const trackId = trackElement.dataset.trackId;
-                const dropPosition = this.calculateDropPosition(e, trackElement);
-
-                if (dropPosition.isValid) {
-                    e.dataTransfer.dropEffect = 'copy';
-                    this.showDropPreview(trackElement, dropPosition);
-                } else {
-                    e.dataTransfer.dropEffect = 'none';
-                    this.hideDropPreview(trackElement);
+        this.element.addEventListener('keydown', (e) => {
+            const trackName = e.target.closest('.track__name');
+            if (trackName && trackName.dataset.editing) {
+                if (e.key === 'Enter') {
+                    this.finishTrackNameEdit(trackName);
+                } else if (e.key === 'Escape') {
+                    this.cancelTrackNameEdit(trackName);
                 }
             }
         });
 
-        // Drag leave
-        this.element.addEventListener('dragleave', (e) => {
-            const trackElement = e.target.closest('.track');
-            if (trackElement) {
-                this.hideDropPreview(trackElement);
-            }
-        });
+        // Setup drag and drop
+        this.setupDragAndDrop();
 
-        // Drop on tracks
-        // REMOVED: Using global drop handler with inline ondrop attributes instead
-        // this.element.addEventListener('drop', (e) => { ... });
-
-        // Clear global drag data when drag ends
-        this.element.addEventListener('dragend', (e) => {
-            console.log('Drag end event triggered');
-            window.globalDragData = null;
-        });
+        // Setup clip resizing
+        this.setupClipResizing();
     }
 
-    calculateDropPosition(e, trackElement) {
-        const trackClipsArea = trackElement.querySelector('.track__clips-area');
-        const rect = trackClipsArea.getBoundingClientRect();
-        const x = e.clientX - rect.left;
+    setupClipResizing() {
+        let resizingClip = null;
+        let resizeHandle = null;
+        let startX = 0;
+        let startWidth = 0;
+        let startTime = 0;
+        let originalDuration = 0;
 
-        // Snap to beat grid
-        const beatWidth = PROJECT_CONFIG.layout.gridBeatWidth;
-        const startTime = Math.round(x / beatWidth);
+        // Mouse down on resize handle
+        this.element.addEventListener('mousedown', (e) => {
+            const handle = e.target.closest('.clip__resize-handle');
+            if (!handle) return;
 
-        // Get clip duration from global drag data
-        let clipDuration = 1; // Default
-        if (window.globalDragData) {
-            clipDuration = window.globalDragData.clipDuration || 1;
-        }
+            e.preventDefault();
+            e.stopPropagation();
 
-        const endTime = startTime + clipDuration;
+            const clip = handle.closest('.clip');
+            if (!clip) return;
 
-        // Check for collisions with existing clips (excluding the dragged clip)
-        const existingClips = trackElement.querySelectorAll('[data-clip-id]');
-        let hasCollision = false;
+            resizingClip = clip;
+            resizeHandle = handle;
+            startX = e.clientX;
+            startWidth = clip.offsetWidth;
+            startTime = parseFloat(clip.dataset.clipStartTime);
+            originalDuration = parseFloat(clip.dataset.clipDuration);
 
-        existingClips.forEach(clipElement => {
-            // Skip the clip being dragged
-            if (window.globalDragData &&
-                window.globalDragData.type === 'timeline-clip' &&
-                clipElement.dataset.clipId === window.globalDragData.clipId) {
-                return; // Skip this clip
-            }
+            // Add resizing class
+            handle.classList.add('clip__resize-handle--resizing');
+            clip.classList.add('clip--resizing');
 
-            const existingStart = parseFloat(clipElement.dataset.clipStartTime);
-            const existingDuration = parseFloat(clipElement.dataset.clipDuration);
-            const existingEnd = existingStart + existingDuration;
-
-            // Check if new clip overlaps with existing clip
-            if ((startTime < existingEnd) && (endTime > existingStart)) {
-                hasCollision = true;
-            }
+            // Add global mouse event listeners
+            document.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseup', handleMouseUp);
         });
 
-        return {
-            startTime,
-            endTime,
-            isValid: !hasCollision && startTime >= 0,
-            x: startTime * beatWidth,
-            width: clipDuration * beatWidth
+        const handleMouseMove = (e) => {
+            if (!resizingClip || !resizeHandle) return;
+
+            const deltaX = e.clientX - startX;
+            const trackElement = resizingClip.closest('.track');
+            const trackId = trackElement.dataset.trackId;
+
+            // Calculate new width and duration
+            let newWidth = startWidth;
+            let newDuration = originalDuration;
+            let newStartTime = startTime;
+
+            if (resizeHandle.classList.contains('clip__resize-handle--left')) {
+                // Resizing from left edge
+                newWidth = Math.max(20, startWidth - deltaX); // Minimum 20px width
+                const widthChange = startWidth - newWidth;
+                const timeChange = widthChange / this.getPixelsPerBeat();
+                newStartTime = Math.max(0, startTime + timeChange);
+                newDuration = Math.max(0.1, originalDuration - timeChange);
+            } else {
+                // Resizing from right edge
+                newWidth = Math.max(20, startWidth + deltaX); // Minimum 20px width
+                const widthChange = newWidth - startWidth;
+                const timeChange = widthChange / this.getPixelsPerBeat();
+                newDuration = Math.max(0.1, originalDuration + timeChange);
+            }
+
+            // Check for overlaps
+            if (this.wouldOverlap(trackId, resizingClip.dataset.clipId, newStartTime, newDuration)) {
+                return; // Don't allow resize if it would create overlap
+            }
+
+            // Update clip appearance
+            resizingClip.style.width = `${newWidth}px`;
+            resizingClip.style.left = `${newStartTime * this.getPixelsPerBeat()}px`;
+
+            // Update data attributes
+            resizingClip.dataset.clipStartTime = newStartTime.toString();
+            resizingClip.dataset.clipDuration = newDuration.toString();
+
+            // Update clip content
+            const durationElement = resizingClip.querySelector('.clip__duration');
+            if (durationElement) {
+                durationElement.textContent = `${newDuration.toFixed(1)} beats`;
+            }
+        };
+
+        const handleMouseUp = () => {
+            if (!resizingClip || !resizeHandle) return;
+
+            // Remove resizing classes
+            resizeHandle.classList.remove('clip__resize-handle--resizing');
+            resizingClip.classList.remove('clip--resizing');
+
+            // Update the actual clip data
+            const trackId = resizingClip.closest('.track').dataset.trackId;
+            const clipId = resizingClip.dataset.clipId;
+            const newStartTime = parseFloat(resizingClip.dataset.clipStartTime);
+            const newDuration = parseFloat(resizingClip.dataset.clipDuration);
+
+            // Dispatch event to update app state
+            const event = new CustomEvent('clipResized', {
+                detail: {
+                    trackId,
+                    clipId,
+                    newStartTime,
+                    newDuration
+                }
+            });
+            this.element.dispatchEvent(event);
+
+            // Clean up
+            resizingClip = null;
+            resizeHandle = null;
+            document.removeEventListener('mousemove', handleMouseMove);
+            document.removeEventListener('mouseup', handleMouseUp);
         };
     }
 
-    showDropPreview(trackElement, dropPosition) {
-        // Remove existing preview
-        this.hideDropPreview(trackElement);
+    wouldOverlap(trackId, excludeClipId, startTime, duration) {
+        const endTime = startTime + duration;
+        const track = this.currentProject.tracks.find(t => t.id === trackId);
+        if (!track) return false;
 
-        if (dropPosition.isValid) {
-            const preview = document.createElement('div');
-            preview.className = 'clip-drop-preview';
-            preview.style.cssText = `
-                position: absolute;
-                left: ${dropPosition.x}px;
-                width: ${dropPosition.width}px;
-                height: 100%;
-                background-color: rgba(56, 189, 248, 0.3);
-                border: 2px dashed var(--color-accent-primary);
-                pointer-events: none;
-                z-index: 10;
-            `;
-
-            const clipsArea = trackElement.querySelector('.track__clips-area');
-            if (clipsArea) {
-                clipsArea.appendChild(preview);
-            }
-        }
+        return track.clips.some(clip => {
+            if (clip.id === excludeClipId) return false;
+            const clipEnd = clip.startTime + clip.duration;
+            return (startTime < clipEnd && endTime > clip.startTime);
+        });
     }
 
-    hideDropPreview(trackElement) {
-        const existingPreview = trackElement.querySelector('.clip-drop-preview');
-        if (existingPreview) {
-            existingPreview.remove();
-        }
+    getPixelsPerBeat() {
+        return PROJECT_CONFIG.layout.gridBeatWidth;
+    }
+
+    setupDragAndDrop() {
+        // Drag start for timeline clips
+        this.element.addEventListener('dragstart', (e) => {
+            const clip = e.target.closest('.clip');
+            if (!clip) return;
+
+            const trackId = clip.dataset.trackId;
+            const clipId = clip.dataset.clipId;
+            const clipType = clip.dataset.clipType;
+            const clipDuration = parseFloat(clip.dataset.clipDuration);
+            const clipStartTime = parseFloat(clip.dataset.clipStartTime);
+
+            // Set global drag data
+            window.globalDragData = {
+                type: 'timeline-clip',
+                clipId,
+                clipType,
+                clipDuration,
+                clipStartTime,
+                sourceTrackId: trackId
+            };
+
+            // Set drag image
+            e.dataTransfer.setDragImage(clip, 10, 10);
+            e.dataTransfer.effectAllowed = 'move';
+
+            console.log(`Timeline drag start: ${clipId} from track ${trackId}`);
+        });
+
+        // Drag end cleanup
+        this.element.addEventListener('dragend', (e) => {
+            const clip = e.target.closest('.clip');
+            if (clip) {
+                // Clear global drag data
+                window.globalDragData = null;
+
+                // Hide any drop previews
+                this.cleanupDropPreviews();
+            }
+        });
     }
 
     handleClipDrop(dragData, targetTrackId, dropPosition) {
-        console.log('Handling clip drop:', { dragData, targetTrackId, dropPosition });
-
-        if (!dropPosition.isValid) {
-            console.log('Invalid drop position');
-            return;
-        }
-
         if (dragData.type === 'sidebar-clip') {
-            // Adding new clip from sidebar
             this.addClipToTrack(dragData, targetTrackId, dropPosition.startTime);
         } else if (dragData.type === 'timeline-clip') {
-            // Moving existing clip
             this.moveClipInTimeline(dragData, targetTrackId, dropPosition.startTime);
         }
     }
 
     addClipToTrack(clipData, trackId, startTime) {
-        // Find the clip in sidebar clips
-        const sidebarClipIndex = this.currentProject.sidebarClips.findIndex(c => c.id === clipData.clipId);
-        if (sidebarClipIndex === -1) {
-            console.error('Clip not found in sidebar:', clipData.clipId);
+        // Find the track
+        const track = this.currentProject.tracks.find(t => t.id === trackId);
+        if (!track) {
+            console.error(`Track not found: ${trackId}`);
             return;
         }
 
-        const sidebarClip = this.currentProject.sidebarClips[sidebarClipIndex];
+        // Check for overlaps
+        if (this.wouldOverlap(trackId, null, startTime, clipData.clipDuration)) {
+            console.warn(`Cannot add clip: would overlap with existing clips`);
+            return;
+        }
 
-        // Create new clip instance for the track
+        // Create new clip object
         const newClip = {
-            ...sidebarClip,
-            startTime: startTime
+            id: clipData.clipId,
+            name: clipData.clipName || clipData.clipId,
+            duration: clipData.clipDuration,
+            startTime: startTime,
+            type: clipData.clipType
         };
 
         // Add to track
-        const track = this.currentProject.tracks.find(t => t.id === trackId);
-        if (track) {
-            track.clips.push(newClip);
+        track.clips.push(newClip);
 
-            // Remove from sidebar clips
-            this.currentProject.sidebarClips.splice(sidebarClipIndex, 1);
+        // Dispatch event
+        const event = new CustomEvent('clipAdded', {
+            detail: { trackId, clip: newClip }
+        });
+        this.element.dispatchEvent(event);
 
-            console.log('Added clip to track:', { trackId, clipId: newClip.id, startTime });
+        // Re-render timeline
+        this.render();
 
-            // Re-render the timeline
-            this.render();
-
-            // Dispatch event to update sidebar
-            const event = new CustomEvent('projectUpdated', {
-                detail: { project: this.currentProject }
-            });
-            this.element.dispatchEvent(event);
-        }
+        console.log(`Added clip to track:`, { trackId, clipId: clipData.clipId, startTime });
     }
 
-    moveClipInTimeline(clipData, targetTrackId, newStartTime) {
-        // Remove from original track
-        const sourceTrack = this.currentProject.tracks.find(t => t.id === clipData.trackId);
-        if (sourceTrack) {
-            const clipIndex = sourceTrack.clips.findIndex(c => c.id === clipData.clipId);
-            if (clipIndex !== -1) {
-                const clip = sourceTrack.clips.splice(clipIndex, 1)[0];
+    moveClipInTimeline(dragData, targetTrackId, newStartTime) {
+        const { clipId, sourceTrackId, clipDuration } = dragData;
 
-                // Update clip start time
-                clip.startTime = newStartTime;
+        // Find source and target tracks
+        const sourceTrack = this.currentProject.tracks.find(t => t.id === sourceTrackId);
+        const targetTrack = this.currentProject.tracks.find(t => t.id === targetTrackId);
 
-                // Add to target track
-                const targetTrack = this.currentProject.tracks.find(t => t.id === targetTrackId);
-                if (targetTrack) {
-                    targetTrack.clips.push(clip);
-                    console.log('Moved clip:', {
-                        fromTrack: clipData.trackId,
-                        toTrack: targetTrackId,
-                        clipId: clip.id,
-                        newStartTime
-                    });
-
-                    // Re-render the timeline
-                    this.render();
-
-                    // Dispatch event to update sidebar
-                    const event = new CustomEvent('projectUpdated', {
-                        detail: { project: this.currentProject }
-                    });
-                    this.element.dispatchEvent(event);
-                }
-            }
+        if (!sourceTrack || !targetTrack) {
+            console.error(`Track not found: source=${sourceTrackId}, target=${targetTrackId}`);
+            return;
         }
+
+        // Find the clip
+        const clipIndex = sourceTrack.clips.findIndex(c => c.id === clipId);
+        if (clipIndex === -1) {
+            console.error(`Clip not found: ${clipId}`);
+            return;
+        }
+
+        const clip = sourceTrack.clips[clipIndex];
+
+        // Check for overlaps in target track (excluding the moving clip)
+        if (this.wouldOverlap(targetTrackId, clipId, newStartTime, clipDuration)) {
+            console.warn(`Cannot move clip: would overlap with existing clips`);
+            return;
+        }
+
+        // Remove from source track
+        sourceTrack.clips.splice(clipIndex, 1);
+
+        // Update clip start time
+        clip.startTime = newStartTime;
+
+        // Add to target track
+        targetTrack.clips.push(clip);
+
+        // Dispatch event
+        const event = new CustomEvent('clipMoved', {
+            detail: {
+                clipId,
+                sourceTrackId,
+                targetTrackId,
+                newStartTime
+            }
+        });
+        this.element.dispatchEvent(event);
+
+        // Re-render timeline
+        this.render();
+
+        console.log(`Moved clip: ${clipId} from ${sourceTrackId} to ${targetTrackId} at ${newStartTime}`);
     }
 
     handleTrackAction(action, trackId) {
+        // Handle remove action locally since it's UI-specific
+        if (action === 'remove') {
+            this.handleRemoveTrack(trackId);
+            return;
+        }
+
+        // Delegate other actions to main app
         const event = new CustomEvent('trackAction', {
             detail: { action, trackId }
         });
         this.element.dispatchEvent(event);
     }
 
-    handleTrackNameChange(trackId, newName) {
-        const event = new CustomEvent('trackNameChange', {
-            detail: { trackId, newName }
+    updateTrackButtonStates() {
+        this.currentProject.tracks.forEach(track => {
+            const trackElement = this.element.querySelector(`[data-track-id="${track.id}"]`);
+            if (!trackElement) return;
+
+            const soloButton = trackElement.querySelector('[data-track-action="solo"]');
+            const muteButton = trackElement.querySelector('[data-track-action="mute"]');
+
+            if (soloButton) {
+                soloButton.classList.toggle('track__button--active', track.soloed);
+            }
+            if (muteButton) {
+                muteButton.classList.toggle('track__button--active', track.muted);
+            }
         });
-        this.element.dispatchEvent(event);
+    }
+
+    handleTrackNameChange(trackId, newName) {
+        // Validate name
+        if (!newName || newName.trim().length === 0) {
+            console.warn('Track name cannot be empty');
+            return;
+        }
+
+        // Update track name in project data
+        const track = this.currentProject.tracks.find(t => t.id === trackId);
+        if (track) {
+            track.name = newName.trim();
+            console.log(`Track name changed: ${trackId} -> ${newName}`);
+
+            // Dispatch event
+            const event = new CustomEvent('trackNameChanged', {
+                detail: { trackId, newName: newName.trim() }
+            });
+            this.element.dispatchEvent(event);
+        }
     }
 
     handleAddTrack() {
-        const event = new CustomEvent('addTrack');
+        if (!this.currentProject?.allowTrackManagement) {
+            console.warn('Track management not allowed for this project');
+            return;
+        }
+
+        // Generate new track ID
+        const trackCount = this.currentProject.tracks.length;
+        const newTrackId = `track-${trackCount + 1}`;
+        const newTrackName = `Track ${trackCount + 1}`;
+
+        // Create new track object
+        const newTrack = {
+            id: newTrackId,
+            name: newTrackName,
+            type: 'custom',
+            clips: [],
+            muted: false,
+            soloed: false
+        };
+
+        // Add to project
+        this.currentProject.tracks.push(newTrack);
+
+        // Dispatch event to update app state
+        const event = new CustomEvent('trackAdded', {
+            detail: { track: newTrack }
+        });
         this.element.dispatchEvent(event);
+
+        // Re-render timeline
+        this.render();
+        console.log(`Added new track: ${newTrackName}`);
+    }
+
+    handleRemoveTrack(trackId) {
+        if (!this.currentProject?.allowTrackManagement) {
+            console.warn('Track management not allowed for this project');
+            return;
+        }
+
+        // Find track index
+        const trackIndex = this.currentProject.tracks.findIndex(t => t.id === trackId);
+        if (trackIndex === -1) {
+            console.warn(`Track not found: ${trackId}`);
+            return;
+        }
+
+        // Remove track
+        const removedTrack = this.currentProject.tracks.splice(trackIndex, 1)[0];
+
+        // Dispatch event to update app state
+        const event = new CustomEvent('trackRemoved', {
+            detail: { trackId, track: removedTrack }
+        });
+        this.element.dispatchEvent(event);
+
+        // Re-render timeline
+        this.render();
+        console.log(`Removed track: ${removedTrack.name}`);
     }
 
     formatCurrentTime() {
@@ -916,7 +1062,8 @@ class TimelineComponent extends Component {
 
     formatDuration(duration) {
         // Format duration as beats (e.g., "4 beats", "0.5 beats")
-        return `${duration} beat${duration === 1 ? '' : 's'}`;
+        const roundedDuration = Math.round(duration * 10) / 10; // Round to 1 decimal place
+        return `${roundedDuration} beat${roundedDuration === 1 ? '' : 's'}`;
     }
 
     setProject(project) {
@@ -969,6 +1116,135 @@ class TimelineComponent extends Component {
                 playhead.style.opacity = '0.4';
             }
         });
+    }
+
+    startTrackNameEdit(trackNameElement) {
+        const trackId = trackNameElement.dataset.trackId;
+        const currentName = trackNameElement.textContent.trim();
+
+        // Store original name for cancellation
+        trackNameElement.dataset.originalName = currentName;
+        trackNameElement.dataset.editing = 'true';
+
+        // Make editable
+        trackNameElement.contentEditable = true;
+        trackNameElement.focus();
+
+        // Select all text
+        const range = document.createRange();
+        range.selectNodeContents(trackNameElement);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+
+    finishTrackNameEdit(trackNameElement) {
+        const trackId = trackNameElement.dataset.trackId;
+        const newName = trackNameElement.textContent.trim();
+
+        // Validate name
+        if (!newName || newName.length === 0) {
+            this.cancelTrackNameEdit(trackNameElement);
+            return;
+        }
+
+        // Update the track name
+        this.handleTrackNameChange(trackId, newName);
+
+        // Clean up
+        trackNameElement.contentEditable = false;
+        delete trackNameElement.dataset.editing;
+        delete trackNameElement.dataset.originalName;
+    }
+
+    cancelTrackNameEdit(trackNameElement) {
+        const originalName = trackNameElement.dataset.originalName;
+        trackNameElement.textContent = originalName;
+        trackNameElement.contentEditable = false;
+        delete trackNameElement.dataset.editing;
+        delete trackNameElement.dataset.originalName;
+    }
+
+    calculateDropPosition(e, trackElement) {
+        // Get the clips area element, not the entire track
+        const clipsArea = trackElement.querySelector('.track__clips-area');
+        if (!clipsArea) {
+            return { startTime: 0, endTime: 0, isValid: false };
+        }
+
+        const rect = clipsArea.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const trackId = trackElement.dataset.trackId;
+
+        // Convert pixels to beats with snapping
+        const beatsPerPixel = 1 / this.getPixelsPerBeat();
+        let startTime = x * beatsPerPixel;
+
+        // Snap to nearest beat boundary
+        startTime = Math.round(startTime * 4) / 4; // Snap to quarter beats
+
+        // Ensure non-negative
+        startTime = Math.max(0, startTime);
+
+        // Get drag data
+        const dragData = window.globalDragData;
+        if (!dragData) return { startTime: 0, endTime: 0, isValid: false };
+
+        const duration = dragData.clipDuration || 1;
+        const endTime = startTime + duration;
+
+        // Check for overlaps
+        const wouldOverlap = this.wouldOverlap(trackId, null, startTime, duration);
+
+        return {
+            startTime,
+            endTime,
+            isValid: !wouldOverlap,
+            x: startTime * this.getPixelsPerBeat(),
+            width: duration * this.getPixelsPerBeat()
+        };
+    }
+
+    showDropPreview(trackElement, dropPosition) {
+        // Remove existing preview
+        this.hideDropPreview(trackElement);
+
+        if (dropPosition.isValid) {
+            const preview = document.createElement('div');
+            preview.className = 'clip-drop-preview';
+            preview.style.cssText = `
+                position: absolute;
+                left: ${dropPosition.x}px;
+                width: ${dropPosition.width}px;
+                height: 100%;
+                background-color: rgba(56, 189, 248, 0.3);
+                border: 2px dashed var(--color-accent-primary);
+                pointer-events: none;
+                z-index: 10;
+            `;
+
+            const clipsArea = trackElement.querySelector('.track__clips-area');
+            if (clipsArea) {
+                clipsArea.appendChild(preview);
+            }
+        }
+    }
+
+    hideDropPreview(trackElement) {
+        const existingPreview = trackElement.querySelector('.clip-drop-preview');
+        if (existingPreview) {
+            existingPreview.remove();
+        }
+    }
+
+    cleanupDropPreviews() {
+        const allPreviews = this.element.querySelectorAll('.clip-drop-preview');
+        allPreviews.forEach(preview => preview.remove());
+    }
+
+    snapToGrid(time) {
+        // Snap to nearest quarter beat
+        return Math.round(time * 4) / 4;
     }
 }
 

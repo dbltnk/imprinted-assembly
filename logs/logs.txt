@@ -1,67 +1,15 @@
-=== SESSION START: session-1751147395699 ===
-[22:49:55] LOG: ✅ Configuration validation passed
-  @57:index.html → @398:config.js → @426:config.js
-[22:49:55] LOG: Browser logging system initialized
-  @96:app.js → @39:app.js → @19:app.js → @327:app.js → @865:app.js
-[22:49:55] LOG: Initializing Assembly Audio Editor
-  @96:app.js → @333:app.js → @329:app.js → @865:app.js
-[22:49:55] LOG: Loading project: band
-  @96:app.js → @433:app.js → @345:app.js → @329:app.js → @865:app.js
-[22:49:55] LOG: Project duration: 16 beats
-  @96:app.js → @483:app.js → @448:app.js → @345:app.js → @329:app.js → @865:app.js
-[22:49:55] LOG: Project 'Choose instrument options' loaded successfully
-  @96:app.js → @461:app.js → @345:app.js → @329:app.js → @865:app.js
-[22:49:55] LOG: Assembly Audio Editor initialized successfully
-  @96:app.js → @347:app.js → @329:app.js → @865:app.js
-[22:49:57] LOG: Sidebar drag start: {"clipId":"jazz-shuffle","clipType":"drums","clipDuration":3}
-  @96:app.js → @399:components.js
-[22:49:58] LOG: Global drop handler called for track: guitar
-  @96:app.js → @881:app.js → @108:index.html
-[22:49:58] LOG: Drag data in global handler: {"type":"sidebar-clip","clipId":"jazz-shuffle","clipType":"drums","clipDuration":3}
-  @96:app.js → @886:app.js → @108:index.html
-[22:49:58] LOG: Drop position calculated: {"startTime":4,"endTime":7,"isValid":true}
-  @96:app.js → @928:app.js → @108:index.html
-[22:49:58] LOG: Handling sidebar clip drop: {"dragData":{"type":"sidebar-clip","clipId":"jazz-shuffle","clipType":"drums","clipDuration":3},"trackId":"guitar","startTime":4}
-  @96:app.js → @728:app.js → @934:app.js → @108:index.html
-[22:49:58] LOG: Added clip to track: {"trackId":"guitar","clipId":"jazz-shuffle","startTime":4}
-  @96:app.js → @753:app.js → @934:app.js → @108:index.html
-[22:49:59] LOG: Drag start from timeline: {"clipId":"jazz-shuffle","trackId":"guitar","clipType":"drums","clipDuration":3}
-  @96:app.js → @679:components.js
-[22:50:00] LOG: Drag end event triggered
-  @96:app.js → @718:components.js
-[22:50:01] LOG: Drag start from timeline: {"clipId":"jazz-shuffle","trackId":"guitar","clipType":"drums","clipDuration":3}
-  @96:app.js → @679:components.js
-[22:50:02] LOG: Drag end event triggered
-  @96:app.js → @718:components.js
-[22:50:05] LOG: Sidebar drag start: {"clipId":"slap-bass","clipType":"bass","clipDuration":3}
-  @96:app.js → @399:components.js
-[22:50:06] LOG: Global drop handler called for track: drums
-  @96:app.js → @881:app.js → @1:index.html
-[22:50:06] LOG: Drag data in global handler: {"type":"sidebar-clip","clipId":"slap-bass","clipType":"bass","clipDuration":3}
-  @96:app.js → @886:app.js → @1:index.html
-[22:50:06] LOG: Drop position calculated: {"startTime":2,"endTime":5,"isValid":true}
-  @96:app.js → @928:app.js → @1:index.html
-[22:50:06] LOG: Handling sidebar clip drop: {"dragData":{"type":"sidebar-clip","clipId":"slap-bass","clipType":"bass","clipDuration":3},"trackId":"drums","startTime":2}
-  @96:app.js → @728:app.js → @934:app.js → @1:index.html
-[22:50:06] LOG: Added clip to track: {"trackId":"drums","clipId":"slap-bass","startTime":2}
-  @96:app.js → @753:app.js → @934:app.js → @1:index.html
-[22:50:08] LOG: Sidebar drag start: {"clipId":"rock-beat","clipType":"drums","clipDuration":2}
-  @96:app.js → @399:components.js
-[22:50:09] LOG: Global drop handler called for track: bass
-  @96:app.js → @881:app.js → @1:index.html
-[22:50:09] LOG: Drag data in global handler: {"type":"sidebar-clip","clipId":"rock-beat","clipType":"drums","clipDuration":2}
-  @96:app.js → @886:app.js → @1:index.html
-[22:50:09] LOG: Drop position calculated: {"startTime":6,"endTime":8,"isValid":true}
-  @96:app.js → @928:app.js → @1:index.html
-[22:50:09] LOG: Handling sidebar clip drop: {"dragData":{"type":"sidebar-clip","clipId":"rock-beat","clipType":"drums","clipDuration":2},"trackId":"bass","startTime":6}
-  @96:app.js → @728:app.js → @934:app.js → @1:index.html
-[22:50:09] LOG: Added clip to track: {"trackId":"bass","clipId":"rock-beat","startTime":6}
-  @96:app.js → @753:app.js → @934:app.js → @1:index.html
-[22:50:12] LOG: Drag start from timeline: {"clipId":"rock-beat","trackId":"bass","clipType":"drums","clipDuration":2}
-  @96:app.js → @679:components.js
-[22:50:13] LOG: Drag end event triggered
-  @96:app.js → @718:components.js
-[22:50:14] LOG: Drag start from timeline: {"clipId":"jazz-shuffle","trackId":"guitar","clipType":"drums","clipDuration":3}
-  @96:app.js → @679:components.js
-[22:50:15] LOG: Drag end event triggered
-  @96:app.js → @718:components.js
+=== SESSION START: session-1751286790071 ===
+[13:33:10] LOG: ✅ Configuration validation passed
+  @57:index.html → @420:config.js → @448:config.js
+[13:33:10] LOG: Browser logging system initialized
+  @96:app.js → @39:app.js → @19:app.js → @327:app.js → @1113:app.js
+[13:33:10] LOG: Initializing Assembly Audio Editor
+  @96:app.js → @333:app.js → @329:app.js → @1113:app.js
+[13:33:10] LOG: Loading project: band
+  @96:app.js → @516:app.js → @345:app.js → @329:app.js → @1113:app.js
+[13:33:10] LOG: Project duration: 16 beats
+  @96:app.js → @607:app.js → @535:app.js → @345:app.js → @329:app.js → @1113:app.js
+[13:33:10] LOG: Project 'Choose instrument options' loaded successfully
+  @96:app.js → @543:app.js → @345:app.js → @329:app.js → @1113:app.js
+[13:33:10] LOG: Assembly Audio Editor initialized successfully
+  @96:app.js → @347:app.js → @329:app.js → @1113:app.js

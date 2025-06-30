@@ -385,80 +385,203 @@ class AssemblyApp {
     }
 
     setupEventListeners() {
-        // Header events
-        const header = this.headerComponent;
-        header.addEventListener('menuItemClick', (e) => {
-            this.handleMenuItemClick(e.detail.itemId);
-        });
-
-        header.addEventListener('windowControlClick', (e) => {
-            this.handleWindowControlClick(e.detail.controlId);
-        });
-
-        header.addEventListener('projectSelected', (e) => {
+        // Project selection
+        this.headerComponent.element.addEventListener('projectSelected', (e) => {
             this.loadProject(e.detail.projectId);
         });
 
-        // Sidebar events
-        const sidebar = this.sidebarComponent;
-        sidebar.addEventListener('transportAction', (e) => {
+        // Transport controls
+        this.sidebarComponent.element.addEventListener('transportAction', (e) => {
             this.handleTransportAction(e.detail.action);
         });
 
-        // Timeline events
-        const timeline = this.timelineComponent;
-        timeline.addEventListener('trackAction', (e) => {
+        // Track actions
+        this.timelineComponent.element.addEventListener('trackAction', (e) => {
             this.handleTrackAction(e.detail.action, e.detail.trackId);
         });
 
-        timeline.addEventListener('trackNameChange', (e) => {
+        // Track name changes
+        this.timelineComponent.element.addEventListener('trackNameChanged', (e) => {
             this.handleTrackNameChange(e.detail.trackId, e.detail.newName);
         });
 
-        timeline.addEventListener('addTrack', () => {
+        // Add track
+        this.timelineComponent.element.addEventListener('addTrack', () => {
             this.handleAddTrack();
         });
 
-        // Project update events
-        sidebar.addEventListener('projectUpdated', (e) => {
-            this.sidebarComponent.setProject(e.detail.project);
+        // Track management events
+        this.timelineComponent.element.addEventListener('trackAdded', (e) => {
+            this.handleTrackAdded(e.detail.track);
         });
 
-        timeline.addEventListener('projectUpdated', (e) => {
-            this.timelineComponent.setProject(e.detail.project);
+        this.timelineComponent.element.addEventListener('trackRemoved', (e) => {
+            this.handleTrackRemoved(e.detail.trackId, e.detail.track);
+        });
+
+        this.timelineComponent.element.addEventListener('trackSoloChanged', (e) => {
+            this.handleTrackSoloChanged(e.detail.trackId, e.detail.soloed);
+        });
+
+        this.timelineComponent.element.addEventListener('trackMuteChanged', (e) => {
+            this.handleTrackMuteChanged(e.detail.trackId, e.detail.muted);
+        });
+
+        // Clip events
+        this.timelineComponent.element.addEventListener('clipResized', (e) => {
+            this.handleClipResized(e.detail);
+        });
+
+        this.timelineComponent.element.addEventListener('clipAdded', (e) => {
+            this.handleClipAdded(e.detail);
+        });
+
+        this.timelineComponent.element.addEventListener('clipMoved', (e) => {
+            this.handleClipMoved(e.detail);
+        });
+
+        // Sidebar clip drops
+        this.sidebarComponent.element.addEventListener('sidebarClipDrop', (e) => {
+            this.handleSidebarClipDrop(e.detail.dragData, e.detail.trackId, e.detail.startTime);
+        });
+
+        // Timeline clip moves
+        this.timelineComponent.element.addEventListener('timelineClipMove', (e) => {
+            this.handleTimelineClipMove(e.detail.dragData, e.detail.targetTrackId, e.detail.newStartTime);
+        });
+
+        // Global drop handler for timeline
+        document.addEventListener('drop', (e) => {
+            const trackElement = e.target.closest('.track');
+            if (trackElement && window.globalDragData) {
+                console.log(`Global drop handler called for track: ${trackElement.dataset.trackId}`);
+                console.log(`Drag data in global handler:`, window.globalDragData);
+
+                const dropPosition = this.timelineComponent.calculateDropPosition(e, trackElement);
+                console.log(`Drop position calculated:`, dropPosition);
+
+                if (dropPosition.isValid) {
+                    const trackId = trackElement.dataset.trackId;
+                    const startTime = dropPosition.startTime;
+
+                    if (window.globalDragData.type === 'sidebar-clip') {
+                        this.handleSidebarClipDrop(window.globalDragData, trackId, startTime);
+                    } else if (window.globalDragData.type === 'timeline-clip') {
+                        this.handleTimelineClipMove(window.globalDragData, trackId, startTime);
+                    }
+                }
+
+                // Clear global drag data
+                window.globalDragData = null;
+            }
+        });
+
+        // Global drag over handler
+        document.addEventListener('dragover', (e) => {
+            const trackElement = e.target.closest('.track');
+            if (trackElement && window.globalDragData) {
+                e.preventDefault();
+                const dropPosition = this.timelineComponent.calculateDropPosition(e, trackElement);
+
+                if (dropPosition.isValid) {
+                    e.dataTransfer.dropEffect = 'copy';
+                    this.timelineComponent.showDropPreview(trackElement, dropPosition);
+                } else {
+                    e.dataTransfer.dropEffect = 'none';
+                    this.timelineComponent.hideDropPreview(trackElement);
+                }
+            }
+        });
+
+        // Global drag leave handler
+        document.addEventListener('dragleave', (e) => {
+            const trackElement = e.target.closest('.track');
+            if (trackElement) {
+                this.timelineComponent.hideDropPreview(trackElement);
+            }
+        });
+
+        // Menu item clicks
+        this.headerComponent.element.addEventListener('menuItemClick', (e) => {
+            this.handleMenuItemClick(e.detail.itemId);
+        });
+
+        // Window control clicks
+        this.headerComponent.element.addEventListener('windowControlClick', (e) => {
+            this.handleWindowControlClick(e.detail.controlId);
         });
     }
 
     loadProject(projectId) {
         console.log(`Loading project: ${projectId}`);
 
+        // Clear current state
+        this.clearCurrentState();
+
+        // Get project data
         const project = getProjectById(projectId);
-        assert(project, `Project with id '${projectId}' not found`);
+        if (!project) {
+            console.error(`Project not found: ${projectId}`);
+            return;
+        }
 
-        // Stop any current playback
-        this.stopPlayback();
+        // Validate project structure
+        this.validateProject(project);
 
-        // Reset loop state when changing projects
-        this.isLooping = false;
+        // Set current project
+        this.currentProject = { ...project };
 
-        this.currentProject = project;
-        this.currentTime = 0;
-
-        // Calculate total duration based on project clips
+        // Calculate project duration
         this.calculateTotalDuration();
-
-        // Update components with new project data
-        this.sidebarComponent.setProject(project);
-        this.timelineComponent.setProject(project);
-        this.timelineComponent.setCurrentTime(0);
 
         // Update file info
         this.updateFileInfo(project);
 
-        // Update loop checkbox UI to reflect reset state
-        this.updateLoopUI();
+        // Update components with new project
+        this.updateComponents();
 
         console.log(`Project '${project.name}' loaded successfully`);
+    }
+
+    clearCurrentState() {
+        // Clear playback state
+        this.isPlaying = false;
+        this.currentTime = 0;
+        this.isLooping = false;
+
+        // Clear any existing clips from tracks
+        if (this.currentProject) {
+            this.currentProject.tracks.forEach(track => {
+                track.clips = [];
+                track.muted = false;
+                track.soloed = false;
+            });
+        }
+
+        // Clear global drag data
+        window.globalDragData = null;
+
+        // Update transport UI
+        this.updateTransportUI();
+        this.updateLoopUI();
+    }
+
+    validateProject(project) {
+        assert(project, 'Project is required');
+        assert(project.id, 'Project must have an id');
+        assert(project.name, 'Project must have a name');
+        assert(project.bpm, 'Project must have a bpm');
+        assert(project.tracks, 'Project must have tracks');
+        assert(Array.isArray(project.tracks), 'Project tracks must be an array');
+        assert(project.tracks.length > 0, 'Project must have at least one track');
+
+        project.tracks.forEach((track, index) => {
+            assert(track.id, `Track ${index} must have an id`);
+            assert(track.name, `Track ${index} must have a name`);
+            assert(track.type, `Track ${index} must have a type`);
+            assert(track.clips, `Track ${index} must have clips`);
+            assert(Array.isArray(track.clips), `Track ${index} clips must be an array`);
+        });
     }
 
     calculateTotalDuration() {
@@ -479,7 +602,8 @@ class AssemblyApp {
             maxDuration = 16; // Default 16 beats
         }
 
-        this.totalDuration = maxDuration;
+        // Round up to nearest beat and ensure minimum duration
+        this.totalDuration = Math.max(16, Math.ceil(maxDuration / 4) * 4);
         console.log(`Project duration: ${this.totalDuration} beats`);
     }
 
@@ -694,14 +818,49 @@ class AssemblyApp {
 
     toggleTrackSolo(trackId) {
         console.log(`Toggling solo for track: ${trackId}`);
-        // Solo functionality would be implemented here
-        // For now, just log the action
+
+        const track = this.currentProject.tracks.find(t => t.id === trackId);
+        if (!track) return;
+
+        // Toggle solo state
+        track.soloed = !track.soloed;
+
+        // If this track is being soloed, unsolo all others
+        if (track.soloed) {
+            this.currentProject.tracks.forEach(t => {
+                if (t.id !== trackId) {
+                    t.soloed = false;
+                }
+            });
+        }
+
+        // Update components
+        this.updateComponents();
+
+        // Dispatch event
+        const event = new CustomEvent('trackSoloChanged', {
+            detail: { trackId, soloed: track.soloed }
+        });
+        this.element.dispatchEvent(event);
     }
 
     toggleTrackMute(trackId) {
         console.log(`Toggling mute for track: ${trackId}`);
-        // Mute functionality would be implemented here
-        // For now, just log the action
+
+        const track = this.currentProject.tracks.find(t => t.id === trackId);
+        if (!track) return;
+
+        // Toggle mute state
+        track.muted = !track.muted;
+
+        // Update components
+        this.updateComponents();
+
+        // Dispatch event
+        const event = new CustomEvent('trackMuteChanged', {
+            detail: { trackId, muted: track.muted }
+        });
+        this.element.dispatchEvent(event);
     }
 
     destroy() {
@@ -792,6 +951,8 @@ class AssemblyApp {
         // Update timeline
         if (this.timelineComponent) {
             this.timelineComponent.setProject(this.currentProject);
+            // Update button states after setting project
+            this.timelineComponent.updateTrackButtonStates();
         }
 
         // Update sidebar
@@ -844,6 +1005,93 @@ class AssemblyApp {
                 console.warn(`Unknown window control: ${controlId}`);
         }
     }
+
+    handleTrackAdded(track) {
+        console.log(`Track added: ${track.name}`);
+        // Update components to reflect new track
+        this.updateComponents();
+    }
+
+    handleTrackRemoved(trackId, track) {
+        console.log(`Track removed: ${track.name}`);
+        // Update components to reflect removed track
+        this.updateComponents();
+    }
+
+    handleTrackSoloChanged(trackId, soloed) {
+        console.log(`Track ${trackId} solo changed: ${soloed}`);
+        // Update VU meter or other solo-dependent UI
+        this.updateVUMeter();
+    }
+
+    handleTrackMuteChanged(trackId, muted) {
+        console.log(`Track ${trackId} mute changed: ${muted}`);
+        // Update VU meter or other mute-dependent UI
+        this.updateVUMeter();
+    }
+
+    handleClipResized(detail) {
+        const { trackId, clipId, newStartTime, newDuration } = detail;
+        console.log(`Clip resized: ${clipId} in track ${trackId} to ${newStartTime}s for ${newDuration}s`);
+
+        // Update the clip data in the project
+        const track = this.currentProject.tracks.find(t => t.id === trackId);
+        if (track) {
+            const clip = track.clips.find(c => c.id === clipId);
+            if (clip) {
+                clip.startTime = newStartTime;
+                clip.duration = newDuration;
+
+                // Recalculate project duration
+                this.calculateTotalDuration();
+
+                // Update timeline display
+                this.timelineComponent.render();
+            }
+        }
+    }
+
+    handleClipAdded(detail) {
+        const { trackId, clip } = detail;
+        console.log(`Clip added: ${clip.id} to track ${trackId}`);
+
+        // Recalculate project duration
+        this.calculateTotalDuration();
+
+        // Update timeline display
+        this.timelineComponent.render();
+    }
+
+    handleClipMoved(detail) {
+        const { clipId, sourceTrackId, targetTrackId, newStartTime } = detail;
+        console.log(`Clip moved: ${clipId} from ${sourceTrackId} to ${targetTrackId} at ${newStartTime}`);
+
+        // Recalculate project duration
+        this.calculateTotalDuration();
+
+        // Update timeline display
+        this.timelineComponent.render();
+    }
+
+    calculateProjectDuration() {
+        if (!this.currentProject) return 0;
+
+        let maxEndTime = 0;
+
+        // Find the latest end time of any clip
+        this.currentProject.tracks.forEach(track => {
+            track.clips.forEach(clip => {
+                const endTime = clip.startTime + clip.duration;
+                if (endTime > maxEndTime) {
+                    maxEndTime = endTime;
+                }
+            });
+        });
+
+        // Round up to nearest beat and ensure minimum duration
+        const duration = Math.max(16, Math.ceil(maxEndTime / 4) * 4);
+        return duration;
+    }
 }
 
 // ===== UTILITY FUNCTIONS =====
@@ -874,83 +1122,5 @@ window.addEventListener('beforeunload', () => {
 
 // Export for debugging
 window.AssemblyApp = AssemblyApp;
-
-// ===== GLOBAL DROP HANDLER =====
-// This function is called by the inline ondrop handlers in track clips areas
-window.handleTrackDrop = function (event, trackId) {
-    console.log('Global drop handler called for track:', trackId);
-    event.preventDefault();
-
-    try {
-        const dragData = JSON.parse(event.dataTransfer.getData('application/json'));
-        console.log('Drag data in global handler:', dragData);
-
-        // Calculate drop position
-        const trackElement = event.target.closest('.track__clips-area');
-        const rect = trackElement.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-
-        // Snap to beat grid
-        const beatWidth = PROJECT_CONFIG.layout.gridBeatWidth;
-        const startTime = Math.round(x / beatWidth);
-
-        // Get clip duration from drag data
-        const clipDuration = dragData.clipDuration || 1;
-        const endTime = startTime + clipDuration;
-
-        // Check for collisions (excluding the dragged clip)
-        const existingClips = trackElement.querySelectorAll('[data-clip-id]');
-        let hasCollision = false;
-
-        existingClips.forEach(clipElement => {
-            // Skip the clip being dragged
-            if (dragData.type === 'timeline-clip' &&
-                clipElement.dataset.clipId === dragData.clipId) {
-                return; // Skip this clip
-            }
-
-            const existingStart = parseFloat(clipElement.dataset.clipStartTime);
-            const existingDuration = parseFloat(clipElement.dataset.clipDuration);
-            const existingEnd = existingStart + existingDuration;
-
-            // Check if new clip overlaps with existing clip
-            if ((startTime < existingEnd) && (endTime > existingStart)) {
-                hasCollision = true;
-            }
-        });
-
-        const dropPosition = {
-            startTime,
-            endTime,
-            isValid: !hasCollision && startTime >= 0
-        };
-
-        console.log('Drop position calculated:', dropPosition);
-
-        if (dropPosition.isValid) {
-            // Handle the drop based on type
-            if (dragData.type === 'sidebar-clip') {
-                // Adding new clip from sidebar
-                window.assemblyApp.handleSidebarClipDrop(dragData, trackId, dropPosition.startTime);
-            } else if (dragData.type === 'timeline-clip') {
-                // Moving existing clip
-                window.assemblyApp.handleTimelineClipMove(dragData, trackId, dropPosition.startTime);
-            }
-        } else {
-            console.log('Invalid drop position - collision detected');
-        }
-
-        // Clean up drop previews
-        window.assemblyApp.cleanupDropPreviews();
-
-    } catch (error) {
-        console.error('Error in global drop handler:', error);
-    }
-
-    // Clear global drag data
-    if (window.globalDragData) {
-        window.globalDragData = null;
-    }
-};
 
 // ===== APPLICATION INITIALIZATION ===== 
