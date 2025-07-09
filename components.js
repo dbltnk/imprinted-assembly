@@ -295,13 +295,35 @@ class SidebarComponent extends Component {
                                  data-clip-duration="${clip.duration}"
                                  draggable="true">
                                 <div class="clip-item__name">${clip.name}</div>
-                                <div class="clip-item__duration">${this.formatDuration(clip.duration)}</div>
+                                <div class="clip-item__beats">
+                                    ${this.renderBeatBars(clip.duration)}
+                                </div>
                             </div>
                         `).join('')}
                     </div>
                 </div>
             `;
         }).join('');
+    }
+
+    renderBeatBars(duration) {
+        // Create visual beat bars - each bar represents 1 beat
+        const beatCount = Math.ceil(duration);
+        const bars = [];
+
+        for (let i = 0; i < beatCount; i++) {
+            const isActive = i < duration;
+            const isPartial = i === Math.floor(duration) && duration % 1 !== 0;
+            const partialWidth = duration % 1;
+
+            bars.push(`
+                <div class="beat-bar ${isActive ? 'beat-bar--active' : 'beat-bar--inactive'} ${isPartial ? 'beat-bar--partial' : ''}"
+                     style="${isPartial ? `width: ${partialWidth * 100}%` : ''}">
+                </div>
+            `);
+        }
+
+        return bars.join('');
     }
 
     groupSidebarClipsByCategory() {
@@ -502,6 +524,11 @@ class SidebarComponent extends Component {
     setProject(project) {
         this.currentProject = project;
         this.render();
+
+        // Update clip playing states after rendering
+        if (this.currentTime !== undefined) {
+            this.updateClipPlayingStates(this.currentTime);
+        }
     }
 
     setLoopState(isLooping) {
@@ -575,6 +602,11 @@ class TimelineComponent extends Component {
         // Update button states after rendering
         if (this.currentProject) {
             this.updateTrackButtonStates();
+        }
+
+        // Update clip playing states after rendering
+        if (this.currentTime !== undefined) {
+            this.updateClipPlayingStates(this.currentTime);
         }
     }
 
@@ -1148,6 +1180,11 @@ class TimelineComponent extends Component {
     setProject(project) {
         this.currentProject = project;
         this.render();
+
+        // Update clip playing states after rendering
+        if (this.currentTime !== undefined) {
+            this.updateClipPlayingStates(this.currentTime);
+        }
     }
 
     setCurrentTime(time) {
@@ -1161,6 +1198,35 @@ class TimelineComponent extends Component {
 
         // Update playhead position
         this.updatePlayheadPosition(time);
+
+        // Update clip playing states
+        this.updateClipPlayingStates(time);
+    }
+
+    updateClipPlayingStates(currentTime) {
+        if (!this.currentProject) return;
+
+        // Remove playing class from all clips
+        const allClips = this.element.querySelectorAll('.clip');
+        allClips.forEach(clip => {
+            clip.classList.remove('clip--playing');
+        });
+
+        // Add playing class to clips that are currently being played
+        this.currentProject.tracks.forEach(track => {
+            track.clips.forEach(clip => {
+                const clipStart = clip.startTime;
+                const clipEnd = clip.startTime + clip.duration;
+
+                // Check if playhead is within this clip's time range
+                if (currentTime >= clipStart && currentTime < clipEnd) {
+                    const clipElement = this.element.querySelector(`[data-clip-id="${clip.id}"]`);
+                    if (clipElement) {
+                        clipElement.classList.add('clip--playing');
+                    }
+                }
+            });
+        });
     }
 
     updatePlayheadPosition(time) {
