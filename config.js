@@ -178,15 +178,15 @@ export const PROJECT_DATA = {
             }
         ],
         sidebarClips: [
-            { id: 'the', name: 'The', duration: 1, type: 'text' },
-            { id: 'quick', name: 'quick', duration: 2, type: 'text' },
-            { id: 'brown', name: 'brown', duration: 1.5, type: 'text' },
-            { id: 'fox', name: 'fox', duration: 3, type: 'text' },
-            { id: 'jumps', name: 'jumps', duration: 2.5, type: 'text' },
-            { id: 'over', name: 'over', duration: 1, type: 'text' },
-            { id: 'the2', name: 'the', duration: 4, type: 'text' },
-            { id: 'lazy', name: 'lazy', duration: 2, type: 'text' },
-            { id: 'dog', name: 'dog', duration: 3.5, type: 'text' }
+            { id: 'fragment-a', name: 'Fragment A', duration: 1, type: 'text' },
+            { id: 'fragment-b', name: 'Fragment B', duration: 2, type: 'text' },
+            { id: 'fragment-c', name: 'Fragment C', duration: 1.5, type: 'text' },
+            { id: 'fragment-d', name: 'Fragment D', duration: 3, type: 'text' },
+            { id: 'fragment-e', name: 'Fragment E', duration: 2.5, type: 'text' },
+            { id: 'fragment-f', name: 'Fragment F', duration: 1, type: 'text' },
+            { id: 'fragment-g', name: 'Fragment G', duration: 4, type: 'text' },
+            { id: 'fragment-h', name: 'Fragment H', duration: 2, type: 'text' },
+            { id: 'fragment-i', name: 'Fragment I', duration: 3.5, type: 'text' }
         ],
         description: 'Player must arrange clips in correct order to form the sentence.'
     },
