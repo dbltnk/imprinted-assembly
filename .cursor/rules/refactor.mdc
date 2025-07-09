@@ -1,0 +1,154 @@
+---
+description: Read this guidance when asked to refactor the code
+alwaysApply: false
+---
+# Refactoring Rules
+
+**⚠️ These are MANDATORY requirements for all refactoring work.**
+
+## 🚨 Rule #0: Re-State The Rules
+
+**Before starting to refactor, always briefly restate the rules below.**
+
+## 🗑️ Rule #1: Continuously Delete Code
+
+**Delete code whenever possible WITHOUT changing functionality. We NEVER break existing functionality.**
+
+**Why:** Less code = fewer bugs, easier maintenance, faster development.
+
+## 🚨 Rule #2: NO Legacy Code or Backwards Compatibility
+
+**Never keep old code "just in case" or for backwards compatibility:**
+
+```javascript
+// ❌ NEVER DO THIS - Legacy code hell
+function processTrack(track) {
+    // Old way - kept for backwards compatibility
+    if (track.legacyFormat) {
+        return processLegacyTrack(track);
+    }
+    // New way
+    return processModernTrack(track);
+}
+
+// ✅ DO THIS - Single, clean implementation
+function processTrack(track) {
+    return processModernTrack(track);
+}
+```
+
+**Why:** Legacy code creates maintenance burden, confusion, and bugs. If you need backwards compatibility, handle it at the API boundary, not in business logic.
+
+## 🔍 Rule #3: Hunt Down Orphaned Code
+
+**Identify and delete any code that serves no purpose:**
+
+```javascript
+// ❌ ORPHANED - Function never called
+function calculateOldMixLevel(track) {
+    return track.volume * 1.5; // Old algorithm, no longer used
+}
+
+// ❌ ORPHANED - Dead code path
+function updateTrack(track) {
+    if (track.isLegacy) {
+        // This branch never executes - track.isLegacy is always false
+        return updateLegacyTrack(track);
+    }
+    return updateModernTrack(track);
+}
+
+// ✅ CLEAN - Only live code
+function updateTrack(track) {
+    assert(track, "Track object is required");
+    return updateModernTrack(track);
+}
+```
+
+**Search for:**
+- Unused functions, variables, imports
+- Dead code branches (never-executed conditions)
+- Commented-out code blocks
+- Deprecated features that are no longer referenced
+
+## 🔄 Rule #4: Eliminate Major Duplications (15+ Lines)
+
+**Extract common functionality when you have 15+ lines of duplicated code:**
+
+**Only refactor when:**
+- You have 15+ lines of nearly identical code in total
+- The duplication represents a clear pattern that can be parameterized
+- The extracted function will be used in at least 2 places
+
+## 📝 Rule #5: Remove Useless Comments
+
+**Follow the conventions document - comments must add value:**
+
+```javascript
+// ❌ USELESS - Just repeats what the code shows
+function calculateVolume(track) {
+    // Calculate the volume by multiplying track volume by master volume
+    return track.volume * masterVolume;
+}
+
+// ❌ USELESS - Process comment
+// Removed the old volume calculation here as requested
+
+```
+
+## 🎯 Rule #6: Simplify Complex Code
+
+**Rewrite complicated code to be shorter and clearer:**
+
+```javascript
+// ❌ COMPLEX - Hard to understand and maintain
+function processTracks(tracks, options) {
+    const result = [];
+    for (let i = 0; i < tracks.length; i++) {
+        const track = tracks[i];
+        if (track && track.isActive && (!options.filterMuted || !track.isMuted)) {
+            const processedTrack = {
+                id: track.id,
+                name: track.name,
+                volume: track.volume * (options.applyMasterVolume ? masterVolume : 1),
+                effects: track.effects ? track.effects.filter(e => e.isEnabled) : []
+            };
+            result.push(processedTrack);
+        }
+    }
+    return result;
+}
+
+// ✅ SIMPLE - Clear intent and easy to maintain
+function processTracks(tracks, options) {
+    assert(Array.isArray(tracks), "tracks must be an array");
+    assert(options, "options object is required");
+    
+    return tracks
+        .filter(track => isTrackActive(track, options))
+        .map(track => createProcessedTrack(track, options));
+}
+
+function isTrackActive(track, options) {
+    return track && track.isActive && (!options.filterMuted || !track.isMuted);
+}
+
+function createProcessedTrack(track, options) {
+    return {
+        id: track.id,
+        name: track.name,
+        volume: calculateFinalVolume(track, options),
+        effects: getEnabledEffects(track.effects)
+    };
+}
+```
+
+**Simplify when:**
+- Functions are longer than 10-15 lines
+- Nested conditionals go deeper than 2-3 levels
+- Variable names don't clearly express intent
+- Logic is repeated or hard to follow
+
+---
+
+**That's it. Always follow these rules when refactoring.**

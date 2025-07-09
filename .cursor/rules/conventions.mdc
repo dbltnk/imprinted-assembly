@@ -1,0 +1,99 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Development Rules
+
+**⚠️ These are MANDATORY requirements, not suggestions.**
+
+## 🚨 Rule #0: Re-State The Rules
+
+**Before starting to work, always briefly restate the rules below.**
+
+## 🚨 Rule #1: NO Silent Failures, Liberally Use Assertions
+
+**Never write code that silently fails or uses mystery fallback values:**
+
+```javascript
+// ❌ NEVER DO THIS - Silent failure hell
+const trackVolume = track.volume || 1.0;
+const trackColor = track.color || track.displayColor || '#ff0000';
+
+// ✅ DO THIS - Explicit and debuggable
+function assert(condition, message) {
+    if (!condition) throw new Error('ASSERTION FAILED: ' + message);
+}
+
+assert(track, "Track object is required");
+assert(typeof track.volume === 'number', "track.volume must be a number");
+const trackVolume = track.volume;
+assert(track.color, "track.color is required (no fallback allowed)");
+const trackColor = track.color;
+```
+
+**Why:** When bugs happen, you need to know immediately what's wrong and where. Silent failures hide problems and make debugging take 10x longer.
+
+## 📋 Rule #2: NO Useless Comments
+
+**Comments must add value, not noise:**
+
+- ❌ NO comments that just repeat variable/function names
+- ❌ NO comments that re-state what the code already shows
+- ❌ NO comments about process ("I deleted X here as requested")
+- ❌ NO comments that say "something was omitted here"
+
+**✅ Comments MUST provide context the developer needs:**
+- Intentions and assumptions
+- Context not visible in the immediate code
+- Why something is done a certain way
+- Restrictions and limitations
+
+**Examples:**
+
+```javascript
+// ❌ USELESS - Just repeats what the code shows
+const trackVolume = 0.8; // Set track volume to 0.8
+function calculateMixLevel() { // Calculate mix level
+    return trackVolume * 1.2; // Multiply track volume by 1.2
+}
+
+// ✅ USEFUL - Provides context not visible in code
+const trackVolume = 0.8; // Default volume - will be overridden by user settings
+function calculateMixLevel() {
+    // Using 1.2x multiplier because we're in "loudness mode"
+    // This compensates for the Fletcher-Munson curve at typical listening levels
+    return trackVolume * 1.2;
+}
+
+// ❌ USELESS - Process comment
+// Removed the old volume calculation here as requested
+
+// ✅ USEFUL - Section header comment
+// ====== Track Volume Calculation Logic ======
+
+// ✅ USEFUL - Explains why this approach was chosen
+// Using requestAnimationFrame instead of setInterval because we need
+// smooth visual updates that sync with the browser's refresh rate
+requestAnimationFrame(updateTrackVisualizer);
+
+// ❌ USELESS - Obvious from code
+if (track.isMuted) { // Check if track is muted
+    hideTrack(); // Hide the track
+}
+
+// ✅ USEFUL - Explains business logic
+if (track.isMuted) {
+    // Only hide track if not in solo mode
+    // Solo mode shows muted tracks as grayed out for reference
+    if (!AudioEngine.soloMode) {
+        hideTrack();
+    }
+}
+```
+
+**Why:** Comments should save developers from having to read more of the codebase to understand intent.
+
+---
+
+**That's it. Always follow these rules.**

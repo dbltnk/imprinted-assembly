@@ -1,15 +1,8 @@
-=== SESSION START: session-1751286790071 ===
-[13:33:10] LOG: ✅ Configuration validation passed
-  @57:index.html → @420:config.js → @448:config.js
-[13:33:10] LOG: Browser logging system initialized
-  @96:app.js → @39:app.js → @19:app.js → @327:app.js → @1113:app.js
-[13:33:10] LOG: Initializing Assembly Audio Editor
-  @96:app.js → @333:app.js → @329:app.js → @1113:app.js
-[13:33:10] LOG: Loading project: band
-  @96:app.js → @516:app.js → @345:app.js → @329:app.js → @1113:app.js
-[13:33:10] LOG: Project duration: 16 beats
-  @96:app.js → @607:app.js → @535:app.js → @345:app.js → @329:app.js → @1113:app.js
-[13:33:10] LOG: Project 'Choose instrument options' loaded successfully
-  @96:app.js → @543:app.js → @345:app.js → @329:app.js → @1113:app.js
-[13:33:10] LOG: Assembly Audio Editor initialized successfully
-  @96:app.js → @347:app.js → @329:app.js → @1113:app.js
+=== SESSION START: session-1752061116556 ===
+[12:38:36] LOG: ✅ Configuration validation passed @57:http://0.0.0.0:8080/ → @420:config.js → @448:config.js
+[12:38:36] LOG: Browser logging system initialized @96:app.js → @39:app.js → @19:app.js → @327:app.js → @1113:app.js
+[12:38:36] LOG: Initializing Assembly Audio Editor @96:app.js → @333:app.js → @329:app.js → @1113:app.js
+[12:38:36] LOG: Loading project: band @96:app.js → @516:app.js → @345:app.js → @329:app.js → @1113:app.js
+[12:38:36] LOG: Project duration: 16 beats @96:app.js → @607:app.js → @535:app.js → @345:app.js → @329:app.js → @1113:app.js
+[12:38:36] LOG: Project 'Choose instrument options' loaded successfully @96:app.js → @543:app.js → @345:app.js → @329:app.js → @1113:app.js
+[12:38:36] LOG: Assembly Audio Editor initialized successfully @96:app.js → @347:app.js → @329:app.js → @1113:app.js

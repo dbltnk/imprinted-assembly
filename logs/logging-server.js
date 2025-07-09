@@ -4,7 +4,7 @@ const path = require('path');
 
 // Configuration
 const PORT = 3000;
-const LOGS_DIR = path.join(__dirname, 'logs');
+const LOGS_DIR = __dirname; // Now the server is in the logs directory itself
 
 // Track active connections
 const connections = new Set();
@@ -13,14 +13,28 @@ const connections = new Set();
 let sessionId = null;
 let sessionStartTime = null;
 
-// Ensure logs directory exists
-if (!fs.existsSync(LOGS_DIR)) {
-    fs.mkdirSync(LOGS_DIR, { recursive: true });
-}
+// Pause state tracking
+let isPaused = false;
 
-// File paths
+// File paths (relative to logs directory)
 const LOGS_FILE = path.join(LOGS_DIR, 'logs.txt');
 const DOM_FILE = path.join(LOGS_DIR, 'dom-snapshot.json');
+
+// Toggle pause state
+function togglePause() {
+    isPaused = !isPaused;
+    const status = isPaused ? '⏸️ PAUSED' : '▶️ RESUMED';
+    console.log(`\n${status} - Log and DOM updates are now ${isPaused ? 'paused' : 'active'}`);
+
+    // Write pause/resume marker to log file
+    try {
+        const timestamp = new Date().toISOString();
+        const marker = `\n=== ${isPaused ? 'PAUSED' : 'RESUMED'} AT ${timestamp} ===\n`;
+        fs.appendFileSync(LOGS_FILE, marker);
+    } catch (err) {
+        console.error('Failed to write pause/resume marker:', err.message);
+    }
+}
 
 // Clear files on startup
 function clearFiles() {
@@ -60,6 +74,8 @@ function formatCallStack(callStack) {
 
 // Write logs to file
 function writeLogs(logs) {
+    if (isPaused) return; // Skip writing if paused
+
     try {
         let logEntries = '';
 
@@ -72,7 +88,7 @@ function writeLogs(logs) {
             if (log.callStack && log.callStack.length > 0) {
                 const stackInfo = formatCallStack(log.callStack);
                 if (stackInfo) {
-                    entry += `\n  ${stackInfo}`;
+                    entry += ` ${stackInfo}`;
                 }
             }
 
@@ -87,6 +103,8 @@ function writeLogs(logs) {
 
 // Write DOM snapshot to file
 function writeDomSnapshot(snapshot) {
+    if (isPaused) return; // Skip writing if paused
+
     try {
         // Calculate DOM statistics
         const elementCount = snapshot.elements.length;
@@ -155,18 +173,31 @@ const server = http.createServer(async (req, res) => {
                 const data = await parseJsonBody(req);
                 writeLogs(data.logs);
                 res.writeHead(200, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify({ success: true, logsProcessed: data.logs.length }));
+                res.end(JSON.stringify({
+                    success: true,
+                    logsProcessed: data.logs.length,
+                    paused: isPaused
+                }));
 
             } else if (req.url === '/dom-snapshot') {
                 const snapshot = await parseJsonBody(req);
                 writeDomSnapshot(snapshot);
                 res.writeHead(200, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify({ success: true, elementsCaptured: snapshot.elements.length }));
+                res.end(JSON.stringify({
+                    success: true,
+                    elementsCaptured: snapshot.elements.length,
+                    paused: isPaused
+                }));
 
             } else if (req.url === '/clear') {
                 clearFiles();
                 res.writeHead(200, { 'Content-Type': 'application/json' });
                 res.end(JSON.stringify({ success: true, message: 'Logs cleared' }));
+
+            } else if (req.url === '/delete') {
+                clearFiles();
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ success: true, message: 'Log files cleared' }));
 
             } else {
                 res.writeHead(404, { 'Content-Type': 'application/json' });
@@ -185,6 +216,9 @@ const server = http.createServer(async (req, res) => {
 
 // Start server
 server.listen(PORT, () => {
+    // Clear previous logs on server startup
+    clearFiles();
+
     console.log(`🚀 Browser logging server running on http://localhost:${PORT}`);
     console.log(`📁 Log files will be written to: ${LOGS_DIR}`);
     console.log(`📝 Console logs: ${LOGS_FILE}`);
@@ -192,36 +226,54 @@ server.listen(PORT, () => {
     console.log('');
     console.log('💡 Open index.html in your browser to start logging');
     console.log('🔄 Press Ctrl+C to stop the server');
+    console.log('🗑️  Press Ctrl+D to clear log files');
+    console.log('⏸️  Press Ctrl+P to pause/resume logging');
 });
 
-// Handle graceful shutdown
-process.on('SIGINT', () => {
-    console.log('\n🛑 Shutting down server...');
+// Handle clear logs hotkey (Ctrl+D) and pause/resume (Ctrl+P)
+process.stdin.setRawMode(true);
+process.stdin.resume();
+process.stdin.setEncoding('utf8');
 
-    // Write session end marker
-    try {
-        const sessionEnd = `\n=== SESSION END: ${sessionId} ===\n`;
-        fs.appendFileSync(LOGS_FILE, sessionEnd);
-    } catch (err) {
-        console.error('Failed to write session end marker:', err.message);
+process.stdin.on('data', (key) => {
+    // Ctrl+D (ASCII 4) - Clear logs
+    if (key === '\u0004') {
+        console.log('\n🗑️ Deleting log files...');
+        clearFiles();
     }
+    // Ctrl+C (ASCII 3) - Exit gracefully
+    else if (key === '\u0003') {
+        console.log('\n🛑 Shutting down server...');
 
-    // Close all active connections
-    connections.forEach(connection => {
-        connection.destroy();
-    });
+        // Write session end marker
+        try {
+            const sessionEnd = `\n=== SESSION END: ${sessionId} ===\n`;
+            fs.appendFileSync(LOGS_FILE, sessionEnd);
+        } catch (err) {
+            console.error('Failed to write session end marker:', err.message);
+        }
 
-    // Close server and force exit after timeout
-    server.close(() => {
-        console.log('✅ Server stopped gracefully');
-        process.exit(0);
-    });
+        // Close all active connections
+        connections.forEach(connection => {
+            connection.destroy();
+        });
 
-    // Force exit after 3 seconds if graceful shutdown fails
-    setTimeout(() => {
-        console.log('⚠️ Force shutting down server...');
-        process.exit(1);
-    }, 3000);
+        // Close server and exit
+        server.close(() => {
+            console.log('✅ Server stopped gracefully');
+            process.exit(0);
+        });
+
+        // Force exit after 3 seconds if graceful shutdown fails
+        setTimeout(() => {
+            console.log('⚠️ Force shutting down server...');
+            process.exit(1);
+        }, 3000);
+    }
+    // Ctrl+P (ASCII 16) - Pause/resume
+    else if (key === '\u0010') {
+        togglePause();
+    }
 });
 
 // Also handle SIGTERM for container environments
@@ -250,4 +302,4 @@ process.on('SIGTERM', () => {
         console.log('⚠️ Force shutting down server...');
         process.exit(1);
     }, 3000);
-});
+}); 

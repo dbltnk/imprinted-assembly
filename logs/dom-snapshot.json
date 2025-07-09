@@ -1,8 +1,8 @@
 {
-  "session": "session-1751286790071",
-  "sessionStart": "2025-06-30T12:33:10.071Z",
-  "timestamp": "2025-06-30T12:33:14.044Z",
-  "url": "http://localhost:52330/index.html",
+  "session": "session-1752061116556",
+  "sessionStart": "2025-07-09T11:38:36.556Z",
+  "timestamp": "2025-07-09T11:38:46.552Z",
+  "url": "http://0.0.0.0:8080/",
   "summary": {
     "totalElements": 169,
     "elementsWithId": 6,
@@ -22,8 +22,8 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "1128px",
-        "height": "637px",
+        "width": "2560px",
+        "height": "959px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(0, 0, 0)",
@@ -43,8 +43,8 @@
         "y": 0
       },
       "dimensions": {
-        "width": 1128,
-        "height": 637
+        "width": 2560,
+        "height": 959
       },
       "textContent": "Assembly Prototype\n\n    \n    \n        // Capture ALL console output from the very beginning\n        ",
       "innerHTML": "<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Assembly Prototype</title>\n\n    <!-- Early console capture - must be first! -->\n"
@@ -317,8 +317,8 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "1128px",
-        "height": "637px",
+        "width": "2560px",
+        "height": "959px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -338,8 +338,8 @@
         "y": 0
       },
       "dimensions": {
-        "width": 1128,
-        "height": 637
+        "width": 2560,
+        "height": 959
       },
       "textContent": "🎛️\n            Assembly\n            \n                \n            \n                Load ▼\n         ",
       "innerHTML": "\n    <!-- HEADER / MENU BAR -->\n    <header id=\"header\" class=\"header\">\n            <span class=\"header__logo\">🎛️</span>\n            <span class=\"header__title\">Assembly</span>\n            <nav class"
@@ -358,7 +358,7 @@
         "left": "0px",
         "right": "0px",
         "bottom": "0px",
-        "width": "1128px",
+        "width": "2560px",
         "height": "56px",
         "margin": "0px",
         "padding": "0px 24px 0px 32px",
@@ -379,7 +379,7 @@
         "y": 0
       },
       "dimensions": {
-        "width": 1128,
+        "width": 2560,
         "height": 56
       },
       "textContent": "🎛️\n            Assembly\n            \n                \n            \n                Load ▼\n         ",
@@ -399,8 +399,8 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "29.9453px",
-        "height": "28.5px",
+        "width": "29.9531px",
+        "height": "28px",
         "margin": "0px 16px 0px 0px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -417,11 +417,11 @@
       },
       "position": {
         "x": 32,
-        "y": 13
+        "y": 14
       },
       "dimensions": {
         "width": 30,
-        "height": 29
+        "height": 28
       },
       "textContent": "🎛️",
       "innerHTML": "🎛️"
@@ -440,8 +440,8 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "98.4922px",
-        "height": "22.5px",
+        "width": "98.5px",
+        "height": "23px",
         "margin": "0px 32px 0px 0px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -461,7 +461,7 @@
         "y": 16
       },
       "dimensions": {
-        "width": 98,
+        "width": 99,
         "height": 23
       },
       "textContent": "Assembly",
@@ -481,8 +481,8 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "514.625px",
-        "height": "17.5px",
+        "width": "514.672px",
+        "height": "17px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(209, 213, 219)",
@@ -503,7 +503,7 @@
       },
       "dimensions": {
         "width": 515,
-        "height": 18
+        "height": 17
       },
       "textContent": "Load ▼\n            \n        \n            \n                Save \n            \n        \n            \n ",
       "innerHTML": "\n                \n            <button class=\"header__nav-button  header__nav-button--active\" data-menu-item=\"load\">\n                Load <span class=\"ml-1\">▼</span>\n            </button>\n        \n    "
@@ -525,8 +525,8 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "58.5547px",
-        "height": "17.5px",
+        "width": "58.5625px",
+        "height": "17px",
         "margin": "0px",
         "padding": "1px 6px",
         "border": "0px none rgb(56, 189, 248)",
@@ -547,7 +547,7 @@
       },
       "dimensions": {
         "width": 59,
-        "height": 18
+        "height": 17
       },
       "textContent": "Load ▼",
       "innerHTML": "\n                Load <span class=\"ml-1\">▼</span>\n            "
@@ -610,8 +610,8 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "42.3828px",
-        "height": "17.5px",
+        "width": "42.3906px",
+        "height": "17px",
         "margin": "0px",
         "padding": "1px 6px",
         "border": "0px none rgb(209, 213, 219)",
@@ -632,7 +632,7 @@
       },
       "dimensions": {
         "width": 42,
-        "height": 18
+        "height": 17
       },
       "textContent": "Save",
       "innerHTML": "\n                Save \n            "
@@ -655,7 +655,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "59.4219px",
-        "height": "17.5px",
+        "height": "17px",
         "margin": "0px",
         "padding": "1px 6px",
         "border": "0px none rgb(209, 213, 219)",
@@ -676,7 +676,7 @@
       },
       "dimensions": {
         "width": 59,
-        "height": 18
+        "height": 17
       },
       "textContent": "Analyze",
       "innerHTML": "\n                Analyze \n            "
@@ -698,8 +698,8 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "52.7422px",
-        "height": "17.5px",
+        "width": "52.75px",
+        "height": "17px",
         "margin": "0px",
         "padding": "1px 6px",
         "border": "0px none rgb(209, 213, 219)",
@@ -720,7 +720,7 @@
       },
       "dimensions": {
         "width": 53,
-        "height": 18
+        "height": 17
       },
       "textContent": "Details",
       "innerHTML": "\n                Details \n            "
@@ -742,8 +742,8 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "60.1641px",
-        "height": "17.5px",
+        "width": "60.1719px",
+        "height": "17px",
         "margin": "0px",
         "padding": "1px 6px",
         "border": "0px none rgb(209, 213, 219)",
@@ -764,7 +764,7 @@
       },
       "dimensions": {
         "width": 60,
-        "height": 18
+        "height": 17
       },
       "textContent": "Settings",
       "innerHTML": "\n                Settings \n            "
@@ -786,8 +786,8 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "39.4141px",
-        "height": "17.5px",
+        "width": "39.4219px",
+        "height": "17px",
         "margin": "0px",
         "padding": "1px 6px",
         "border": "0px none rgb(209, 213, 219)",
@@ -808,7 +808,7 @@
       },
       "dimensions": {
         "width": 39,
-        "height": 18
+        "height": 17
       },
       "textContent": "Help",
       "innerHTML": "\n                Help \n            "
@@ -830,8 +830,8 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "57.9453px",
-        "height": "17.5px",
+        "width": "57.9531px",
+        "height": "17px",
         "margin": "0px",
         "padding": "1px 6px",
         "border": "0px none rgb(209, 213, 219)",
@@ -852,7 +852,7 @@
       },
       "dimensions": {
         "width": 58,
-        "height": 18
+        "height": 17
       },
       "textContent": "License",
       "innerHTML": "\n                License \n            "
@@ -868,11 +868,11 @@
         "display": "flex",
         "position": "absolute",
         "top": "4px",
-        "left": "1019.77px",
+        "left": "2451.75px",
         "right": "24px",
-        "bottom": "26.5px",
-        "width": "84.2344px",
-        "height": "24.5px",
+        "bottom": "27px",
+        "width": "84.25px",
+        "height": "24px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -888,12 +888,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 1020,
+        "x": 2452,
         "y": 4
       },
       "dimensions": {
         "width": 84,
-        "height": 25
+        "height": 24
       },
       "textContent": "🗕\n            \n        \n            \n                🗖\n            \n        \n            \n        ",
       "innerHTML": "\n                \n            <button class=\"header__window-button \" title=\"Minimize\" data-window-control=\"minimize\">\n                🗕\n            </button>\n        \n            <button class=\"heade"
@@ -915,7 +915,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "21.4375px",
-        "height": "24.5px",
+        "height": "24px",
         "margin": "0px",
         "padding": "1px 6px",
         "border": "0px none rgb(249, 250, 251)",
@@ -931,12 +931,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 1020,
+        "x": 2452,
         "y": 4
       },
       "dimensions": {
         "width": 21,
-        "height": 25
+        "height": 24
       },
       "textContent": "🗕",
       "innerHTML": "\n                🗕\n            "
@@ -957,8 +957,8 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "24.6641px",
-        "height": "24.5px",
+        "width": "24.6719px",
+        "height": "24px",
         "margin": "0px",
         "padding": "1px 6px",
         "border": "0px none rgb(249, 250, 251)",
@@ -974,12 +974,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 1049,
+        "x": 2481,
         "y": 4
       },
       "dimensions": {
         "width": 25,
-        "height": 25
+        "height": 24
       },
       "textContent": "🗖",
       "innerHTML": "\n                🗖\n            "
@@ -1001,8 +1001,8 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "22.1328px",
-        "height": "24.5px",
+        "width": "22.1406px",
+        "height": "24px",
         "margin": "0px",
         "padding": "1px 6px",
         "border": "0px none rgb(249, 250, 251)",
@@ -1018,12 +1018,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 1082,
+        "x": 2514,
         "y": 4
       },
       "dimensions": {
         "width": 22,
-        "height": 25
+        "height": 24
       },
       "textContent": "🗙",
       "innerHTML": "\n                🗙\n            "
@@ -1042,9 +1042,9 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "1128px",
-        "height": "581px",
-        "margin": "0px",
+        "width": "1600px",
+        "height": "903px",
+        "margin": "0px 480px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
         "background-color": "rgba(0, 0, 0, 0)",
@@ -1059,12 +1059,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 0,
+        "x": 480,
         "y": 56
       },
       "dimensions": {
-        "width": 1128,
-        "height": 581
+        "width": 1600,
+        "height": 903
       },
       "textContent": "File: my_project.ass\n            \n            \n                \n            \n                \n      ",
       "innerHTML": "\n        <!-- LEFT SIDEBAR -->\n        <aside id=\"sidebar\" class=\"sidebar sidebar__scrollbar\">\n            <div class=\"file-info\">\n                File: <span class=\"file-info__name\">my_project.ass</s"
@@ -1085,7 +1085,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "240px",
-        "height": "581px",
+        "height": "903px",
         "margin": "0px 24px 0px 0px",
         "padding": "24px 8px",
         "background-color": "rgb(31, 41, 55)",
@@ -1100,12 +1100,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 0,
+        "x": 480,
         "y": 56
       },
       "dimensions": {
         "width": 240,
-        "height": 581
+        "height": 903
       },
       "textContent": "File: my_project.ass\n            \n            \n                \n            \n                \n      ",
       "innerHTML": "\n            <div class=\"file-info\">\n                File: <span class=\"file-info__name\">my_project.ass</span>\n            </div>\n            <div class=\"transport-controls\">\n                \n        "
@@ -1141,7 +1141,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 8,
+        "x": 488,
         "y": 80
       },
       "dimensions": {
@@ -1182,7 +1182,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 38,
+        "x": 518,
         "y": 80
       },
       "dimensions": {
@@ -1224,7 +1224,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 8,
+        "x": 488,
         "y": 118
       },
       "dimensions": {
@@ -1265,7 +1265,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 28,
+        "x": 508,
         "y": 118
       },
       "dimensions": {
@@ -1311,7 +1311,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 28,
+        "x": 508,
         "y": 118
       },
       "dimensions": {
@@ -1356,7 +1356,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 76,
+        "x": 556,
         "y": 118
       },
       "dimensions": {
@@ -1401,7 +1401,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 124,
+        "x": 604,
         "y": 118
       },
       "dimensions": {
@@ -1446,7 +1446,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 172,
+        "x": 652,
         "y": 118
       },
       "dimensions": {
@@ -1470,7 +1470,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "74.1484px",
+        "width": "74.1562px",
         "height": "34px",
         "margin": "0px",
         "padding": "0px",
@@ -1487,7 +1487,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 82,
+        "x": 562,
         "y": 174
       },
       "dimensions": {
@@ -1511,7 +1511,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "74.1484px",
+        "width": "74.1562px",
         "height": "34px",
         "margin": "0px",
         "padding": "4px",
@@ -1529,7 +1529,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 82,
+        "x": 562,
         "y": 174
       },
       "dimensions": {
@@ -1570,7 +1570,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 90,
+        "x": 570,
         "y": 181
       },
       "dimensions": {
@@ -1594,7 +1594,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "31.1484px",
+        "width": "31.1562px",
         "height": "16px",
         "margin": "0px",
         "padding": "0px",
@@ -1611,7 +1611,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 121,
+        "x": 601,
         "y": 183
       },
       "dimensions": {
@@ -1651,7 +1651,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 8,
+        "x": 488,
         "y": 240
       },
       "dimensions": {
@@ -1676,7 +1676,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "223px",
-        "height": "364px",
+        "height": "686px",
         "margin": "0px",
         "padding": "0px 4px 0px 0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -1692,12 +1692,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 8,
+        "x": 488,
         "y": 249
       },
       "dimensions": {
         "width": 223,
-        "height": 364
+        "height": 686
       },
       "textContent": "Clips\n                \n                \n                    \n                        🥁\n            ",
       "innerHTML": "\n                <div class=\"clip-repository__header\">Clips</div>\n                \n                <div class=\"clip-category\">\n                    <div class=\"clip-category__header\">\n                 "
@@ -1733,7 +1733,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 8,
+        "x": 488,
         "y": 249
       },
       "dimensions": {
@@ -1758,7 +1758,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "204px",
-        "height": "155.5px",
+        "height": "154px",
         "margin": "0px 0px 24px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -1774,12 +1774,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 8,
+        "x": 488,
         "y": 273
       },
       "dimensions": {
         "width": 204,
-        "height": 156
+        "height": 154
       },
       "textContent": "🥁\n                        Drums\n                    \n                    \n                        \n",
       "innerHTML": "\n                    <div class=\"clip-category__header\">\n                        <span class=\"clip-category__icon\">🥁</span>\n                        Drums\n                    </div>\n                  "
@@ -1816,7 +1816,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 8,
+        "x": 488,
         "y": 273
       },
       "dimensions": {
@@ -1857,7 +1857,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 8,
+        "x": 488,
         "y": 273
       },
       "dimensions": {
@@ -1882,7 +1882,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "128.5px",
+        "height": "127px",
         "margin": "0px 0px 0px 24px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -1898,12 +1898,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 32,
+        "x": 512,
         "y": 300
       },
       "dimensions": {
         "width": 180,
-        "height": 129
+        "height": 127
       },
       "textContent": "Rock Beat\n                                2 beats\n                            \n                     ",
       "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"rock-beat\" data-clip-type=\"drums\" data-clip-duration=\"2\" draggable=\"true\">\n                                <d"
@@ -1927,7 +1927,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "37.5px",
+        "height": "37px",
         "margin": "0px",
         "padding": "4px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -1943,12 +1943,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 32,
+        "x": 512,
         "y": 300
       },
       "dimensions": {
         "width": 180,
-        "height": 38
+        "height": 37
       },
       "textContent": "Rock Beat\n                                2 beats",
       "innerHTML": "\n                                <div class=\"clip-item__name\">Rock Beat</div>\n                                <div class=\"clip-item__duration\">2 beats</div>\n                            "
@@ -1984,7 +1984,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
+        "x": 520,
         "y": 304
       },
       "dimensions": {
@@ -2009,7 +2009,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "164px",
-        "height": "11.5px",
+        "height": "11px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(156, 163, 175)",
@@ -2025,12 +2025,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
+        "x": 520,
         "y": 322
       },
       "dimensions": {
         "width": 164,
-        "height": 12
+        "height": 11
       },
       "textContent": "2 beats",
       "innerHTML": "2 beats"
@@ -2054,7 +2054,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "37.5px",
+        "height": "37px",
         "margin": "0px",
         "padding": "4px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2070,12 +2070,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 32,
-        "y": 346
+        "x": 512,
+        "y": 345
       },
       "dimensions": {
         "width": 180,
-        "height": 38
+        "height": 37
       },
       "textContent": "Funk Groove\n                                4 beats",
       "innerHTML": "\n                                <div class=\"clip-item__name\">Funk Groove</div>\n                                <div class=\"clip-item__duration\">4 beats</div>\n                            "
@@ -2111,8 +2111,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 350
+        "x": 520,
+        "y": 349
       },
       "dimensions": {
         "width": 164,
@@ -2136,7 +2136,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "164px",
-        "height": "11.5px",
+        "height": "11px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(156, 163, 175)",
@@ -2152,12 +2152,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 368
+        "x": 520,
+        "y": 367
       },
       "dimensions": {
         "width": 164,
-        "height": 12
+        "height": 11
       },
       "textContent": "4 beats",
       "innerHTML": "4 beats"
@@ -2181,7 +2181,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "37.5px",
+        "height": "37px",
         "margin": "0px",
         "padding": "4px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2197,12 +2197,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 32,
-        "y": 391
+        "x": 512,
+        "y": 390
       },
       "dimensions": {
         "width": 180,
-        "height": 38
+        "height": 37
       },
       "textContent": "Jazz Shuffle\n                                3 beats",
       "innerHTML": "\n                                <div class=\"clip-item__name\">Jazz Shuffle</div>\n                                <div class=\"clip-item__duration\">3 beats</div>\n                            "
@@ -2238,8 +2238,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 395
+        "x": 520,
+        "y": 394
       },
       "dimensions": {
         "width": 164,
@@ -2263,7 +2263,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "164px",
-        "height": "11.5px",
+        "height": "11px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(156, 163, 175)",
@@ -2279,12 +2279,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 413
+        "x": 520,
+        "y": 412
       },
       "dimensions": {
         "width": 164,
-        "height": 12
+        "height": 11
       },
       "textContent": "3 beats",
       "innerHTML": "3 beats"
@@ -2304,7 +2304,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "204px",
-        "height": "155.5px",
+        "height": "154px",
         "margin": "0px 0px 24px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2320,12 +2320,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 8,
-        "y": 453
+        "x": 488,
+        "y": 451
       },
       "dimensions": {
         "width": 204,
-        "height": 156
+        "height": 154
       },
       "textContent": "🎸\n                        Bass\n                    \n                    \n                        \n ",
       "innerHTML": "\n                    <div class=\"clip-category__header\">\n                        <span class=\"clip-category__icon\">🎸</span>\n                        Bass\n                    </div>\n                   "
@@ -2362,8 +2362,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 8,
-        "y": 453
+        "x": 488,
+        "y": 451
       },
       "dimensions": {
         "width": 204,
@@ -2403,8 +2403,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 8,
-        "y": 453
+        "x": 488,
+        "y": 451
       },
       "dimensions": {
         "width": 20,
@@ -2428,7 +2428,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "128.5px",
+        "height": "127px",
         "margin": "0px 0px 0px 24px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2444,12 +2444,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 32,
-        "y": 480
+        "x": 512,
+        "y": 478
       },
       "dimensions": {
         "width": 180,
-        "height": 129
+        "height": 127
       },
       "textContent": "Walking Bass\n                                4 beats\n                            \n                  ",
       "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"walking-bass\" data-clip-type=\"bass\" data-clip-duration=\"4\" draggable=\"true\">\n                                "
@@ -2473,7 +2473,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "37.5px",
+        "height": "37px",
         "margin": "0px",
         "padding": "4px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2489,12 +2489,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 32,
-        "y": 480
+        "x": 512,
+        "y": 478
       },
       "dimensions": {
         "width": 180,
-        "height": 38
+        "height": 37
       },
       "textContent": "Walking Bass\n                                4 beats",
       "innerHTML": "\n                                <div class=\"clip-item__name\">Walking Bass</div>\n                                <div class=\"clip-item__duration\">4 beats</div>\n                            "
@@ -2530,8 +2530,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 484
+        "x": 520,
+        "y": 482
       },
       "dimensions": {
         "width": 164,
@@ -2555,7 +2555,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "164px",
-        "height": "11.5px",
+        "height": "11px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(156, 163, 175)",
@@ -2571,12 +2571,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 502
+        "x": 520,
+        "y": 500
       },
       "dimensions": {
         "width": 164,
-        "height": 12
+        "height": 11
       },
       "textContent": "4 beats",
       "innerHTML": "4 beats"
@@ -2600,7 +2600,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "37.5px",
+        "height": "37px",
         "margin": "0px",
         "padding": "4px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2616,12 +2616,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 32,
-        "y": 525
+        "x": 512,
+        "y": 523
       },
       "dimensions": {
         "width": 180,
-        "height": 38
+        "height": 37
       },
       "textContent": "Synth Bass\n                                2 beats",
       "innerHTML": "\n                                <div class=\"clip-item__name\">Synth Bass</div>\n                                <div class=\"clip-item__duration\">2 beats</div>\n                            "
@@ -2657,8 +2657,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 529
+        "x": 520,
+        "y": 527
       },
       "dimensions": {
         "width": 164,
@@ -2682,7 +2682,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "164px",
-        "height": "11.5px",
+        "height": "11px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(156, 163, 175)",
@@ -2698,12 +2698,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 547
+        "x": 520,
+        "y": 545
       },
       "dimensions": {
         "width": 164,
-        "height": 12
+        "height": 11
       },
       "textContent": "2 beats",
       "innerHTML": "2 beats"
@@ -2727,7 +2727,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "37.5px",
+        "height": "37px",
         "margin": "0px",
         "padding": "4px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2743,12 +2743,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 32,
-        "y": 571
+        "x": 512,
+        "y": 568
       },
       "dimensions": {
         "width": 180,
-        "height": 38
+        "height": 37
       },
       "textContent": "Slap Bass\n                                3 beats",
       "innerHTML": "\n                                <div class=\"clip-item__name\">Slap Bass</div>\n                                <div class=\"clip-item__duration\">3 beats</div>\n                            "
@@ -2784,8 +2784,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 575
+        "x": 520,
+        "y": 572
       },
       "dimensions": {
         "width": 164,
@@ -2809,7 +2809,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "164px",
-        "height": "11.5px",
+        "height": "11px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(156, 163, 175)",
@@ -2825,12 +2825,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 593
+        "x": 520,
+        "y": 590
       },
       "dimensions": {
         "width": 164,
-        "height": 12
+        "height": 11
       },
       "textContent": "3 beats",
       "innerHTML": "3 beats"
@@ -2850,7 +2850,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "204px",
-        "height": "155.5px",
+        "height": "154px",
         "margin": "0px 0px 24px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2866,12 +2866,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 8,
-        "y": 632
+        "x": 488,
+        "y": 629
       },
       "dimensions": {
         "width": 204,
-        "height": 156
+        "height": 154
       },
       "textContent": "🎹\n                        Guitar\n                    \n                    \n                        ",
       "innerHTML": "\n                    <div class=\"clip-category__header\">\n                        <span class=\"clip-category__icon\">🎹</span>\n                        Guitar\n                    </div>\n                 "
@@ -2908,8 +2908,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 8,
-        "y": 632
+        "x": 488,
+        "y": 629
       },
       "dimensions": {
         "width": 204,
@@ -2949,8 +2949,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 8,
-        "y": 632
+        "x": 488,
+        "y": 629
       },
       "dimensions": {
         "width": 20,
@@ -2974,7 +2974,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "128.5px",
+        "height": "127px",
         "margin": "0px 0px 0px 24px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -2990,12 +2990,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 32,
-        "y": 659
+        "x": 512,
+        "y": 656
       },
       "dimensions": {
         "width": 180,
-        "height": 129
+        "height": 127
       },
       "textContent": "Clean Chords\n                                4 beats\n                            \n                  ",
       "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"clean-chords\" data-clip-type=\"guitar\" data-clip-duration=\"4\" draggable=\"true\">\n                              "
@@ -3019,7 +3019,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "37.5px",
+        "height": "37px",
         "margin": "0px",
         "padding": "4px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -3035,12 +3035,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 32,
-        "y": 659
+        "x": 512,
+        "y": 656
       },
       "dimensions": {
         "width": 180,
-        "height": 38
+        "height": 37
       },
       "textContent": "Clean Chords\n                                4 beats",
       "innerHTML": "\n                                <div class=\"clip-item__name\">Clean Chords</div>\n                                <div class=\"clip-item__duration\">4 beats</div>\n                            "
@@ -3076,8 +3076,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 663
+        "x": 520,
+        "y": 660
       },
       "dimensions": {
         "width": 164,
@@ -3101,7 +3101,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "164px",
-        "height": "11.5px",
+        "height": "11px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(156, 163, 175)",
@@ -3117,12 +3117,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 681
+        "x": 520,
+        "y": 678
       },
       "dimensions": {
         "width": 164,
-        "height": 12
+        "height": 11
       },
       "textContent": "4 beats",
       "innerHTML": "4 beats"
@@ -3146,7 +3146,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "37.5px",
+        "height": "37px",
         "margin": "0px",
         "padding": "4px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -3162,12 +3162,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 32,
-        "y": 705
+        "x": 512,
+        "y": 701
       },
       "dimensions": {
         "width": 180,
-        "height": 38
+        "height": 37
       },
       "textContent": "Distorted Riff\n                                2 beats",
       "innerHTML": "\n                                <div class=\"clip-item__name\">Distorted Riff</div>\n                                <div class=\"clip-item__duration\">2 beats</div>\n                            "
@@ -3203,8 +3203,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 709
+        "x": 520,
+        "y": 705
       },
       "dimensions": {
         "width": 164,
@@ -3228,7 +3228,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "164px",
-        "height": "11.5px",
+        "height": "11px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(156, 163, 175)",
@@ -3244,12 +3244,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 727
+        "x": 520,
+        "y": 723
       },
       "dimensions": {
         "width": 164,
-        "height": 12
+        "height": 11
       },
       "textContent": "2 beats",
       "innerHTML": "2 beats"
@@ -3273,7 +3273,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "37.5px",
+        "height": "37px",
         "margin": "0px",
         "padding": "4px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -3289,12 +3289,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 32,
-        "y": 750
+        "x": 512,
+        "y": 746
       },
       "dimensions": {
         "width": 180,
-        "height": 38
+        "height": 37
       },
       "textContent": "Arpeggio\n                                3 beats",
       "innerHTML": "\n                                <div class=\"clip-item__name\">Arpeggio</div>\n                                <div class=\"clip-item__duration\">3 beats</div>\n                            "
@@ -3330,8 +3330,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 754
+        "x": 520,
+        "y": 750
       },
       "dimensions": {
         "width": 164,
@@ -3355,7 +3355,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "164px",
-        "height": "11.5px",
+        "height": "11px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(156, 163, 175)",
@@ -3371,12 +3371,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 772
+        "x": 520,
+        "y": 768
       },
       "dimensions": {
         "width": 164,
-        "height": 12
+        "height": 11
       },
       "textContent": "3 beats",
       "innerHTML": "3 beats"
@@ -3396,7 +3396,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "204px",
-        "height": "110px",
+        "height": "109px",
         "margin": "0px 0px 24px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -3412,12 +3412,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 8,
-        "y": 812
+        "x": 488,
+        "y": 807
       },
       "dimensions": {
         "width": 204,
-        "height": 110
+        "height": 109
       },
       "textContent": "🎤\n                        Vocals\n                    \n                    \n                        ",
       "innerHTML": "\n                    <div class=\"clip-category__header\">\n                        <span class=\"clip-category__icon\">🎤</span>\n                        Vocals\n                    </div>\n                 "
@@ -3454,8 +3454,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 8,
-        "y": 812
+        "x": 488,
+        "y": 807
       },
       "dimensions": {
         "width": 204,
@@ -3495,8 +3495,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 8,
-        "y": 812
+        "x": 488,
+        "y": 807
       },
       "dimensions": {
         "width": 20,
@@ -3520,7 +3520,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "83px",
+        "height": "82px",
         "margin": "0px 0px 0px 24px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -3536,12 +3536,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 32,
-        "y": 839
+        "x": 512,
+        "y": 834
       },
       "dimensions": {
         "width": 180,
-        "height": 83
+        "height": 82
       },
       "textContent": "Lead Take 1\n                                4 beats\n                            \n                   ",
       "innerHTML": "\n                        \n                            <div class=\"clip-item\" data-clip-id=\"lead-take-1\" data-clip-type=\"vocals\" data-clip-duration=\"4\" draggable=\"true\">\n                               "
@@ -3565,7 +3565,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "37.5px",
+        "height": "37px",
         "margin": "0px",
         "padding": "4px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -3581,12 +3581,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 32,
-        "y": 839
+        "x": 512,
+        "y": 834
       },
       "dimensions": {
         "width": 180,
-        "height": 38
+        "height": 37
       },
       "textContent": "Lead Take 1\n                                4 beats",
       "innerHTML": "\n                                <div class=\"clip-item__name\">Lead Take 1</div>\n                                <div class=\"clip-item__duration\">4 beats</div>\n                            "
@@ -3622,8 +3622,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 843
+        "x": 520,
+        "y": 838
       },
       "dimensions": {
         "width": 164,
@@ -3647,7 +3647,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "164px",
-        "height": "11.5px",
+        "height": "11px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(156, 163, 175)",
@@ -3663,12 +3663,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 861
+        "x": 520,
+        "y": 856
       },
       "dimensions": {
         "width": 164,
-        "height": 12
+        "height": 11
       },
       "textContent": "4 beats",
       "innerHTML": "4 beats"
@@ -3692,7 +3692,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "180px",
-        "height": "37.5px",
+        "height": "37px",
         "margin": "0px",
         "padding": "4px 8px",
         "border": "0px none rgb(249, 250, 251)",
@@ -3708,12 +3708,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 32,
-        "y": 884
+        "x": 512,
+        "y": 879
       },
       "dimensions": {
         "width": 180,
-        "height": 38
+        "height": 37
       },
       "textContent": "Lead Take 2\n                                3 beats",
       "innerHTML": "\n                                <div class=\"clip-item__name\">Lead Take 2</div>\n                                <div class=\"clip-item__duration\">3 beats</div>\n                            "
@@ -3749,8 +3749,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 888
+        "x": 520,
+        "y": 883
       },
       "dimensions": {
         "width": 164,
@@ -3774,7 +3774,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "164px",
-        "height": "11.5px",
+        "height": "11px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(156, 163, 175)",
@@ -3790,12 +3790,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 40,
-        "y": 906
+        "x": 520,
+        "y": 901
       },
       "dimensions": {
         "width": 164,
-        "height": 12
+        "height": 11
       },
       "textContent": "3 beats",
       "innerHTML": "3 beats"
@@ -3814,8 +3814,8 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "800px",
-        "height": "581px",
+        "width": "1272px",
+        "height": "903px",
         "margin": "0px",
         "padding": "0px 24px 0px 0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -3831,12 +3831,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 264,
+        "x": 744,
         "y": 56
       },
       "dimensions": {
-        "width": 800,
-        "height": 581
+        "width": 1272,
+        "height": 903
       },
       "textContent": "00:00\n                    BPM: 110\n                \n                \n                    \n          ",
       "innerHTML": "\n            <div class=\"timeline-container\">\n                <div class=\"timeline-header\">\n                    <div class=\"timeline-header__time\">00:00</div>\n                    <div class=\"timeline-"
@@ -3855,8 +3855,8 @@
         "left": "0px",
         "right": "0px",
         "bottom": "0px",
-        "width": "776px",
-        "height": "581px",
+        "width": "1248px",
+        "height": "903px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -3872,12 +3872,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 264,
+        "x": 744,
         "y": 56
       },
       "dimensions": {
-        "width": 776,
-        "height": 581
+        "width": 1248,
+        "height": 903
       },
       "textContent": "00:00\n                    BPM: 110\n                \n                \n                    \n          ",
       "innerHTML": "\n                <div class=\"timeline-header\">\n                    <div class=\"timeline-header__time\">00:00</div>\n                    <div class=\"timeline-header__bpm\">BPM: 110</div>\n                <"
@@ -3896,7 +3896,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "776px",
+        "width": "1248px",
         "height": "35px",
         "margin": "0px",
         "padding": "16px 24px 4px",
@@ -3914,11 +3914,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 264,
+        "x": 744,
         "y": 56
       },
       "dimensions": {
-        "width": 776,
+        "width": 1248,
         "height": 35
       },
       "textContent": "00:00\n                    BPM: 110",
@@ -3938,8 +3938,8 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "36.0078px",
-        "height": "13.5px",
+        "width": "36.0156px",
+        "height": "14px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(56, 189, 248)",
@@ -3955,7 +3955,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 288,
+        "x": 768,
         "y": 72
       },
       "dimensions": {
@@ -3996,7 +3996,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 963,
+        "x": 1915,
         "y": 72
       },
       "dimensions": {
@@ -4020,8 +4020,8 @@
         "left": "0px",
         "right": "0px",
         "bottom": "0px",
-        "width": "776px",
-        "height": "546px",
+        "width": "1248px",
+        "height": "868px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -4037,12 +4037,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 264,
+        "x": 744,
         "y": 91
       },
       "dimensions": {
-        "width": 776,
-        "height": 546
+        "width": 1248,
+        "height": 868
       },
       "textContent": "1.1\n                                \n                            \n                        \n         ",
       "innerHTML": "\n                    \n            <div class=\"time-ruler\">\n                <div class=\"time-ruler__left\"></div>\n                <div class=\"time-ruler__right\">\n                    <div class=\"time-rul"
@@ -4061,7 +4061,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "776px",
+        "width": "1248px",
         "height": "32px",
         "margin": "0px",
         "padding": "0px",
@@ -4079,11 +4079,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 264,
+        "x": 744,
         "y": 91
       },
       "dimensions": {
-        "width": 776,
+        "width": 1248,
         "height": 32
       },
       "textContent": "1.1\n                                \n                            \n                        \n         ",
@@ -4120,7 +4120,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 264,
+        "x": 744,
         "y": 91
       },
       "dimensions": {
@@ -4144,7 +4144,7 @@
         "left": "0px",
         "right": "0px",
         "bottom": "0px",
-        "width": "536px",
+        "width": "1008px",
         "height": "14px",
         "margin": "0px",
         "padding": "0px",
@@ -4161,11 +4161,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 504,
+        "x": 984,
         "y": 109
       },
       "dimensions": {
-        "width": 536,
+        "width": 1008,
         "height": 14
       },
       "textContent": "1.1\n                                \n                            \n                        \n         ",
@@ -4185,7 +4185,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "536px",
+        "width": "1008px",
         "height": "14px",
         "margin": "0px",
         "padding": "0px",
@@ -4203,11 +4203,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 504,
+        "x": 984,
         "y": 109
       },
       "dimensions": {
-        "width": 536,
+        "width": 1008,
         "height": 14
       },
       "textContent": "1.1\n                                \n                            \n                        \n         ",
@@ -4227,7 +4227,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "33.5px",
+        "width": "40px",
         "height": "14px",
         "margin": "0px",
         "padding": "0px",
@@ -4246,11 +4246,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 504,
+        "x": 984,
         "y": 109
       },
       "dimensions": {
-        "width": 34,
+        "width": 40,
         "height": 14
       },
       "textContent": "1.1",
@@ -4288,7 +4288,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 512,
+        "x": 996,
         "y": 109
       },
       "dimensions": {
@@ -4312,7 +4312,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "33.5px",
+        "width": "40px",
         "height": "14px",
         "margin": "0px",
         "padding": "0px",
@@ -4331,11 +4331,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 538,
+        "x": 1024,
         "y": 109
       },
       "dimensions": {
-        "width": 34,
+        "width": 40,
         "height": 14
       },
       "textContent": "1.2",
@@ -4372,7 +4372,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 546,
+        "x": 1036,
         "y": 109
       },
       "dimensions": {
@@ -4396,7 +4396,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "33.5px",
+        "width": "40px",
         "height": "14px",
         "margin": "0px",
         "padding": "0px",
@@ -4415,11 +4415,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 571,
+        "x": 1064,
         "y": 109
       },
       "dimensions": {
-        "width": 34,
+        "width": 40,
         "height": 14
       },
       "textContent": "1.3",
@@ -4456,7 +4456,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 579,
+        "x": 1076,
         "y": 109
       },
       "dimensions": {
@@ -4480,7 +4480,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "33.5px",
+        "width": "40px",
         "height": "14px",
         "margin": "0px",
         "padding": "0px",
@@ -4499,11 +4499,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 605,
+        "x": 1104,
         "y": 109
       },
       "dimensions": {
-        "width": 34,
+        "width": 40,
         "height": 14
       },
       "textContent": "1.4",
@@ -4540,7 +4540,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 613,
+        "x": 1116,
         "y": 109
       },
       "dimensions": {
@@ -4564,7 +4564,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "33.5px",
+        "width": "40px",
         "height": "14px",
         "margin": "0px",
         "padding": "0px",
@@ -4583,11 +4583,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 638,
+        "x": 1144,
         "y": 109
       },
       "dimensions": {
-        "width": 34,
+        "width": 40,
         "height": 14
       },
       "textContent": "2.1",
@@ -4625,7 +4625,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 646,
+        "x": 1156,
         "y": 109
       },
       "dimensions": {
@@ -4649,7 +4649,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "33.5px",
+        "width": "40px",
         "height": "14px",
         "margin": "0px",
         "padding": "0px",
@@ -4668,11 +4668,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 672,
+        "x": 1184,
         "y": 109
       },
       "dimensions": {
-        "width": 34,
+        "width": 40,
         "height": 14
       },
       "textContent": "2.2",
@@ -4709,7 +4709,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 680,
+        "x": 1196,
         "y": 109
       },
       "dimensions": {
@@ -4733,7 +4733,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "33.5px",
+        "width": "40px",
         "height": "14px",
         "margin": "0px",
         "padding": "0px",
@@ -4752,11 +4752,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 705,
+        "x": 1224,
         "y": 109
       },
       "dimensions": {
-        "width": 34,
+        "width": 40,
         "height": 14
       },
       "textContent": "2.3",
@@ -4793,7 +4793,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 713,
+        "x": 1236,
         "y": 109
       },
       "dimensions": {
@@ -4817,7 +4817,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "33.5px",
+        "width": "40px",
         "height": "14px",
         "margin": "0px",
         "padding": "0px",
@@ -4836,11 +4836,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 739,
+        "x": 1264,
         "y": 109
       },
       "dimensions": {
-        "width": 34,
+        "width": 40,
         "height": 14
       },
       "textContent": "2.4",
@@ -4877,7 +4877,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 747,
+        "x": 1276,
         "y": 109
       },
       "dimensions": {
@@ -4901,7 +4901,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "33.5px",
+        "width": "40px",
         "height": "14px",
         "margin": "0px",
         "padding": "0px",
@@ -4920,11 +4920,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 772,
+        "x": 1304,
         "y": 109
       },
       "dimensions": {
-        "width": 34,
+        "width": 40,
         "height": 14
       },
       "textContent": "3.1",
@@ -4962,7 +4962,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 780,
+        "x": 1316,
         "y": 109
       },
       "dimensions": {
@@ -4986,7 +4986,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "33.5px",
+        "width": "40px",
         "height": "14px",
         "margin": "0px",
         "padding": "0px",
@@ -5005,11 +5005,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 806,
+        "x": 1344,
         "y": 109
       },
       "dimensions": {
-        "width": 34,
+        "width": 40,
         "height": 14
       },
       "textContent": "3.2",
@@ -5046,7 +5046,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 814,
+        "x": 1356,
         "y": 109
       },
       "dimensions": {
@@ -5070,7 +5070,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "33.5px",
+        "width": "40px",
         "height": "14px",
         "margin": "0px",
         "padding": "0px",
@@ -5089,11 +5089,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 839,
+        "x": 1384,
         "y": 109
       },
       "dimensions": {
-        "width": 34,
+        "width": 40,
         "height": 14
       },
       "textContent": "3.3",
@@ -5130,7 +5130,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 847,
+        "x": 1396,
         "y": 109
       },
       "dimensions": {
@@ -5154,7 +5154,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "33.5px",
+        "width": "40px",
         "height": "14px",
         "margin": "0px",
         "padding": "0px",
@@ -5173,11 +5173,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 873,
+        "x": 1424,
         "y": 109
       },
       "dimensions": {
-        "width": 34,
+        "width": 40,
         "height": 14
       },
       "textContent": "3.4",
@@ -5214,7 +5214,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 881,
+        "x": 1436,
         "y": 109
       },
       "dimensions": {
@@ -5238,7 +5238,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "33.5px",
+        "width": "40px",
         "height": "14px",
         "margin": "0px",
         "padding": "0px",
@@ -5257,11 +5257,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 906,
+        "x": 1464,
         "y": 109
       },
       "dimensions": {
-        "width": 34,
+        "width": 40,
         "height": 14
       },
       "textContent": "4.1",
@@ -5299,7 +5299,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 914,
+        "x": 1476,
         "y": 109
       },
       "dimensions": {
@@ -5323,7 +5323,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "33.5px",
+        "width": "40px",
         "height": "14px",
         "margin": "0px",
         "padding": "0px",
@@ -5342,11 +5342,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 940,
+        "x": 1504,
         "y": 109
       },
       "dimensions": {
-        "width": 34,
+        "width": 40,
         "height": 14
       },
       "textContent": "4.2",
@@ -5383,7 +5383,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 948,
+        "x": 1516,
         "y": 109
       },
       "dimensions": {
@@ -5407,7 +5407,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "33.5px",
+        "width": "40px",
         "height": "14px",
         "margin": "0px",
         "padding": "0px",
@@ -5426,11 +5426,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 973,
+        "x": 1544,
         "y": 109
       },
       "dimensions": {
-        "width": 34,
+        "width": 40,
         "height": 14
       },
       "textContent": "4.3",
@@ -5467,7 +5467,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 981,
+        "x": 1556,
         "y": 109
       },
       "dimensions": {
@@ -5491,7 +5491,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "33.5px",
+        "width": "40px",
         "height": "14px",
         "margin": "0px",
         "padding": "0px",
@@ -5510,11 +5510,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 1007,
+        "x": 1584,
         "y": 109
       },
       "dimensions": {
-        "width": 34,
+        "width": 40,
         "height": 14
       },
       "textContent": "4.4",
@@ -5551,7 +5551,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 1015,
+        "x": 1596,
         "y": 109
       },
       "dimensions": {
@@ -5577,7 +5577,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "776px",
+        "width": "1248px",
         "height": "56px",
         "margin": "0px",
         "padding": "0px",
@@ -5594,11 +5594,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 264,
+        "x": 744,
         "y": 123
       },
       "dimensions": {
-        "width": 776,
+        "width": 1248,
         "height": 56
       },
       "textContent": "🎧\n                    \n                    \n                        🔇\n                    \n       ",
@@ -5636,7 +5636,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 264,
+        "x": 744,
         "y": 123
       },
       "dimensions": {
@@ -5682,7 +5682,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 272,
+        "x": 752,
         "y": 137
       },
       "dimensions": {
@@ -5728,7 +5728,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 308,
+        "x": 788,
         "y": 137
       },
       "dimensions": {
@@ -5771,7 +5771,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 504,
+        "x": 984,
         "y": 139
       },
       "dimensions": {
@@ -5797,7 +5797,7 @@
         "left": "0px",
         "right": "0px",
         "bottom": "0px",
-        "width": "408px",
+        "width": "880px",
         "height": "48px",
         "margin": "0px",
         "padding": "0px",
@@ -5814,11 +5814,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 632,
+        "x": 1112,
         "y": 127
       },
       "dimensions": {
-        "width": 408,
+        "width": 880,
         "height": 48
       },
       "textContent": null,
@@ -5836,7 +5836,7 @@
         "position": "absolute",
         "top": "0px",
         "left": "0px",
-        "right": "406px",
+        "right": "878px",
         "bottom": "0px",
         "width": "2px",
         "height": "48px",
@@ -5855,7 +5855,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 632,
+        "x": 1112,
         "y": 127
       },
       "dimensions": {
@@ -5879,7 +5879,7 @@
         "left": "0px",
         "right": "0px",
         "bottom": "0px",
-        "width": "408px",
+        "width": "880px",
         "height": "0px",
         "margin": "0px",
         "padding": "0px 0px 0px 48px",
@@ -5897,11 +5897,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 632,
+        "x": 1112,
         "y": 127
       },
       "dimensions": {
-        "width": 408,
+        "width": 880,
         "height": 0
       },
       "textContent": null,
@@ -5923,7 +5923,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "776px",
+        "width": "1248px",
         "height": "56px",
         "margin": "0px",
         "padding": "0px",
@@ -5940,11 +5940,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 264,
+        "x": 744,
         "y": 179
       },
       "dimensions": {
-        "width": 776,
+        "width": 1248,
         "height": 56
       },
       "textContent": "🎧\n                    \n                    \n                        🔇\n                    \n       ",
@@ -5982,7 +5982,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 264,
+        "x": 744,
         "y": 179
       },
       "dimensions": {
@@ -6028,7 +6028,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 272,
+        "x": 752,
         "y": 193
       },
       "dimensions": {
@@ -6074,7 +6074,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 308,
+        "x": 788,
         "y": 193
       },
       "dimensions": {
@@ -6117,7 +6117,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 504,
+        "x": 984,
         "y": 195
       },
       "dimensions": {
@@ -6143,7 +6143,7 @@
         "left": "0px",
         "right": "0px",
         "bottom": "0px",
-        "width": "408px",
+        "width": "880px",
         "height": "48px",
         "margin": "0px",
         "padding": "0px",
@@ -6160,11 +6160,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 632,
+        "x": 1112,
         "y": 183
       },
       "dimensions": {
-        "width": 408,
+        "width": 880,
         "height": 48
       },
       "textContent": null,
@@ -6182,7 +6182,7 @@
         "position": "absolute",
         "top": "0px",
         "left": "0px",
-        "right": "406px",
+        "right": "878px",
         "bottom": "0px",
         "width": "2px",
         "height": "48px",
@@ -6201,7 +6201,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 632,
+        "x": 1112,
         "y": 183
       },
       "dimensions": {
@@ -6225,7 +6225,7 @@
         "left": "0px",
         "right": "0px",
         "bottom": "0px",
-        "width": "408px",
+        "width": "880px",
         "height": "0px",
         "margin": "0px",
         "padding": "0px 0px 0px 48px",
@@ -6243,11 +6243,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 632,
+        "x": 1112,
         "y": 183
       },
       "dimensions": {
-        "width": 408,
+        "width": 880,
         "height": 0
       },
       "textContent": null,
@@ -6269,7 +6269,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "776px",
+        "width": "1248px",
         "height": "56px",
         "margin": "0px",
         "padding": "0px",
@@ -6286,11 +6286,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 264,
+        "x": 744,
         "y": 235
       },
       "dimensions": {
-        "width": 776,
+        "width": 1248,
         "height": 56
       },
       "textContent": "🎧\n                    \n                    \n                        🔇\n                    \n       ",
@@ -6328,7 +6328,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 264,
+        "x": 744,
         "y": 235
       },
       "dimensions": {
@@ -6374,7 +6374,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 272,
+        "x": 752,
         "y": 249
       },
       "dimensions": {
@@ -6420,7 +6420,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 308,
+        "x": 788,
         "y": 249
       },
       "dimensions": {
@@ -6463,7 +6463,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 504,
+        "x": 984,
         "y": 251
       },
       "dimensions": {
@@ -6489,7 +6489,7 @@
         "left": "0px",
         "right": "0px",
         "bottom": "0px",
-        "width": "408px",
+        "width": "880px",
         "height": "48px",
         "margin": "0px",
         "padding": "0px",
@@ -6506,11 +6506,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 632,
+        "x": 1112,
         "y": 239
       },
       "dimensions": {
-        "width": 408,
+        "width": 880,
         "height": 48
       },
       "textContent": null,
@@ -6528,7 +6528,7 @@
         "position": "absolute",
         "top": "0px",
         "left": "0px",
-        "right": "406px",
+        "right": "878px",
         "bottom": "0px",
         "width": "2px",
         "height": "48px",
@@ -6547,7 +6547,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 632,
+        "x": 1112,
         "y": 239
       },
       "dimensions": {
@@ -6571,7 +6571,7 @@
         "left": "0px",
         "right": "0px",
         "bottom": "0px",
-        "width": "408px",
+        "width": "880px",
         "height": "0px",
         "margin": "0px",
         "padding": "0px 0px 0px 48px",
@@ -6589,11 +6589,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 632,
+        "x": 1112,
         "y": 239
       },
       "dimensions": {
-        "width": 408,
+        "width": 880,
         "height": 0
       },
       "textContent": null,
@@ -6615,7 +6615,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "776px",
+        "width": "1248px",
         "height": "56px",
         "margin": "0px",
         "padding": "0px",
@@ -6633,11 +6633,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 264,
+        "x": 744,
         "y": 291
       },
       "dimensions": {
-        "width": 776,
+        "width": 1248,
         "height": 56
       },
       "textContent": "🎧\n                    \n                    \n                        🔇\n                    \n       ",
@@ -6675,7 +6675,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 264,
+        "x": 744,
         "y": 291
       },
       "dimensions": {
@@ -6721,7 +6721,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 272,
+        "x": 752,
         "y": 305
       },
       "dimensions": {
@@ -6767,7 +6767,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 308,
+        "x": 788,
         "y": 305
       },
       "dimensions": {
@@ -6810,7 +6810,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 504,
+        "x": 984,
         "y": 307
       },
       "dimensions": {
@@ -6836,7 +6836,7 @@
         "left": "0px",
         "right": "0px",
         "bottom": "0px",
-        "width": "408px",
+        "width": "880px",
         "height": "48px",
         "margin": "0px",
         "padding": "0px",
@@ -6853,11 +6853,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 632,
+        "x": 1112,
         "y": 295
       },
       "dimensions": {
-        "width": 408,
+        "width": 880,
         "height": 48
       },
       "textContent": null,
@@ -6875,7 +6875,7 @@
         "position": "absolute",
         "top": "0px",
         "left": "0px",
-        "right": "406px",
+        "right": "878px",
         "bottom": "0px",
         "width": "2px",
         "height": "48px",
@@ -6894,7 +6894,7 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 632,
+        "x": 1112,
         "y": 295
       },
       "dimensions": {
@@ -6918,7 +6918,7 @@
         "left": "0px",
         "right": "0px",
         "bottom": "0px",
-        "width": "408px",
+        "width": "880px",
         "height": "0px",
         "margin": "0px",
         "padding": "0px 0px 0px 48px",
@@ -6936,11 +6936,11 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 632,
+        "x": 1112,
         "y": 295
       },
       "dimensions": {
-        "width": 408,
+        "width": 880,
         "height": 0
       },
       "textContent": null,
@@ -6961,7 +6961,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "64px",
-        "height": "581px",
+        "height": "903px",
         "margin": "0px",
         "padding": "0px",
         "border": "0px none rgb(249, 250, 251)",
@@ -6979,12 +6979,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 1064,
+        "x": 2016,
         "y": 56
       },
       "dimensions": {
         "width": 64,
-        "height": 581
+        "height": 903
       },
       "textContent": "L  R",
       "innerHTML": "\n            <div class=\"vu-meter\" id=\"vu-meter\">\n                <div class=\"vu-meter__level\" style=\"height: 0%\"></div>\n            </div>\n            <div class=\"vu-meter__label\">L&nbsp;&nbsp;R</div"
@@ -7004,7 +7004,7 @@
         "right": "auto",
         "bottom": "auto",
         "width": "24px",
-        "height": "511px",
+        "height": "833px",
         "margin": "48px 0px 0px",
         "padding": "0px",
         "border": "1px solid rgb(56, 189, 248)",
@@ -7020,12 +7020,12 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 1084,
+        "x": 2036,
         "y": 104
       },
       "dimensions": {
         "width": 24,
-        "height": 511
+        "height": 833
       },
       "textContent": null,
       "innerHTML": "\n                <div class=\"vu-meter__level\" style=\"height: 0%\"></div>\n            "
@@ -7061,8 +7061,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 1085,
-        "y": 614
+        "x": 2037,
+        "y": 936
       },
       "dimensions": {
         "width": 22,
@@ -7085,7 +7085,7 @@
         "left": "auto",
         "right": "auto",
         "bottom": "auto",
-        "width": "22.0078px",
+        "width": "22.0156px",
         "height": "14px",
         "margin": "8px 0px 0px",
         "padding": "0px",
@@ -7102,8 +7102,8 @@
         "visibility": "visible"
       },
       "position": {
-        "x": 1085,
-        "y": 623
+        "x": 2037,
+        "y": 945
       },
       "dimensions": {
         "width": 22,

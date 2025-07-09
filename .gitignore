@@ -1,0 +1,6 @@
+# Log files - exclude specific files but keep directory structure
+logs/*.txt
+logs/*.json
+
+# Keep the logs directory itself
+!logs/ 
