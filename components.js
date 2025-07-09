@@ -238,7 +238,7 @@ class SidebarComponent extends Component {
             <div class="transport-controls">
                 ${this.renderTransportControls()}
             </div>
-            <div class="divider"></div>
+            <div class="file-info-divider"></div>
             <div class="clip-repository">
                 ${this.renderClipRepository()}
             </div>
@@ -457,44 +457,8 @@ class SidebarComponent extends Component {
 
     handleDrop(e) {
         e.preventDefault();
-
-        // Accept drops anywhere in the sidebar, not just on clip repository
-        if (window.globalDragData && window.globalDragData.type === 'timeline-clip') {
-            this.moveClipToSidebar(window.globalDragData);
-        }
-    }
-
-    moveClipToSidebar(dragData) {
-        // Find the track and remove the clip
-        const track = this.currentProject.tracks.find(t => t.id === dragData.sourceTrackId);
-        if (track) {
-            const clipIndex = track.clips.findIndex(c => c.id === dragData.clipId);
-            if (clipIndex !== -1) {
-                const clip = track.clips.splice(clipIndex, 1)[0];
-
-                // Create a new sidebar clip (without startTime)
-                const sidebarClip = {
-                    id: clip.id,
-                    name: clip.name,
-                    duration: clip.duration,
-                    type: clip.type
-                };
-
-                // Add to sidebar clips
-                this.currentProject.sidebarClips.push(sidebarClip);
-
-                console.log('Moved clip to sidebar:', { clipId: clip.id, type: clip.type });
-
-                // Re-render the sidebar
-                this.render();
-
-                // Dispatch event to update timeline
-                const event = new CustomEvent('projectUpdated', {
-                    detail: { project: this.currentProject }
-                });
-                this.element.dispatchEvent(event);
-            }
-        }
+        // Sidebar is treated as generic empty space - no special handling needed
+        // The global drop handler will handle timeline clip removal
     }
 
     handleTransportAction(action) {
@@ -1021,14 +985,9 @@ class TimelineComponent extends Component {
 
         // Drag end cleanup
         this.element.addEventListener('dragend', (e) => {
-            const clip = e.target.closest('.clip');
-            if (clip) {
-                // Clear global drag data
-                window.globalDragData = null;
-
-                // Hide any drop previews
-                this.cleanupDropPreviews();
-            }
+            // Always clear global drag data and cleanup previews
+            window.globalDragData = null;
+            this.cleanupDropPreviews();
         });
     }
 

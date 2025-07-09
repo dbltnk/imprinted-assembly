@@ -769,6 +769,39 @@ class AssemblyApp {
         }
     }
 
+    handleClipRemoval(dragData) {
+        assert(dragData, 'Drag data is required for clip removal');
+        assert(dragData.type === 'timeline-clip', 'Only timeline clips can be removed');
+        assert(dragData.sourceTrackId, 'Source track ID is required');
+        assert(dragData.clipId, 'Clip ID is required');
+
+        const sourceTrack = this.currentProject.tracks.find(t => t.id === dragData.sourceTrackId);
+        if (!sourceTrack) {
+            console.error(`Track not found: ${dragData.sourceTrackId}`);
+            return;
+        }
+
+        const clipIndex = sourceTrack.clips.findIndex(c => c.id === dragData.clipId);
+        if (clipIndex === -1) {
+            console.error(`Clip not found: ${dragData.clipId}`);
+            return;
+        }
+
+        const removedClip = sourceTrack.clips.splice(clipIndex, 1)[0];
+
+        console.log('Removed clip:', {
+            fromTrack: dragData.sourceTrackId,
+            clipId: removedClip.id,
+            clipName: removedClip.name
+        });
+
+        this.updateComponents();
+        // Refresh sidebar to show updated usage
+        if (this.sidebarComponent) {
+            this.sidebarComponent.refreshClipRepository();
+        }
+    }
+
     updateComponents() {
         // Update timeline
         if (this.timelineComponent) {
@@ -808,21 +841,33 @@ class AssemblyApp {
     setupGlobalDragAndDrop() {
         document.addEventListener('drop', (e) => {
             const trackElement = e.target.closest('.track');
-            if (trackElement && window.globalDragData) {
-                console.log(`Global drop handler called for track: ${trackElement.dataset.trackId}`);
-                console.log(`Drag data in global handler:`, window.globalDragData);
 
-                const dropPosition = this.timelineComponent.calculateDropPosition(e, trackElement);
-                console.log(`Drop position calculated:`, dropPosition);
+            if (window.globalDragData) {
+                if (trackElement) {
+                    // Drop on a track
+                    console.log(`Global drop handler called for track: ${trackElement.dataset.trackId}`);
+                    console.log(`Drag data in global handler:`, window.globalDragData);
 
-                if (dropPosition.isValid) {
-                    const trackId = trackElement.dataset.trackId;
-                    const startTime = dropPosition.startTime;
+                    const dropPosition = this.timelineComponent.calculateDropPosition(e, trackElement);
+                    console.log(`Drop position calculated:`, dropPosition);
 
-                    if (window.globalDragData.type === 'sidebar-clip') {
-                        this.handleSidebarClipDrop(window.globalDragData, trackId, startTime);
-                    } else if (window.globalDragData.type === 'timeline-clip') {
-                        this.handleTimelineClipMove(window.globalDragData, trackId, startTime);
+                    if (dropPosition.isValid) {
+                        const trackId = trackElement.dataset.trackId;
+                        const startTime = dropPosition.startTime;
+
+                        if (window.globalDragData.type === 'sidebar-clip') {
+                            this.handleSidebarClipDrop(window.globalDragData, trackId, startTime);
+                        } else if (window.globalDragData.type === 'timeline-clip') {
+                            this.handleTimelineClipMove(window.globalDragData, trackId, startTime);
+                        }
+                    }
+                } else {
+                    // Drop outside of any track (including sidebar) - remove the clip
+                    console.log(`Global drop handler called outside of tracks`);
+                    console.log(`Drag data in global handler:`, window.globalDragData);
+
+                    if (window.globalDragData.type === 'timeline-clip') {
+                        this.handleClipRemoval(window.globalDragData);
                     }
                 }
 
@@ -843,6 +888,10 @@ class AssemblyApp {
                     e.dataTransfer.dropEffect = 'none';
                     this.timelineComponent.hideDropPreview(trackElement);
                 }
+            } else if (window.globalDragData && window.globalDragData.type === 'timeline-clip') {
+                // Allow dropping timeline clips anywhere (including sidebar) to remove them
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'move';
             }
         });
 
@@ -850,6 +899,15 @@ class AssemblyApp {
             const trackElement = e.target.closest('.track');
             if (trackElement) {
                 this.timelineComponent.hideDropPreview(trackElement);
+            }
+        });
+
+        // Global drag end cleanup
+        document.addEventListener('dragend', (e) => {
+            // Clear global drag data and cleanup previews
+            window.globalDragData = null;
+            if (this.timelineComponent) {
+                this.timelineComponent.cleanupDropPreviews();
             }
         });
     }

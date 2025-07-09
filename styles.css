@@ -395,6 +395,7 @@ body {
     flex: 1;
     overflow-y: auto;
     padding-right: var(--spacing-xs);
+    margin: 15px;
 }
 
 .clip-repository__header {
