@@ -678,6 +678,7 @@ body {
             var(--color-bg-tertiary) 2px,
             transparent 2px,
             transparent var(--grid-beat-width));
+    margin-top: -27px;
 }
 
 .time-ruler__beat {
