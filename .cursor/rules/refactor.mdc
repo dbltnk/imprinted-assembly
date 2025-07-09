@@ -10,11 +10,14 @@ alwaysApply: false
 
 **Before starting to refactor, always briefly restate the rules below.**
 
-## 🗑️ Rule #1: Continuously Delete Code
+## 🗑️ Rule #1: Continuously Delete Code, But Keep Useful Debug Logs
 
 **Delete code whenever possible WITHOUT changing functionality. We NEVER break existing functionality.**
+**Never remove debug logs that help us understand what's happening or catch bugs. If in doubt, keep the log.**
 
-**Why:** Less code = fewer bugs, easier maintenance, faster development.
+**Why:** Less code = fewer bugs, easier maintenance, faster development.  
+**But:** Good debug logs are worth their weight in gold for tracking down issues fast.
+
 
 ## 🚨 Rule #2: NO Legacy Code or Backwards Compatibility
 
