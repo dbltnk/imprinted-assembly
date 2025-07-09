@@ -384,6 +384,11 @@ class AssemblyApp {
             this.handleTimelineClipMove(e.detail.dragData, e.detail.targetTrackId, e.detail.newStartTime);
         });
 
+        // Recording completion
+        this.sidebarComponent.element.addEventListener('recordingCompleted', (e) => {
+            this.handleRecordingCompleted(e.detail.originalClipId, e.detail.newClip);
+        });
+
         this.setupGlobalDragAndDrop();
 
         // Menu item clicks
@@ -1043,6 +1048,22 @@ class AssemblyApp {
     handleClipMoved(detail) {
         const { clipId, sourceTrackId, targetTrackId, newStartTime } = detail;
         console.log(`Clip moved: ${clipId} from ${sourceTrackId} to ${targetTrackId} at ${newStartTime}`);
+    }
+
+    handleRecordingCompleted(originalClipId, newClip) {
+        console.log('Recording completed:', { originalClipId, newClip });
+
+        // Update the current project with the new clip
+        if (this.currentProject) {
+            const clipIndex = this.currentProject.sidebarClips.findIndex(c => c.id === originalClipId);
+            if (clipIndex !== -1) {
+                this.currentProject.sidebarClips[clipIndex] = newClip;
+                console.log('Updated project with recorded clip:', newClip);
+
+                // Update components to reflect the change
+                this.updateComponents();
+            }
+        }
     }
 
     stopTimeProgression() {

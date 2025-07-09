@@ -3,7 +3,7 @@
  * Modular component system for building the audio editor interface
  */
 
-import { PROJECT_CONFIG, PROJECT_DATA, CLIP_CATEGORIES, getCategoryByType, calculateTimelineLength } from './config.js';
+import { PROJECT_CONFIG, PROJECT_DATA, CLIP_CATEGORIES, getCategoryByType, calculateTimelineLength, VINCE_RECORDING_VARIANTS } from './config.js';
 import { assert, formatDuration, formatTimeDisplay, createCustomEvent } from './utils.js';
 
 // ===== COMPONENT BASE CLASS =====
@@ -23,6 +23,178 @@ class Component {
     destroy() {
         // Clear the element
         this.element.innerHTML = '';
+    }
+}
+
+// ===== RECORDING POPUP COMPONENT =====
+class RecordingPopupComponent extends Component {
+    constructor(element, clipId, onRecordingComplete) {
+        // Call super() first to initialize the component
+        super(element);
+
+        // Set properties after calling super()
+        this.clipId = clipId;
+        this.onRecordingComplete = onRecordingComplete;
+        this.isRecording = false;
+        this.recordingProgress = 0;
+        this.recordingInterval = null;
+
+        // Initialize the popup after all properties are set
+        this.render();
+        this.setupEventListeners();
+    }
+
+    init() {
+        // Skip initialization in parent constructor - we'll do it manually after setting properties
+        // This prevents the parent from calling render() before clipId is set
+    }
+
+    render() {
+        // Use imported variants from config instead of duplicating data
+        const variants = VINCE_RECORDING_VARIANTS[this.clipId] || [];
+
+        this.element.innerHTML = `
+            <div class="recording-popup">
+                <div class="recording-popup__header">
+                    <h3 class="recording-popup__title">🎤 Record Vince Clip</h3>
+                    <button class="recording-popup__close" data-action="close">✕</button>
+                </div>
+                <div class="recording-popup__content">
+                    ${this.isRecording ? this.renderRecordingProgress() : this.renderVariantSelection(variants)}
+                </div>
+            </div>
+        `;
+    }
+
+    renderVariantSelection(variants) {
+        return `
+            <div class="recording-variants">
+                <p class="recording-variants__description">Choose a recording style:</p>
+                <div class="recording-variants__list">
+                    ${variants.map(variant => `
+                        <div class="recording-variant" data-variant-id="${variant.id}">
+                            <div class="recording-variant__header">
+                                <h4 class="recording-variant__name">${variant.name}</h4>
+                                <span class="recording-variant__duration">${variant.duration} beats</span>
+                            </div>
+                            <p class="recording-variant__description">${variant.description}</p>
+                            <button class="recording-variant__record-btn" data-variant-id="${variant.id}">
+                                🔴 Record
+                            </button>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    renderRecordingProgress() {
+        return `
+            <div class="recording-progress">
+                <div class="recording-progress__header">
+                    <h4 class="recording-progress__title">🎤 Recording...</h4>
+                    <div class="recording-progress__time">${this.getRecordingTime()}</div>
+                </div>
+                <div class="recording-progress__bar">
+                    <div class="recording-progress__fill" style="width: ${this.recordingProgress}%"></div>
+                </div>
+                <div class="recording-progress__status">
+                    <span class="recording-progress__text">Recording live take...</span>
+                </div>
+            </div>
+        `;
+    }
+
+    setupEventListeners() {
+        this.element.addEventListener('click', (e) => {
+            const closeBtn = e.target.closest('[data-action="close"]');
+            if (closeBtn) {
+                this.close();
+            }
+
+            const recordBtn = e.target.closest('.recording-variant__record-btn');
+            if (recordBtn && !this.isRecording) {
+                const variantId = recordBtn.dataset.variantId;
+                this.startRecording(variantId);
+            }
+        });
+    }
+
+    startRecording(variantId) {
+        this.isRecording = true;
+        this.recordingProgress = 0;
+        this.selectedVariantId = variantId;
+
+        this.render();
+
+        // Simulate recording progress
+        const recordingDuration = Math.random() * 7 + 3; // 3-10 seconds
+        const interval = 50; // Update every 50ms
+        const totalSteps = (recordingDuration * 1000) / interval;
+        let currentStep = 0;
+
+        this.recordingInterval = setInterval(() => {
+            currentStep++;
+            this.recordingProgress = (currentStep / totalSteps) * 100;
+
+            if (currentStep >= totalSteps) {
+                this.completeRecording();
+            } else {
+                this.updateProgress();
+            }
+        }, interval);
+    }
+
+    completeRecording() {
+        clearInterval(this.recordingInterval);
+        this.recordingInterval = null;
+
+        // Get the selected variant from the imported config
+        const variants = VINCE_RECORDING_VARIANTS[this.clipId] || [];
+        const selectedVariant = variants.find(v => v.id === this.selectedVariantId);
+
+        if (selectedVariant && this.onRecordingComplete) {
+            this.onRecordingComplete(this.clipId, selectedVariant);
+        }
+
+        this.close();
+    }
+
+    updateProgress() {
+        const progressFill = this.element.querySelector('.recording-progress__fill');
+        const progressTime = this.element.querySelector('.recording-progress__time');
+
+        if (progressFill) {
+            progressFill.style.width = `${this.recordingProgress}%`;
+        }
+
+        if (progressTime) {
+            progressTime.textContent = this.getRecordingTime();
+        }
+    }
+
+    getRecordingTime() {
+        const totalSeconds = 10; // Max recording time
+        const elapsedSeconds = Math.floor((this.recordingProgress / 100) * totalSeconds);
+        return `${elapsedSeconds}s / ${totalSeconds}s`;
+    }
+
+    close() {
+        if (this.recordingInterval) {
+            clearInterval(this.recordingInterval);
+            this.recordingInterval = null;
+        }
+
+        // Remove the entire overlay container (which contains the popup)
+        const overlay = document.querySelector('.recording-popup-overlay');
+        if (overlay && overlay.parentNode) {
+            overlay.parentNode.removeChild(overlay);
+        }
+    }
+
+    destroy() {
+        this.close();
+        super.destroy();
     }
 }
 
@@ -237,19 +409,32 @@ class SidebarComponent extends Component {
     }
 
     renderClipRepository() {
+        console.log('=== RENDER CLIP REPOSITORY DEBUG ===');
+        console.log('1. Starting renderClipRepository');
+
         if (!this.currentProject) {
+            console.log('2. No current project, returning empty message');
             return `<div class="clip-repository__empty">${PROJECT_CONFIG.content.clipRepository.emptyMessage}</div>`;
         }
 
+        console.log('2. Current project:', this.currentProject.id);
+        console.log('3. Sidebar clips:', this.currentProject.sidebarClips);
+
         // Get used clip IDs from timeline
         const usedClipIds = this.getUsedClipIds();
+        console.log('4. Used clip IDs:', usedClipIds);
 
         // Group sidebar clips by category
         const clipsByCategory = this.groupSidebarClipsByCategory();
+        console.log('5. Clips by category:', clipsByCategory);
 
-        return Object.entries(clipsByCategory).map(([categoryId, clips]) => {
+        console.log('6. Vince clips:', this.currentProject.sidebarClips.filter(c => c.type === 'vince'));
+
+        const result = Object.entries(clipsByCategory).map(([categoryId, clips]) => {
             const category = getCategoryByType(categoryId);
             if (!category) return '';
+
+            console.log(`7. Rendering category ${categoryId} with ${clips.length} clips:`, clips);
 
             return `
                 <div class="clip-category">
@@ -261,26 +446,61 @@ class SidebarComponent extends Component {
                         ${clips.map(clip => {
                 const isUsed = usedClipIds.includes(clip.id);
                 const usedCount = this.getClipUsageCount(clip.id);
-                return `
-                                <div class="clip-item ${isUsed ? 'clip-item--used' : ''}" 
-                                     data-clip-id="${clip.id}"
-                                     data-clip-type="${clip.type}"
-                                     data-clip-duration="${clip.duration}"
-                                     draggable="true">
-                                    <div class="clip-item__name">
-                                        ${clip.name}
-                                        ${usedCount > 0 ? `<span class="clip-item__usage-count">(${usedCount})</span>` : ''}
-                                    </div>
-                                    <div class="clip-item__beats">
-                                        ${this.renderBeatBars(clip.duration)}
-                                    </div>
-                                </div>
-                            `;
+
+                console.log(`8. Rendering clip ${clip.id}:`, { clip, isUsed, usedCount, needsRecording: clip.needsRecording });
+
+                // Check if this is a recording clip
+                if (clip.needsRecording) {
+                    return this.renderRecordingClip(clip, isUsed, usedCount);
+                } else {
+                    return this.renderNormalClip(clip, isUsed, usedCount);
+                }
             }).join('')}
                     </div>
                 </div>
             `;
         }).join('');
+
+        console.log('9. Final HTML length:', result.length);
+        console.log('=== END RENDER CLIP REPOSITORY DEBUG ===');
+        return result;
+    }
+
+    renderNormalClip(clip, isUsed, usedCount) {
+        return `
+            <div class="clip-item ${isUsed ? 'clip-item--used' : ''}" 
+                 data-clip-id="${clip.id}"
+                 data-clip-type="${clip.type}"
+                 data-clip-duration="${clip.duration}"
+                 draggable="true">
+                <div class="clip-item__name">
+                    ${clip.name}
+                    ${usedCount > 0 ? `<span class="clip-item__usage-count">(${usedCount})</span>` : ''}
+                </div>
+                <div class="clip-item__beats">
+                    ${this.renderBeatBars(clip.duration)}
+                </div>
+            </div>
+        `;
+    }
+
+    renderRecordingClip(clip, isUsed, usedCount) {
+        return `
+            <div class="clip-item clip-item--recording ${isUsed ? 'clip-item--used' : ''}" 
+                 data-clip-id="${clip.id}"
+                 data-clip-type="${clip.type}"
+                 data-clip-duration="${clip.duration || 0}">
+                <div class="clip-item__name">
+                    ${clip.name}
+                    ${usedCount > 0 ? `<span class="clip-item__usage-count">(${usedCount})</span>` : ''}
+                </div>
+                <div class="clip-item__recording-controls">
+                    <button class="clip-item__record-btn" data-clip-id="${clip.id}" title="Record this clip">
+                        🔴 Record
+                    </button>
+                </div>
+            </div>
+        `;
     }
 
     renderBeatBars(duration) {
@@ -341,6 +561,15 @@ class SidebarComponent extends Component {
             return;
         }
 
+        // Handle recording button clicks
+        const recordButton = e.target.closest('.clip-item__record-btn');
+        if (recordButton) {
+            const clipId = recordButton.dataset.clipId;
+            console.log('Recording button clicked for clip:', clipId);
+            this.handleRecordingButtonClick(clipId);
+            return;
+        }
+
         const transportButton = e.target.closest('[data-transport]');
         if (transportButton) {
             const action = transportButton.dataset.transport;
@@ -375,6 +604,12 @@ class SidebarComponent extends Component {
     handleDragStart(e) {
         const clipItem = e.target.closest('.clip-item');
         if (!clipItem) return;
+
+        // Don't allow dragging of recording clips
+        if (clipItem.classList.contains('clip-item--recording')) {
+            e.preventDefault();
+            return;
+        }
 
         const clipId = clipItem.dataset.clipId;
         const clipType = clipItem.dataset.clipType;
@@ -419,6 +654,77 @@ class SidebarComponent extends Component {
         window.globalDragData = null; // Clear global drag data
     }
 
+    handleRecordingButtonClick(clipId) {
+        this.showRecordingPopup(clipId);
+    }
+
+    showRecordingPopup(clipId) {
+        // Create popup container
+        const popupContainer = document.createElement('div');
+        popupContainer.className = 'recording-popup-overlay';
+        popupContainer.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        `;
+
+        // Create popup element
+        const popupElement = document.createElement('div');
+        popupContainer.appendChild(popupElement);
+
+        // Add to DOM
+        document.body.appendChild(popupContainer);
+
+        // Create and initialize popup component
+        const popup = new RecordingPopupComponent(popupElement, clipId, (originalClipId, selectedVariant) => {
+            this.handleRecordingComplete(originalClipId, selectedVariant);
+        });
+
+        // Store reference for cleanup
+        this.currentRecordingPopup = popup;
+    }
+
+    handleRecordingComplete(originalClipId, selectedVariant) {
+        // Find the original clip in the project
+        const clipIndex = this.currentProject.sidebarClips.findIndex(c => c.id === originalClipId);
+
+        if (clipIndex === -1) {
+            console.error('Original clip not found:', originalClipId);
+            return;
+        }
+
+        // Replace the original clip with the recorded variant
+        const newClip = {
+            id: selectedVariant.id,
+            name: selectedVariant.name,
+            duration: selectedVariant.duration,
+            type: 'vince',
+            needsRecording: false
+        };
+
+        this.currentProject.sidebarClips[clipIndex] = newClip;
+
+        // Re-render the sidebar to show the new clip
+        this.render();
+
+        // Also refresh the clip repository specifically to ensure the new clip appears
+        this.refreshClipRepository();
+
+        // Dispatch event to notify app of recording completion
+        const event = createCustomEvent('recordingCompleted', {
+            originalClipId,
+            newClip: this.currentProject.sidebarClips[clipIndex]
+        });
+        this.element.dispatchEvent(event);
+    }
+
     setProject(project) {
         this.currentProject = project;
 
@@ -442,8 +748,10 @@ class SidebarComponent extends Component {
     refreshClipRepository() {
         // Re-render only the clip repository section
         const clipRepository = this.element.querySelector('.clip-repository');
+
         if (clipRepository) {
-            clipRepository.innerHTML = this.renderClipRepository();
+            const newHTML = this.renderClipRepository();
+            clipRepository.innerHTML = newHTML;
         }
     }
 
@@ -1533,5 +1841,6 @@ export {
     HeaderComponent,
     SidebarComponent,
     TimelineComponent,
-    VUMeterComponent
+    VUMeterComponent,
+    RecordingPopupComponent
 }; 

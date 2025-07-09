@@ -365,10 +365,10 @@ export const PROJECT_DATA = {
             },
         ],
         sidebarClips: [
-            // Vince clips - 3 takes
-            { id: 'vince-take-1', name: 'Vince Take 1', duration: 4, type: 'vince' },
-            { id: 'vince-take-2', name: 'Vince Take 2', duration: 3, type: 'vince' },
-            { id: 'vince-take-3', name: 'Vince Take 3', duration: 5, type: 'vince' },
+            // Unrecorded Vince clips - these need to be recorded first
+            { id: 'vince-recording-1', name: 'Vince Recording 1', duration: null, type: 'vince', needsRecording: true },
+            { id: 'vince-recording-2', name: 'Vince Recording 2', duration: null, type: 'vince', needsRecording: true },
+            { id: 'vince-recording-3', name: 'Vince Recording 3', duration: null, type: 'vince', needsRecording: true },
 
             // Viola clips - 9 fragments
             { id: 'viola-fragment-1', name: 'Viola Fragment 1', duration: 2, type: 'viola' },
@@ -384,6 +384,70 @@ export const PROJECT_DATA = {
         ],
         description: 'Arrange clips to create the final song structure.'
     }
+};
+
+// ===== RECORDING VARIANTS FOR VINCE CLIPS =====
+export const VINCE_RECORDING_VARIANTS = {
+    'vince-recording-1': [
+        {
+            id: 'vince-take-1-major',
+            name: 'Vince Take 1 (Major)',
+            duration: 4,
+            description: 'Bright, uplifting melody in C major'
+        },
+        {
+            id: 'vince-take-1-minor',
+            name: 'Vince Take 1 (Minor)',
+            duration: 3.5,
+            description: 'Melancholic melody in A minor'
+        },
+        {
+            id: 'vince-take-1-blues',
+            name: 'Vince Take 1 (Blues)',
+            duration: 5,
+            description: 'Soulful blues progression'
+        }
+    ],
+    'vince-recording-2': [
+        {
+            id: 'vince-take-2-harmony',
+            name: 'Vince Take 2 (Harmony)',
+            duration: 6,
+            description: 'Rich harmonic layers with backing vocals'
+        },
+        {
+            id: 'vince-take-2-rhythm',
+            name: 'Vince Take 2 (Rhythm)',
+            duration: 4.5,
+            description: 'Rhythmic vocal patterns with syncopation'
+        },
+        {
+            id: 'vince-take-2-falsetto',
+            name: 'Vince Take 2 (Falsetto)',
+            duration: 3,
+            description: 'High falsetto melody with ethereal quality'
+        }
+    ],
+    'vince-recording-3': [
+        {
+            id: 'vince-take-3-bridge',
+            name: 'Vince Take 3 (Bridge)',
+            duration: 7,
+            description: 'Building bridge section with dynamic range'
+        },
+        {
+            id: 'vince-take-3-outro',
+            name: 'Vince Take 3 (Outro)',
+            duration: 8,
+            description: 'Epic outro with layered vocals'
+        },
+        {
+            id: 'vince-take-3-acapella',
+            name: 'Vince Take 3 (A Capella)',
+            duration: 4,
+            description: 'Pure vocal performance without accompaniment'
+        }
+    ]
 };
 
 // ===== CLIP CATEGORIES =====
