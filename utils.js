@@ -95,4 +95,9 @@ export function formatTimeDisplay(currentTime = 0, totalDuration = 16) {
     const totalFormatted = `${totalMinutes.toString().padStart(2, '0')}:${totalSeconds.toString().padStart(2, '0')}.${totalTenths}`;
 
     return `${currentFormatted} / ${totalFormatted}`;
+}
+
+// ===== EVENT UTILITIES =====
+export function createCustomEvent(eventName, detail) {
+    return new CustomEvent(eventName, { detail });
 } 

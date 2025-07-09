@@ -526,23 +526,8 @@ export const getProjectById = (id) => {
     return Object.values(PROJECT_DATA).find(project => project.id === id);
 };
 
-export const getCategoryById = (id) => {
-    return CLIP_CATEGORIES.find(category => category.id === id);
-};
-
 export const getCategoryByType = (type) => {
     return CLIP_CATEGORIES.find(category => category.id === type);
-};
-
-export const formatTime = (seconds) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = Math.floor(seconds % 60);
-    return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
-};
-
-export const formatBeatTime = (beats, bpm) => {
-    const totalSeconds = (beats / bpm) * 60;
-    return formatTime(totalSeconds);
 };
 
 // ===== TIMELINE CALCULATION UTILITIES =====

@@ -4,18 +4,13 @@
  */
 
 import { PROJECT_CONFIG, PROJECT_DATA, CLIP_CATEGORIES, getCategoryByType, calculateTimelineLength } from './config.js';
-import { assert, formatDuration, formatTimeDisplay } from './utils.js';
-
-// ===== GLOBAL VARIABLES =====
+import { assert, formatDuration, formatTimeDisplay, createCustomEvent } from './utils.js';
 
 // ===== COMPONENT BASE CLASS =====
 class Component {
-    constructor(element, config = {}) {
+    constructor(element) {
         assert(element, 'Component requires a DOM element');
         this.element = element;
-        this.config = config;
-        this.children = new Map();
-        this.eventListeners = new Map();
         this.init();
     }
 
@@ -26,32 +21,8 @@ class Component {
     }
 
     destroy() {
-        // Remove event listeners if they exist
-        if (this._boundClickHandler) {
-            this.element.removeEventListener('click', this._boundClickHandler);
-        }
-        if (this._boundChangeHandler) {
-            this.element.removeEventListener('change', this._boundChangeHandler);
-        }
-        if (this._boundDragStartHandler) {
-            this.element.removeEventListener('dragstart', this._boundDragStartHandler);
-        }
-
         // Clear the element
         this.element.innerHTML = '';
-    }
-
-    addEventListener(event, listener) {
-        this.element.addEventListener(event, listener);
-        this.eventListeners.set(event, listener);
-    }
-
-    removeEventListener(event) {
-        const listener = this.eventListeners.get(event);
-        if (listener) {
-            this.element.removeEventListener(event, listener);
-            this.eventListeners.delete(event);
-        }
     }
 }
 
@@ -194,9 +165,7 @@ class HeaderComponent extends Component {
 
     selectProject(projectId) {
         // Dispatch custom event for project selection
-        const event = new CustomEvent('projectSelected', {
-            detail: { projectId }
-        });
+        const event = createCustomEvent('projectSelected', { projectId });
         this.element.dispatchEvent(event);
     }
 }
@@ -354,34 +323,12 @@ class SidebarComponent extends Component {
     }
 
     setupEventListeners() {
-        this.removeExistingListeners();
-        this.bindHandlers();
-        this.addEventListeners();
-    }
-
-    removeExistingListeners() {
-        const events = ['click', 'change', 'dragstart', 'dragover', 'drop', 'dragend'];
-        events.forEach(event => {
-            this.element.removeEventListener(event, this[`_bound${event.charAt(0).toUpperCase() + event.slice(1)}Handler`]);
-        });
-    }
-
-    bindHandlers() {
-        this._boundClickHandler = this.handleClick.bind(this);
-        this._boundChangeHandler = this.handleChange.bind(this);
-        this._boundDragStartHandler = this.handleDragStart.bind(this);
-        this._boundDragOverHandler = this.handleDragOver.bind(this);
-        this._boundDropHandler = this.handleDrop.bind(this);
-        this._boundDragEndHandler = this.handleDragEnd.bind(this);
-    }
-
-    addEventListeners() {
-        this.element.addEventListener('click', this._boundClickHandler);
-        this.element.addEventListener('change', this._boundChangeHandler);
-        this.element.addEventListener('dragstart', this._boundDragStartHandler);
-        this.element.addEventListener('dragover', this._boundDragOverHandler);
-        this.element.addEventListener('drop', this._boundDropHandler);
-        this.element.addEventListener('dragend', this._boundDragEndHandler);
+        this.element.addEventListener('click', this.handleClick.bind(this));
+        this.element.addEventListener('change', this.handleChange.bind(this));
+        this.element.addEventListener('dragstart', this.handleDragStart.bind(this));
+        this.element.addEventListener('dragover', this.handleDragOver.bind(this));
+        this.element.addEventListener('drop', this.handleDrop.bind(this));
+        this.element.addEventListener('dragend', this.handleDragEnd.bind(this));
     }
 
     handleClick(e) {
@@ -464,9 +411,7 @@ class SidebarComponent extends Component {
     handleTransportAction(action) {
         console.log('Sidebar dispatching transport action:', action);
         // Dispatch custom event for transport actions
-        const event = new CustomEvent('transportAction', {
-            detail: { action }
-        });
+        const event = createCustomEvent('transportAction', { action });
         this.element.dispatchEvent(event);
     }
 
@@ -525,11 +470,6 @@ class SidebarComponent extends Component {
 
     setCurrentTime(time) {
         this.currentTime = time;
-        this.updateTimeDisplay();
-    }
-
-    setTotalDuration(duration) {
-        this.totalDuration = duration;
         this.updateTimeDisplay();
     }
 
@@ -932,9 +872,7 @@ class TimelineComponent extends Component {
         handle.classList.remove('clip__resize-handle--resizing');
         clip.classList.remove('clip--resizing');
 
-        const event = new CustomEvent('clipResized', {
-            detail: { trackId, clipId, newStartTime, newDuration }
-        });
+        const event = createCustomEvent('clipResized', { trackId, clipId, newStartTime, newDuration });
         this.element.dispatchEvent(event);
     }
 
@@ -991,14 +929,6 @@ class TimelineComponent extends Component {
         });
     }
 
-    handleClipDrop(dragData, targetTrackId, dropPosition) {
-        if (dragData.type === 'sidebar-clip') {
-            this.addClipToTrack(dragData, targetTrackId, dropPosition.startTime);
-        } else if (dragData.type === 'timeline-clip') {
-            this.moveClipInTimeline(dragData, targetTrackId, dropPosition.startTime);
-        }
-    }
-
     addClipToTrack(clipData, trackId, startTime) {
         // Find the track
         const track = this.currentProject.tracks.find(t => t.id === trackId);
@@ -1026,9 +956,7 @@ class TimelineComponent extends Component {
         track.clips.push(newClip);
 
         // Dispatch event
-        const event = new CustomEvent('clipAdded', {
-            detail: { trackId, clip: newClip }
-        });
+        const event = createCustomEvent('clipAdded', { trackId, clip: newClip });
         this.element.dispatchEvent(event);
 
         // Re-render timeline
@@ -1074,13 +1002,11 @@ class TimelineComponent extends Component {
         targetTrack.clips.push(clip);
 
         // Dispatch event
-        const event = new CustomEvent('clipMoved', {
-            detail: {
-                clipId,
-                sourceTrackId,
-                targetTrackId,
-                newStartTime
-            }
+        const event = createCustomEvent('clipMoved', {
+            clipId,
+            sourceTrackId,
+            targetTrackId,
+            newStartTime
         });
         this.element.dispatchEvent(event);
 
@@ -1138,7 +1064,7 @@ class TimelineComponent extends Component {
     }
 
     dispatchTrackEvent(eventName, detail) {
-        const event = new CustomEvent(eventName, { detail });
+        const event = createCustomEvent(eventName, detail);
         this.element.dispatchEvent(event);
     }
 
@@ -1173,9 +1099,7 @@ class TimelineComponent extends Component {
             console.log(`Track name changed: ${trackId} -> ${newName}`);
 
             // Dispatch event
-            const event = new CustomEvent('trackNameChanged', {
-                detail: { trackId, newName: newName.trim() }
-            });
+            const event = createCustomEvent('trackNameChanged', { trackId, newName: newName.trim() });
             this.element.dispatchEvent(event);
         }
     }
@@ -1205,9 +1129,7 @@ class TimelineComponent extends Component {
         this.currentProject.tracks.push(newTrack);
 
         // Dispatch event to update app state
-        const event = new CustomEvent('trackAdded', {
-            detail: { track: newTrack }
-        });
+        const event = createCustomEvent('trackAdded', { track: newTrack });
         this.element.dispatchEvent(event);
 
         // Re-render timeline
@@ -1232,9 +1154,7 @@ class TimelineComponent extends Component {
         const removedTrack = this.currentProject.tracks.splice(trackIndex, 1)[0];
 
         // Dispatch event to update app state
-        const event = new CustomEvent('trackRemoved', {
-            detail: { trackId, track: removedTrack }
-        });
+        const event = createCustomEvent('trackRemoved', { trackId, track: removedTrack });
         this.element.dispatchEvent(event);
 
         // Re-render timeline
@@ -1271,9 +1191,7 @@ class TimelineComponent extends Component {
         this.currentProject.tracks.push(newTrack);
 
         // Dispatch event to update app state
-        const event = new CustomEvent('trackAdded', {
-            detail: { track: newTrack }
-        });
+        const event = createCustomEvent('trackAdded', { track: newTrack });
         this.element.dispatchEvent(event);
 
         // Re-render timeline
@@ -1302,9 +1220,7 @@ class TimelineComponent extends Component {
         const removedTrack = this.currentProject.tracks.splice(trackIndex, 1)[0];
 
         // Dispatch event to update app state
-        const event = new CustomEvent('trackRemoved', {
-            detail: { trackId, track: removedTrack, position }
-        });
+        const event = createCustomEvent('trackRemoved', { trackId, track: removedTrack, position });
         this.element.dispatchEvent(event);
 
         // Re-render timeline
@@ -1554,11 +1470,6 @@ class TimelineComponent extends Component {
     cleanupDropPreviews() {
         const allPreviews = this.element.querySelectorAll('.clip-drop-preview');
         allPreviews.forEach(preview => preview.remove());
-    }
-
-    snapToGrid(time) {
-        // Snap to nearest quarter beat
-        return Math.round(time * 4) / 4;
     }
 }
 

@@ -5,7 +5,7 @@
 
 import { PROJECT_CONFIG, PROJECT_DATA, getProjectById } from './config.js';
 import { HeaderComponent, SidebarComponent, TimelineComponent, VUMeterComponent } from './components.js';
-import { assert, createConsoleOverride, parseCallStack, formatMessage } from './utils.js';
+import { assert, createConsoleOverride, parseCallStack, formatMessage, createCustomEvent } from './utils.js';
 
 // ===== BROWSER LOGGING SYSTEM =====
 // Keep the existing logging system intact for debugging
@@ -266,7 +266,6 @@ class AssemblyApp {
         this.isLooping = false;
         this.currentTime = 0;
         this.playbackInterval = null;
-        this.components = new Map();
 
         // Initialize logging system first
         this.logger = new BrowserLogger();
@@ -467,17 +466,6 @@ class AssemblyApp {
         });
     }
 
-    calculateMaxClipDuration() {
-        let maxDuration = 0;
-        this.currentProject.tracks.forEach(track => {
-            track.clips.forEach(clip => {
-                const clipEnd = clip.startTime + clip.duration;
-                maxDuration = Math.max(maxDuration, clipEnd);
-            });
-        });
-        return maxDuration;
-    }
-
     updateFileInfo(project) {
         // File info is now handled by the sidebar component
         // The sidebar will automatically update when the project is set
@@ -557,21 +545,6 @@ class AssemblyApp {
 
         // Re-render timeline
         this.timelineComponent.setProject(this.currentProject);
-    }
-
-    findClipById(clipId) {
-        // Search in all tracks
-        for (const track of this.currentProject.tracks) {
-            const clip = track.clips.find(c => c.id === clipId);
-            if (clip) return clip;
-        }
-
-        // Search in sidebar clips
-        if (this.currentProject.sidebarClips) {
-            return this.currentProject.sidebarClips.find(c => c.id === clipId);
-        }
-
-        return null;
     }
 
     // ===== PLAYBACK CONTROL METHODS =====
@@ -668,9 +641,7 @@ class AssemblyApp {
         this.updateComponents();
 
         // Dispatch event
-        const event = new CustomEvent('trackSoloChanged', {
-            detail: { trackId, soloed: track.soloed }
-        });
+        const event = createCustomEvent('trackSoloChanged', { trackId, soloed: track.soloed });
         this.element.dispatchEvent(event);
     }
 
@@ -687,26 +658,14 @@ class AssemblyApp {
         this.updateComponents();
 
         // Dispatch event
-        const event = new CustomEvent('trackMuteChanged', {
-            detail: { trackId, muted: track.muted }
-        });
+        const event = createCustomEvent('trackMuteChanged', { trackId, muted: track.muted });
         this.element.dispatchEvent(event);
     }
 
     destroy() {
-        // Clean up event listeners
-        this.components.forEach(component => {
-            if (component.destroy) {
-                component.destroy();
-            }
-        });
-
         // Clear intervals
         if (this.playbackInterval) {
             clearInterval(this.playbackInterval);
-        }
-        if (this.vuMeterInterval) {
-            clearInterval(this.vuMeterInterval);
         }
 
         console.log('Assembly Audio Editor destroyed');
