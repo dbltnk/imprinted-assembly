@@ -171,37 +171,39 @@ class BrowserLogger {
 
     processElement(element) {
         try {
-            const computedStyle = window.getComputedStyle(element);
-            const rect = element.getBoundingClientRect();
-
-            const elementData = {
-                tag: element.tagName.toLowerCase(),
-                id: element.id || null,
-                classes: Array.from(element.classList),
-                dataAttributes: this.getDataAttributes(element),
-                computedStyles: this.getRelevantStyles(computedStyle),
-                position: {
-                    x: Math.round(rect.left),
-                    y: Math.round(rect.top)
-                },
-                dimensions: {
-                    width: Math.round(rect.width),
-                    height: Math.round(rect.height)
-                },
-                textContent: element.textContent?.trim().substring(0, 100) || null,
-                innerHTML: element.innerHTML?.substring(0, 200) || null
-            };
-
-            const conflicts = this.detectCssConflicts(element, computedStyle);
+            const elementData = this.createElementData(element);
+            const conflicts = this.detectCssConflicts(element, window.getComputedStyle(element));
             if (conflicts.length > 0) {
                 elementData.cssConflicts = conflicts;
             }
-
             return elementData;
         } catch (elementErr) {
             console.warn('Failed to process element:', element, elementErr);
             return null;
         }
+    }
+
+    createElementData(element) {
+        const computedStyle = window.getComputedStyle(element);
+        const rect = element.getBoundingClientRect();
+
+        return {
+            tag: element.tagName.toLowerCase(),
+            id: element.id || null,
+            classes: Array.from(element.classList),
+            dataAttributes: this.getDataAttributes(element),
+            computedStyles: this.getRelevantStyles(computedStyle),
+            position: {
+                x: Math.round(rect.left),
+                y: Math.round(rect.top)
+            },
+            dimensions: {
+                width: Math.round(rect.width),
+                height: Math.round(rect.height)
+            },
+            textContent: element.textContent?.trim().substring(0, 100) || null,
+            innerHTML: element.innerHTML?.substring(0, 200) || null
+        };
     }
 
     getDataAttributes(element) {
@@ -263,7 +265,6 @@ class AssemblyApp {
         this.isPlaying = false;
         this.isLooping = false;
         this.currentTime = 0;
-        this.totalDuration = 0;
         this.playbackInterval = null;
         this.components = new Map();
 
@@ -416,17 +417,11 @@ class AssemblyApp {
         // Set current project
         this.currentProject = { ...project };
 
-        // Calculate project duration
-        this.calculateTotalDuration();
-
         // Update file info
         this.updateFileInfo(project);
 
         // Update components with new project
         this.updateComponents();
-
-        // Set total duration in sidebar
-        this.sidebarComponent.setTotalDuration(this.totalDuration);
 
         console.log(`Project '${project.name}' loaded successfully`);
     }
@@ -472,42 +467,15 @@ class AssemblyApp {
         });
     }
 
-    calculateTotalDuration() {
-        if (!this.currentProject) return;
-
+    calculateMaxClipDuration() {
         let maxDuration = 0;
-
-        // Check clips in tracks
         this.currentProject.tracks.forEach(track => {
             track.clips.forEach(clip => {
                 const clipEnd = clip.startTime + clip.duration;
                 maxDuration = Math.max(maxDuration, clipEnd);
             });
         });
-
-        // Use project-specific default durations
-        if (maxDuration === 0) {
-            switch (this.currentProject.id) {
-                case 'sentence':
-                    maxDuration = 8; // Short for sentence project
-                    break;
-                case 'band':
-                    maxDuration = 16; // Standard for band project
-                    break;
-                case 'ambient':
-                    maxDuration = 32; // Longer for ambient project
-                    break;
-                case 'song':
-                    maxDuration = 24; // Medium for song project
-                    break;
-                default:
-                    maxDuration = 16;
-            }
-        }
-
-        // Round up to nearest beat and ensure minimum duration
-        this.totalDuration = Math.max(8, Math.ceil(maxDuration / 4) * 4);
-        console.log(`Project duration: ${this.totalDuration} beats for ${this.currentProject.id}`);
+        return maxDuration;
     }
 
     updateFileInfo(project) {
@@ -609,11 +577,7 @@ class AssemblyApp {
     // ===== PLAYBACK CONTROL METHODS =====
 
     togglePlayback() {
-        if (this.isPlaying) {
-            this.pausePlayback();
-        } else {
-            this.startPlayback();
-        }
+        this.isPlaying ? this.pausePlayback() : this.startPlayback();
     }
 
     startPlayback() {
@@ -621,37 +585,10 @@ class AssemblyApp {
 
         console.log('Starting playback');
         this.isPlaying = true;
-
-        // Update UI
         this.updateTransportUI();
         this.timelineComponent.setPlaying(true);
-
-        // Start VU meter animation
         this.vuMeterComponent.startAnimation();
-
-        // Start time progression
-        this.playbackInterval = setInterval(() => {
-            this.currentTime += 0.1;
-
-            // Check for loop
-            if (this.currentTime >= this.totalDuration) {
-                if (this.isLooping) {
-                    this.currentTime = 0;
-                } else {
-                    this.stopPlayback();
-                    return;
-                }
-            }
-
-            // Update timeline
-            this.timelineComponent.setCurrentTime(this.currentTime);
-
-            // Update sidebar time display
-            this.sidebarComponent.setCurrentTime(this.currentTime);
-
-            // Update VU meter with simulated levels
-            this.updateVUMeter();
-        }, 100);
+        this.startTimeProgression();
     }
 
     pausePlayback() {
@@ -659,19 +596,10 @@ class AssemblyApp {
 
         console.log('Pausing playback');
         this.isPlaying = false;
-
-        // Update UI
         this.updateTransportUI();
         this.timelineComponent.setPlaying(false);
-
-        // Stop VU meter animation
         this.vuMeterComponent.stopAnimation();
-
-        // Stop time progression
-        if (this.playbackInterval) {
-            clearInterval(this.playbackInterval);
-            this.playbackInterval = null;
-        }
+        this.stopTimeProgression();
     }
 
     stopPlayback() {
@@ -680,21 +608,12 @@ class AssemblyApp {
         console.log('Stopping playback');
         this.isPlaying = false;
         this.currentTime = 0;
-
-        // Update UI
         this.updateTransportUI();
         this.timelineComponent.setPlaying(false);
         this.timelineComponent.setCurrentTime(0);
         this.sidebarComponent.setCurrentTime(0);
-
-        // Stop VU meter animation
         this.vuMeterComponent.stopAnimation();
-
-        // Stop time progression
-        if (this.playbackInterval) {
-            clearInterval(this.playbackInterval);
-            this.playbackInterval = null;
-        }
+        this.stopTimeProgression();
     }
 
     seek(direction) {
@@ -723,7 +642,7 @@ class AssemblyApp {
 
     updateVUMeter() {
         // Simulate VU meter levels based on current time and clips
-        const level = Math.random() * 0.8 + 0.2; // Random level between 0.2 and 1.0
+        const level = Math.random() * 80 + 10; // Random level between 0.2 and 1.0
         this.vuMeterComponent.setLevel(level);
     }
 
@@ -795,9 +714,6 @@ class AssemblyApp {
 
     // ===== DROP HANDLERS =====
     handleSidebarClipDrop(dragData, trackId, startTime) {
-        console.log('Handling sidebar clip drop:', { dragData, trackId, startTime });
-
-        // Find the clip in sidebar clips
         const sidebarClipIndex = this.currentProject.sidebarClips.findIndex(c => c.id === dragData.clipId);
         if (sidebarClipIndex === -1) {
             console.error('Clip not found in sidebar:', dragData.clipId);
@@ -805,56 +721,51 @@ class AssemblyApp {
         }
 
         const sidebarClip = this.currentProject.sidebarClips[sidebarClipIndex];
-
-        // Create new clip instance for the track
-        const newClip = {
-            ...sidebarClip,
-            startTime: startTime
-        };
-
-        // Add to track
+        const newClip = { ...sidebarClip, startTime };
         const track = this.currentProject.tracks.find(t => t.id === trackId);
+
         if (track) {
             track.clips.push(newClip);
-
-            // Remove from sidebar clips
-            this.currentProject.sidebarClips.splice(sidebarClipIndex, 1);
-
+            // Don't remove from sidebar - allow multiple copies
             console.log('Added clip to track:', { trackId, clipId: newClip.id, startTime });
-
-            // Update components
             this.updateComponents();
+            // Refresh sidebar to show updated usage
+            if (this.sidebarComponent) {
+                this.sidebarComponent.refreshClipRepository();
+            }
         }
     }
 
     handleTimelineClipMove(dragData, targetTrackId, newStartTime) {
-        console.log('Handling timeline clip move:', { dragData, targetTrackId, newStartTime });
-
-        // Remove from original track
         const sourceTrack = this.currentProject.tracks.find(t => t.id === dragData.trackId);
-        if (sourceTrack) {
-            const clipIndex = sourceTrack.clips.findIndex(c => c.id === dragData.clipId);
-            if (clipIndex !== -1) {
-                const clip = sourceTrack.clips.splice(clipIndex, 1)[0];
+        const targetTrack = this.currentProject.tracks.find(t => t.id === targetTrackId);
 
-                // Update clip start time
-                clip.startTime = newStartTime;
+        if (!sourceTrack || !targetTrack) {
+            console.error(`Track not found: source=${dragData.trackId}, target=${targetTrackId}`);
+            return;
+        }
 
-                // Add to target track
-                const targetTrack = this.currentProject.tracks.find(t => t.id === targetTrackId);
-                if (targetTrack) {
-                    targetTrack.clips.push(clip);
-                    console.log('Moved clip:', {
-                        fromTrack: dragData.trackId,
-                        toTrack: targetTrackId,
-                        clipId: clip.id,
-                        newStartTime
-                    });
+        const clipIndex = sourceTrack.clips.findIndex(c => c.id === dragData.clipId);
+        if (clipIndex === -1) {
+            console.error(`Clip not found: ${dragData.clipId}`);
+            return;
+        }
 
-                    // Update components
-                    this.updateComponents();
-                }
-            }
+        const clip = sourceTrack.clips.splice(clipIndex, 1)[0];
+        clip.startTime = newStartTime;
+        targetTrack.clips.push(clip);
+
+        console.log('Moved clip:', {
+            fromTrack: dragData.trackId,
+            toTrack: targetTrackId,
+            clipId: clip.id,
+            newStartTime
+        });
+
+        this.updateComponents();
+        // Refresh sidebar to show updated usage
+        if (this.sidebarComponent) {
+            this.sidebarComponent.refreshClipRepository();
         }
     }
 
@@ -887,15 +798,11 @@ class AssemblyApp {
         if (itemId === 'load') {
             return;
         }
-
-        console.log(`Menu item '${itemId}' is not implemented yet`);
     }
 
     handleWindowControlClick(controlId) {
         assert(controlId, 'Window control ID is required');
         console.log(`Window control clicked: ${controlId}`);
-
-        console.log(`Window control '${controlId}' is not implemented yet`);
     }
 
     setupGlobalDragAndDrop() {
@@ -982,12 +889,6 @@ class AssemblyApp {
             if (clip) {
                 clip.startTime = newStartTime;
                 clip.duration = newDuration;
-
-                // Recalculate project duration
-                this.calculateTotalDuration();
-
-                // Update timeline display
-                this.timelineComponent.render();
             }
         }
     }
@@ -995,43 +896,39 @@ class AssemblyApp {
     handleClipAdded(detail) {
         const { trackId, clip } = detail;
         console.log(`Clip added: ${clip.id} to track ${trackId}`);
-
-        // Recalculate project duration
-        this.calculateTotalDuration();
-
-        // Update timeline display
-        this.timelineComponent.render();
     }
 
     handleClipMoved(detail) {
         const { clipId, sourceTrackId, targetTrackId, newStartTime } = detail;
         console.log(`Clip moved: ${clipId} from ${sourceTrackId} to ${targetTrackId} at ${newStartTime}`);
-
-        // Recalculate project duration
-        this.calculateTotalDuration();
-
-        // Update timeline display
-        this.timelineComponent.render();
     }
 
-    calculateProjectDuration() {
-        if (!this.currentProject) return 0;
+    stopTimeProgression() {
+        if (this.playbackInterval) {
+            clearInterval(this.playbackInterval);
+            this.playbackInterval = null;
+        }
+    }
 
-        let maxEndTime = 0;
+    startTimeProgression() {
+        this.playbackInterval = setInterval(() => {
+            this.currentTime += 0.1;
 
-        // Find the latest end time of any clip
-        this.currentProject.tracks.forEach(track => {
-            track.clips.forEach(clip => {
-                const endTime = clip.startTime + clip.duration;
-                if (endTime > maxEndTime) {
-                    maxEndTime = endTime;
+            // Use a reasonable default duration (16 beats = 64 seconds at 120 BPM)
+            const defaultDuration = 64;
+            if (this.currentTime >= defaultDuration) {
+                if (this.isLooping) {
+                    this.currentTime = 0;
+                } else {
+                    this.stopPlayback();
+                    return;
                 }
-            });
-        });
+            }
 
-        // Round up to nearest beat and ensure minimum duration
-        const duration = Math.max(16, Math.ceil(maxEndTime / 4) * 4);
-        return duration;
+            this.timelineComponent.setCurrentTime(this.currentTime);
+            this.sidebarComponent.setCurrentTime(this.currentTime);
+            this.updateVUMeter();
+        }, 100);
     }
 }
 

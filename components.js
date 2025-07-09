@@ -3,8 +3,8 @@
  * Modular component system for building the audio editor interface
  */
 
-import { PROJECT_CONFIG, PROJECT_DATA, CLIP_CATEGORIES, getCategoryByType } from './config.js';
-import { assert } from './utils.js';
+import { PROJECT_CONFIG, PROJECT_DATA, CLIP_CATEGORIES, getCategoryByType, calculateTimelineLength } from './config.js';
+import { assert, formatDuration, formatTimeDisplay } from './utils.js';
 
 // ===== GLOBAL VARIABLES =====
 
@@ -20,11 +20,9 @@ class Component {
     }
 
     init() {
-        // Override in subclasses
     }
 
     render() {
-        // Override in subclasses
     }
 
     destroy() {
@@ -274,6 +272,9 @@ class SidebarComponent extends Component {
             return `<div class="clip-repository__empty">${PROJECT_CONFIG.content.clipRepository.emptyMessage}</div>`;
         }
 
+        // Get used clip IDs from timeline
+        const usedClipIds = this.getUsedClipIds();
+
         // Group sidebar clips by category
         const clipsByCategory = this.groupSidebarClipsByCategory();
 
@@ -288,18 +289,25 @@ class SidebarComponent extends Component {
                         <span class="folder-name">${category.name}</span>
                     </div>
                     <div class="clip-category__clips">
-                        ${clips.map(clip => `
-                            <div class="clip-item" 
-                                 data-clip-id="${clip.id}"
-                                 data-clip-type="${clip.type}"
-                                 data-clip-duration="${clip.duration}"
-                                 draggable="true">
-                                <div class="clip-item__name">${clip.name}</div>
-                                <div class="clip-item__beats">
-                                    ${this.renderBeatBars(clip.duration)}
+                        ${clips.map(clip => {
+                const isUsed = usedClipIds.includes(clip.id);
+                const usedCount = this.getClipUsageCount(clip.id);
+                return `
+                                <div class="clip-item ${isUsed ? 'clip-item--used' : ''}" 
+                                     data-clip-id="${clip.id}"
+                                     data-clip-type="${clip.type}"
+                                     data-clip-duration="${clip.duration}"
+                                     draggable="true">
+                                    <div class="clip-item__name">
+                                        ${clip.name}
+                                        ${usedCount > 0 ? `<span class="clip-item__usage-count">(${usedCount})</span>` : ''}
+                                    </div>
+                                    <div class="clip-item__beats">
+                                        ${this.renderBeatBars(clip.duration)}
+                                    </div>
                                 </div>
-                            </div>
-                        `).join('')}
+                            `;
+            }).join('')}
                     </div>
                 </div>
             `;
@@ -307,18 +315,17 @@ class SidebarComponent extends Component {
     }
 
     renderBeatBars(duration) {
-        // Create visual beat bars - each bar represents 1 beat
         const beatCount = Math.ceil(duration);
         const bars = [];
 
         for (let i = 0; i < beatCount; i++) {
             const isActive = i < duration;
             const isPartial = i === Math.floor(duration) && duration % 1 !== 0;
-            const partialWidth = duration % 1;
+            const partialHeight = duration % 1;
 
             bars.push(`
                 <div class="beat-bar ${isActive ? 'beat-bar--active' : 'beat-bar--inactive'} ${isPartial ? 'beat-bar--partial' : ''}"
-                     style="${isPartial ? `width: ${partialWidth * 100}%` : ''}">
+                     style="${isPartial ? `height: ${partialHeight * 100}%` : ''}">
                 </div>
             `);
         }
@@ -342,51 +349,33 @@ class SidebarComponent extends Component {
         return clipsByCategory;
     }
 
-    formatDuration(duration) {
-        // Format duration as beats (e.g., "4 beats", "0.5 beats")
-        const roundedDuration = Math.round(duration * 10) / 10; // Round to 1 decimal place
-        const suffix = roundedDuration === 1 ?
-            PROJECT_CONFIG.content.clipRepository.durationSuffix :
-            PROJECT_CONFIG.content.clipRepository.durationSuffixPlural;
-        return `${roundedDuration}${suffix}`;
-    }
-
     formatTimeDisplay() {
-        const currentTime = this.currentTime || 0;
-        const totalDuration = this.totalDuration || 16;
-
-        const currentMinutes = Math.floor(currentTime / 60);
-        const currentSeconds = Math.floor(currentTime % 60);
-        const currentTenths = Math.floor((currentTime % 1) * 10);
-
-        const totalMinutes = Math.floor(totalDuration / 60);
-        const totalSeconds = Math.floor(totalDuration % 60);
-        const totalTenths = Math.floor((totalDuration % 1) * 10);
-
-        const currentFormatted = `${currentMinutes.toString().padStart(2, '0')}:${currentSeconds.toString().padStart(2, '0')}.${currentTenths}`;
-        const totalFormatted = `${totalMinutes.toString().padStart(2, '0')}:${totalSeconds.toString().padStart(2, '0')}.${totalTenths}`;
-
-        return `${currentFormatted} / ${totalFormatted}`;
+        return formatTimeDisplay(this.currentTime || 0, this.totalDuration || this.calculateDurationInSeconds());
     }
 
     setupEventListeners() {
-        // Remove any existing listeners to prevent duplicates
-        this.element.removeEventListener('click', this._boundClickHandler);
-        this.element.removeEventListener('change', this._boundChangeHandler);
-        this.element.removeEventListener('dragstart', this._boundDragStartHandler);
-        this.element.removeEventListener('dragover', this._boundDragOverHandler);
-        this.element.removeEventListener('drop', this._boundDropHandler);
-        this.element.removeEventListener('dragend', this._boundDragEndHandler);
+        this.removeExistingListeners();
+        this.bindHandlers();
+        this.addEventListeners();
+    }
 
-        // Bind handlers to this instance
+    removeExistingListeners() {
+        const events = ['click', 'change', 'dragstart', 'dragover', 'drop', 'dragend'];
+        events.forEach(event => {
+            this.element.removeEventListener(event, this[`_bound${event.charAt(0).toUpperCase() + event.slice(1)}Handler`]);
+        });
+    }
+
+    bindHandlers() {
         this._boundClickHandler = this.handleClick.bind(this);
         this._boundChangeHandler = this.handleChange.bind(this);
         this._boundDragStartHandler = this.handleDragStart.bind(this);
         this._boundDragOverHandler = this.handleDragOver.bind(this);
         this._boundDropHandler = this.handleDrop.bind(this);
         this._boundDragEndHandler = this.handleDragEnd.bind(this);
+    }
 
-        // Add event listeners
+    addEventListeners() {
         this.element.addEventListener('click', this._boundClickHandler);
         this.element.addEventListener('change', this._boundChangeHandler);
         this.element.addEventListener('dragstart', this._boundDragStartHandler);
@@ -523,12 +512,43 @@ class SidebarComponent extends Component {
 
     setProject(project) {
         this.currentProject = project;
+
+        // Calculate timeline length based on project data
+        if (project) {
+            this.timelineLength = calculateTimelineLength(project);
+            console.log('Timeline length calculated:', this.timelineLength);
+
+            // Calculate duration in seconds from beats and BPM
+            this.totalDuration = this.calculateDurationInSeconds();
+        }
+
         this.render();
 
         // Update clip playing states after rendering
         if (this.currentTime !== undefined) {
             this.updateClipPlayingStates(this.currentTime);
         }
+    }
+
+    refreshClipRepository() {
+        // Re-render only the clip repository section
+        const clipRepository = this.element.querySelector('.clip-repository');
+        if (clipRepository) {
+            clipRepository.innerHTML = this.renderClipRepository();
+        }
+    }
+
+    calculateDurationInSeconds() {
+        if (!this.currentProject || !this.timelineLength) return 16;
+
+        // Convert beats to seconds: (beats / BPM) * 60
+        const beats = this.timelineLength.beats;
+        const bpm = this.currentProject.bpm;
+        return (beats / bpm) * 60;
+    }
+
+    formatTimeDisplay() {
+        return formatTimeDisplay(this.currentTime || 0, this.totalDuration || this.calculateDurationInSeconds());
     }
 
     setLoopState(isLooping) {
@@ -576,6 +596,34 @@ class SidebarComponent extends Component {
         }
         return this.currentProject.timeSignature || '4/4';
     }
+
+    getUsedClipIds() {
+        if (!this.currentProject) return [];
+
+        const usedIds = [];
+        this.currentProject.tracks.forEach(track => {
+            track.clips.forEach(clip => {
+                if (!usedIds.includes(clip.id)) {
+                    usedIds.push(clip.id);
+                }
+            });
+        });
+        return usedIds;
+    }
+
+    getClipUsageCount(clipId) {
+        if (!this.currentProject) return 0;
+
+        let count = 0;
+        this.currentProject.tracks.forEach(track => {
+            track.clips.forEach(clip => {
+                if (clip.id === clipId) {
+                    count++;
+                }
+            });
+        });
+        return count;
+    }
 }
 
 // ===== TIMELINE COMPONENT =====
@@ -584,6 +632,7 @@ class TimelineComponent extends Component {
         this.currentProject = null;
         this.currentTime = 0;
         this.isPlaying = false;
+        this.timelineLength = null;
         this.render();
         this.setupEventListeners();
     }
@@ -594,10 +643,12 @@ class TimelineComponent extends Component {
                 <div class="tracks-area" id="tracks-area">
                     ${this.renderTimeRuler()}
                     ${this.renderTracks()}
-                    ${this.renderAddTrackButton()}
                 </div>
             </div>
         `;
+
+        // Update timeline height based on calculated length
+        this.updateTimelineHeight();
 
         // Update button states after rendering
         if (this.currentProject) {
@@ -610,22 +661,38 @@ class TimelineComponent extends Component {
         }
     }
 
+    updateTimelineHeight() {
+        if (!this.currentProject || !this.timelineLength) return;
+
+        const tracksArea = this.element.querySelector('.tracks-area');
+        if (tracksArea) {
+            tracksArea.style.height = `${this.timelineLength.height}px`;
+            console.log(`Timeline height set to: ${this.timelineLength.height}px`);
+        }
+
+        // Update track clips areas height
+        const trackClipsAreas = this.element.querySelectorAll('.track__clips-area');
+        trackClipsAreas.forEach(area => {
+            area.style.height = `${this.timelineLength.height}px`;
+        });
+    }
+
     renderTimeRuler() {
-        if (!this.currentProject) {
+        if (!this.currentProject || !this.timelineLength) {
             return '';
         }
-        // Parse beats per bar from timeSignature (e.g. '6/8' => 6)
-        const timeSig = this.currentProject.timeSignature || '4/4';
-        const beatsPerBar = parseInt(timeSig.split('/')[0], 10) || 4;
-        const bars = 4;
+
+        const { bars, beatsPerBar } = this.timelineLength;
         const beats = [];
 
         for (let bar = 1; bar <= bars; bar++) {
             for (let beat = 1; beat <= beatsPerBar; beat++) {
                 const isStrongBeat = beat === 1;
+                const isFirstBeatInBar = beat === 1;
                 beats.push({
-                    label: `${bar}.${beat}`,
-                    isStrong: isStrongBeat
+                    label: isFirstBeatInBar ? `${bar}` : `${bar}.${beat}`,
+                    isStrong: isStrongBeat,
+                    isFirstBeatInBar
                 });
             }
         }
@@ -637,7 +704,7 @@ class TimelineComponent extends Component {
                     <div class="time-ruler__grid">
                         ${beats.map(beat => `
                             <div class="time-ruler__beat">
-                                <span class="time-ruler__beat-label ${beat.isStrong ? 'time-ruler__beat-label--strong' : ''}">
+                                <span class="time-ruler__beat-label ${beat.isStrong ? 'time-ruler__beat-label--strong' : ''} ${beat.isFirstBeatInBar ? 'time-ruler__beat-label--bar' : ''}">
                                     ${beat.label}
                                 </span>
                             </div>
@@ -653,19 +720,62 @@ class TimelineComponent extends Component {
             return '<div class="tracks-empty">Select a project to view tracks</div>';
         }
 
-        return this.currentProject.tracks.map(track => this.renderTrack(track)).join('');
+        // Create array of 8 track positions
+        const trackPositions = Array(8).fill(null);
+
+        // Fill active tracks in their remembered positions
+        this.currentProject.tracks.forEach(track => {
+            const position = track.position || 0;
+            if (position < 8) {
+                trackPositions[position] = this.renderTrack(track);
+            }
+        });
+
+        // Fill remaining positions with disabled tracks
+        for (let i = 0; i < 8; i++) {
+            if (!trackPositions[i]) {
+                trackPositions[i] = this.renderDisabledTrack(i);
+            }
+        }
+
+        return trackPositions.join('');
+    }
+
+    renderDisabledTrack(position) {
+        // Check if this is Vince's ambient sandbox project
+        const isAmbientProject = this.currentProject?.id === 'ambient';
+
+        return `
+            <div class="track track--disabled" data-track-id="disabled-${position}">
+                <div class="track__name track__name--disabled" data-track-id="disabled-${position}">Inactive</div>
+                <div class="track__controls">
+                    <button class="track__button track__button--disabled" title="Solo" data-track-action="solo" data-track-id="disabled-${position}" disabled>
+                        🎧
+                    </button>
+                    <button class="track__button track__button--disabled" title="Mute" data-track-action="mute" data-track-id="disabled-${position}" disabled>
+                        🔇
+                    </button>
+                    <input type="checkbox" class="track__checkbox track__checkbox--enable" title="Enable Track" data-track-action="enable" data-track-id="disabled-${position}" ${!isAmbientProject ? 'disabled' : ''}>
+                </div>
+                <div class="track__clips-area track__clips-area--disabled" data-track-id="disabled-${position}">
+                    <div class="track__playhead"></div>
+                    <div class="track__clips">
+                    </div>
+                </div>
+            </div>
+        `;
     }
 
     renderTrack(track) {
         const category = getCategoryByType(track.type);
         const trackColor = category ? category.color : '#6b7280';
 
-        // Check if track management is allowed and this is a custom track
-        const showRemoveButton = this.currentProject?.allowTrackManagement &&
-            track.type === 'custom'; // Show remove for custom tracks only
+        // Check if this is Vince's ambient sandbox project
+        const isAmbientProject = this.currentProject?.id === 'ambient';
 
         return `
             <div class="track" data-track-id="${track.id}">
+                <div class="track__name" data-track-id="${track.id}">${track.name}</div>
                 <div class="track__controls">
                     <button class="track__button" title="Solo" data-track-action="solo" data-track-id="${track.id}">
                         🎧
@@ -673,13 +783,8 @@ class TimelineComponent extends Component {
                     <button class="track__button" title="Mute" data-track-action="mute" data-track-id="${track.id}">
                         🔇
                     </button>
-                    ${showRemoveButton ? `
-                        <button class="track__button track__button--remove" title="Remove Track" data-track-action="remove" data-track-id="${track.id}">
-                            🗑️
-                        </button>
-                    ` : ''}
+                    <input type="checkbox" class="track__checkbox track__checkbox--disable" title="Disable Track" data-track-action="disable" data-track-id="${track.id}" checked ${!isAmbientProject ? 'disabled' : ''}>
                 </div>
-                <div class="track__name" data-track-id="${track.id}">${track.name}</div>
                 <div class="track__clips-area" data-track-id="${track.id}">
                     <div class="track__playhead"></div>
                     <div class="track__clips">
@@ -692,8 +797,8 @@ class TimelineComponent extends Component {
 
     renderClip(clip, track) {
         const pixelsPerBeat = this.getPixelsPerBeat();
-        const width = clip.duration * pixelsPerBeat;
-        const left = clip.startTime * pixelsPerBeat;
+        const height = clip.duration * pixelsPerBeat;
+        const top = clip.startTime * pixelsPerBeat;
 
         return `
             <div class="clip clip--dark"
@@ -702,32 +807,17 @@ class TimelineComponent extends Component {
                  data-clip-type="${clip.type}"
                  data-clip-duration="${clip.duration}"
                  data-clip-start-time="${clip.startTime}"
-                 style="width: ${width}px; left: ${left}px;"
+                 style="height: ${height}px; top: ${top}px;"
                  draggable="true">
-                <div class="clip__resize-handle clip__resize-handle--left"></div>
-                <div class="clip__resize-handle clip__resize-handle--right"></div>
+                <div class="clip__resize-handle clip__resize-handle--top"></div>
+                <div class="clip__resize-handle clip__resize-handle--bottom"></div>
                 <div class="clip__content">
                     <div class="clip__name">${clip.name}</div>
-                    <div class="clip__duration">${this.formatDuration(clip.duration)}</div>
                 </div>
             </div>
         `;
     }
 
-    renderAddTrackButton() {
-        // Only show add track button if project allows track management
-        if (!this.currentProject?.allowTrackManagement) {
-            return '';
-        }
-
-        return `
-            <div class="add-track-button">
-                <button class="add-track-button__button" data-action="add-track">
-                    + Add Track
-                </button>
-            </div>
-        `;
-    }
 
     setupEventListeners() {
         // Track actions (mute, solo, rename)
@@ -748,6 +838,16 @@ class TimelineComponent extends Component {
             // Add track button
             if (e.target.closest('.add-track-button__button')) {
                 this.handleAddTrack();
+            }
+        });
+
+        // Checkbox changes
+        this.element.addEventListener('change', (e) => {
+            const checkbox = e.target.closest('.track__checkbox');
+            if (checkbox) {
+                const action = checkbox.dataset.trackAction;
+                const trackId = checkbox.dataset.trackId;
+                this.handleTrackAction(action, trackId);
             }
         });
 
@@ -778,14 +878,8 @@ class TimelineComponent extends Component {
     }
 
     setupClipResizing() {
-        let resizingClip = null;
-        let resizeHandle = null;
-        let startX = 0;
-        let startWidth = 0;
-        let startTime = 0;
-        let originalDuration = 0;
+        let resizingState = null;
 
-        // Mouse down on resize handle
         this.element.addEventListener('mousedown', (e) => {
             const handle = e.target.closest('.clip__resize-handle');
             if (!handle) return;
@@ -796,99 +890,88 @@ class TimelineComponent extends Component {
             const clip = handle.closest('.clip');
             if (!clip) return;
 
-            resizingClip = clip;
-            resizeHandle = handle;
-            startX = e.clientX;
-            startWidth = clip.offsetWidth;
-            startTime = parseFloat(clip.dataset.clipStartTime);
-            originalDuration = parseFloat(clip.dataset.clipDuration);
-
-            // Add resizing class
-            handle.classList.add('clip__resize-handle--resizing');
-            clip.classList.add('clip--resizing');
-
-            // Add global mouse event listeners
+            resizingState = this.initializeResizing(handle, clip, e.clientY);
             document.addEventListener('mousemove', handleMouseMove);
             document.addEventListener('mouseup', handleMouseUp);
         });
 
         const handleMouseMove = (e) => {
-            if (!resizingClip || !resizeHandle) return;
-
-            const deltaX = e.clientX - startX;
-            const trackElement = resizingClip.closest('.track');
-            const trackId = trackElement.dataset.trackId;
-
-            // Calculate new width and duration
-            let newWidth = startWidth;
-            let newDuration = originalDuration;
-            let newStartTime = startTime;
-
-            if (resizeHandle.classList.contains('clip__resize-handle--left')) {
-                // Resizing from left edge
-                newWidth = Math.max(20, startWidth - deltaX); // Minimum 20px width
-                const widthChange = startWidth - newWidth;
-                const timeChange = widthChange / this.getPixelsPerBeat();
-                newStartTime = Math.max(0, startTime + timeChange);
-                newDuration = Math.max(0.1, originalDuration - timeChange);
-            } else {
-                // Resizing from right edge
-                newWidth = Math.max(20, startWidth + deltaX); // Minimum 20px width
-                const widthChange = newWidth - startWidth;
-                const timeChange = widthChange / this.getPixelsPerBeat();
-                newDuration = Math.max(0.1, originalDuration + timeChange);
-            }
-
-            // Check for overlaps
-            if (this.wouldOverlap(trackId, resizingClip.dataset.clipId, newStartTime, newDuration)) {
-                return; // Don't allow resize if it would create overlap
-            }
-
-            // Update clip appearance
-            resizingClip.style.width = `${newWidth}px`;
-            resizingClip.style.left = `${newStartTime * this.getPixelsPerBeat()}px`;
-
-            // Update data attributes
-            resizingClip.dataset.clipStartTime = newStartTime.toString();
-            resizingClip.dataset.clipDuration = newDuration.toString();
-
-            // Update clip content
-            const durationElement = resizingClip.querySelector('.clip__duration');
-            if (durationElement) {
-                durationElement.textContent = this.formatDuration(newDuration);
-            }
+            if (!resizingState) return;
+            this.updateClipResize(resizingState, e.clientY);
         };
 
         const handleMouseUp = () => {
-            if (!resizingClip || !resizeHandle) return;
-
-            // Remove resizing classes
-            resizeHandle.classList.remove('clip__resize-handle--resizing');
-            resizingClip.classList.remove('clip--resizing');
-
-            // Update the actual clip data
-            const trackId = resizingClip.closest('.track').dataset.trackId;
-            const clipId = resizingClip.dataset.clipId;
-            const newStartTime = parseFloat(resizingClip.dataset.clipStartTime);
-            const newDuration = parseFloat(resizingClip.dataset.clipDuration);
-
-            // Dispatch event to update app state
-            const event = new CustomEvent('clipResized', {
-                detail: {
-                    trackId,
-                    clipId,
-                    newStartTime,
-                    newDuration
-                }
-            });
-            this.element.dispatchEvent(event);
-
-            // Clean up
-            resizingClip = null;
-            resizeHandle = null;
+            if (!resizingState) return;
+            this.finalizeClipResize(resizingState);
+            resizingState = null;
             document.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener('mouseup', handleMouseUp);
         };
+    }
+
+    initializeResizing(handle, clip, startY) {
+        const startHeight = clip.offsetHeight;
+        const startTime = parseFloat(clip.dataset.clipStartTime);
+        const originalDuration = parseFloat(clip.dataset.clipDuration);
+
+        handle.classList.add('clip__resize-handle--resizing');
+        clip.classList.add('clip--resizing');
+
+        return { handle, clip, startY, startHeight, startTime, originalDuration };
+    }
+
+    updateClipResize(state, currentY) {
+        const { handle, clip, startY, startHeight, startTime, originalDuration } = state;
+        const deltaY = currentY - startY;
+        const trackElement = clip.closest('.track');
+        const trackId = trackElement.dataset.trackId;
+
+        let newHeight = startHeight;
+        let newDuration = originalDuration;
+        let newStartTime = startTime;
+
+        if (handle.classList.contains('clip__resize-handle--top')) {
+            newHeight = Math.max(20, startHeight - deltaY);
+            const heightChange = startHeight - newHeight;
+            const timeChange = heightChange / this.getPixelsPerBeat();
+            newStartTime = Math.max(0, startTime + timeChange);
+            newDuration = Math.max(0.1, originalDuration - timeChange);
+        } else {
+            newHeight = Math.max(20, startHeight + deltaY);
+            const heightChange = newHeight - startHeight;
+            const timeChange = heightChange / this.getPixelsPerBeat();
+            newDuration = Math.max(0.1, originalDuration + timeChange);
+        }
+
+        if (this.wouldOverlap(trackId, clip.dataset.clipId, newStartTime, newDuration)) {
+            return;
+        }
+
+        clip.style.height = `${newHeight}px`;
+        clip.style.top = `${newStartTime * this.getPixelsPerBeat()}px`;
+        clip.dataset.clipStartTime = newStartTime.toString();
+        clip.dataset.clipDuration = newDuration.toString();
+
+        const durationElement = clip.querySelector('.clip__duration');
+        if (durationElement) {
+            durationElement.textContent = this.formatDuration(newDuration);
+        }
+    }
+
+    finalizeClipResize(state) {
+        const { handle, clip } = state;
+        const trackId = clip.closest('.track').dataset.trackId;
+        const clipId = clip.dataset.clipId;
+        const newStartTime = parseFloat(clip.dataset.clipStartTime);
+        const newDuration = parseFloat(clip.dataset.clipDuration);
+
+        handle.classList.remove('clip__resize-handle--resizing');
+        clip.classList.remove('clip--resizing');
+
+        const event = new CustomEvent('clipResized', {
+            detail: { trackId, clipId, newStartTime, newDuration }
+        });
+        this.element.dispatchEvent(event);
     }
 
     wouldOverlap(trackId, excludeClipId, startTime, duration) {
@@ -1049,16 +1132,54 @@ class TimelineComponent extends Component {
     }
 
     handleTrackAction(action, trackId) {
-        // Handle remove action locally since it's UI-specific
         if (action === 'remove') {
             this.handleRemoveTrack(trackId);
             return;
         }
 
-        // Delegate other actions to main app
+        if (action === 'disable') {
+            this.handleDisableTrack(trackId);
+            return;
+        }
+
+        if (action === 'enable') {
+            this.handleEnableTrack(trackId);
+            return;
+        }
+
         const event = new CustomEvent('trackAction', {
             detail: { action, trackId }
         });
+        this.element.dispatchEvent(event);
+    }
+
+    toggleTrackSolo(trackId) {
+        const track = this.currentProject.tracks.find(t => t.id === trackId);
+        if (!track) return;
+
+        track.soloed = !track.soloed;
+
+        if (track.soloed) {
+            this.currentProject.tracks.forEach(t => {
+                if (t.id !== trackId) t.soloed = false;
+            });
+        }
+
+        this.updateComponents();
+        this.dispatchTrackEvent('trackSoloChanged', { trackId, soloed: track.soloed });
+    }
+
+    toggleTrackMute(trackId) {
+        const track = this.currentProject.tracks.find(t => t.id === trackId);
+        if (!track) return;
+
+        track.muted = !track.muted;
+        this.updateComponents();
+        this.dispatchTrackEvent('trackMuteChanged', { trackId, muted: track.muted });
+    }
+
+    dispatchTrackEvent(eventName, detail) {
+        const event = new CustomEvent(eventName, { detail });
         this.element.dispatchEvent(event);
     }
 
@@ -1162,6 +1283,76 @@ class TimelineComponent extends Component {
         console.log(`Removed track: ${removedTrack.name}`);
     }
 
+    handleEnableTrack(trackId) {
+        if (!this.currentProject?.allowTrackManagement) {
+            console.warn('Track management not allowed for this project');
+            return;
+        }
+
+        // Extract position from disabled track ID
+        const position = parseInt(trackId.replace('disabled-', ''));
+
+        // Generate new track ID and name
+        const trackCount = this.currentProject.tracks.length;
+        const newTrackId = `track-${trackCount + 1}`;
+        const newTrackName = `Track ${trackCount + 1}`;
+
+        // Create new track object with remembered position
+        const newTrack = {
+            id: newTrackId,
+            name: newTrackName,
+            type: 'custom',
+            clips: [],
+            muted: false,
+            soloed: false,
+            position: position
+        };
+
+        // Add to project
+        this.currentProject.tracks.push(newTrack);
+
+        // Dispatch event to update app state
+        const event = new CustomEvent('trackAdded', {
+            detail: { track: newTrack }
+        });
+        this.element.dispatchEvent(event);
+
+        // Re-render timeline
+        this.render();
+        console.log(`Enabled new track: ${newTrackName} at position ${position}`);
+    }
+
+    handleDisableTrack(trackId) {
+        if (!this.currentProject?.allowTrackManagement) {
+            console.warn('Track management not allowed for this project');
+            return;
+        }
+
+        // Find track
+        const track = this.currentProject.tracks.find(t => t.id === trackId);
+        if (!track) {
+            console.warn(`Track not found: ${trackId}`);
+            return;
+        }
+
+        // Store the position before removing
+        const position = track.position || 0;
+
+        // Remove track
+        const trackIndex = this.currentProject.tracks.findIndex(t => t.id === trackId);
+        const removedTrack = this.currentProject.tracks.splice(trackIndex, 1)[0];
+
+        // Dispatch event to update app state
+        const event = new CustomEvent('trackRemoved', {
+            detail: { trackId, track: removedTrack, position }
+        });
+        this.element.dispatchEvent(event);
+
+        // Re-render timeline
+        this.render();
+        console.log(`Disabled track: ${removedTrack.name} from position ${position}`);
+    }
+
     formatCurrentTime() {
         const minutes = Math.floor(this.currentTime / 60);
         const seconds = Math.floor(this.currentTime % 60);
@@ -1169,16 +1360,18 @@ class TimelineComponent extends Component {
     }
 
     formatDuration(duration) {
-        // Format duration as beats (e.g., "4 beats", "0.5 beats")
-        const roundedDuration = Math.round(duration * 10) / 10; // Round to 1 decimal place
-        const suffix = roundedDuration === 1 ?
-            PROJECT_CONFIG.content.clipRepository.durationSuffix :
-            PROJECT_CONFIG.content.clipRepository.durationSuffixPlural;
-        return `${roundedDuration}${suffix}`;
+        return formatDuration(duration);
     }
 
     setProject(project) {
         this.currentProject = project;
+
+        // Calculate timeline length based on project data
+        if (project) {
+            this.timelineLength = calculateTimelineLength(project);
+            console.log('Timeline length calculated:', this.timelineLength);
+        }
+
         this.render();
 
         // Update clip playing states after rendering
@@ -1198,6 +1391,9 @@ class TimelineComponent extends Component {
 
         // Update playhead position
         this.updatePlayheadPosition(time);
+
+        // Auto-scroll if playhead goes out of view
+        this.autoScrollToPlayhead(time);
 
         // Update clip playing states
         this.updateClipPlayingStates(time);
@@ -1231,12 +1427,34 @@ class TimelineComponent extends Component {
 
     updatePlayheadPosition(time) {
         const playheads = this.element.querySelectorAll('.track__playhead');
-        const beatWidth = PROJECT_CONFIG.layout.gridBeatWidth;
-        const leftPosition = time * beatWidth;
+        const beatHeight = PROJECT_CONFIG.layout.gridBeatWidth;
+        const topPosition = time * beatHeight;
 
         playheads.forEach(playhead => {
-            playhead.style.left = `${leftPosition}px`;
+            playhead.style.top = `${topPosition}px`;
         });
+    }
+
+    autoScrollToPlayhead(time) {
+        const tracksArea = this.element.querySelector('.tracks-area');
+        if (!tracksArea || !this.timelineLength) return;
+
+        const playheadY = time * this.getPixelsPerBeat();
+        const containerHeight = tracksArea.clientHeight;
+        const scrollTop = tracksArea.scrollTop;
+        const scrollBottom = scrollTop + containerHeight;
+
+        // Check if playhead is outside visible area
+        if (playheadY < scrollTop || playheadY > scrollBottom) {
+            // Calculate target scroll position to center playhead
+            const targetScrollTop = playheadY - (containerHeight / 2);
+
+            // Smooth scroll to playhead position
+            tracksArea.scrollTo({
+                top: Math.max(0, targetScrollTop),
+                behavior: 'smooth'
+            });
+        }
     }
 
     setPlaying(playing) {
@@ -1311,47 +1529,39 @@ class TimelineComponent extends Component {
     }
 
     calculateDropPosition(e, trackElement) {
-        // Get the clips area element, not the entire track
         const clipsArea = trackElement.querySelector('.track__clips-area');
         if (!clipsArea) {
             return { startTime: 0, endTime: 0, isValid: false };
         }
 
         const rect = clipsArea.getBoundingClientRect();
-        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
         const trackId = trackElement.dataset.trackId;
 
-        // Convert pixels to beats with snapping
         const beatsPerPixel = 1 / this.getPixelsPerBeat();
-        let startTime = x * beatsPerPixel;
+        let startTime = y * beatsPerPixel;
 
-        // Snap to nearest beat boundary
-        startTime = Math.round(startTime * 4) / 4; // Snap to quarter beats
-
-        // Ensure non-negative
+        startTime = Math.round(startTime * 4) / 4;
         startTime = Math.max(0, startTime);
 
-        // Get drag data
         const dragData = window.globalDragData;
         if (!dragData) return { startTime: 0, endTime: 0, isValid: false };
 
         const duration = dragData.clipDuration || 1;
         const endTime = startTime + duration;
 
-        // Check for overlaps
         const wouldOverlap = this.wouldOverlap(trackId, null, startTime, duration);
 
         return {
             startTime,
             endTime,
             isValid: !wouldOverlap,
-            x: startTime * this.getPixelsPerBeat(),
-            width: duration * this.getPixelsPerBeat()
+            y: startTime * this.getPixelsPerBeat(),
+            height: duration * this.getPixelsPerBeat()
         };
     }
 
     showDropPreview(trackElement, dropPosition) {
-        // Remove existing preview
         this.hideDropPreview(trackElement);
 
         if (dropPosition.isValid) {
@@ -1359,9 +1569,9 @@ class TimelineComponent extends Component {
             preview.className = 'clip-drop-preview';
             preview.style.cssText = `
                 position: absolute;
-                left: ${dropPosition.x}px;
-                width: ${dropPosition.width}px;
-                height: 100%;
+                top: ${dropPosition.y}px;
+                height: ${dropPosition.height}px;
+                width: 100%;
                 background-color: rgba(56, 189, 248, 0.3);
                 border: 2px dashed var(--color-accent-primary);
                 pointer-events: none;

@@ -178,15 +178,15 @@ export const PROJECT_DATA = {
             }
         ],
         sidebarClips: [
-            { id: 'the', name: 'The', duration: 0.5, type: 'text' },
-            { id: 'quick', name: 'quick', duration: 0.75, type: 'text' },
-            { id: 'brown', name: 'brown', duration: 0.5, type: 'text' },
-            { id: 'fox', name: 'fox', duration: 0.5, type: 'text' },
-            { id: 'jumps', name: 'jumps', duration: 0.75, type: 'text' },
-            { id: 'over', name: 'over', duration: 0.5, type: 'text' },
-            { id: 'the2', name: 'the', duration: 0.5, type: 'text' },
-            { id: 'lazy', name: 'lazy', duration: 0.5, type: 'text' },
-            { id: 'dog', name: 'dog', duration: 0.75, type: 'text' }
+            { id: 'the', name: 'The', duration: 1, type: 'text' },
+            { id: 'quick', name: 'quick', duration: 2, type: 'text' },
+            { id: 'brown', name: 'brown', duration: 1.5, type: 'text' },
+            { id: 'fox', name: 'fox', duration: 3, type: 'text' },
+            { id: 'jumps', name: 'jumps', duration: 2.5, type: 'text' },
+            { id: 'over', name: 'over', duration: 1, type: 'text' },
+            { id: 'the2', name: 'the', duration: 4, type: 'text' },
+            { id: 'lazy', name: 'lazy', duration: 2, type: 'text' },
+            { id: 'dog', name: 'dog', duration: 3.5, type: 'text' }
         ],
         description: 'Player must arrange clips in correct order to form the sentence.'
     },
@@ -202,46 +202,51 @@ export const PROJECT_DATA = {
                 id: 'drums',
                 name: 'Drums',
                 type: 'drums',
-                clips: [] // Start with empty tracks
+                clips: [],
+                position: 0
+
             },
             {
                 id: 'bass',
                 name: 'Bass',
                 type: 'bass',
-                clips: []
+                clips: [],
+                position: 1
             },
             {
                 id: 'guitar',
                 name: 'Guitar',
                 type: 'guitar',
-                clips: []
+                clips: [],
+                position: 2
             },
             {
                 id: 'vocals',
                 name: 'Vocals',
                 type: 'vocals',
-                clips: []
+                clips: [],
+                position: 3
             }
         ],
         sidebarClips: [
             // Drum clips
-            { id: 'rock-beat', name: 'Rock Beat', duration: 2, type: 'drums' },
-            { id: 'funk-groove', name: 'Funk Groove', duration: 4, type: 'drums' },
-            { id: 'jazz-shuffle', name: 'Jazz Shuffle', duration: 3, type: 'drums' },
+            { id: 'rock-beat', name: 'Rock Beat', duration: 1, type: 'drums' },
+            { id: 'funk-groove', name: 'Funk Groove', duration: 8, type: 'drums' },
+            { id: 'jazz-shuffle', name: 'Jazz Shuffle', duration: 6, type: 'drums' },
 
             // Bass clips
-            { id: 'walking-bass', name: 'Walking Bass', duration: 4, type: 'bass' },
-            { id: 'synth-bass', name: 'Synth Bass', duration: 2, type: 'bass' },
-            { id: 'slap-bass', name: 'Slap Bass', duration: 3, type: 'bass' },
+            { id: 'walking-bass', name: 'Walking Bass', duration: 12, type: 'bass' },
+            { id: 'synth-bass', name: 'Synth Bass', duration: 3, type: 'bass' },
+            { id: 'slap-bass', name: 'Slap Bass', duration: 5, type: 'bass' },
 
             // Guitar clips
-            { id: 'clean-chords', name: 'Clean Chords', duration: 4, type: 'guitar' },
+            { id: 'clean-chords', name: 'Clean Chords', duration: 16, type: 'guitar' },
             { id: 'distorted-riff', name: 'Distorted Riff', duration: 2, type: 'guitar' },
-            { id: 'arpeggio', name: 'Arpeggio', duration: 3, type: 'guitar' },
+            { id: 'arpeggio', name: 'Arpeggio', duration: 7, type: 'guitar' },
 
             // Vocal clips
-            { id: 'lead-take-1', name: 'Lead Take 1', duration: 4, type: 'vocals' },
-            { id: 'lead-take-2', name: 'Lead Take 2', duration: 3, type: 'vocals' }
+            { id: 'lead-take-1', name: 'Lead Take 1', duration: 10, type: 'vocals' },
+            { id: 'lead-take-2', name: 'Lead Take 2', duration: 4, type: 'vocals' }
         ],
         description: 'Player chooses one clip per track to build a band arrangement.'
     },
@@ -255,52 +260,56 @@ export const PROJECT_DATA = {
         allowTrackManagement: true,
         tracks: [
             {
-                id: 'background-loop',
-                name: 'Background Loop',
-                type: 'ambient',
-                clips: []
+                id: 'track-1',
+                name: 'Track 1',
+                type: 'custom',
+                clips: [],
+                position: 0
             },
             {
-                id: 'vince-guitar',
-                name: 'Vince\'s Guitar',
-                type: 'guitar',
-                clips: []
+                id: 'track-2',
+                name: 'Track 2',
+                type: 'custom',
+                clips: [],
+                position: 1
             },
             {
-                id: 'field-recording',
-                name: 'Field Recording',
-                type: 'field',
-                clips: []
+                id: 'track-3',
+                name: 'Track 3',
+                type: 'custom',
+                clips: [],
+                position: 2
             },
             {
-                id: 'bass',
-                name: 'Bass',
-                type: 'bass',
-                clips: []
-            }
+                id: 'track-4',
+                name: 'Track 4',
+                type: 'custom',
+                clips: [],
+                position: 3
+            },
         ],
         sidebarClips: [
             // Ambient clips
-            { id: 'ambient-pad', name: 'Ambient Pad', duration: 8, type: 'ambient' },
-            { id: 'tape-loop', name: 'Tape Loop', duration: 6, type: 'ambient' },
+            { id: 'ambient-pad', name: 'Ambient Pad', duration: 16, type: 'ambient' },
+            { id: 'tape-loop', name: 'Tape Loop', duration: 12, type: 'ambient' },
 
             // Guitar clips
-            { id: 'guitar-phrase-1', name: 'Guitar Phrase 1', duration: 4, type: 'guitar' },
-            { id: 'guitar-phrase-2', name: 'Guitar Phrase 2', duration: 3, type: 'guitar' },
+            { id: 'guitar-phrase-1', name: 'Guitar Phrase 1', duration: 5, type: 'guitar' },
+            { id: 'guitar-phrase-2', name: 'Guitar Phrase 2', duration: 8, type: 'guitar' },
 
             // Field recording clips
-            { id: 'birds', name: 'Birds', duration: 6, type: 'field' },
-            { id: 'rain', name: 'Rain', duration: 8, type: 'field' },
-            { id: 'street-noise', name: 'Street Noise', duration: 4, type: 'field' },
+            { id: 'birds', name: 'Birds', duration: 14, type: 'field' },
+            { id: 'rain', name: 'Rain', duration: 20, type: 'field' },
+            { id: 'street-noise', name: 'Street Noise', duration: 3, type: 'field' },
 
             // Bass clips
-            { id: 'walking-bass', name: 'Walking Bass', duration: 4, type: 'bass' },
-            { id: 'electric-bass', name: 'Electric Bass', duration: 4, type: 'bass' },
-            { id: 'synth-bass', name: 'Synth Bass', duration: 3, type: 'bass' },
+            { id: 'walking-bass', name: 'Walking Bass', duration: 7, type: 'bass' },
+            { id: 'electric-bass', name: 'Electric Bass', duration: 11, type: 'bass' },
+            { id: 'synth-bass', name: 'Synth Bass', duration: 6, type: 'bass' },
 
             // Extra clips
-            { id: 'synth-texture', name: 'Synth Texture', duration: 8, type: 'synth' },
-            { id: 'perc-loop', name: 'Perc Loop', duration: 2, type: 'percussion' }
+            { id: 'synth-texture', name: 'Synth Texture', duration: 18, type: 'synth' },
+            { id: 'perc-loop', name: 'Perc Loop', duration: 1, type: 'percussion' }
         ],
         description: 'Player can freely add/remove tracks and clips, move and resize as desired.'
     },
@@ -313,57 +322,69 @@ export const PROJECT_DATA = {
         timeSignature: '4/4',
         tracks: [
             {
-                id: 'main-instrument',
-                name: 'Main Instrument',
-                type: 'instrument',
-                clips: []
+                id: 'track-1',
+                name: 'Vince 1',
+                type: 'custom',
+                clips: [],
+                position: 0
             },
             {
-                id: 'vocals',
-                name: 'Vocals',
-                type: 'vocals',
-                clips: []
+                id: 'track-2',
+                name: 'Vince 2',
+                type: 'custom',
+                clips: [],
+                position: 1
             },
             {
-                id: 'rhythm-section',
-                name: 'Rhythm Section',
-                type: 'rhythm',
-                clips: []
+                id: 'track-3',
+                name: 'Vince 3',
+                type: 'custom',
+                clips: [],
+                position: 2
             },
             {
-                id: 'viola-material',
-                name: 'Viola Material',
-                type: 'viola',
-                clips: []
+                id: 'track-4',
+                name: 'Viola 1',
+                type: 'custom',
+                clips: [],
+                position: 3
             },
             {
-                id: 'bass',
-                name: 'Bass',
-                type: 'bass',
-                clips: []
-            }
+                id: 'track-5',
+                name: 'Viola 2',
+                type: 'custom',
+                clips: [],
+                position: 4
+            },
+            {
+                id: 'track-6',
+                name: 'Viola 3',
+                type: 'custom',
+                clips: [],
+                position: 5
+            },
         ],
         sidebarClips: [
             // Instrument clips
-            { id: 'piano-intro', name: 'Piano Intro', duration: 4, type: 'instrument' },
-            { id: 'guitar-verse', name: 'Guitar Verse', duration: 3, type: 'instrument' },
+            { id: 'piano-intro', name: 'Piano Intro', duration: 6, type: 'instrument' },
+            { id: 'guitar-verse', name: 'Guitar Verse', duration: 12, type: 'instrument' },
 
             // Vocal clips
-            { id: 'vince-take', name: 'Vince\'s Take', duration: 4, type: 'vocals' },
-            { id: 'viola-take', name: 'Viola\'s Take', duration: 3, type: 'vocals' },
+            { id: 'vince-take', name: 'Vince\'s Take', duration: 8, type: 'vocals' },
+            { id: 'viola-take', name: 'Viola\'s Take', duration: 5, type: 'vocals' },
 
             // Rhythm clips
-            { id: 'drum-groove', name: 'Drum Groove', duration: 4, type: 'rhythm' },
+            { id: 'drum-groove', name: 'Drum Groove', duration: 16, type: 'rhythm' },
             { id: 'percussion', name: 'Percussion', duration: 2, type: 'rhythm' },
 
             // Viola clips
-            { id: 'viola-melody', name: 'Viola Melody', duration: 4, type: 'viola' },
-            { id: 'viola-harmony', name: 'Viola Harmony', duration: 3, type: 'viola' },
+            { id: 'viola-melody', name: 'Viola Melody', duration: 10, type: 'viola' },
+            { id: 'viola-harmony', name: 'Viola Harmony', duration: 7, type: 'viola' },
 
             // Bass clips
-            { id: 'walking-bass', name: 'Walking Bass', duration: 4, type: 'bass' },
-            { id: 'electric-bass', name: 'Electric Bass', duration: 4, type: 'bass' },
-            { id: 'synth-bass', name: 'Synth Bass', duration: 3, type: 'bass' }
+            { id: 'walking-bass', name: 'Walking Bass', duration: 9, type: 'bass' },
+            { id: 'electric-bass', name: 'Electric Bass', duration: 14, type: 'bass' },
+            { id: 'synth-bass', name: 'Synth Bass', duration: 4, type: 'bass' }
         ],
         description: 'Arrange clips to create the final song structure.'
     }
@@ -453,37 +474,51 @@ export const CLIP_CATEGORIES = [
 
 // ===== VALIDATION =====
 export const validateConfiguration = () => {
-    // Validate required configuration sections
+    validateRequiredConfigs();
+    validateProjectData();
+    validateClipCategories();
+    console.log('✅ Configuration validation passed');
+};
+
+const validateRequiredConfigs = () => {
     assert(PROJECT_CONFIG, 'PROJECT_CONFIG is required');
     assert(PROJECT_DATA, 'PROJECT_DATA is required');
     assert(CLIP_CATEGORIES, 'CLIP_CATEGORIES is required');
+};
 
-    // Validate project data structure
+const validateProjectData = () => {
     Object.entries(PROJECT_DATA).forEach(([key, project]) => {
-        assert(project.id, `Project ${key} must have an id`);
-        assert(project.name, `Project ${key} must have a name`);
-        assert(project.bpm, `Project ${key} must have a bpm`);
-        assert(project.tracks, `Project ${key} must have tracks`);
-        assert(Array.isArray(project.tracks), `Project ${key} tracks must be an array`);
-
-        project.tracks.forEach((track, index) => {
-            assert(track.id, `Track ${index} in project ${key} must have an id`);
-            assert(track.name, `Track ${index} in project ${key} must have a name`);
-            assert(track.type, `Track ${index} in project ${key} must have a type`);
-            assert(track.clips, `Track ${index} in project ${key} must have clips`);
-            assert(Array.isArray(track.clips), `Track ${index} in project ${key} clips must be an array`);
-        });
+        validateProject(key, project);
     });
+};
 
-    // Validate clip categories
+const validateProject = (key, project) => {
+    assert(project.id, `Project ${key} must have an id`);
+    assert(project.name, `Project ${key} must have a name`);
+    assert(project.bpm, `Project ${key} must have a bpm`);
+    assert(project.tracks, `Project ${key} must have tracks`);
+    assert(Array.isArray(project.tracks), `Project ${key} tracks must be an array`);
+
+    project.tracks.forEach((track, index) => {
+        validateTrack(key, index, track);
+    });
+};
+
+const validateTrack = (projectKey, trackIndex, track) => {
+    assert(track.id, `Track ${trackIndex} in project ${projectKey} must have an id`);
+    assert(track.name, `Track ${trackIndex} in project ${projectKey} must have a name`);
+    assert(track.type, `Track ${trackIndex} in project ${projectKey} must have a type`);
+    assert(track.clips, `Track ${trackIndex} in project ${projectKey} must have clips`);
+    assert(Array.isArray(track.clips), `Track ${trackIndex} in project ${projectKey} clips must be an array`);
+};
+
+const validateClipCategories = () => {
     CLIP_CATEGORIES.forEach((category, index) => {
         assert(category.id, `Clip category ${index} must have an id`);
         assert(category.name, `Clip category ${index} must have a name`);
         assert(category.icon, `Clip category ${index} must have an icon`);
         assert(category.color, `Clip category ${index} must have a color`);
     });
-
-    console.log('✅ Configuration validation passed');
 };
 
 // ===== UTILITY FUNCTIONS =====
@@ -508,6 +543,77 @@ export const formatTime = (seconds) => {
 export const formatBeatTime = (beats, bpm) => {
     const totalSeconds = (beats / bpm) * 60;
     return formatTime(totalSeconds);
+};
+
+// ===== TIMELINE CALCULATION UTILITIES =====
+export const calculateTimelineLength = (project) => {
+    assert(project, 'Project is required for timeline calculation');
+    assert(project.bpm, 'Project BPM is required');
+    assert(project.timeSignature, 'Project time signature is required');
+
+    // Parse time signature (e.g., '4/4' => { beats: 4, noteValue: 4 })
+    const timeSig = parseTimeSignature(project.timeSignature);
+    const beatsPerBar = timeSig.beats;
+
+    // Calculate minimum timeline length based on clips
+    const maxClipEnd = calculateMaxClipEnd(project);
+
+    // Calculate bars needed
+    const barsNeeded = Math.ceil(maxClipEnd / beatsPerBar);
+
+    // Ensure appropriate timeline length based on project type
+    const minBars = 16;
+    const totalBars = Math.max(minBars, barsNeeded);
+
+    // Calculate total beats
+    const totalBeats = totalBars * beatsPerBar;
+
+    // Calculate timeline height in pixels
+    const timelineHeight = totalBeats * PROJECT_CONFIG.layout.gridBeatWidth;
+
+    return {
+        bars: totalBars,
+        beats: totalBeats,
+        height: timelineHeight,
+        beatsPerBar,
+        timeSignature: project.timeSignature
+    };
+};
+
+const parseTimeSignature = (timeSignature) => {
+    assert(typeof timeSignature === 'string', 'Time signature must be a string');
+    const match = timeSignature.match(/^(\d+)\/(\d+)$/);
+    assert(match, `Invalid time signature: ${timeSignature}. Must be in 'X/Y' format, e.g., '4/4'. No fallback allowed.`);
+    return {
+        beats: parseInt(match[1], 10),
+        noteValue: parseInt(match[2], 10)
+    };
+};
+
+const calculateMaxClipEnd = (project) => {
+    let maxEnd = 0;
+
+    // Check clips in tracks
+    project.tracks.forEach(track => {
+        track.clips.forEach(clip => {
+            const clipEnd = clip.startTime + clip.duration;
+            maxEnd = Math.max(maxEnd, clipEnd);
+        });
+    });
+
+    // Check sidebar clips for minimum duration
+    if (project.sidebarClips) {
+        project.sidebarClips.forEach(clip => {
+            maxEnd = Math.max(maxEnd, clip.duration);
+        });
+    }
+
+    return maxEnd;
+};
+
+export const formatTimeSignature = (timeSignature) => {
+    const parsed = parseTimeSignature(timeSignature);
+    return `${parsed.beats}/${parsed.noteValue}`;
 };
 
 // Initialize validation on module load

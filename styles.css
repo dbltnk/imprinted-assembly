@@ -429,7 +429,6 @@ body {
     margin-bottom: var(--spacing-xs);
     margin-top: var(--spacing-sm);
     box-shadow: none;
-    border-left: 3px solid var(--color-border);
     letter-spacing: 0.01em;
 }
 
@@ -437,6 +436,7 @@ body {
     font-size: 0.9em;
     margin-right: 0.5em;
     color: var(--color-border);
+    padding-bottom: px;
 }
 
 .folder-name {
@@ -482,13 +482,35 @@ body {
     cursor: grabbing;
 }
 
+.clip-item--used {
+    opacity: 0.6;
+    background-color: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+}
+
+.clip-item--used:hover {
+    opacity: 0.8;
+    background-color: var(--color-bg-tertiary);
+}
+
 .clip-item__name {
     font-weight: 600;
     color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.clip-item__usage-count {
+    font-size: 0.625rem;
+    color: var(--color-accent-primary);
+    font-weight: normal;
+    opacity: 0.8;
 }
 
 .clip-item__beats {
     display: flex;
+    flex-direction: row;
     gap: 2px;
     height: 8px;
     align-items: center;
@@ -535,6 +557,8 @@ body {
     padding-right: var(--spacing-md);
     height: 100%;
     overflow: hidden;
+    min-height: 0;
+    max-height: 100%;
 }
 
 .timeline-container {
@@ -542,10 +566,10 @@ body {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
     position: relative;
-    overflow: hidden;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     height: 100%;
+    min-height: 0;
     transition: all 0.3s ease;
 }
 
@@ -575,13 +599,43 @@ body {
     font-weight: bold;
 }
 
-/* Tracks Area */
+/* Tracks Area - Now Scrollable */
 .tracks-area {
     position: relative;
     flex: 1;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    overflow-x: auto;
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent-primary) var(--color-bg-secondary);
+    min-height: 0;
+}
+
+.tracks-area::-webkit-scrollbar {
+    width: 14px;
+    background: var(--color-bg-secondary);
+}
+
+.tracks-area::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--color-accent-primary) 60%, var(--color-accent-dark) 100%);
+    border-radius: var(--radius-md);
+    border: 3px solid var(--color-bg-secondary);
+    min-height: 40px;
+    transition: background 0.2s;
+}
+
+.tracks-area::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--color-accent-secondary) 60%, var(--color-accent-darker) 100%);
+}
+
+.tracks-area::-webkit-scrollbar-track {
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+}
+
+.tracks-area::-webkit-scrollbar-corner {
+    background: var(--color-bg-secondary);
 }
 
 .tracks-empty {
@@ -591,20 +645,20 @@ body {
     padding: var(--spacing-xl);
 }
 
-/* Time Ruler */
+/* Time Ruler - Now Vertical */
 .time-ruler {
     display: flex;
-    flex-direction: row;
-    height: 32px;
+    flex-direction: column;
+    width: 32px;
     align-items: flex-end;
     flex-shrink: 0;
 }
 
 .time-ruler__left {
-    width: var(--track-controls-width);
-    min-width: 150px;
+    height: calc(var(--track-controls-width) - 64px);
+    min-height: 86px;
     background-color: var(--color-bg-secondary);
-    height: 100%;
+    width: 100%;
     border-radius: var(--radius-lg) 0 0 0;
 }
 
@@ -616,10 +670,10 @@ body {
 
 .time-ruler__grid {
     display: flex;
-    flex-direction: row;
-    height: 100%;
+    flex-direction: column;
+    width: 100%;
     align-items: flex-end;
-    background: repeating-linear-gradient(to right,
+    background: repeating-linear-gradient(to bottom,
             var(--color-bg-tertiary) 0px,
             var(--color-bg-tertiary) 2px,
             transparent 2px,
@@ -631,41 +685,82 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    width: var(--grid-beat-width);
+    height: var(--grid-beat-width);
+    padding-right: 10px;
 }
 
 .time-ruler__beat-label {
     font-size: 0.75rem;
     color: var(--color-text-muted);
+    writing-mode: horizontal-tb;
 }
 
 .time-ruler__beat-label--strong {
     color: var(--color-text-secondary);
 }
 
-/* Track */
+.time-ruler__beat-label--bar {
+    color: var(--color-accent-primary);
+    font-weight: bold;
+    font-size: 0.875rem;
+}
+
+/* Track - Now Horizontal Columns */
 .track {
     display: flex;
-    align-items: center;
-    border-bottom: 1px solid var(--color-border);
-    height: var(--track-height);
-    min-height: 48px;
-    max-height: 56px;
+    flex-direction: column;
+    align-items: stretch;
+    border-right: 1px solid var(--color-border);
+    width: calc(var(--track-height) * 2);
+    min-width: 96px;
+    max-width: 112px;
 }
 
 .track:last-child {
-    border-bottom: none;
+    border-right: none;
+}
+
+.track--disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.track--disabled .track__checkbox--enable:not(:disabled) {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.track__name--disabled {
+    background-color: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    cursor: default;
+}
+
+.track__button--disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    color: var(--color-text-muted);
+}
+
+.track__button--disabled:hover {
+    background-color: transparent;
+}
+
+.track__clips-area--disabled {
+    background-color: var(--color-bg-primary);
+    opacity: 0.5;
 }
 
 .track__controls {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    width: var(--track-controls-width);
-    padding-left: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
     gap: var(--spacing-sm);
-    min-width: 150px;
+    min-height: 86px;
     background-color: var(--color-bg-secondary);
-    height: 100%;
+    width: 100%;
     border-radius: var(--radius-lg) 0 0 0;
 }
 
@@ -695,18 +790,49 @@ body {
     color: var(--color-bg-primary);
 }
 
-.track__button--remove {
-    color: #ef4444;
-    /* red-500 */
+.track__checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--color-accent-primary);
 }
 
-.track__button--remove:hover {
-    background-color: #ef4444;
-    color: white;
+.track__checkbox--enable {
+    accent-color: var(--color-accent-primary);
+}
+
+.track__checkbox--disable {
+    accent-color: #ef4444;
+}
+
+.track__checkbox:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.track__checkbox:disabled:hover {
+    cursor: not-allowed;
+}
+
+.track__button--enable {
+    color: var(--color-bg-primary);
+    background-color: var(--color-accent-primary);
+    font-size: 0.625rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    min-height: 24px;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+}
+
+.track__button--enable:hover {
+    background-color: var(--color-accent-secondary);
+    color: var(--color-bg-primary);
+    box-shadow: var(--shadow-md);
 }
 
 .track__name {
-    width: 128px;
+    height: 48px;
     font-size: 0.75rem;
     font-weight: bold;
     color: var(--color-text-secondary);
@@ -719,6 +845,10 @@ body {
     border-radius: var(--radius-xs);
     padding: var(--spacing-xs);
     transition: border-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .track__name:focus {
@@ -730,14 +860,14 @@ body {
     flex: 1;
     position: relative;
     background-color: var(--color-bg-tertiary);
-    background-image: repeating-linear-gradient(to right,
+    background-image: repeating-linear-gradient(to bottom,
             transparent 0px,
             transparent calc(var(--grid-beat-width) - 1px),
             var(--color-border) calc(var(--grid-beat-width) - 1px),
             var(--color-border) var(--grid-beat-width));
-    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
     overflow: hidden;
-    min-height: 48px;
+    min-width: 48px;
+    min-height: 400px;
 }
 
 .clip-drop-preview {
@@ -754,8 +884,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 2px;
-    height: 100%;
+    height: 2px;
+    width: 100%;
     background-color: var(--color-accent-primary);
     opacity: 0.4;
     z-index: 20;
@@ -766,15 +896,16 @@ body {
 
 .track__clips {
     display: flex;
-    align-items: center;
-    height: 100%;
-    padding-left: calc(var(--grid-beat-width) + var(--spacing-sm));
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    padding-top: calc(var(--grid-beat-width) + var(--spacing-sm));
     gap: var(--spacing-sm);
-    min-width: 0;
+    min-height: 0;
     position: relative;
 }
 
-/* Clip */
+/* Clip - Now Vertical */
 .clip {
     position: absolute;
     background-color: var(--color-accent-primary);
@@ -785,24 +916,24 @@ body {
     cursor: grab;
     user-select: none;
     transition: all 0.2s ease;
-    min-width: 60px;
-    height: 32px;
+    min-height: 60px;
+    width: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: var(--shadow-sm);
-    top: 8px;
+    left: 16px;
 }
 
 .clip:hover {
     background-color: var(--color-accent-secondary);
-    transform: translateY(-1px);
+    transform: translateX(-1px);
     box-shadow: var(--shadow-md);
 }
 
 .clip:active {
     cursor: grabbing;
-    transform: translateY(0);
+    transform: translateX(0);
 }
 
 .clip--dark {
@@ -829,25 +960,33 @@ body {
 .clip__name {
     font-weight: 600;
     font-size: 0.625rem;
-    line-height: 1;
+    line-height: 1.2;
     margin-bottom: 2px;
+    word-break: break-word;
+    max-width: 100%;
+    writing-mode: sideways-rl;
 }
 
 .clip__duration {
     font-size: 0.5rem;
     opacity: 0.7;
     line-height: 1;
+    word-break: break-word;
+    writing-mode: sideways-rl;
 }
 
 /* Add Track Button */
 .add-track-button {
     width: 100%;
+    min-width: 96px;
+    max-width: 112px;
     display: flex;
     justify-content: center;
-    margin: var(--spacing-sm) 0;
+    align-items: center;
     background-color: var(--color-bg-secondary);
     border-top: 1px solid var(--color-border);
-    padding-top: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    height: 250px;
 }
 
 .add-track-button__button {
@@ -982,10 +1121,10 @@ input:focus-visible {
 /* ===== CLIP RESIZE HANDLES ===== */
 .clip__resize-handle {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 8px;
-    cursor: ew-resize;
+    left: 0;
+    right: 0;
+    height: 8px;
+    cursor: ns-resize;
     background-color: rgba(255, 255, 255, 0.1);
     transition: background-color 0.2s;
     z-index: 10;
@@ -995,14 +1134,14 @@ input:focus-visible {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
-.clip__resize-handle--left {
-    left: 0;
-    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+.clip__resize-handle--top {
+    top: 0;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
 }
 
-.clip__resize-handle--right {
-    right: 0;
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+.clip__resize-handle--bottom {
+    bottom: 0;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
 }
 
 .clip__resize-handle--resizing {

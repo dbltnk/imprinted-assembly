@@ -73,4 +73,26 @@ export function formatMessage(args) {
         }
         return String(arg);
     }).join(' ');
+}
+
+// ===== SHARED FORMATTING UTILITIES =====
+export function formatDuration(duration) {
+    const roundedDuration = Math.round(duration * 10) / 10;
+    const suffix = roundedDuration === 1 ? ' beat' : ' beats';
+    return `${roundedDuration}${suffix}`;
+}
+
+export function formatTimeDisplay(currentTime = 0, totalDuration = 16) {
+    const currentMinutes = Math.floor(currentTime / 60);
+    const currentSeconds = Math.floor(currentTime % 60);
+    const currentTenths = Math.floor((currentTime % 1) * 10);
+
+    const totalMinutes = Math.floor(totalDuration / 60);
+    const totalSeconds = Math.floor(totalDuration % 60);
+    const totalTenths = Math.floor((totalDuration % 1) * 10);
+
+    const currentFormatted = `${currentMinutes.toString().padStart(2, '0')}:${currentSeconds.toString().padStart(2, '0')}.${currentTenths}`;
+    const totalFormatted = `${totalMinutes.toString().padStart(2, '0')}:${totalSeconds.toString().padStart(2, '0')}.${totalTenths}`;
+
+    return `${currentFormatted} / ${totalFormatted}`;
 } 
