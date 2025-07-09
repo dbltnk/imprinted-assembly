@@ -5,6 +5,7 @@
 
 import { PROJECT_CONFIG, PROJECT_DATA, getProjectById } from './config.js';
 import { HeaderComponent, SidebarComponent, TimelineComponent, VUMeterComponent } from './components.js';
+import { assert, createConsoleOverride, parseCallStack, formatMessage } from './utils.js';
 
 // ===== BROWSER LOGGING SYSTEM =====
 // Keep the existing logging system intact for debugging
@@ -20,22 +21,11 @@ class BrowserLogger {
     }
 
     init() {
-        // Clear previous session logs on page load
         this.clearSession();
-
-        // Process early logs that happened before initialization
         this.processEarlyLogs();
-
-        // Override console methods (replace the early capture)
         this.overrideConsole();
-
-        // Set up error handling to capture uncaught errors
         this.setupErrorHandling();
-
-        // Set up periodic logging
         this.startPeriodicLogging();
-
-        // Initial log
         console.log('Browser logging system initialized');
     }
 
@@ -84,73 +74,22 @@ class BrowserLogger {
     }
 
     overrideConsole() {
-        // Get the original console methods from the early capture
-        const originalLog = console.log;
-        const originalWarn = console.warn;
-        const originalError = console.error;
-        const originalInfo = console.info;
-
-        // Replace the early capture with our full logging system
-        console.log = (...args) => {
-            originalLog.apply(console, args);
-            this.addToBuffer('LOG', args);
+        const originalMethods = {
+            log: console.log,
+            warn: console.warn,
+            error: console.error,
+            info: console.info
         };
 
-        console.warn = (...args) => {
-            originalWarn.apply(console, args);
-            this.addToBuffer('WARN', args);
-        };
-
-        console.error = (...args) => {
-            originalError.apply(console, args);
-            this.addToBuffer('ERROR', args);
-        };
-
-        console.info = (...args) => {
-            originalInfo.apply(console, args);
-            this.addToBuffer('INFO', args);
-        };
+        const consoleOverride = createConsoleOverride(originalMethods, (type, args) => {
+            this.addToBuffer(type, args);
+        });
+        Object.assign(console, consoleOverride);
     }
 
     addToBuffer(type, args) {
-        const message = args.map(arg => {
-            if (typeof arg === 'object') {
-                try {
-                    return JSON.stringify(arg);
-                } catch {
-                    return String(arg);
-                }
-            }
-            return String(arg);
-        }).join(' ');
-
-        // Get call stack information
-        const stack = new Error().stack;
-        const stackLines = stack ? stack.split('\n').slice(2) : []; // Skip Error constructor and this function
-
-        // Parse stack to get file and line info
-        const callInfo = stackLines.map(line => {
-            const match = line.match(/at\s+(.+?)\s+\((.+?):(\d+):(\d+)\)/);
-            if (match) {
-                return {
-                    function: match[1],
-                    file: match[2],
-                    line: parseInt(match[3]),
-                    column: parseInt(match[4])
-                };
-            }
-            // Handle anonymous functions
-            const anonMatch = line.match(/at\s+(.+?):(\d+):(\d+)/);
-            if (anonMatch) {
-                return {
-                    function: '(anonymous)',
-                    file: anonMatch[1],
-                    line: parseInt(anonMatch[2]),
-                    column: parseInt(anonMatch[3])
-                };
-            }
-            return null;
-        }).filter(Boolean);
+        const message = formatMessage(args);
+        const callInfo = parseCallStack();
 
         this.logBuffer.push({
             timestamp: new Date().toISOString(),
@@ -215,41 +154,11 @@ class BrowserLogger {
         };
 
         try {
-            // Get ALL elements in the document for complete coverage
             const allElements = document.querySelectorAll('*');
-
             allElements.forEach(element => {
-                try {
-                    const computedStyle = window.getComputedStyle(element);
-                    const rect = element.getBoundingClientRect();
-
-                    const elementData = {
-                        tag: element.tagName.toLowerCase(),
-                        id: element.id || null,
-                        classes: Array.from(element.classList),
-                        dataAttributes: this.getDataAttributes(element),
-                        computedStyles: this.getRelevantStyles(computedStyle),
-                        position: {
-                            x: Math.round(rect.left),
-                            y: Math.round(rect.top)
-                        },
-                        dimensions: {
-                            width: Math.round(rect.width),
-                            height: Math.round(rect.height)
-                        },
-                        textContent: element.textContent?.trim().substring(0, 100) || null,
-                        innerHTML: element.innerHTML?.substring(0, 200) || null
-                    };
-
-                    // Add CSS conflict detection
-                    const conflicts = this.detectCssConflicts(element, computedStyle);
-                    if (conflicts.length > 0) {
-                        elementData.cssConflicts = conflicts;
-                    }
-
+                const elementData = this.processElement(element);
+                if (elementData) {
                     snapshot.elements.push(elementData);
-                } catch (elementErr) {
-                    console.warn('Failed to process element:', element, elementErr);
                 }
             });
         } catch (err) {
@@ -258,6 +167,41 @@ class BrowserLogger {
         }
 
         return snapshot;
+    }
+
+    processElement(element) {
+        try {
+            const computedStyle = window.getComputedStyle(element);
+            const rect = element.getBoundingClientRect();
+
+            const elementData = {
+                tag: element.tagName.toLowerCase(),
+                id: element.id || null,
+                classes: Array.from(element.classList),
+                dataAttributes: this.getDataAttributes(element),
+                computedStyles: this.getRelevantStyles(computedStyle),
+                position: {
+                    x: Math.round(rect.left),
+                    y: Math.round(rect.top)
+                },
+                dimensions: {
+                    width: Math.round(rect.width),
+                    height: Math.round(rect.height)
+                },
+                textContent: element.textContent?.trim().substring(0, 100) || null,
+                innerHTML: element.innerHTML?.substring(0, 200) || null
+            };
+
+            const conflicts = this.detectCssConflicts(element, computedStyle);
+            if (conflicts.length > 0) {
+                elementData.cssConflicts = conflicts;
+            }
+
+            return elementData;
+        } catch (elementErr) {
+            console.warn('Failed to process element:', element, elementErr);
+            return null;
+        }
     }
 
     getDataAttributes(element) {
@@ -331,19 +275,10 @@ class AssemblyApp {
 
     init() {
         console.log('Initializing Assembly Audio Editor');
-
-        // Validate configuration
         this.validateConfiguration();
-
-        // Initialize components
         this.initializeComponents();
-
-        // Set up event listeners
         this.setupEventListeners();
-
-        // Load default project
         this.loadProject('band');
-
         console.log('Assembly Audio Editor initialized successfully');
     }
 
@@ -351,7 +286,6 @@ class AssemblyApp {
         assert(PROJECT_CONFIG, 'PROJECT_CONFIG is required');
         assert(PROJECT_DATA, 'PROJECT_DATA is required');
 
-        // Validate that all required DOM elements exist
         const requiredElements = ['header', 'sidebar', 'timeline', 'vu-meter'];
         requiredElements.forEach(id => {
             const element = document.getElementById(id);
@@ -450,56 +384,7 @@ class AssemblyApp {
             this.handleTimelineClipMove(e.detail.dragData, e.detail.targetTrackId, e.detail.newStartTime);
         });
 
-        // Global drop handler for timeline
-        document.addEventListener('drop', (e) => {
-            const trackElement = e.target.closest('.track');
-            if (trackElement && window.globalDragData) {
-                console.log(`Global drop handler called for track: ${trackElement.dataset.trackId}`);
-                console.log(`Drag data in global handler:`, window.globalDragData);
-
-                const dropPosition = this.timelineComponent.calculateDropPosition(e, trackElement);
-                console.log(`Drop position calculated:`, dropPosition);
-
-                if (dropPosition.isValid) {
-                    const trackId = trackElement.dataset.trackId;
-                    const startTime = dropPosition.startTime;
-
-                    if (window.globalDragData.type === 'sidebar-clip') {
-                        this.handleSidebarClipDrop(window.globalDragData, trackId, startTime);
-                    } else if (window.globalDragData.type === 'timeline-clip') {
-                        this.handleTimelineClipMove(window.globalDragData, trackId, startTime);
-                    }
-                }
-
-                // Clear global drag data
-                window.globalDragData = null;
-            }
-        });
-
-        // Global drag over handler
-        document.addEventListener('dragover', (e) => {
-            const trackElement = e.target.closest('.track');
-            if (trackElement && window.globalDragData) {
-                e.preventDefault();
-                const dropPosition = this.timelineComponent.calculateDropPosition(e, trackElement);
-
-                if (dropPosition.isValid) {
-                    e.dataTransfer.dropEffect = 'copy';
-                    this.timelineComponent.showDropPreview(trackElement, dropPosition);
-                } else {
-                    e.dataTransfer.dropEffect = 'none';
-                    this.timelineComponent.hideDropPreview(trackElement);
-                }
-            }
-        });
-
-        // Global drag leave handler
-        document.addEventListener('dragleave', (e) => {
-            const trackElement = e.target.closest('.track');
-            if (trackElement) {
-                this.timelineComponent.hideDropPreview(trackElement);
-            }
-        });
+        this.setupGlobalDragAndDrop();
 
         // Menu item clicks
         this.headerComponent.element.addEventListener('menuItemClick', (e) => {
@@ -597,9 +482,8 @@ class AssemblyApp {
             });
         });
 
-        // For projects with no clips in tracks, use a default duration
         if (maxDuration === 0) {
-            maxDuration = 16; // Default 16 beats
+            maxDuration = 16;
         }
 
         // Round up to nearest beat and ensure minimum duration
@@ -615,6 +499,7 @@ class AssemblyApp {
     }
 
     handleTransportAction(action) {
+        assert(action, 'Transport action is required');
         console.log(`Transport action: ${action}`);
 
         switch (action) {
@@ -639,6 +524,8 @@ class AssemblyApp {
     }
 
     handleTrackAction(action, trackId) {
+        assert(action, 'Track action is required');
+        assert(trackId, 'Track ID is required');
         console.log(`Track action: ${action} for track: ${trackId}`);
 
         switch (action) {
@@ -654,9 +541,10 @@ class AssemblyApp {
     }
 
     handleTrackNameChange(trackId, newName) {
+        assert(trackId, 'Track ID is required');
+        assert(newName, 'New track name is required');
         console.log(`Track name change: ${trackId} -> ${newName}`);
 
-        // Update the track name in the current project
         const track = this.currentProject.tracks.find(t => t.id === trackId);
         if (track) {
             track.name = newName;
@@ -970,40 +858,70 @@ class AssemblyApp {
     }
 
     handleMenuItemClick(itemId) {
+        assert(itemId, 'Menu item ID is required');
         console.log(`Menu item clicked: ${itemId}`);
 
         if (itemId === 'load') {
-            // Load dropdown is handled by the header component
             return;
         }
 
-        // Handle other menu items
-        switch (itemId) {
-            case 'save':
-            case 'analyze':
-            case 'details':
-            case 'settings':
-            case 'help':
-            case 'license':
-                console.log(`Menu item '${itemId}' is not implemented yet`);
-                break;
-            default:
-                console.warn(`Unknown menu item: ${itemId}`);
-        }
+        console.log(`Menu item '${itemId}' is not implemented yet`);
     }
 
     handleWindowControlClick(controlId) {
+        assert(controlId, 'Window control ID is required');
         console.log(`Window control clicked: ${controlId}`);
 
-        switch (controlId) {
-            case 'minimize':
-            case 'maximize':
-            case 'close':
-                console.log(`Window control '${controlId}' is not implemented yet`);
-                break;
-            default:
-                console.warn(`Unknown window control: ${controlId}`);
-        }
+        console.log(`Window control '${controlId}' is not implemented yet`);
+    }
+
+    setupGlobalDragAndDrop() {
+        document.addEventListener('drop', (e) => {
+            const trackElement = e.target.closest('.track');
+            if (trackElement && window.globalDragData) {
+                console.log(`Global drop handler called for track: ${trackElement.dataset.trackId}`);
+                console.log(`Drag data in global handler:`, window.globalDragData);
+
+                const dropPosition = this.timelineComponent.calculateDropPosition(e, trackElement);
+                console.log(`Drop position calculated:`, dropPosition);
+
+                if (dropPosition.isValid) {
+                    const trackId = trackElement.dataset.trackId;
+                    const startTime = dropPosition.startTime;
+
+                    if (window.globalDragData.type === 'sidebar-clip') {
+                        this.handleSidebarClipDrop(window.globalDragData, trackId, startTime);
+                    } else if (window.globalDragData.type === 'timeline-clip') {
+                        this.handleTimelineClipMove(window.globalDragData, trackId, startTime);
+                    }
+                }
+
+                window.globalDragData = null;
+            }
+        });
+
+        document.addEventListener('dragover', (e) => {
+            const trackElement = e.target.closest('.track');
+            if (trackElement && window.globalDragData) {
+                e.preventDefault();
+                const dropPosition = this.timelineComponent.calculateDropPosition(e, trackElement);
+
+                if (dropPosition.isValid) {
+                    e.dataTransfer.dropEffect = 'copy';
+                    this.timelineComponent.showDropPreview(trackElement, dropPosition);
+                } else {
+                    e.dataTransfer.dropEffect = 'none';
+                    this.timelineComponent.hideDropPreview(trackElement);
+                }
+            }
+        });
+
+        document.addEventListener('dragleave', (e) => {
+            const trackElement = e.target.closest('.track');
+            if (trackElement) {
+                this.timelineComponent.hideDropPreview(trackElement);
+            }
+        });
     }
 
     handleTrackAdded(track) {
@@ -1094,13 +1012,6 @@ class AssemblyApp {
     }
 }
 
-// ===== UTILITY FUNCTIONS =====
-function assert(condition, message) {
-    if (!condition) {
-        throw new Error(`Assembly App Error: ${message}`);
-    }
-}
-
 // ===== INITIALIZATION =====
 let app = null;
 
@@ -1122,5 +1033,3 @@ window.addEventListener('beforeunload', () => {
 
 // Export for debugging
 window.AssemblyApp = AssemblyApp;
-
-// ===== APPLICATION INITIALIZATION ===== 

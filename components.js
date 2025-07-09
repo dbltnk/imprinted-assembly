@@ -4,10 +4,9 @@
  */
 
 import { PROJECT_CONFIG, PROJECT_DATA, CLIP_CATEGORIES, getCategoryByType } from './config.js';
+import { assert } from './utils.js';
 
 // ===== GLOBAL VARIABLES =====
-// Remove the local globalDragData variable since we're using window.globalDragData
-// let globalDragData = null;
 
 // ===== COMPONENT BASE CLASS =====
 class Component {
@@ -129,7 +128,6 @@ class HeaderComponent extends Component {
     }
 
     handleWindowControlClick(controlId) {
-        // Window controls are placeholders for now
         console.log(`Window control clicked: ${controlId}`);
     }
 
@@ -1306,13 +1304,6 @@ class VUMeterComponent extends Component {
     destroy() {
         this.stopAnimation();
         super.destroy();
-    }
-}
-
-// ===== UTILITY FUNCTIONS =====
-function assert(condition, message) {
-    if (!condition) {
-        throw new Error(`Component Error: ${message}`);
     }
 }
 

@@ -3,12 +3,7 @@
  * Centralized configuration for all project data and settings
  */
 
-// Assert that required configuration is present
-const assert = (condition, message) => {
-    if (!condition) {
-        throw new Error(`Configuration Error: ${message}`);
-    }
-};
+import { assert } from './utils.js';
 
 // ===== PROJECT CONFIGURATION =====
 export const PROJECT_CONFIG = {
