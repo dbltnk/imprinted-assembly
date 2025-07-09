@@ -425,6 +425,9 @@ class AssemblyApp {
         // Update components with new project
         this.updateComponents();
 
+        // Set total duration in sidebar
+        this.sidebarComponent.setTotalDuration(this.totalDuration);
+
         console.log(`Project '${project.name}' loaded successfully`);
     }
 
@@ -482,20 +485,35 @@ class AssemblyApp {
             });
         });
 
+        // Use project-specific default durations
         if (maxDuration === 0) {
-            maxDuration = 16;
+            switch (this.currentProject.id) {
+                case 'sentence':
+                    maxDuration = 8; // Short for sentence project
+                    break;
+                case 'band':
+                    maxDuration = 16; // Standard for band project
+                    break;
+                case 'ambient':
+                    maxDuration = 32; // Longer for ambient project
+                    break;
+                case 'song':
+                    maxDuration = 24; // Medium for song project
+                    break;
+                default:
+                    maxDuration = 16;
+            }
         }
 
         // Round up to nearest beat and ensure minimum duration
-        this.totalDuration = Math.max(16, Math.ceil(maxDuration / 4) * 4);
-        console.log(`Project duration: ${this.totalDuration} beats`);
+        this.totalDuration = Math.max(8, Math.ceil(maxDuration / 4) * 4);
+        console.log(`Project duration: ${this.totalDuration} beats for ${this.currentProject.id}`);
     }
 
     updateFileInfo(project) {
-        const fileInfoElement = document.querySelector('.file-info__name');
-        if (fileInfoElement) {
-            fileInfoElement.textContent = `${project.id}.ass`;
-        }
+        // File info is now handled by the sidebar component
+        // The sidebar will automatically update when the project is set
+        console.log(`File info updated for project: ${project.id}`);
     }
 
     handleTransportAction(action) {
@@ -628,6 +646,9 @@ class AssemblyApp {
             // Update timeline
             this.timelineComponent.setCurrentTime(this.currentTime);
 
+            // Update sidebar time display
+            this.sidebarComponent.setCurrentTime(this.currentTime);
+
             // Update VU meter with simulated levels
             this.updateVUMeter();
         }, 100);
@@ -664,6 +685,7 @@ class AssemblyApp {
         this.updateTransportUI();
         this.timelineComponent.setPlaying(false);
         this.timelineComponent.setCurrentTime(0);
+        this.sidebarComponent.setCurrentTime(0);
 
         // Stop VU meter animation
         this.vuMeterComponent.stopAnimation();
@@ -679,6 +701,7 @@ class AssemblyApp {
         const seekAmount = 1; // 1 beat
         this.currentTime = Math.max(0, this.currentTime + (direction * seekAmount));
         this.timelineComponent.setCurrentTime(this.currentTime);
+        this.sidebarComponent.setCurrentTime(this.currentTime);
     }
 
     toggleLoop() {

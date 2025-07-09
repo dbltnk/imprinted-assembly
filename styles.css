@@ -242,10 +242,59 @@ body {
 
 /* File Info */
 .file-info {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background-color: var(--color-bg-tertiary);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    margin-right: var(--spacing-md);
+    margin-left: var(--spacing-md);
+}
+
+.file-info__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xs);
+}
+
+.file-info__row:last-child {
+    margin-bottom: 0;
+}
+
+.file-info__label {
     color: var(--color-text-muted);
-    margin-bottom: var(--spacing-lg);
-    padding-left: var(--spacing-xs);
+    font-size: 0.75rem;
+}
+
+.file-info__value {
+    color: var(--color-accent-primary);
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+}
+
+/* File Info Divider */
+.file-info-divider {
+    border-top: 1px solid var(--color-border);
+    margin: var(--spacing-md) var(--spacing-md);
+    opacity: 0.5;
+}
+
+/* Time Display */
+.time-display {
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    color: var(--color-accent-primary);
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background-color: var(--color-bg-tertiary);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    margin-right: var(--spacing-md);
+    margin-left: var(--spacing-md);
 }
 
 .file-info__name {
@@ -279,6 +328,8 @@ body {
     color: var(--color-accent-primary);
     cursor: pointer;
     transition: background-color 0.2s;
+    line-height: 1;
+    text-align: center;
 }
 
 .transport-button:hover {
@@ -288,6 +339,7 @@ body {
 .transport-button--play {
     background-color: var(--color-accent-primary);
     color: white;
+    font-size: 1rem;
 }
 
 .transport-button--play:hover {
@@ -303,6 +355,7 @@ body {
     transition: all 0.2s ease;
     padding: var(--spacing-xs);
     border-radius: var(--radius-sm);
+    margin-bottom: -20px;
 }
 
 .loop-toggle:hover {
@@ -363,23 +416,50 @@ body {
     margin-bottom: var(--spacing-lg);
 }
 
-.clip-category__header {
+/* Folder-style category label for sidebar */
+.folder-label {
     display: flex;
     align-items: center;
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-accent-primary);
-    font-weight: 600;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-sm);
+    padding: 0.25rem 0.5rem;
+    margin-bottom: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+    box-shadow: none;
+    border-left: 3px solid var(--color-border);
+    letter-spacing: 0.01em;
 }
 
-.clip-category__icon {
-    margin-right: var(--spacing-sm);
+.folder-caret {
+    font-size: 0.9em;
+    margin-right: 0.5em;
+    color: var(--color-border);
 }
 
+.folder-name {
+    font-size: 0.95em;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+
+/* Remove bold/primary color from old .clip-category__header */
+.clip-category__header {
+    font-weight: normal;
+    color: var(--color-text-muted);
+    background: none;
+    padding: 0;
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Ensure clips have same left alignment as folder headers */
 .clip-category__clips {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
-    margin-left: var(--spacing-lg);
+    margin-left: 0;
 }
 
 .clip-item {
@@ -568,6 +648,8 @@ body {
     cursor: pointer;
     border-radius: var(--radius-sm);
     transition: background-color 0.2s;
+    line-height: 1;
+    text-align: center;
 }
 
 .track__button:hover {

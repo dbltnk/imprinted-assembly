@@ -92,7 +92,73 @@ export const PROJECT_CONFIG = {
         { id: 'minimize', icon: '🗕', title: 'Minimize', action: 'minimize' },
         { id: 'maximize', icon: '🗖', title: 'Maximize', action: 'maximize' },
         { id: 'close', icon: '🗙', title: 'Close', action: 'close', className: 'close' }
-    ]
+    ],
+
+    // UI Content and Labels
+    content: {
+        // File info labels
+        fileInfo: {
+            fileLabel: 'File:',
+            bpmLabel: 'BPM:',
+            noProjectFile: 'no-project.ass',
+            defaultBpm: '120'
+        },
+
+        // Time display
+        timeDisplay: {
+            separator: ' / ',
+            timeFormat: 'MM:SS.T'
+        },
+
+        // Transport controls
+        transport: {
+            playButton: '▶',
+            pauseButton: '⏸',
+            stopButton: '⏹',
+            rewindButton: '⏮',
+            fastForwardButton: '⏭',
+            loopLabel: 'Loop'
+        },
+
+        // Track controls
+        trackControls: {
+            soloButton: '🎧',
+            muteButton: '🔇',
+            removeButton: '🗑️',
+            soloTitle: 'Solo',
+            muteTitle: 'Mute',
+            removeTitle: 'Remove Track'
+        },
+
+        // Clip repository
+        clipRepository: {
+            header: 'Clips',
+            emptyMessage: 'Select a project to view clips',
+            durationSuffix: ' beat',
+            durationSuffixPlural: ' beats'
+        },
+
+        // Timeline
+        timeline: {
+            emptyMessage: 'Select a project to view tracks',
+            addTrackButton: '+ Add Track',
+            newTrackPrefix: 'Track ',
+            defaultTrackName: 'New Track'
+        },
+
+        // File extensions
+        fileExtensions: {
+            project: '.ass'
+        },
+
+        // Default values
+        defaults: {
+            defaultDuration: 16,
+            minDuration: 8,
+            maxDuration: 32,
+            defaultSeekAmount: 1
+        }
+    }
 };
 
 // ===== PROJECT DATA =====
@@ -102,6 +168,7 @@ export const PROJECT_DATA = {
         id: 'sentence',
         name: 'Piece together a linear sentence',
         bpm: 90,
+        timeSignature: '4/4',
         tracks: [
             {
                 id: 'sentence-track',
@@ -129,6 +196,7 @@ export const PROJECT_DATA = {
         id: 'band',
         name: 'Choose instrument options',
         bpm: 110,
+        timeSignature: '6/8',
         tracks: [
             {
                 id: 'drums',
@@ -183,6 +251,7 @@ export const PROJECT_DATA = {
         id: 'ambient',
         name: 'Vince\'s ambient sandbox',
         bpm: 70,
+        timeSignature: '7/8',
         allowTrackManagement: true,
         tracks: [
             {
@@ -241,6 +310,7 @@ export const PROJECT_DATA = {
         id: 'song',
         name: 'THE SONG',
         bpm: 120,
+        timeSignature: '4/4',
         tracks: [
             {
                 id: 'main-instrument',

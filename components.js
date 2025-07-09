@@ -220,14 +220,28 @@ class SidebarComponent extends Component {
     render() {
         this.element.innerHTML = `
             <div class="file-info">
-                File: <span class="file-info__name">my_project.ass</span>
+                <div class="file-info__row">
+                    <span class="file-info__label">${PROJECT_CONFIG.content.fileInfo.fileLabel}</span>
+                    <span class="file-info__value">${this.getFileName()}</span>
+                </div>
+                <div class="file-info__row">
+                    <span class="file-info__label">${PROJECT_CONFIG.content.fileInfo.bpmLabel}</span>
+                    <span class="file-info__value">${this.getBPM()}</span>
+                </div>
+                <div class="file-info__row">
+                    <span class="file-info__label">Time Sig:</span>
+                    <span class="file-info__value">${this.getTimeSignature()}</span>
+                </div>
+            </div>
+            <div class="file-info-divider"></div>
+            <div class="time-display">
+                ${this.formatTimeDisplay()}
             </div>
             <div class="transport-controls">
                 ${this.renderTransportControls()}
             </div>
             <div class="divider"></div>
             <div class="clip-repository">
-                <div class="clip-repository__header">Clips</div>
                 ${this.renderClipRepository()}
             </div>
         `;
@@ -257,7 +271,7 @@ class SidebarComponent extends Component {
 
     renderClipRepository() {
         if (!this.currentProject) {
-            return '<div class="clip-repository__empty">Select a project to view clips</div>';
+            return `<div class="clip-repository__empty">${PROJECT_CONFIG.content.clipRepository.emptyMessage}</div>`;
         }
 
         // Group sidebar clips by category
@@ -269,9 +283,9 @@ class SidebarComponent extends Component {
 
             return `
                 <div class="clip-category">
-                    <div class="clip-category__header">
-                        <span class="clip-category__icon">${category.icon}</span>
-                        ${category.name}
+                    <div class="clip-category__header folder-label">
+                        <span class="folder-caret">&#9654;</span>
+                        <span class="folder-name">${category.name}</span>
                     </div>
                     <div class="clip-category__clips">
                         ${clips.map(clip => `
@@ -309,7 +323,28 @@ class SidebarComponent extends Component {
     formatDuration(duration) {
         // Format duration as beats (e.g., "4 beats", "0.5 beats")
         const roundedDuration = Math.round(duration * 10) / 10; // Round to 1 decimal place
-        return `${roundedDuration} beat${roundedDuration === 1 ? '' : 's'}`;
+        const suffix = roundedDuration === 1 ?
+            PROJECT_CONFIG.content.clipRepository.durationSuffix :
+            PROJECT_CONFIG.content.clipRepository.durationSuffixPlural;
+        return `${roundedDuration}${suffix}`;
+    }
+
+    formatTimeDisplay() {
+        const currentTime = this.currentTime || 0;
+        const totalDuration = this.totalDuration || 16;
+
+        const currentMinutes = Math.floor(currentTime / 60);
+        const currentSeconds = Math.floor(currentTime % 60);
+        const currentTenths = Math.floor((currentTime % 1) * 10);
+
+        const totalMinutes = Math.floor(totalDuration / 60);
+        const totalSeconds = Math.floor(totalDuration % 60);
+        const totalTenths = Math.floor((totalDuration % 1) * 10);
+
+        const currentFormatted = `${currentMinutes.toString().padStart(2, '0')}:${currentSeconds.toString().padStart(2, '0')}.${currentTenths}`;
+        const totalFormatted = `${totalMinutes.toString().padStart(2, '0')}:${totalSeconds.toString().padStart(2, '0')}.${totalTenths}`;
+
+        return `${currentFormatted} / ${totalFormatted}`;
     }
 
     setupEventListeners() {
@@ -476,6 +511,44 @@ class SidebarComponent extends Component {
             loopCheckbox.checked = isLooping;
         }
     }
+
+    setCurrentTime(time) {
+        this.currentTime = time;
+        this.updateTimeDisplay();
+    }
+
+    setTotalDuration(duration) {
+        this.totalDuration = duration;
+        this.updateTimeDisplay();
+    }
+
+    updateTimeDisplay() {
+        const timeDisplay = this.element.querySelector('.time-display');
+        if (timeDisplay) {
+            timeDisplay.textContent = this.formatTimeDisplay();
+        }
+    }
+
+    getFileName() {
+        if (!this.currentProject) {
+            return PROJECT_CONFIG.content.fileInfo.noProjectFile;
+        }
+        return `${this.currentProject.id}${PROJECT_CONFIG.content.fileExtensions.project}`;
+    }
+
+    getBPM() {
+        if (!this.currentProject) {
+            return PROJECT_CONFIG.content.fileInfo.defaultBpm;
+        }
+        return this.currentProject.bpm.toString();
+    }
+
+    getTimeSignature() {
+        if (!this.currentProject) {
+            return '4/4';
+        }
+        return this.currentProject.timeSignature || '4/4';
+    }
 }
 
 // ===== TIMELINE COMPONENT =====
@@ -491,10 +564,6 @@ class TimelineComponent extends Component {
     render() {
         this.element.innerHTML = `
             <div class="timeline-container">
-                <div class="timeline-header">
-                    <div class="timeline-header__time">${this.formatCurrentTime()}</div>
-                    <div class="timeline-header__bpm">BPM: ${this.currentProject?.bpm || 120}</div>
-                </div>
                 <div class="tracks-area" id="tracks-area">
                     ${this.renderTimeRuler()}
                     ${this.renderTracks()}
@@ -510,7 +579,12 @@ class TimelineComponent extends Component {
     }
 
     renderTimeRuler() {
-        const beatsPerBar = 4;
+        if (!this.currentProject) {
+            return '';
+        }
+        // Parse beats per bar from timeSignature (e.g. '6/8' => 6)
+        const timeSig = this.currentProject.timeSignature || '4/4';
+        const beatsPerBar = parseInt(timeSig.split('/')[0], 10) || 4;
         const bars = 4;
         const beats = [];
 
@@ -749,7 +823,7 @@ class TimelineComponent extends Component {
             // Update clip content
             const durationElement = resizingClip.querySelector('.clip__duration');
             if (durationElement) {
-                durationElement.textContent = `${newDuration.toFixed(1)} beats`;
+                durationElement.textContent = this.formatDuration(newDuration);
             }
         };
 
@@ -1003,7 +1077,7 @@ class TimelineComponent extends Component {
         // Generate new track ID
         const trackCount = this.currentProject.tracks.length;
         const newTrackId = `track-${trackCount + 1}`;
-        const newTrackName = `Track ${trackCount + 1}`;
+        const newTrackName = `${PROJECT_CONFIG.content.timeline.newTrackPrefix}${trackCount + 1}`;
 
         // Create new track object
         const newTrack = {
@@ -1065,7 +1139,10 @@ class TimelineComponent extends Component {
     formatDuration(duration) {
         // Format duration as beats (e.g., "4 beats", "0.5 beats")
         const roundedDuration = Math.round(duration * 10) / 10; // Round to 1 decimal place
-        return `${roundedDuration} beat${roundedDuration === 1 ? '' : 's'}`;
+        const suffix = roundedDuration === 1 ?
+            PROJECT_CONFIG.content.clipRepository.durationSuffix :
+            PROJECT_CONFIG.content.clipRepository.durationSuffixPlural;
+        return `${roundedDuration}${suffix}`;
     }
 
     setProject(project) {
