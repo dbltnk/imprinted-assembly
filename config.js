@@ -76,7 +76,8 @@ export const PROJECT_CONFIG = {
     // Menu configuration
     menu: {
         items: [
-            { id: 'load', label: 'Load', hasDropdown: true },
+            { id: 'load', label: 'Load Projects', hasDropdown: true },
+            { id: 'createSong', label: 'Live Recording', disabled: false },
             { id: 'save', label: 'Save', disabled: true },
             { id: 'analyze', label: 'Analyze', disabled: true },
             { id: 'details', label: 'Details', disabled: true },

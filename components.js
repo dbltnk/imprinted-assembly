@@ -81,7 +81,7 @@ class HeaderComponent extends Component {
 
     renderMenuItem(item) {
         const disabledClass = item.disabled ? 'header__nav-button--disabled' : '';
-        const activeClass = item.hasDropdown ? 'header__nav-button--active' : '';
+        const activeClass = item.hasDropdown || item.id === 'createSong' ? 'header__nav-button--active' : '';
 
         return `
             <button class="header__nav-button ${disabledClass} ${activeClass}" 
@@ -123,6 +123,8 @@ class HeaderComponent extends Component {
     handleMenuItemClick(itemId) {
         if (itemId === 'load') {
             this.showProjectDropdown();
+        } else if (itemId === 'createSong') {
+            this.selectProject('song');
         }
         // Other menu items are disabled for now
     }
@@ -138,17 +140,19 @@ class HeaderComponent extends Component {
             existingDropdown.parentNode.removeChild(existingDropdown);
         }
 
-        // Create dropdown with project options
+        // Create dropdown with project options (excluding 'song')
         const dropdown = document.createElement('div');
         dropdown.className = 'project-dropdown';
         dropdown.innerHTML = `
             <div class="project-dropdown__content">
-                ${Object.values(PROJECT_DATA).map(project => `
-                    <div class="project-dropdown__item" data-project-id="${project.id}">
-                        <div class="project-dropdown__name">${project.name}</div>
-                        <div class="project-dropdown__description">${project.description}</div>
-                    </div>
-                `).join('')}
+                ${Object.values(PROJECT_DATA)
+                .filter(project => project.id !== 'song')
+                .map(project => `
+                        <div class="project-dropdown__item" data-project-id="${project.id}">
+                            <div class="project-dropdown__name">${project.name}</div>
+                            <div class="project-dropdown__description">${project.description}</div>
+                        </div>
+                    `).join('')}
             </div>
         `;
 
