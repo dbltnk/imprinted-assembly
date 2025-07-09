@@ -365,26 +365,22 @@ export const PROJECT_DATA = {
             },
         ],
         sidebarClips: [
-            // Instrument clips
-            { id: 'piano-intro', name: 'Piano Intro', duration: 6, type: 'instrument' },
-            { id: 'guitar-verse', name: 'Guitar Verse', duration: 12, type: 'instrument' },
+            // Vince clips - 3 takes
+            { id: 'vince-take-1', name: 'Vince Take 1', duration: 4, type: 'vince' },
+            { id: 'vince-take-2', name: 'Vince Take 2', duration: 3, type: 'vince' },
+            { id: 'vince-take-3', name: 'Vince Take 3', duration: 5, type: 'vince' },
 
-            // Vocal clips
-            { id: 'vince-take', name: 'Vince\'s Take', duration: 8, type: 'vocals' },
-            { id: 'viola-take', name: 'Viola\'s Take', duration: 5, type: 'vocals' },
+            // Viola clips - 9 fragments
+            { id: 'viola-fragment-1', name: 'Viola Fragment 1', duration: 2, type: 'viola' },
+            { id: 'viola-fragment-2', name: 'Viola Fragment 2', duration: 3, type: 'viola' },
+            { id: 'viola-fragment-3', name: 'Viola Fragment 3', duration: 1.5, type: 'viola' },
+            { id: 'viola-fragment-4', name: 'Viola Fragment 4', duration: 4, type: 'viola' },
+            { id: 'viola-fragment-5', name: 'Viola Fragment 5', duration: 2.5, type: 'viola' },
+            { id: 'viola-fragment-6', name: 'Viola Fragment 6', duration: 3.5, type: 'viola' },
+            { id: 'viola-fragment-7', name: 'Viola Fragment 7', duration: 1, type: 'viola' },
+            { id: 'viola-fragment-8', name: 'Viola Fragment 8', duration: 2, type: 'viola' },
+            { id: 'viola-fragment-9', name: 'Viola Fragment 9', duration: 3, type: 'viola' },
 
-            // Rhythm clips
-            { id: 'drum-groove', name: 'Drum Groove', duration: 16, type: 'rhythm' },
-            { id: 'percussion', name: 'Percussion', duration: 2, type: 'rhythm' },
-
-            // Viola clips
-            { id: 'viola-melody', name: 'Viola Melody', duration: 10, type: 'viola' },
-            { id: 'viola-harmony', name: 'Viola Harmony', duration: 7, type: 'viola' },
-
-            // Bass clips
-            { id: 'walking-bass', name: 'Walking Bass', duration: 9, type: 'bass' },
-            { id: 'electric-bass', name: 'Electric Bass', duration: 14, type: 'bass' },
-            { id: 'synth-bass', name: 'Synth Bass', duration: 4, type: 'bass' }
         ],
         description: 'Arrange clips to create the final song structure.'
     }
@@ -463,6 +459,12 @@ export const CLIP_CATEGORIES = [
         name: 'Viola',
         icon: '🎻',
         color: '#a855f7' // purple-500
+    },
+    {
+        id: 'vince',
+        name: 'Vince',
+        icon: '🎤',
+        color: '#dc2626' // red-600
     },
     {
         id: 'text',

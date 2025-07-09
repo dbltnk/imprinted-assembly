@@ -920,13 +920,6 @@ class TimelineComponent extends Component {
 
             console.log(`Timeline drag start: ${clipId} from track ${trackId}`);
         });
-
-        // Drag end cleanup
-        this.element.addEventListener('dragend', (e) => {
-            // Always clear global drag data and cleanup previews
-            window.globalDragData = null;
-            this.cleanupDropPreviews();
-        });
     }
 
     addClipToTrack(clipData, trackId, startTime) {

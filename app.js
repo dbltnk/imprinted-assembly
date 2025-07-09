@@ -397,6 +397,107 @@ class AssemblyApp {
         });
     }
 
+    // ===== TRACK VALIDATION LOGIC =====
+    validateClipDrop(clipType, trackId) {
+        assert(clipType, 'Clip type is required');
+        assert(trackId, 'Track ID is required');
+        assert(this.currentProject, 'Current project is required');
+
+        // Find the track
+        const track = this.currentProject.tracks.find(t => t.id === trackId);
+        if (!track) {
+            console.warn(`Track not found: ${trackId}`);
+            return false;
+        }
+
+        return this.canClipGoOnTrack(clipType, track.type, track.name, this.currentProject.id);
+    }
+
+    canClipGoOnTrack(clipType, trackType, trackName, projectId) {
+        assert(clipType, 'Clip type is required');
+        assert(trackType, 'Track type is required');
+        assert(trackName, 'Track name is required');
+        assert(projectId, 'Project ID is required');
+
+        // Sentence project: everything can go everywhere
+        if (projectId === 'sentence') {
+            return true;
+        }
+
+        // Ambient project: everything can go everywhere
+        if (projectId === 'ambient') {
+            return true;
+        }
+
+        // Band project: clips must match track types
+        if (projectId === 'band') {
+            return clipType === trackType;
+        }
+
+        // Song project: specific restrictions
+        if (projectId === 'song') {
+            // Viola clips only fit Viola tracks
+            if (clipType === 'viola') {
+                return this.isViolaTrack(trackName);
+            }
+
+            // Vince clips only fit Vince tracks  
+            if (clipType === 'vince') {
+                return this.isVinceTrack(trackName);
+            }
+
+            // Other clips can go anywhere
+            return true;
+        }
+
+        // Default: allow everything
+        return true;
+    }
+
+    isViolaTrack(trackName) {
+        // In the song project, Viola tracks are identified by their names
+        return trackName.toLowerCase().includes('viola');
+    }
+
+    isVinceTrack(trackName) {
+        // In the song project, Vince tracks are identified by their names
+        return trackName.toLowerCase().includes('vince');
+    }
+
+    // ===== VISUAL FEEDBACK FOR DRAG OPERATIONS =====
+    updateTrackVisualFeedback(dragData) {
+        if (!dragData || !this.currentProject) return;
+
+        const clipType = dragData.clipType;
+        const allTracks = document.querySelectorAll('.track');
+
+        allTracks.forEach(trackElement => {
+            const trackId = trackElement.dataset.trackId;
+            const track = this.currentProject.tracks.find(t => t.id === trackId);
+
+            if (!track) return;
+
+            const isValid = this.canClipGoOnTrack(clipType, track.type, track.name, this.currentProject.id);
+
+            // Remove existing feedback classes
+            trackElement.classList.remove('track--valid-drop', 'track--invalid-drop');
+
+            // Add appropriate feedback class
+            if (isValid) {
+                trackElement.classList.add('track--valid-drop');
+            } else {
+                trackElement.classList.add('track--invalid-drop');
+            }
+        });
+    }
+
+    clearTrackVisualFeedback() {
+        const allTracks = document.querySelectorAll('.track');
+        allTracks.forEach(trackElement => {
+            trackElement.classList.remove('track--valid-drop', 'track--invalid-drop');
+        });
+    }
+
     loadProject(projectId) {
         console.log(`Loading project: ${projectId}`);
 
@@ -442,6 +543,9 @@ class AssemblyApp {
 
         // Clear global drag data
         window.globalDragData = null;
+
+        // Clear visual feedback
+        this.clearTrackVisualFeedback();
 
         // Update transport UI
         this.updateTransportUI();
@@ -673,6 +777,12 @@ class AssemblyApp {
 
     // ===== DROP HANDLERS =====
     handleSidebarClipDrop(dragData, trackId, startTime) {
+        // Validate that the clip can be dropped on this track
+        if (!this.validateClipDrop(dragData.clipType, trackId)) {
+            console.warn(`Cannot drop ${dragData.clipType} clip on track ${trackId}`);
+            return;
+        }
+
         const sidebarClipIndex = this.currentProject.sidebarClips.findIndex(c => c.id === dragData.clipId);
         if (sidebarClipIndex === -1) {
             console.error('Clip not found in sidebar:', dragData.clipId);
@@ -696,6 +806,12 @@ class AssemblyApp {
     }
 
     handleTimelineClipMove(dragData, targetTrackId, newStartTime) {
+        // Validate that the clip can be moved to this track
+        if (!this.validateClipDrop(dragData.clipType, targetTrackId)) {
+            console.warn(`Cannot move ${dragData.clipType} clip to track ${targetTrackId}`);
+            return;
+        }
+
         const sourceTrack = this.currentProject.tracks.find(t => t.id === dragData.trackId);
         const targetTrack = this.currentProject.tracks.find(t => t.id === targetTrackId);
 
@@ -831,6 +947,7 @@ class AssemblyApp {
                 }
 
                 window.globalDragData = null;
+                this.clearTrackVisualFeedback();
             }
         });
 
@@ -865,8 +982,16 @@ class AssemblyApp {
         document.addEventListener('dragend', (e) => {
             // Clear global drag data and cleanup previews
             window.globalDragData = null;
+            this.clearTrackVisualFeedback();
             if (this.timelineComponent) {
                 this.timelineComponent.cleanupDropPreviews();
+            }
+        });
+
+        // Add drag start handler to update visual feedback
+        document.addEventListener('dragstart', (e) => {
+            if (window.globalDragData) {
+                this.updateTrackVisualFeedback(window.globalDragData);
             }
         });
     }

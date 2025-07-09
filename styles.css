@@ -716,6 +716,7 @@ body {
     width: calc(var(--track-height) * 2);
     min-width: 96px;
     max-width: 112px;
+    transition: all 0.2s ease;
 }
 
 .track:last-child {
@@ -730,6 +731,16 @@ body {
 .track--disabled .track__checkbox--enable:not(:disabled) {
     pointer-events: auto;
     opacity: 1;
+}
+
+/* Track Visual Feedback for Drag Operations */
+.track--valid-drop {
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+.track--invalid-drop {
+    background-color: rgba(239, 68, 68, 0.1);
+    opacity: 0.6;
 }
 
 .track__name--disabled {
