@@ -606,6 +606,9 @@ class AssemblyApp {
         this.sidebarComponent.setPlaying(true);
         this.vuMeterComponent.startAnimation();
         this.startTimeProgression();
+
+        // Ensure playhead is visible when starting playback
+        this.timelineComponent.scrollToPlayhead(this.currentTime);
     }
 
     pausePlayback() {
@@ -633,6 +636,9 @@ class AssemblyApp {
         this.sidebarComponent.setCurrentTime(0);
         this.vuMeterComponent.stopAnimation();
         this.stopTimeProgression();
+
+        // Ensure playhead is visible when stopping playback
+        this.timelineComponent.scrollToPlayhead(0);
     }
 
     seek(direction) {
@@ -640,6 +646,9 @@ class AssemblyApp {
         this.currentTime = Math.max(0, this.currentTime + (direction * seekAmount));
         this.timelineComponent.setCurrentTime(this.currentTime);
         this.sidebarComponent.setCurrentTime(this.currentTime);
+
+        // Ensure playhead is visible when seeking
+        this.timelineComponent.scrollToPlayhead(this.currentTime);
     }
 
     toggleLoop() {

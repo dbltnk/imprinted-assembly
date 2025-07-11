@@ -862,6 +862,7 @@ class TimelineComponent extends Component {
         this.currentTime = 0;
         this.isPlaying = false;
         this.timelineLength = null;
+        this.isSeeking = false;
         this.render();
         this.setupEventListeners();
     }
@@ -1476,6 +1477,32 @@ class TimelineComponent extends Component {
         this.updateClipPlayingStates(time);
     }
 
+    // New method to force scroll to playhead (used for transport controls)
+    scrollToPlayhead(time) {
+        const timelineContainer = this.element.querySelector('.timeline-container');
+        if (!timelineContainer || !this.timelineLength) return;
+
+        const playheadY = time * this.getPixelsPerBeat();
+        const containerHeight = timelineContainer.clientHeight;
+
+        // Calculate target scroll position to center playhead
+        const targetScrollTop = playheadY - (containerHeight * 0.5);
+
+        // Set seeking state to prevent auto-scroll interference
+        this.isSeeking = true;
+
+        // Instant scroll to playhead position
+        timelineContainer.scrollTo({
+            top: Math.max(0, targetScrollTop),
+            behavior: 'auto'
+        });
+
+        // Clear seeking state after a short delay to allow auto-scroll to resume
+        setTimeout(() => {
+            this.isSeeking = false;
+        }, 100);
+    }
+
     updateClipPlayingStates(currentTime) {
         if (!this.currentProject) return;
 
@@ -1513,23 +1540,29 @@ class TimelineComponent extends Component {
     }
 
     autoScrollToPlayhead(time) {
-        const tracksArea = this.element.querySelector('.tracks-area');
-        if (!tracksArea || !this.timelineLength) return;
+        // Skip auto-scroll if we're in a seeking operation
+        if (this.isSeeking) return;
+
+        const timelineContainer = this.element.querySelector('.timeline-container');
+        if (!timelineContainer || !this.timelineLength) return;
 
         const playheadY = time * this.getPixelsPerBeat();
-        const containerHeight = tracksArea.clientHeight;
-        const scrollTop = tracksArea.scrollTop;
+        const containerHeight = timelineContainer.clientHeight;
+        const scrollTop = timelineContainer.scrollTop;
         const scrollBottom = scrollTop + containerHeight;
 
-        // Check if playhead is outside visible area
-        if (playheadY < scrollTop || playheadY > scrollBottom) {
-            // Calculate target scroll position to center playhead
-            const targetScrollTop = playheadY - (containerHeight / 2);
+        // Calculate the 50% threshold point in the visible area
+        const fiftyPercentPoint = scrollTop + (containerHeight * 0.5);
 
-            // Smooth scroll to playhead position
-            tracksArea.scrollTo({
+        // Check if playhead has reached or passed the 50% point
+        if (playheadY >= fiftyPercentPoint) {
+            // Calculate target scroll position to keep playhead at 50% of visible area
+            const targetScrollTop = playheadY - (containerHeight * 0.5);
+
+            // Instant smooth scroll to playhead position
+            timelineContainer.scrollTo({
                 top: Math.max(0, targetScrollTop),
-                behavior: 'smooth'
+                behavior: 'auto'
             });
         }
     }

@@ -678,6 +678,7 @@ body {
     flex-direction: row;
     height: 100%;
     min-height: 0;
+    overflow: auto;
     transition: all 0.3s ease;
 }
 
