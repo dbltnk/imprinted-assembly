@@ -1035,9 +1035,11 @@ body {
     pointer-events: none;
 }
 
-.track--disabled .track__checkbox--enable:not(:disabled) {
-    pointer-events: auto;
-    opacity: 1;
+.track--disabled .track__checkbox--enable:not(:disabled),
+.track-header--disabled .track__checkbox--enable:not(:disabled),
+.track-content--disabled .track__checkbox--enable:not(:disabled) {
+    pointer-events: auto !important;
+    opacity: 1 !important;
 }
 
 /* Track Visual Feedback for Drag Operations */
