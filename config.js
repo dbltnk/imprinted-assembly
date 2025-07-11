@@ -22,7 +22,8 @@ export const PROJECT_CONFIG = {
         trackHeight: 56,
         trackControlsWidth: 240,
         gridBeatWidth: 40,
-        maxTracksVisible: 6
+        maxTracksVisible: 6,
+        maxTracks: 7
     },
 
     // Visual theme

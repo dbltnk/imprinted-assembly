@@ -870,9 +870,12 @@ class TimelineComponent extends Component {
     render() {
         this.element.innerHTML = `
             <div class="timeline-container">
-                <div class="tracks-area" id="tracks-area">
-                    ${this.renderTimeRuler()}
-                    ${this.renderTracks()}
+                <div class="timeline-header-fixed">
+                    ${this.renderTracksHeader()}
+                </div>
+                <div class="timeline-content-scrollable">
+                    ${this.renderTimeRulerContent()}
+                    ${this.renderTracksContent()}
                 </div>
             </div>
         `;
@@ -894,24 +897,50 @@ class TimelineComponent extends Component {
     updateTimelineHeight() {
         if (!this.currentProject || !this.timelineLength) return;
 
-        const tracksArea = this.element.querySelector('.tracks-area');
-        if (tracksArea) {
-            tracksArea.style.height = `${this.timelineLength.height}px`;
-            console.log(`Timeline height set to: ${this.timelineLength.height}px`);
-        }
-
-        // Update track clips areas height
-        const trackClipsAreas = this.element.querySelectorAll('.track__clips-area');
-        trackClipsAreas.forEach(area => {
+        // Update track content areas height
+        const trackContentAreas = this.element.querySelectorAll('.track-content__clips-area');
+        trackContentAreas.forEach(area => {
             area.style.height = `${this.timelineLength.height}px`;
         });
+
+        console.log(`Timeline height set to: ${this.timelineLength.height}px`);
     }
 
-    renderTimeRuler() {
+    renderTimeRulerHeader() {
         if (!this.currentProject || !this.timelineLength) {
             return '';
         }
 
+        return `
+            <div class="time-ruler-header">
+                <div class="time-ruler-header__left"></div>
+                <div class="time-ruler-header__right">
+                    <div class="time-ruler-header__grid">
+                        ${this.renderTimeRulerBeats()}
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    renderTimeRulerContent() {
+        if (!this.currentProject || !this.timelineLength) {
+            return '';
+        }
+
+        return `
+            <div class="time-ruler-content">
+                <div class="time-ruler-content__left"></div>
+                <div class="time-ruler-content__right">
+                    <div class="time-ruler-content__grid">
+                        ${this.renderTimeRulerBeats()}
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    renderTimeRulerBeats() {
         const { bars, beatsPerBar } = this.timelineLength;
         const beats = [];
 
@@ -927,44 +956,66 @@ class TimelineComponent extends Component {
             }
         }
 
-        return `
-            <div class="time-ruler">
-                <div class="time-ruler__left"></div>
-                <div class="time-ruler__right">
-                    <div class="time-ruler__grid">
-                        ${beats.map(beat => `
-                            <div class="time-ruler__beat">
-                                <span class="time-ruler__beat-label ${beat.isStrong ? 'time-ruler__beat-label--strong' : ''} ${beat.isFirstBeatInBar ? 'time-ruler__beat-label--bar' : ''}">
-                                    ${beat.label}
-                                </span>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
+        return beats.map(beat => `
+            <div class="time-ruler__beat">
+                <span class="time-ruler__beat-label ${beat.isStrong ? 'time-ruler__beat-label--strong' : ''} ${beat.isFirstBeatInBar ? 'time-ruler__beat-label--bar' : ''}">
+                    ${beat.label}
+                </span>
             </div>
-        `;
+        `).join('');
     }
 
-    renderTracks() {
+    renderTracksHeader() {
         if (!this.currentProject) {
-            return '<div class="tracks-empty">Select a project to view tracks</div>';
+            return '<div class="tracks-header-empty">Select a project to view tracks</div>';
         }
 
-        // Create array of 8 track positions
-        const trackPositions = Array(8).fill(null);
+        // Create array of maxTracks track positions
+        const maxTracks = PROJECT_CONFIG.layout.maxTracks;
+        const trackPositions = Array(maxTracks).fill(null);
 
         // Fill active tracks in their remembered positions
         this.currentProject.tracks.forEach(track => {
             const position = track.position || 0;
-            if (position < 8) {
-                trackPositions[position] = this.renderTrack(track);
+            if (position < maxTracks) {
+                trackPositions[position] = this.renderTrackHeader(track);
             }
         });
 
         // Fill remaining positions with disabled tracks
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < maxTracks; i++) {
             if (!trackPositions[i]) {
-                trackPositions[i] = this.renderDisabledTrack(i);
+                trackPositions[i] = this.renderDisabledTrackHeader(i);
+            }
+        }
+
+        return `
+            <div class="time-ruler-header-placeholder"></div>
+            ${trackPositions.join('')}
+        `;
+    }
+
+    renderTracksContent() {
+        if (!this.currentProject) {
+            return '<div class="tracks-content-empty">Select a project to view tracks</div>';
+        }
+
+        // Create array of maxTracks track positions
+        const maxTracks = PROJECT_CONFIG.layout.maxTracks;
+        const trackPositions = Array(maxTracks).fill(null);
+
+        // Fill active tracks in their remembered positions
+        this.currentProject.tracks.forEach(track => {
+            const position = track.position || 0;
+            if (position < maxTracks) {
+                trackPositions[position] = this.renderTrackContent(track);
+            }
+        });
+
+        // Fill remaining positions with disabled tracks
+        for (let i = 0; i < maxTracks; i++) {
+            if (!trackPositions[i]) {
+                trackPositions[i] = this.renderDisabledTrackContent(i);
             }
         }
 
@@ -991,6 +1042,27 @@ class TimelineComponent extends Component {
         `;
     }
 
+    renderDisabledTrackHeader(position) {
+        return `
+            <div class="track-header track-header--disabled" data-track-id="disabled-${position}">
+                <div class="track-header__name track-header__name--disabled" data-track-id="disabled-${position}">Inactive</div>
+                ${this.renderTrackControls(`disabled-${position}`, true)}
+            </div>
+        `;
+    }
+
+    renderDisabledTrackContent(position) {
+        return `
+            <div class="track-content track-content--disabled" data-track-id="disabled-${position}">
+                <div class="track-content__clips-area track-content__clips-area--disabled" data-track-id="disabled-${position}">
+                    <div class="track-content__playhead"></div>
+                    <div class="track-content__clips">
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
     renderDisabledTrack(position) {
         return `
             <div class="track track--disabled" data-track-id="disabled-${position}">
@@ -999,6 +1071,28 @@ class TimelineComponent extends Component {
                 <div class="track__clips-area track__clips-area--disabled" data-track-id="disabled-${position}">
                     <div class="track__playhead"></div>
                     <div class="track__clips">
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    renderTrackHeader(track) {
+        return `
+            <div class="track-header" data-track-id="${track.id}">
+                <div class="track-header__name" data-track-id="${track.id}">${track.name}</div>
+                ${this.renderTrackControls(track.id)}
+            </div>
+        `;
+    }
+
+    renderTrackContent(track) {
+        return `
+            <div class="track-content" data-track-id="${track.id}">
+                <div class="track-content__clips-area" data-track-id="${track.id}">
+                    <div class="track-content__playhead"></div>
+                    <div class="track-content__clips">
+                        ${track.clips.map(clip => this.renderClip(clip, track)).join('')}
                     </div>
                 </div>
             </div>
@@ -1479,11 +1573,11 @@ class TimelineComponent extends Component {
 
     // New method to force scroll to playhead (used for transport controls)
     scrollToPlayhead(time) {
-        const timelineContainer = this.element.querySelector('.timeline-container');
-        if (!timelineContainer || !this.timelineLength) return;
+        const timelineContent = this.element.querySelector('.timeline-content-scrollable');
+        if (!timelineContent || !this.timelineLength) return;
 
         const playheadY = time * this.getPixelsPerBeat();
-        const containerHeight = timelineContainer.clientHeight;
+        const containerHeight = timelineContent.clientHeight;
 
         // Calculate target scroll position to center playhead
         const targetScrollTop = playheadY - (containerHeight * 0.5);
@@ -1492,7 +1586,7 @@ class TimelineComponent extends Component {
         this.isSeeking = true;
 
         // Instant scroll to playhead position
-        timelineContainer.scrollTo({
+        timelineContent.scrollTo({
             top: Math.max(0, targetScrollTop),
             behavior: 'auto'
         });
@@ -1530,7 +1624,7 @@ class TimelineComponent extends Component {
     }
 
     updatePlayheadPosition(time) {
-        const playheads = this.element.querySelectorAll('.track__playhead');
+        const playheads = this.element.querySelectorAll('.track-content__playhead');
         const beatHeight = PROJECT_CONFIG.layout.gridBeatWidth;
         const topPosition = time * beatHeight;
 
@@ -1543,12 +1637,12 @@ class TimelineComponent extends Component {
         // Skip auto-scroll if we're in a seeking operation
         if (this.isSeeking) return;
 
-        const timelineContainer = this.element.querySelector('.timeline-container');
-        if (!timelineContainer || !this.timelineLength) return;
+        const timelineContent = this.element.querySelector('.timeline-content-scrollable');
+        if (!timelineContent || !this.timelineLength) return;
 
         const playheadY = time * this.getPixelsPerBeat();
-        const containerHeight = timelineContainer.clientHeight;
-        const scrollTop = timelineContainer.scrollTop;
+        const containerHeight = timelineContent.clientHeight;
+        const scrollTop = timelineContent.scrollTop;
         const scrollBottom = scrollTop + containerHeight;
 
         // Calculate the 50% threshold point in the visible area
@@ -1560,7 +1654,7 @@ class TimelineComponent extends Component {
             const targetScrollTop = playheadY - (containerHeight * 0.5);
 
             // Instant smooth scroll to playhead position
-            timelineContainer.scrollTo({
+            timelineContent.scrollTo({
                 top: Math.max(0, targetScrollTop),
                 behavior: 'auto'
             });

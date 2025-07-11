@@ -675,11 +675,55 @@ body {
     box-shadow: var(--shadow-lg);
     position: relative;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: 100%;
     min-height: 0;
-    overflow: auto;
     transition: all 0.3s ease;
+}
+
+.timeline-header-fixed {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    background-color: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+    z-index: 20;
+}
+
+.timeline-content-scrollable {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent-primary) var(--color-bg-secondary);
+}
+
+.timeline-container::-webkit-scrollbar {
+    width: 14px;
+    background: var(--color-bg-secondary);
+}
+
+.timeline-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--color-accent-primary) 60%, var(--color-accent-dark) 100%);
+    border-radius: var(--radius-md);
+    border: 3px solid var(--color-bg-secondary);
+    min-height: 40px;
+    transition: background 0.2s;
+}
+
+.timeline-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--color-accent-secondary) 60%, var(--color-accent-darker) 100%);
+}
+
+.timeline-container::-webkit-scrollbar-track {
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+}
+
+.timeline-container::-webkit-scrollbar-corner {
+    background: var(--color-bg-secondary);
 }
 
 .timeline-container--playing {
@@ -754,8 +798,51 @@ body {
     padding: var(--spacing-xl);
 }
 
-/* Time Ruler - Now Vertical */
-.time-ruler {
+/* Time Ruler Header - Fixed */
+.time-ruler-header {
+    display: flex;
+    flex-direction: column;
+    width: 32px;
+    align-items: flex-end;
+    flex-shrink: 0;
+}
+
+/* Time Ruler Header Placeholder - Fixed */
+.time-ruler-header-placeholder {
+    width: 32px;
+    flex-shrink: 0;
+    background-color: var(--color-bg-secondary);
+}
+
+.time-ruler-header__left {
+    height: 134px;
+    /* 48px (name) + 86px (controls) */
+    background-color: var(--color-bg-secondary);
+    width: 100%;
+    border-radius: var(--radius-lg) 0 0 0;
+}
+
+.time-ruler-header__right {
+    height: 134px;
+    position: relative;
+    overflow: hidden;
+}
+
+.time-ruler-header__grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-end;
+    height: 100%;
+    background: repeating-linear-gradient(to bottom,
+            var(--color-bg-tertiary) 0px,
+            var(--color-bg-tertiary) 2px,
+            transparent 2px,
+            transparent var(--grid-beat-width));
+}
+
+/* Time Ruler Content - Scrollable */
+.time-ruler-content {
     display: flex;
     flex-direction: column;
     width: 32px;
@@ -769,6 +856,10 @@ body {
     background-color: var(--color-bg-secondary);
     width: 100%;
     border-radius: var(--radius-lg) 0 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--color-bg-secondary);
 }
 
 .time-ruler__right {
@@ -815,15 +906,123 @@ body {
     font-size: 0.875rem;
 }
 
+/* Track Headers - Fixed */
+.track-header {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    border-right: 1px solid var(--color-border);
+    width: 112px;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.track-header__name {
+    height: 48px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: text;
+    outline: none;
+    border: 1px solid transparent;
+    border-radius: var(--radius-xs);
+    padding: var(--spacing-xs);
+    transition: border-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--color-bg-secondary);
+}
+
+.track-header__name:focus {
+    border-color: var(--color-accent-primary);
+    background-color: var(--color-bg-tertiary);
+}
+
+.track-header--disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.track-header__name--disabled {
+    background-color: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    cursor: default;
+}
+
+/* Track Content - Scrollable */
+.track-content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    border-right: 1px solid var(--color-border);
+    width: 112px;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.track-content__clips-area {
+    flex: 1;
+    position: relative;
+    background-color: var(--color-bg-tertiary);
+    background-image: repeating-linear-gradient(to bottom,
+            transparent 0px,
+            transparent calc(var(--grid-beat-width) - 1px),
+            var(--color-border) calc(var(--grid-beat-width) - 1px),
+            var(--color-border) var(--grid-beat-width));
+    overflow: hidden;
+    min-width: 48px;
+    min-height: 400px;
+}
+
+.track-content__playhead {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--color-accent-primary);
+    opacity: 0.4;
+    z-index: 20;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 0 4px rgba(56, 189, 248, 0.5);
+}
+
+.track-content__clips {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    padding-top: calc(var(--grid-beat-width) + var(--spacing-sm));
+    gap: var(--spacing-sm);
+    min-height: 0;
+    position: relative;
+}
+
+.track-content--disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.track-content__clips-area--disabled {
+    background-color: var(--color-bg-primary);
+    opacity: 0.5;
+}
+
 /* Track - Now Horizontal Columns */
 .track {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     border-right: 1px solid var(--color-border);
-    width: calc(var(--track-height) * 2);
-    min-width: 96px;
-    max-width: 112px;
+    width: 112px;
+    flex-shrink: 0;
     transition: all 0.2s ease;
 }
 
@@ -883,6 +1082,10 @@ body {
     background-color: var(--color-bg-secondary);
     width: 100%;
     border-radius: var(--radius-lg) 0 0 0;
+    position: sticky;
+    top: 48px;
+    z-index: 10;
+    background-color: var(--color-bg-secondary);
 }
 
 .track__button {
@@ -970,6 +1173,10 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--color-bg-secondary);
 }
 
 .track__name:focus {
