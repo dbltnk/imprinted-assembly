@@ -936,22 +936,31 @@ class TimelineComponent extends Component {
         return trackPositions.join('');
     }
 
-    renderDisabledTrack(position) {
-        // Check if this is Vince's ambient sandbox project
+    renderTrackControls(trackId, isDisabled = false) {
         const isAmbientProject = this.currentProject?.id === 'ambient';
+        const disabledClass = isDisabled ? 'track__button--disabled' : '';
+        const disabledAttr = isDisabled ? 'disabled' : '';
+        const checkboxDisabled = !isAmbientProject ? 'disabled' : '';
+        const checkboxChecked = isDisabled ? '' : 'checked';
+        const checkboxAction = isDisabled ? 'enable' : 'disable';
+        const checkboxTitle = isDisabled ? 'Enable Track' : 'Disable Track';
+        const checkboxClass = isDisabled ? 'track__checkbox--enable' : 'track__checkbox--disable';
 
+        return `
+            <div class="track__controls">
+                <button class="track__button ${disabledClass}" title="Mute" data-track-action="mute" data-track-id="${trackId}" ${disabledAttr}>
+                    🔇
+                </button>
+                <input type="checkbox" class="track__checkbox ${checkboxClass}" title="${checkboxTitle}" data-track-action="${checkboxAction}" data-track-id="${trackId}" ${checkboxChecked} ${checkboxDisabled}>
+            </div>
+        `;
+    }
+
+    renderDisabledTrack(position) {
         return `
             <div class="track track--disabled" data-track-id="disabled-${position}">
                 <div class="track__name track__name--disabled" data-track-id="disabled-${position}">Inactive</div>
-                <div class="track__controls">
-                    <button class="track__button track__button--disabled" title="Solo" data-track-action="solo" data-track-id="disabled-${position}" disabled>
-                        🎧
-                    </button>
-                    <button class="track__button track__button--disabled" title="Mute" data-track-action="mute" data-track-id="disabled-${position}" disabled>
-                        🔇
-                    </button>
-                    <input type="checkbox" class="track__checkbox track__checkbox--enable" title="Enable Track" data-track-action="enable" data-track-id="disabled-${position}" ${!isAmbientProject ? 'disabled' : ''}>
-                </div>
+                ${this.renderTrackControls(`disabled-${position}`, true)}
                 <div class="track__clips-area track__clips-area--disabled" data-track-id="disabled-${position}">
                     <div class="track__playhead"></div>
                     <div class="track__clips">
@@ -965,21 +974,10 @@ class TimelineComponent extends Component {
         const category = getCategoryByType(track.type);
         const trackColor = category ? category.color : '#6b7280';
 
-        // Check if this is Vince's ambient sandbox project
-        const isAmbientProject = this.currentProject?.id === 'ambient';
-
         return `
             <div class="track" data-track-id="${track.id}">
                 <div class="track__name" data-track-id="${track.id}">${track.name}</div>
-                <div class="track__controls">
-                    <button class="track__button" title="Solo" data-track-action="solo" data-track-id="${track.id}">
-                        🎧
-                    </button>
-                    <button class="track__button" title="Mute" data-track-action="mute" data-track-id="${track.id}">
-                        🔇
-                    </button>
-                    <input type="checkbox" class="track__checkbox track__checkbox--disable" title="Disable Track" data-track-action="disable" data-track-id="${track.id}" checked ${!isAmbientProject ? 'disabled' : ''}>
-                </div>
+                ${this.renderTrackControls(track.id)}
                 <div class="track__clips-area" data-track-id="${track.id}">
                     <div class="track__playhead"></div>
                     <div class="track__clips">
@@ -1241,15 +1239,7 @@ class TimelineComponent extends Component {
 
     updateTrackButtonStates() {
         this.currentProject.tracks.forEach(track => {
-            const trackElement = this.element.querySelector(`[data-track-id="${track.id}"]`);
-            if (!trackElement) return;
-
-            const soloButton = trackElement.querySelector('[data-track-action="solo"]');
-            const muteButton = trackElement.querySelector('[data-track-action="mute"]');
-
-            if (soloButton) {
-                soloButton.classList.toggle('track__button--active', track.soloed);
-            }
+            const muteButton = this.element.querySelector(`[data-track-id="${track.id}"] [data-track-action="mute"]`);
             if (muteButton) {
                 muteButton.classList.toggle('track__button--active', track.muted);
             }
@@ -1292,8 +1282,7 @@ class TimelineComponent extends Component {
             name: newTrackName,
             type: 'custom',
             clips: [],
-            muted: false,
-            soloed: false
+            muted: false
         };
 
         // Add to project
@@ -1354,7 +1343,6 @@ class TimelineComponent extends Component {
             type: 'custom',
             clips: [],
             muted: false,
-            soloed: false,
             position: position
         };
 

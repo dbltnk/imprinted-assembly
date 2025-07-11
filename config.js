@@ -68,7 +68,6 @@ export const PROJECT_CONFIG = {
     // Track controls configuration
     trackControls: {
         buttons: [
-            { id: 'solo', icon: '🎧', title: 'Solo', action: 'toggleSolo' },
             { id: 'mute', icon: '🔇', title: 'Mute', action: 'toggleMute' }
         ]
     },
@@ -122,10 +121,8 @@ export const PROJECT_CONFIG = {
 
         // Track controls
         trackControls: {
-            soloButton: '🎧',
             muteButton: '🔇',
             removeButton: '🗑️',
-            soloTitle: 'Solo',
             muteTitle: 'Mute',
             removeTitle: 'Remove Track'
         },

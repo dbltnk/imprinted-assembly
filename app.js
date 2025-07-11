@@ -500,7 +500,6 @@ class AssemblyApp {
             this.currentProject.tracks.forEach(track => {
                 track.clips = [];
                 track.muted = false;
-                track.soloed = false;
             });
         }
 
@@ -554,9 +553,6 @@ class AssemblyApp {
         console.log(`Track action: ${action} for track: ${trackId}`);
 
         switch (action) {
-            case 'toggleSolo':
-                this.toggleTrackSolo(trackId);
-                break;
             case 'toggleMute':
                 this.toggleTrackMute(trackId);
                 break;
@@ -670,31 +666,7 @@ class AssemblyApp {
         this.vuMeterComponent.setLevel(level);
     }
 
-    toggleTrackSolo(trackId) {
-        console.log(`Toggling solo for track: ${trackId}`);
 
-        const track = findTrackById(this.currentProject.tracks, trackId);
-        if (!track) return;
-
-        // Toggle solo state
-        track.soloed = !track.soloed;
-
-        // If this track is being soloed, unsolo all others
-        if (track.soloed) {
-            this.currentProject.tracks.forEach(t => {
-                if (t.id !== trackId) {
-                    t.soloed = false;
-                }
-            });
-        }
-
-        // Update components
-        this.updateComponents();
-
-        // Dispatch event
-        const event = createCustomEvent('trackSoloChanged', { trackId, soloed: track.soloed });
-        this.element.dispatchEvent(event);
-    }
 
     toggleTrackMute(trackId) {
         console.log(`Toggling mute for track: ${trackId}`);
