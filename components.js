@@ -1733,7 +1733,8 @@ class TimelineComponent extends Component {
     }
 
     calculateDropPosition(e, trackElement) {
-        const clipsArea = trackElement.querySelector('.track__clips-area');
+        // Look for clips area in the new timeline structure
+        const clipsArea = trackElement.querySelector('.track-content__clips-area, .track__clips-area');
         if (!clipsArea) {
             return { startTime: 0, endTime: 0, isValid: false };
         }
@@ -1782,7 +1783,8 @@ class TimelineComponent extends Component {
                 z-index: 10;
             `;
 
-            const clipsArea = trackElement.querySelector('.track__clips-area');
+            // Look for clips area in the new timeline structure
+            const clipsArea = trackElement.querySelector('.track-content__clips-area, .track__clips-area');
             if (clipsArea) {
                 clipsArea.appendChild(preview);
             }
@@ -1790,9 +1792,13 @@ class TimelineComponent extends Component {
     }
 
     hideDropPreview(trackElement) {
-        const existingPreview = trackElement.querySelector('.clip-drop-preview');
-        if (existingPreview) {
-            existingPreview.remove();
+        // Look for preview in the new timeline structure
+        const clipsArea = trackElement.querySelector('.track-content__clips-area, .track__clips-area');
+        if (clipsArea) {
+            const existingPreview = clipsArea.querySelector('.clip-drop-preview');
+            if (existingPreview) {
+                existingPreview.remove();
+            }
         }
     }
 

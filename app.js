@@ -434,7 +434,8 @@ class AssemblyApp {
         if (!dragData || !this.currentProject) return;
 
         const clipType = dragData.clipType;
-        const allTracks = document.querySelectorAll('.track');
+        // Look for track elements in the new timeline structure
+        const allTracks = document.querySelectorAll('.track-header, .track-content');
 
         allTracks.forEach(trackElement => {
             const trackId = trackElement.dataset.trackId;
@@ -444,22 +445,36 @@ class AssemblyApp {
 
             const isValid = this.canClipGoOnTrack(clipType, track.type, track.name, this.currentProject.id);
 
-            // Remove existing feedback classes
-            trackElement.classList.remove('track--valid-drop', 'track--invalid-drop');
-
-            // Add appropriate feedback class
-            if (isValid) {
-                trackElement.classList.add('track--valid-drop');
-            } else {
-                trackElement.classList.add('track--invalid-drop');
+            // Remove existing feedback classes based on element type
+            if (trackElement.classList.contains('track-header')) {
+                trackElement.classList.remove('track-header--valid-drop', 'track-header--invalid-drop');
+                // Add appropriate feedback class
+                if (isValid) {
+                    trackElement.classList.add('track-header--valid-drop');
+                } else {
+                    trackElement.classList.add('track-header--invalid-drop');
+                }
+            } else if (trackElement.classList.contains('track-content')) {
+                trackElement.classList.remove('track-content--valid-drop', 'track-content--invalid-drop');
+                // Add appropriate feedback class
+                if (isValid) {
+                    trackElement.classList.add('track-content--valid-drop');
+                } else {
+                    trackElement.classList.add('track-content--invalid-drop');
+                }
             }
         });
     }
 
     clearTrackVisualFeedback() {
-        const allTracks = document.querySelectorAll('.track');
+        // Clear visual feedback from track elements in the new timeline structure
+        const allTracks = document.querySelectorAll('.track-header, .track-content');
         allTracks.forEach(trackElement => {
-            trackElement.classList.remove('track--valid-drop', 'track--invalid-drop');
+            if (trackElement.classList.contains('track-header')) {
+                trackElement.classList.remove('track-header--valid-drop', 'track-header--invalid-drop');
+            } else if (trackElement.classList.contains('track-content')) {
+                trackElement.classList.remove('track-content--valid-drop', 'track-content--invalid-drop');
+            }
         });
     }
 
@@ -835,7 +850,8 @@ class AssemblyApp {
 
     setupGlobalDragAndDrop() {
         document.addEventListener('drop', (e) => {
-            const trackElement = e.target.closest('.track');
+            // Look for track elements in the new timeline structure
+            const trackElement = e.target.closest('.track-header, .track-content');
 
             if (window.globalDragData) {
                 if (trackElement) {
@@ -872,7 +888,7 @@ class AssemblyApp {
         });
 
         document.addEventListener('dragover', (e) => {
-            const trackElement = e.target.closest('.track');
+            const trackElement = e.target.closest('.track-header, .track-content');
             if (trackElement && window.globalDragData) {
                 e.preventDefault();
                 const dropPosition = this.timelineComponent.calculateDropPosition(e, trackElement);
@@ -892,7 +908,7 @@ class AssemblyApp {
         });
 
         document.addEventListener('dragleave', (e) => {
-            const trackElement = e.target.closest('.track');
+            const trackElement = e.target.closest('.track-header, .track-content');
             if (trackElement) {
                 this.timelineComponent.hideDropPreview(trackElement);
             }
