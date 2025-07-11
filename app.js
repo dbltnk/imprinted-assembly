@@ -5,7 +5,7 @@
 
 import { PROJECT_CONFIG, PROJECT_DATA, getProjectById } from './config.js';
 import { HeaderComponent, SidebarComponent, TimelineComponent, VUMeterComponent } from './components.js';
-import { assert, createConsoleOverride, createCustomEvent, findTrackById, findClipIndexById, formatMessage, parseCallStack } from './utils.js';
+import { assert, createConsoleOverride, findTrackById, findClipIndexById, formatMessage, parseCallStack } from './utils.js';
 
 // ===== BROWSER LOGGING SYSTEM =====
 // Keep the existing logging system intact for debugging
@@ -502,10 +502,20 @@ class AssemblyApp {
         // Update components with new project
         this.updateComponents();
 
+        // Scroll to beginning of timeline
+        if (this.timelineComponent) {
+            this.timelineComponent.scrollToPlayhead(0);
+        }
+
         console.log(`Project '${project.name}' loaded successfully`);
     }
 
     clearCurrentState() {
+        // Stop playback if currently playing
+        if (this.isPlaying) {
+            this.stopPlayback();
+        }
+
         // Clear playback state
         this.isPlaying = false;
         this.currentTime = 0;
@@ -527,6 +537,19 @@ class AssemblyApp {
         // Update transport UI
         this.updateTransportUI();
         this.updateLoopUI();
+
+        // Ensure components are reset to beginning
+        if (this.timelineComponent) {
+            this.timelineComponent.setPlaying(false);
+            this.timelineComponent.setCurrentTime(0);
+        }
+        if (this.sidebarComponent) {
+            this.sidebarComponent.setPlaying(false);
+            this.sidebarComponent.setCurrentTime(0);
+        }
+        if (this.vuMeterComponent) {
+            this.vuMeterComponent.stopAnimation();
+        }
     }
 
 

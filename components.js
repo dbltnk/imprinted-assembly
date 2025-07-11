@@ -3,7 +3,7 @@
  * Modular component system for building the audio editor interface
  */
 
-import { PROJECT_CONFIG, PROJECT_DATA, CLIP_CATEGORIES, getCategoryByType, calculateTimelineLength, VINCE_RECORDING_VARIANTS } from './config.js';
+import { PROJECT_CONFIG, PROJECT_DATA, getCategoryByType, calculateTimelineLength, VINCE_RECORDING_VARIANTS } from './config.js';
 import { assert, formatDuration, formatTimeDisplay, createCustomEvent, findTrackById, findClipIndexById, getClipEndTime } from './utils.js';
 
 // ===== COMPONENT BASE CLASS =====
@@ -1598,21 +1598,41 @@ class TimelineComponent extends Component {
     }
 
     updateClipPlayingStates(currentTime) {
-        if (!this.currentProject) return;
+        // Only highlight clips when actually playing
+        if (!this.isPlaying) {
+            // Clear all playing states when not playing
+            const allClips = this.element.querySelectorAll('.clip');
+            allClips.forEach(clip => {
+                clip.classList.remove('clip--playing');
+            });
+            return;
+        }
 
-        // Remove playing class from all clips
+        // Validate inputs
+        if (!this.currentProject || typeof currentTime !== 'number' || currentTime < 0) {
+            return;
+        }
+
+        // Remove playing class from all clips first
         const allClips = this.element.querySelectorAll('.clip');
         allClips.forEach(clip => {
             clip.classList.remove('clip--playing');
         });
 
-        // Add playing class to clips that are currently being played
+        // Add playing class only to clips that are currently being played
         this.currentProject.tracks.forEach(track => {
+            if (!track || !track.clips) return;
+
             track.clips.forEach(clip => {
+                // Validate clip data
+                if (!clip || typeof clip.startTime !== 'number' || typeof clip.duration !== 'number' || clip.duration <= 0) {
+                    return;
+                }
+
                 const clipStart = clip.startTime;
                 const clipEnd = getClipEndTime(clip);
 
-                // Check if playhead is within this clip's time range
+                // Check if playhead is within this clip's time range (inclusive start, exclusive end)
                 if (currentTime >= clipStart && currentTime < clipEnd) {
                     const clipElement = this.element.querySelector(`[data-clip-id="${clip.id}"]`);
                     if (clipElement) {
@@ -1683,6 +1703,11 @@ class TimelineComponent extends Component {
                 playhead.style.opacity = '0.4';
             }
         });
+
+        // Clear clip playing states when stopping playback
+        if (!playing) {
+            this.clearAllClipPlayingStates();
+        }
     }
 
     startTrackNameEdit(trackNameElement) {
@@ -1805,6 +1830,13 @@ class TimelineComponent extends Component {
     cleanupDropPreviews() {
         const allPreviews = this.element.querySelectorAll('.clip-drop-preview');
         allPreviews.forEach(preview => preview.remove());
+    }
+
+    clearAllClipPlayingStates() {
+        const allClips = this.element.querySelectorAll('.clip');
+        allClips.forEach(clip => {
+            clip.classList.remove('clip--playing');
+        });
     }
 }
 
