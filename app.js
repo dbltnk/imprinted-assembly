@@ -5,7 +5,7 @@
 
 import { PROJECT_CONFIG, PROJECT_DATA, getProjectById } from './config.js';
 import { HeaderComponent, SidebarComponent, TimelineComponent, VUMeterComponent } from './components.js';
-import { assert, createConsoleOverride, parseCallStack, formatMessage, createCustomEvent } from './utils.js';
+import { assert, createConsoleOverride, createCustomEvent, findTrackById, findClipIndexById, formatMessage, parseCallStack } from './utils.js';
 
 // ===== BROWSER LOGGING SYSTEM =====
 // Keep the existing logging system intact for debugging
@@ -319,87 +319,47 @@ class AssemblyApp {
     }
 
     setupEventListeners() {
-        // Project selection
-        this.headerComponent.element.addEventListener('projectSelected', (e) => {
-            this.loadProject(e.detail.projectId);
-        });
+        // Centralized event handling with mapping
+        const eventHandlers = {
+            'projectSelected': (e) => this.loadProject(e.detail.projectId),
+            'transportAction': (e) => this.handleTransportAction(e.detail.action),
+            'trackAction': (e) => this.handleTrackAction(e.detail.action, e.detail.trackId),
+            'trackNameChanged': (e) => this.handleTrackNameChange(e.detail.trackId, e.detail.newName),
+            'addTrack': () => this.handleAddTrack(),
+            'clipResized': (e) => this.handleClipResized(e.detail),
+            'sidebarClipDrop': (e) => this.handleSidebarClipDrop(e.detail.dragData, e.detail.trackId, e.detail.startTime),
+            'timelineClipMove': (e) => this.handleTimelineClipMove(e.detail.dragData, e.detail.targetTrackId, e.detail.newStartTime),
+            'recordingCompleted': (e) => this.handleRecordingCompleted(e.detail.originalClipId, e.detail.newClip),
+            'menuItemClick': (e) => this.handleMenuItemClick(e.detail.itemId),
+            'windowControlClick': (e) => this.handleWindowControlClick(e.detail.controlId)
+        };
 
-        // Transport controls
-        this.sidebarComponent.element.addEventListener('transportAction', (e) => {
-            this.handleTransportAction(e.detail.action);
-        });
-
-        // Track actions
-        this.timelineComponent.element.addEventListener('trackAction', (e) => {
-            this.handleTrackAction(e.detail.action, e.detail.trackId);
-        });
-
-        // Track name changes
-        this.timelineComponent.element.addEventListener('trackNameChanged', (e) => {
-            this.handleTrackNameChange(e.detail.trackId, e.detail.newName);
-        });
-
-        // Add track
-        this.timelineComponent.element.addEventListener('addTrack', () => {
-            this.handleAddTrack();
-        });
-
-        // Track management events
-        this.timelineComponent.element.addEventListener('trackAdded', (e) => {
-            this.handleTrackAdded(e.detail.track);
-        });
-
-        this.timelineComponent.element.addEventListener('trackRemoved', (e) => {
-            this.handleTrackRemoved(e.detail.trackId, e.detail.track);
-        });
-
-        this.timelineComponent.element.addEventListener('trackSoloChanged', (e) => {
-            this.handleTrackSoloChanged(e.detail.trackId, e.detail.soloed);
-        });
-
-        this.timelineComponent.element.addEventListener('trackMuteChanged', (e) => {
-            this.handleTrackMuteChanged(e.detail.trackId, e.detail.muted);
-        });
-
-        // Clip events
-        this.timelineComponent.element.addEventListener('clipResized', (e) => {
-            this.handleClipResized(e.detail);
-        });
-
-        this.timelineComponent.element.addEventListener('clipAdded', (e) => {
-            this.handleClipAdded(e.detail);
-        });
-
-        this.timelineComponent.element.addEventListener('clipMoved', (e) => {
-            this.handleClipMoved(e.detail);
-        });
-
-        // Sidebar clip drops
-        this.sidebarComponent.element.addEventListener('sidebarClipDrop', (e) => {
-            this.handleSidebarClipDrop(e.detail.dragData, e.detail.trackId, e.detail.startTime);
-        });
-
-        // Timeline clip moves
-        this.timelineComponent.element.addEventListener('timelineClipMove', (e) => {
-            this.handleTimelineClipMove(e.detail.dragData, e.detail.targetTrackId, e.detail.newStartTime);
-        });
-
-        // Recording completion
-        this.sidebarComponent.element.addEventListener('recordingCompleted', (e) => {
-            this.handleRecordingCompleted(e.detail.originalClipId, e.detail.newClip);
+        // Register all event handlers
+        Object.entries(eventHandlers).forEach(([eventName, handler]) => {
+            const component = this.getComponentForEvent(eventName);
+            if (component) {
+                component.element.addEventListener(eventName, handler);
+            }
         });
 
         this.setupGlobalDragAndDrop();
+    }
 
-        // Menu item clicks
-        this.headerComponent.element.addEventListener('menuItemClick', (e) => {
-            this.handleMenuItemClick(e.detail.itemId);
-        });
-
-        // Window control clicks
-        this.headerComponent.element.addEventListener('windowControlClick', (e) => {
-            this.handleWindowControlClick(e.detail.controlId);
-        });
+    getComponentForEvent(eventName) {
+        const componentMap = {
+            'projectSelected': this.headerComponent,
+            'transportAction': this.sidebarComponent,
+            'sidebarClipDrop': this.sidebarComponent,
+            'recordingCompleted': this.sidebarComponent,
+            'menuItemClick': this.headerComponent,
+            'windowControlClick': this.headerComponent,
+            'trackAction': this.timelineComponent,
+            'trackNameChanged': this.timelineComponent,
+            'addTrack': this.timelineComponent,
+            'clipResized': this.timelineComponent,
+            'timelineClipMove': this.timelineComponent
+        };
+        return componentMap[eventName];
     }
 
     // ===== TRACK VALIDATION LOGIC =====
@@ -408,8 +368,7 @@ class AssemblyApp {
         assert(trackId, 'Track ID is required');
         assert(this.currentProject, 'Current project is required');
 
-        // Find the track
-        const track = this.currentProject.tracks.find(t => t.id === trackId);
+        const track = findTrackById(this.currentProject.tracks, trackId);
         if (!track) {
             console.warn(`Track not found: ${trackId}`);
             return false;
@@ -478,7 +437,7 @@ class AssemblyApp {
 
         allTracks.forEach(trackElement => {
             const trackId = trackElement.dataset.trackId;
-            const track = this.currentProject.tracks.find(t => t.id === trackId);
+            const track = findTrackById(this.currentProject.tracks, trackId);
 
             if (!track) return;
 
@@ -516,8 +475,7 @@ class AssemblyApp {
             return;
         }
 
-        // Validate project structure
-        this.validateProject(project);
+
 
         // Set current project
         this.currentProject = { ...project };
@@ -557,23 +515,7 @@ class AssemblyApp {
         this.updateLoopUI();
     }
 
-    validateProject(project) {
-        assert(project, 'Project is required');
-        assert(project.id, 'Project must have an id');
-        assert(project.name, 'Project must have a name');
-        assert(project.bpm, 'Project must have a bpm');
-        assert(project.tracks, 'Project must have tracks');
-        assert(Array.isArray(project.tracks), 'Project tracks must be an array');
-        assert(project.tracks.length > 0, 'Project must have at least one track');
 
-        project.tracks.forEach((track, index) => {
-            assert(track.id, `Track ${index} must have an id`);
-            assert(track.name, `Track ${index} must have a name`);
-            assert(track.type, `Track ${index} must have a type`);
-            assert(track.clips, `Track ${index} must have clips`);
-            assert(Array.isArray(track.clips), `Track ${index} clips must be an array`);
-        });
-    }
 
     updateFileInfo(project) {
         // File info is now handled by the sidebar component
@@ -731,7 +673,7 @@ class AssemblyApp {
     toggleTrackSolo(trackId) {
         console.log(`Toggling solo for track: ${trackId}`);
 
-        const track = this.currentProject.tracks.find(t => t.id === trackId);
+        const track = findTrackById(this.currentProject.tracks, trackId);
         if (!track) return;
 
         // Toggle solo state
@@ -757,7 +699,7 @@ class AssemblyApp {
     toggleTrackMute(trackId) {
         console.log(`Toggling mute for track: ${trackId}`);
 
-        const track = this.currentProject.tracks.find(t => t.id === trackId);
+        const track = findTrackById(this.currentProject.tracks, trackId);
         if (!track) return;
 
         // Toggle mute state
@@ -788,7 +730,7 @@ class AssemblyApp {
             return;
         }
 
-        const sidebarClipIndex = this.currentProject.sidebarClips.findIndex(c => c.id === dragData.clipId);
+        const sidebarClipIndex = findClipIndexById(this.currentProject.sidebarClips, dragData.clipId);
         if (sidebarClipIndex === -1) {
             console.error('Clip not found in sidebar:', dragData.clipId);
             return;
@@ -796,7 +738,7 @@ class AssemblyApp {
 
         const sidebarClip = this.currentProject.sidebarClips[sidebarClipIndex];
         const newClip = { ...sidebarClip, startTime };
-        const track = this.currentProject.tracks.find(t => t.id === trackId);
+        const track = findTrackById(this.currentProject.tracks, trackId);
 
         if (track) {
             track.clips.push(newClip);
@@ -817,15 +759,15 @@ class AssemblyApp {
             return;
         }
 
-        const sourceTrack = this.currentProject.tracks.find(t => t.id === dragData.trackId);
-        const targetTrack = this.currentProject.tracks.find(t => t.id === targetTrackId);
+        const sourceTrack = findTrackById(this.currentProject.tracks, dragData.trackId);
+        const targetTrack = findTrackById(this.currentProject.tracks, targetTrackId);
 
         if (!sourceTrack || !targetTrack) {
             console.error(`Track not found: source=${dragData.trackId}, target=${targetTrackId}`);
             return;
         }
 
-        const clipIndex = sourceTrack.clips.findIndex(c => c.id === dragData.clipId);
+        const clipIndex = findClipIndexById(sourceTrack.clips, dragData.clipId);
         if (clipIndex === -1) {
             console.error(`Clip not found: ${dragData.clipId}`);
             return;
@@ -855,13 +797,13 @@ class AssemblyApp {
         assert(dragData.sourceTrackId, 'Source track ID is required');
         assert(dragData.clipId, 'Clip ID is required');
 
-        const sourceTrack = this.currentProject.tracks.find(t => t.id === dragData.sourceTrackId);
+        const sourceTrack = findTrackById(this.currentProject.tracks, dragData.sourceTrackId);
         if (!sourceTrack) {
             console.error(`Track not found: ${dragData.sourceTrackId}`);
             return;
         }
 
-        const clipIndex = sourceTrack.clips.findIndex(c => c.id === dragData.clipId);
+        const clipIndex = findClipIndexById(sourceTrack.clips, dragData.clipId);
         if (clipIndex === -1) {
             console.error(`Clip not found: ${dragData.clipId}`);
             return;
@@ -1001,29 +943,7 @@ class AssemblyApp {
         });
     }
 
-    handleTrackAdded(track) {
-        console.log(`Track added: ${track.name}`);
-        // Update components to reflect new track
-        this.updateComponents();
-    }
 
-    handleTrackRemoved(trackId, track) {
-        console.log(`Track removed: ${track.name}`);
-        // Update components to reflect removed track
-        this.updateComponents();
-    }
-
-    handleTrackSoloChanged(trackId, soloed) {
-        console.log(`Track ${trackId} solo changed: ${soloed}`);
-        // Update VU meter or other solo-dependent UI
-        this.updateVUMeter();
-    }
-
-    handleTrackMuteChanged(trackId, muted) {
-        console.log(`Track ${trackId} mute changed: ${muted}`);
-        // Update VU meter or other mute-dependent UI
-        this.updateVUMeter();
-    }
 
     handleClipResized(detail) {
         const { trackId, clipId, newStartTime, newDuration } = detail;
@@ -1040,22 +960,14 @@ class AssemblyApp {
         }
     }
 
-    handleClipAdded(detail) {
-        const { trackId, clip } = detail;
-        console.log(`Clip added: ${clip.id} to track ${trackId}`);
-    }
 
-    handleClipMoved(detail) {
-        const { clipId, sourceTrackId, targetTrackId, newStartTime } = detail;
-        console.log(`Clip moved: ${clipId} from ${sourceTrackId} to ${targetTrackId} at ${newStartTime}`);
-    }
 
     handleRecordingCompleted(originalClipId, newClip) {
         console.log('Recording completed:', { originalClipId, newClip });
 
         // Update the current project with the new clip
         if (this.currentProject) {
-            const clipIndex = this.currentProject.sidebarClips.findIndex(c => c.id === originalClipId);
+            const clipIndex = findClipIndexById(this.currentProject.sidebarClips, originalClipId);
             if (clipIndex !== -1) {
                 this.currentProject.sidebarClips[clipIndex] = newClip;
                 console.log('Updated project with recorded clip:', newClip);

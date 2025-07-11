@@ -4,7 +4,7 @@
  */
 
 import { PROJECT_CONFIG, PROJECT_DATA, CLIP_CATEGORIES, getCategoryByType, calculateTimelineLength, VINCE_RECORDING_VARIANTS } from './config.js';
-import { assert, formatDuration, formatTimeDisplay, createCustomEvent } from './utils.js';
+import { assert, formatDuration, formatTimeDisplay, createCustomEvent, findTrackById, findClipIndexById, getClipEndTime } from './utils.js';
 
 // ===== COMPONENT BASE CLASS =====
 class Component {
@@ -409,32 +409,19 @@ class SidebarComponent extends Component {
     }
 
     renderClipRepository() {
-        console.log('=== RENDER CLIP REPOSITORY DEBUG ===');
-        console.log('1. Starting renderClipRepository');
-
         if (!this.currentProject) {
-            console.log('2. No current project, returning empty message');
             return `<div class="clip-repository__empty">${PROJECT_CONFIG.content.clipRepository.emptyMessage}</div>`;
         }
 
-        console.log('2. Current project:', this.currentProject.id);
-        console.log('3. Sidebar clips:', this.currentProject.sidebarClips);
-
         // Get used clip IDs from timeline
         const usedClipIds = this.getUsedClipIds();
-        console.log('4. Used clip IDs:', usedClipIds);
 
         // Group sidebar clips by category
         const clipsByCategory = this.groupSidebarClipsByCategory();
-        console.log('5. Clips by category:', clipsByCategory);
-
-        console.log('6. Vince clips:', this.currentProject.sidebarClips.filter(c => c.type === 'vince'));
 
         const result = Object.entries(clipsByCategory).map(([categoryId, clips]) => {
             const category = getCategoryByType(categoryId);
             if (!category) return '';
-
-            console.log(`7. Rendering category ${categoryId} with ${clips.length} clips:`, clips);
 
             return `
                 <div class="clip-category">
@@ -446,8 +433,6 @@ class SidebarComponent extends Component {
                         ${clips.map(clip => {
                 const isUsed = usedClipIds.includes(clip.id);
                 const usedCount = this.getClipUsageCount(clip.id);
-
-                console.log(`8. Rendering clip ${clip.id}:`, { clip, isUsed, usedCount, needsRecording: clip.needsRecording });
 
                 // Check if this is a recording clip
                 if (clip.needsRecording) {
@@ -461,8 +446,6 @@ class SidebarComponent extends Component {
             `;
         }).join('');
 
-        console.log('9. Final HTML length:', result.length);
-        console.log('=== END RENDER CLIP REPOSITORY DEBUG ===');
         return result;
     }
 
@@ -693,7 +676,7 @@ class SidebarComponent extends Component {
 
     handleRecordingComplete(originalClipId, selectedVariant) {
         // Find the original clip in the project
-        const clipIndex = this.currentProject.sidebarClips.findIndex(c => c.id === originalClipId);
+        const clipIndex = findClipIndexById(this.currentProject.sidebarClips, originalClipId);
 
         if (clipIndex === -1) {
             console.error('Original clip not found:', originalClipId);
@@ -1191,7 +1174,7 @@ class TimelineComponent extends Component {
 
         return track.clips.some(clip => {
             if (clip.id === excludeClipId) return false;
-            const clipEnd = clip.startTime + clip.duration;
+            const clipEnd = getClipEndTime(clip);
             return (startTime < clipEnd && endTime > clip.startTime);
         });
     }
@@ -1230,92 +1213,7 @@ class TimelineComponent extends Component {
         });
     }
 
-    addClipToTrack(clipData, trackId, startTime) {
-        // Find the track
-        const track = this.currentProject.tracks.find(t => t.id === trackId);
-        if (!track) {
-            console.error(`Track not found: ${trackId}`);
-            return;
-        }
 
-        // Check for overlaps
-        if (this.wouldOverlap(trackId, null, startTime, clipData.clipDuration)) {
-            console.warn(`Cannot add clip: would overlap with existing clips`);
-            return;
-        }
-
-        // Create new clip object
-        const newClip = {
-            id: clipData.clipId,
-            name: clipData.clipName || clipData.clipId,
-            duration: clipData.clipDuration,
-            startTime: startTime,
-            type: clipData.clipType
-        };
-
-        // Add to track
-        track.clips.push(newClip);
-
-        // Dispatch event
-        const event = createCustomEvent('clipAdded', { trackId, clip: newClip });
-        this.element.dispatchEvent(event);
-
-        // Re-render timeline
-        this.render();
-
-        console.log(`Added clip to track:`, { trackId, clipId: clipData.clipId, startTime });
-    }
-
-    moveClipInTimeline(dragData, targetTrackId, newStartTime) {
-        const { clipId, sourceTrackId, clipDuration } = dragData;
-
-        // Find source and target tracks
-        const sourceTrack = this.currentProject.tracks.find(t => t.id === sourceTrackId);
-        const targetTrack = this.currentProject.tracks.find(t => t.id === targetTrackId);
-
-        if (!sourceTrack || !targetTrack) {
-            console.error(`Track not found: source=${sourceTrackId}, target=${targetTrackId}`);
-            return;
-        }
-
-        // Find the clip
-        const clipIndex = sourceTrack.clips.findIndex(c => c.id === clipId);
-        if (clipIndex === -1) {
-            console.error(`Clip not found: ${clipId}`);
-            return;
-        }
-
-        const clip = sourceTrack.clips[clipIndex];
-
-        // Check for overlaps in target track (excluding the moving clip)
-        if (this.wouldOverlap(targetTrackId, clipId, newStartTime, clipDuration)) {
-            console.warn(`Cannot move clip: would overlap with existing clips`);
-            return;
-        }
-
-        // Remove from source track
-        sourceTrack.clips.splice(clipIndex, 1);
-
-        // Update clip start time
-        clip.startTime = newStartTime;
-
-        // Add to target track
-        targetTrack.clips.push(clip);
-
-        // Dispatch event
-        const event = createCustomEvent('clipMoved', {
-            clipId,
-            sourceTrackId,
-            targetTrackId,
-            newStartTime
-        });
-        this.element.dispatchEvent(event);
-
-        // Re-render timeline
-        this.render();
-
-        console.log(`Moved clip: ${clipId} from ${sourceTrackId} to ${targetTrackId} at ${newStartTime}`);
-    }
 
     handleTrackAction(action, trackId) {
         if (action === 'remove') {
@@ -1339,35 +1237,7 @@ class TimelineComponent extends Component {
         this.element.dispatchEvent(event);
     }
 
-    toggleTrackSolo(trackId) {
-        const track = this.currentProject.tracks.find(t => t.id === trackId);
-        if (!track) return;
 
-        track.soloed = !track.soloed;
-
-        if (track.soloed) {
-            this.currentProject.tracks.forEach(t => {
-                if (t.id !== trackId) t.soloed = false;
-            });
-        }
-
-        this.updateComponents();
-        this.dispatchTrackEvent('trackSoloChanged', { trackId, soloed: track.soloed });
-    }
-
-    toggleTrackMute(trackId) {
-        const track = this.currentProject.tracks.find(t => t.id === trackId);
-        if (!track) return;
-
-        track.muted = !track.muted;
-        this.updateComponents();
-        this.dispatchTrackEvent('trackMuteChanged', { trackId, muted: track.muted });
-    }
-
-    dispatchTrackEvent(eventName, detail) {
-        const event = createCustomEvent(eventName, detail);
-        this.element.dispatchEvent(event);
-    }
 
     updateTrackButtonStates() {
         this.currentProject.tracks.forEach(track => {
@@ -1394,7 +1264,7 @@ class TimelineComponent extends Component {
         }
 
         // Update track name in project data
-        const track = this.currentProject.tracks.find(t => t.id === trackId);
+        const track = findTrackById(this.currentProject.tracks, trackId);
         if (track) {
             track.name = newName.trim();
             console.log(`Track name changed: ${trackId} -> ${newName}`);
@@ -1507,7 +1377,7 @@ class TimelineComponent extends Component {
         }
 
         // Find track
-        const track = this.currentProject.tracks.find(t => t.id === trackId);
+        const track = findTrackById(this.currentProject.tracks, trackId);
         if (!track) {
             console.warn(`Track not found: ${trackId}`);
             return;
@@ -1588,7 +1458,7 @@ class TimelineComponent extends Component {
         this.currentProject.tracks.forEach(track => {
             track.clips.forEach(clip => {
                 const clipStart = clip.startTime;
-                const clipEnd = clip.startTime + clip.duration;
+                const clipEnd = getClipEndTime(clip);
 
                 // Check if playhead is within this clip's time range
                 if (currentTime >= clipStart && currentTime < clipEnd) {

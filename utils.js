@@ -10,6 +10,32 @@ export function assert(condition, message) {
     }
 }
 
+// ===== TRACK AND CLIP UTILITIES =====
+export function findTrackById(tracks, trackId) {
+    assert(tracks, 'Tracks array is required');
+    assert(trackId, 'Track ID is required');
+    return tracks.find(t => t.id === trackId);
+}
+
+export function findClipById(clips, clipId) {
+    assert(clips, 'Clips array is required');
+    assert(clipId, 'Clip ID is required');
+    return clips.find(c => c.id === clipId);
+}
+
+export function findClipIndexById(clips, clipId) {
+    assert(clips, 'Clips array is required');
+    assert(clipId, 'Clip ID is required');
+    return clips.findIndex(c => c.id === clipId);
+}
+
+export function getClipEndTime(clip) {
+    assert(clip, 'Clip is required');
+    assert(typeof clip.startTime === 'number', 'Clip startTime must be a number');
+    assert(typeof clip.duration === 'number', 'Clip duration must be a number');
+    return clip.startTime + clip.duration;
+}
+
 // ===== CONSOLE OVERRIDE UTILITIES =====
 export function createConsoleOverride(originalMethods, bufferCallback) {
     return {

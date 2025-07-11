@@ -3,7 +3,7 @@
  * Centralized configuration for all project data and settings
  */
 
-import { assert } from './utils.js';
+import { assert, getClipEndTime } from './utils.js';
 
 // ===== PROJECT CONFIGURATION =====
 export const PROJECT_CONFIG = {
@@ -540,51 +540,38 @@ export const CLIP_CATEGORIES = [
 
 // ===== VALIDATION =====
 export const validateConfiguration = () => {
-    validateRequiredConfigs();
-    validateProjectData();
-    validateClipCategories();
-    console.log('✅ Configuration validation passed');
-};
-
-const validateRequiredConfigs = () => {
+    // Validate required configs
     assert(PROJECT_CONFIG, 'PROJECT_CONFIG is required');
     assert(PROJECT_DATA, 'PROJECT_DATA is required');
     assert(CLIP_CATEGORIES, 'CLIP_CATEGORIES is required');
-};
 
-const validateProjectData = () => {
+    // Validate all projects
     Object.entries(PROJECT_DATA).forEach(([key, project]) => {
-        validateProject(key, project);
+        assert(project.id, `Project ${key} must have an id`);
+        assert(project.name, `Project ${key} must have a name`);
+        assert(project.bpm, `Project ${key} must have a bpm`);
+        assert(project.tracks, `Project ${key} must have tracks`);
+        assert(Array.isArray(project.tracks), `Project ${key} tracks must be an array`);
+
+        // Validate all tracks in project
+        project.tracks.forEach((track, index) => {
+            assert(track.id, `Track ${index} in project ${key} must have an id`);
+            assert(track.name, `Track ${index} in project ${key} must have a name`);
+            assert(track.type, `Track ${index} in project ${key} must have a type`);
+            assert(track.clips, `Track ${index} in project ${key} must have clips`);
+            assert(Array.isArray(track.clips), `Track ${index} in project ${key} clips must be an array`);
+        });
     });
-};
 
-const validateProject = (key, project) => {
-    assert(project.id, `Project ${key} must have an id`);
-    assert(project.name, `Project ${key} must have a name`);
-    assert(project.bpm, `Project ${key} must have a bpm`);
-    assert(project.tracks, `Project ${key} must have tracks`);
-    assert(Array.isArray(project.tracks), `Project ${key} tracks must be an array`);
-
-    project.tracks.forEach((track, index) => {
-        validateTrack(key, index, track);
-    });
-};
-
-const validateTrack = (projectKey, trackIndex, track) => {
-    assert(track.id, `Track ${trackIndex} in project ${projectKey} must have an id`);
-    assert(track.name, `Track ${trackIndex} in project ${projectKey} must have a name`);
-    assert(track.type, `Track ${trackIndex} in project ${projectKey} must have a type`);
-    assert(track.clips, `Track ${trackIndex} in project ${projectKey} must have clips`);
-    assert(Array.isArray(track.clips), `Track ${trackIndex} in project ${projectKey} clips must be an array`);
-};
-
-const validateClipCategories = () => {
+    // Validate clip categories
     CLIP_CATEGORIES.forEach((category, index) => {
         assert(category.id, `Clip category ${index} must have an id`);
         assert(category.name, `Clip category ${index} must have a name`);
         assert(category.icon, `Clip category ${index} must have an icon`);
         assert(category.color, `Clip category ${index} must have a color`);
     });
+
+    console.log('✅ Configuration validation passed');
 };
 
 // ===== UTILITY FUNCTIONS =====
@@ -647,7 +634,7 @@ const calculateMaxClipEnd = (project) => {
     // Check clips in tracks
     project.tracks.forEach(track => {
         track.clips.forEach(clip => {
-            const clipEnd = clip.startTime + clip.duration;
+            const clipEnd = getClipEndTime(clip);
             maxEnd = Math.max(maxEnd, clipEnd);
         });
     });
