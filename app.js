@@ -343,6 +343,7 @@ class AssemblyApp {
         });
 
         this.setupGlobalDragAndDrop();
+        this.setupGlobalHotkeys();
     }
 
     getComponentForEvent(eventName) {
@@ -911,6 +912,48 @@ class AssemblyApp {
         document.addEventListener('dragstart', (e) => {
             if (window.globalDragData) {
                 this.updateTrackVisualFeedback(window.globalDragData);
+            }
+        });
+    }
+
+    setupGlobalHotkeys() {
+        // Global hotkeys that work anywhere in the application
+        document.addEventListener('keydown', (e) => {
+            // Don't handle hotkeys if user is typing in an input field
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.contentEditable === 'true') {
+                return;
+            }
+
+            // Space: Toggle play/pause
+            if (e.code === 'Space') {
+                e.preventDefault();
+                this.togglePlayback();
+                console.log('Global hotkey: Space - Toggle playback');
+                return;
+            }
+
+            // Escape: Stop playback
+            if (e.code === 'Escape') {
+                e.preventDefault();
+                this.stopPlayback();
+                console.log('Global hotkey: Escape - Stop playback');
+                return;
+            }
+
+            // Left Arrow: Seek backward
+            if (e.code === 'ArrowLeft') {
+                e.preventDefault();
+                this.seek(-1);
+                console.log('Global hotkey: Left Arrow - Seek backward');
+                return;
+            }
+
+            // Right Arrow: Seek forward
+            if (e.code === 'ArrowRight') {
+                e.preventDefault();
+                this.seek(1);
+                console.log('Global hotkey: Right Arrow - Seek forward');
+                return;
             }
         });
     }
