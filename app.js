@@ -499,7 +499,6 @@ class AssemblyApp {
         if (this.currentProject) {
             this.currentProject.tracks.forEach(track => {
                 track.clips = [];
-                track.muted = false;
             });
         }
 
@@ -553,9 +552,6 @@ class AssemblyApp {
         console.log(`Track action: ${action} for track: ${trackId}`);
 
         switch (action) {
-            case 'toggleMute':
-                this.toggleTrackMute(trackId);
-                break;
             default:
                 console.warn(`Unknown track action: ${action}`);
         }
@@ -668,22 +664,7 @@ class AssemblyApp {
 
 
 
-    toggleTrackMute(trackId) {
-        console.log(`Toggling mute for track: ${trackId}`);
 
-        const track = findTrackById(this.currentProject.tracks, trackId);
-        if (!track) return;
-
-        // Toggle mute state
-        track.muted = !track.muted;
-
-        // Update components
-        this.updateComponents();
-
-        // Dispatch event
-        const event = createCustomEvent('trackMuteChanged', { trackId, muted: track.muted });
-        this.element.dispatchEvent(event);
-    }
 
     destroy() {
         // Clear intervals

@@ -1229,6 +1229,16 @@ class TimelineComponent extends Component {
             return;
         }
 
+        if (action === 'mute') {
+            // Toggle mute button visual state only
+            const muteButton = this.element.querySelector(`[data-track-id="${trackId}"] [data-track-action="mute"]`);
+            if (muteButton) {
+                const isCurrentlyMuted = muteButton.textContent === '🔇';
+                muteButton.textContent = isCurrentlyMuted ? '🔊' : '🔇';
+            }
+            return;
+        }
+
         const event = new CustomEvent('trackAction', {
             detail: { action, trackId }
         });
@@ -1241,7 +1251,8 @@ class TimelineComponent extends Component {
         this.currentProject.tracks.forEach(track => {
             const muteButton = this.element.querySelector(`[data-track-id="${track.id}"] [data-track-action="mute"]`);
             if (muteButton) {
-                muteButton.classList.toggle('track__button--active', track.muted);
+                // Toggle between muted and unmuted icons
+                muteButton.textContent = muteButton.classList.contains('track__button--active') ? '🔇' : '🔊';
             }
         });
     }
@@ -1281,8 +1292,7 @@ class TimelineComponent extends Component {
             id: newTrackId,
             name: newTrackName,
             type: 'custom',
-            clips: [],
-            muted: false
+            clips: []
         };
 
         // Add to project
@@ -1342,7 +1352,6 @@ class TimelineComponent extends Component {
             name: newTrackName,
             type: 'custom',
             clips: [],
-            muted: false,
             position: position
         };
 
