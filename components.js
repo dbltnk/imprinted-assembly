@@ -347,6 +347,7 @@ class SidebarComponent extends Component {
     init() {
         this.currentProject = null;
         this.isLooping = false;
+        this.isPlaying = false;
         this.render();
         this.setupEventListeners();
 
@@ -372,14 +373,15 @@ class SidebarComponent extends Component {
                     <span class="file-info__value">${this.getTimeSignature()}</span>
                 </div>
             </div>
-            <div class="file-info-divider"></div>
             <div class="time-display">
                 ${this.formatTimeDisplay()}
             </div>
             <div class="transport-controls">
                 ${this.renderTransportControls()}
             </div>
-            <div class="file-info-divider"></div>
+            <div class="master-volume">
+                ${this.renderMasterVolume()}
+            </div>
             <div class="clip-repository">
                 ${this.renderClipRepository()}
             </div>
@@ -392,18 +394,36 @@ class SidebarComponent extends Component {
         return `
             <div class="transport-controls__row">
                 ${transport.buttons.map(button => `
-                    <button class="transport-button ${button.id === 'play' ? 'transport-button--play' : ''}"
+                    <button class="transport-button ${button.id === 'play' && this.isPlaying ? 'transport-button--active' : ''}"
                             title="${button.title}"
                             data-transport="${button.id}">
                         ${button.icon}
                     </button>
                 `).join('')}
+                <div class="loop-toggle ${this.isLooping ? 'loop-toggle--active' : ''}" title="Loop">
+                    🔁
+                </div>
             </div>
-            <div class="transport-controls__row">
-                <label class="loop-toggle">
-                    <input type="checkbox" class="loop-toggle__checkbox" ${this.isLooping ? 'checked' : ''}>
-                    <span class="loop-toggle__label">${transport.loopToggle.label}</span>
-                </label>
+        `;
+    }
+
+    renderMasterVolume() {
+        return `
+            <div class="master-volume__container">
+                <div class="master-volume__label">
+                    <span class="master-volume__icon">🔊</span>
+                    <span class="master-volume__text">Master Volume</span>
+                </div>
+                <div class="master-volume__slider-container">
+                    <input type="range" 
+                           class="master-volume__slider" 
+                           min="0" 
+                           max="100" 
+                           value="80" 
+                           data-volume="master"
+                           title="Master Volume">
+                    <div class="master-volume__value">80%</div>
+                </div>
             </div>
         `;
     }
@@ -528,6 +548,7 @@ class SidebarComponent extends Component {
     setupEventListeners() {
         this.element.addEventListener('click', this.handleClick.bind(this));
         this.element.addEventListener('change', this.handleChange.bind(this));
+        this.element.addEventListener('input', this.handleInput.bind(this));
         this.element.addEventListener('dragstart', this.handleDragStart.bind(this));
         this.element.addEventListener('dragover', this.handleDragOver.bind(this));
         this.element.addEventListener('drop', this.handleDrop.bind(this));
@@ -536,13 +557,6 @@ class SidebarComponent extends Component {
 
     handleClick(e) {
         console.log('Sidebar click event:', e.target);
-
-        // Handle checkbox clicks first (prevent them from being treated as transport buttons)
-        if (e.target.classList.contains('loop-toggle__checkbox')) {
-            console.log('Checkbox clicked directly');
-            // Let the change event handle the action
-            return;
-        }
 
         // Handle recording button clicks
         const recordButton = e.target.closest('.clip-item__record-btn');
@@ -560,27 +574,27 @@ class SidebarComponent extends Component {
             this.handleTransportAction(action);
         }
 
-        // Handle label clicks for loop toggle
-        if (e.target.closest('.loop-toggle')) {
-            console.log('Loop toggle area clicked');
-            const checkbox = e.target.closest('.loop-toggle').querySelector('.loop-toggle__checkbox');
-            if (checkbox) {
-                console.log('Checkbox found, current state:', checkbox.checked);
-                // Toggle the checkbox manually if it's a label click
-                if (e.target.tagName === 'LABEL' || e.target.classList.contains('loop-toggle__label')) {
-                    checkbox.checked = !checkbox.checked;
-                    console.log('Checkbox toggled to:', checkbox.checked);
-                    this.handleTransportAction('toggleLoop');
-                }
-            }
+        // Handle loop toggle clicks
+        const loopToggle = e.target.closest('.loop-toggle');
+        if (loopToggle) {
+            console.log('Loop toggle clicked');
+            this.handleTransportAction('toggleLoop');
         }
     }
 
     handleChange(e) {
         console.log('Sidebar change event:', e.target);
-        if (e.target.classList.contains('loop-toggle__checkbox')) {
-            console.log('Checkbox change detected: toggleLoop checked:', e.target.checked);
-            this.handleTransportAction('toggleLoop');
+        // No longer needed since we removed the checkbox
+    }
+
+    handleInput(e) {
+        if (e.target.classList.contains('master-volume__slider')) {
+            const value = e.target.value;
+            const valueDisplay = e.target.parentElement.querySelector('.master-volume__value');
+            if (valueDisplay) {
+                valueDisplay.textContent = `${value}%`;
+            }
+            console.log('Master volume changed to:', value);
         }
     }
 
@@ -751,11 +765,31 @@ class SidebarComponent extends Component {
         return formatTimeDisplay(this.currentTime || 0, this.totalDuration || this.calculateDurationInSeconds());
     }
 
+    setPlaying(playing) {
+        this.isPlaying = playing;
+
+        // Update the play button visual state
+        const playButton = this.element.querySelector('[data-transport="play"]');
+        if (playButton) {
+            if (playing) {
+                playButton.classList.add('transport-button--active');
+            } else {
+                playButton.classList.remove('transport-button--active');
+            }
+        }
+    }
+
     setLoopState(isLooping) {
         this.isLooping = isLooping;
-        const loopCheckbox = this.element.querySelector('.loop-toggle__checkbox');
-        if (loopCheckbox && loopCheckbox.checked !== isLooping) {
-            loopCheckbox.checked = isLooping;
+
+        // Update the loop toggle visual state
+        const loopToggle = this.element.querySelector('.loop-toggle');
+        if (loopToggle) {
+            if (isLooping) {
+                loopToggle.classList.add('loop-toggle--active');
+            } else {
+                loopToggle.classList.remove('loop-toggle--active');
+            }
         }
     }
 

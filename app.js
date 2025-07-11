@@ -603,6 +603,7 @@ class AssemblyApp {
         this.isPlaying = true;
         this.updateTransportUI();
         this.timelineComponent.setPlaying(true);
+        this.sidebarComponent.setPlaying(true);
         this.vuMeterComponent.startAnimation();
         this.startTimeProgression();
     }
@@ -614,6 +615,7 @@ class AssemblyApp {
         this.isPlaying = false;
         this.updateTransportUI();
         this.timelineComponent.setPlaying(false);
+        this.sidebarComponent.setPlaying(false);
         this.vuMeterComponent.stopAnimation();
         this.stopTimeProgression();
     }
@@ -626,6 +628,7 @@ class AssemblyApp {
         this.currentTime = 0;
         this.updateTransportUI();
         this.timelineComponent.setPlaying(false);
+        this.sidebarComponent.setPlaying(false);
         this.timelineComponent.setCurrentTime(0);
         this.sidebarComponent.setCurrentTime(0);
         this.vuMeterComponent.stopAnimation();
@@ -653,6 +656,13 @@ class AssemblyApp {
         const playButton = document.querySelector('[data-transport="play"]');
         if (playButton) {
             playButton.textContent = this.isPlaying ? '⏸' : '▶';
+
+            // Update active state
+            if (this.isPlaying) {
+                playButton.classList.add('transport-button--active');
+            } else {
+                playButton.classList.remove('transport-button--active');
+            }
         }
     }
 
