@@ -4,7 +4,7 @@
  */
 
 import { PROJECT_CONFIG, PROJECT_DATA, getProjectById } from './config.js';
-import { HeaderComponent, SidebarComponent, TimelineComponent, VUMeterComponent } from './components.js';
+import { HeaderComponent, SidebarComponent, TimelineComponent, VUMeterComponent, VincesNotesComponent, AssetPreviewComponent } from './components.js';
 import { assert, createConsoleOverride, findTrackById, findClipIndexById, formatMessage, parseCallStack } from './utils.js';
 
 // ===== BROWSER LOGGING SYSTEM =====
@@ -266,6 +266,7 @@ class AssemblyApp {
         this.isLooping = false;
         this.currentTime = 0;
         this.playbackInterval = null;
+        this.recordSongOverlay = null;
 
         // Initialize logging system first
         this.logger = new BrowserLogger();
@@ -278,7 +279,7 @@ class AssemblyApp {
         this.validateConfiguration();
         this.initializeComponents();
         this.setupEventListeners();
-        this.loadProject('band');
+        this.loadProject('main');
         console.log('Assembly Audio Editor initialized successfully');
     }
 
@@ -286,7 +287,7 @@ class AssemblyApp {
         assert(PROJECT_CONFIG, 'PROJECT_CONFIG is required');
         assert(PROJECT_DATA, 'PROJECT_DATA is required');
 
-        const requiredElements = ['header', 'sidebar', 'timeline', 'vu-meter'];
+        const requiredElements = ['header', 'sidebar', 'timeline', 'vu-meter', 'vinces-notes', 'asset-preview'];
         requiredElements.forEach(id => {
             const element = document.getElementById(id);
             assert(element, `Required element with id '${id}' not found`);
@@ -314,7 +315,17 @@ class AssemblyApp {
         assert(vuMeterElement, 'VU meter element not found');
         this.vuMeterComponent = new VUMeterComponent(vuMeterElement);
 
-        // Make timeline component globally accessible for inline event handlers
+        // Initialize Vince's Notes
+        const vincesNotesElement = document.getElementById('vinces-notes');
+        assert(vincesNotesElement, 'Vinces Notes element not found');
+        this.vincesNotesComponent = new VincesNotesComponent(vincesNotesElement);
+
+        // Initialize Asset Preview
+        const assetPreviewElement = document.getElementById('asset-preview');
+        assert(assetPreviewElement, 'Asset Preview element not found');
+        this.assetPreviewComponent = new AssetPreviewComponent(assetPreviewElement);
+
+        // Make app globally accessible for inline event handlers
         window.assemblyApp = this;
     }
 
@@ -383,6 +394,11 @@ class AssemblyApp {
         assert(trackType, 'Track type is required');
         assert(trackName, 'Track name is required');
         assert(projectId, 'Project ID is required');
+
+        // Main project: strict type matching only
+        if (projectId === 'main') {
+            return clipType === trackType;
+        }
 
         // Sentence project: everything can go everywhere
         if (projectId === 'sentence') {
@@ -752,9 +768,9 @@ class AssemblyApp {
         const track = findTrackById(this.currentProject.tracks, trackId);
 
         if (track) {
-            track.clips.push(newClip);
-            // Don't remove from sidebar - allow multiple copies
-            console.log('Added clip to track:', { trackId, clipId: newClip.id, startTime });
+            // One clip per track: replace existing clip
+            track.clips = [newClip];
+            console.log('Replaced clip on track:', { trackId, clipId: newClip.id, startTime });
             this.updateComponents();
             // Refresh sidebar to show updated usage
             if (this.sidebarComponent) {
@@ -786,7 +802,9 @@ class AssemblyApp {
 
         const clip = sourceTrack.clips.splice(clipIndex, 1)[0];
         clip.startTime = newStartTime;
-        targetTrack.clips.push(clip);
+
+        // One clip per track: replace existing clip
+        targetTrack.clips = [clip];
 
         console.log('Moved clip:', {
             fromTrack: dragData.trackId,
@@ -846,6 +864,21 @@ class AssemblyApp {
         // Update sidebar
         if (this.sidebarComponent) {
             this.sidebarComponent.setProject(this.currentProject);
+        }
+
+        // Update header (for record button state)
+        if (this.headerComponent) {
+            this.headerComponent.setProject(this.currentProject);
+        }
+
+        // Update Vince's Notes
+        if (this.vincesNotesComponent) {
+            this.vincesNotesComponent.setProject(this.currentProject);
+        }
+
+        // Update Asset Preview
+        if (this.assetPreviewComponent) {
+            this.assetPreviewComponent.setProject(this.currentProject);
         }
     }
 
@@ -1043,9 +1076,9 @@ class AssemblyApp {
         this.playbackInterval = setInterval(() => {
             this.currentTime += 0.1;
 
-            // Use a reasonable default duration (16 beats = 64 seconds at 120 BPM)
-            const defaultDuration = 64;
-            if (this.currentTime >= defaultDuration) {
+            // Playback duration is 2 bars = 8 beats (in 4/4 time)
+            const playbackDuration = 8;
+            if (this.currentTime >= playbackDuration) {
                 if (this.isLooping) {
                     this.currentTime = 0;
                 } else {
@@ -1058,6 +1091,77 @@ class AssemblyApp {
             this.sidebarComponent.setCurrentTime(this.currentTime);
             this.updateVUMeter();
         }, 100);
+    }
+
+    showRecordSongOverlay() {
+        if (this.recordSongOverlay) return;
+
+        const lyrics = this.collectLyricsFromTimeline();
+        const lyricsText = lyrics.length > 0 ? lyrics.map(l => l.text).join(' • ') : 'Instrumental';
+
+        const overlay = document.createElement('div');
+        overlay.className = 'record-song-overlay';
+        overlay.innerHTML = `
+            <button class="record-song-overlay__close" data-action="close-overlay">✕</button>
+            <div class="record-song-overlay__visualization">
+                🎵 Visualization Placeholder
+            </div>
+            <div class="record-song-overlay__lyrics">
+                <div class="record-song-overlay__lyrics-text">${lyricsText}</div>
+            </div>
+        `;
+
+        overlay.addEventListener('click', (e) => {
+            const closeBtn = e.target.closest('[data-action="close-overlay"]');
+            if (closeBtn) {
+                this.closeRecordSongOverlay();
+            }
+        });
+
+        document.addEventListener('keydown', this.handleOverlayEscape);
+
+        document.body.appendChild(overlay);
+        this.recordSongOverlay = overlay;
+
+        console.log('Record Song overlay opened');
+    }
+
+    handleOverlayEscape = (e) => {
+        if (e.key === 'Escape') {
+            this.closeRecordSongOverlay();
+        }
+    }
+
+    closeRecordSongOverlay() {
+        if (!this.recordSongOverlay) return;
+
+        document.removeEventListener('keydown', this.handleOverlayEscape);
+
+        if (this.recordSongOverlay.parentNode) {
+            this.recordSongOverlay.parentNode.removeChild(this.recordSongOverlay);
+        }
+
+        this.recordSongOverlay = null;
+        console.log('Record Song overlay closed');
+    }
+
+    collectLyricsFromTimeline() {
+        if (!this.currentProject) return [];
+
+        const lyrics = [];
+        this.currentProject.tracks.forEach(track => {
+            track.clips.forEach(clip => {
+                if (clip.type === 'lyrics' && clip.text) {
+                    lyrics.push({
+                        text: clip.text,
+                        startTime: clip.startTime
+                    });
+                }
+            });
+        });
+
+        lyrics.sort((a, b) => a.startTime - b.startTime);
+        return lyrics;
     }
 }
 

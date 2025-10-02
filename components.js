@@ -3,7 +3,7 @@
  * Modular component system for building the audio editor interface
  */
 
-import { PROJECT_CONFIG, PROJECT_DATA, getCategoryByType, calculateTimelineLength, VINCE_RECORDING_VARIANTS } from './config.js';
+import { PROJECT_CONFIG, PROJECT_DATA, getCategoryByType, calculateTimelineLength, VINCE_RECORDING_VARIANTS, VINCES_NOTES_TEXTS } from './config.js';
 import { assert, formatDuration, formatTimeDisplay, createCustomEvent, findTrackById, findClipIndexById, getClipEndTime } from './utils.js';
 
 // ===== COMPONENT BASE CLASS =====
@@ -201,52 +201,92 @@ class RecordingPopupComponent extends Component {
 // ===== HEADER COMPONENT =====
 class HeaderComponent extends Component {
     init() {
+        this.currentProject = null;
         this.render();
         this.setupEventListeners();
     }
 
     render() {
-        const { menu, windowControls } = PROJECT_CONFIG;
+        const { menu } = PROJECT_CONFIG;
+        const allTracksFilled = this.checkAllTracksFilled();
+        const recordButtonDisabled = !allTracksFilled;
+        const recordButtonClass = recordButtonDisabled ? 'header__record-button header__record-button--disabled' : 'header__record-button';
+        const recordButtonTitle = recordButtonDisabled ? 'Fill all 4 tracks to record' : 'Record Song';
 
         this.element.innerHTML = `
             <span class="header__logo">🎛️</span>
             <span class="header__title">${PROJECT_CONFIG.app.name}</span>
+                        <span class="header__file-title">DRIVING.ASS</span>
             <nav class="header__nav">
                 ${menu.items.map(item => this.renderMenuItem(item)).join('')}
             </nav>
-            <div class="header__window-controls">
-                ${windowControls.map(control => this.renderWindowControl(control)).join('')}
+            <div class="header__controls">
+                <div class="header__transport-controls" id="header-transport-controls"></div>
+                <div class="header__time-display" id="header-time-display">00:00:00</div>
             </div>
-        `;
-    }
-
-    renderMenuItem(item) {
-        const disabledClass = item.disabled ? 'header__nav-button--disabled' : '';
-        const activeClass = item.hasDropdown || item.id === 'createSong' ? 'header__nav-button--active' : '';
-
-        return `
-            <button class="header__nav-button ${disabledClass} ${activeClass}" 
-                    data-menu-item="${item.id}"
-                    ${item.disabled ? 'disabled' : ''}>
-                ${item.label} ${item.hasDropdown ? '<span class="ml-1">▼</span>' : ''}
+            <button class="${recordButtonClass}" 
+                    data-action="record-song" 
+                    title="${recordButtonTitle}"
+                    ${recordButtonDisabled ? 'disabled' : ''}>
+                <span class="header__record-icon">⏺</span>
+                <span>Record Song</span>
             </button>
         `;
     }
 
-    renderWindowControl(control) {
-        const className = control.className ? `header__window-button--${control.className}` : '';
+    checkAllTracksFilled() {
+        if (!this.currentProject) return false;
+
+        const tracks = this.currentProject.tracks || [];
+        if (tracks.length < 4) return false;
+
+        // Check that all 4 tracks have at least one clip
+        return tracks.every(track => track.clips && track.clips.length > 0);
+    }
+
+    setProject(project) {
+        this.currentProject = project;
+        this.updateRecordButtonState();
+    }
+
+    updateRecordButtonState() {
+        const allTracksFilled = this.checkAllTracksFilled();
+        const recordButton = this.element.querySelector('[data-action="record-song"]');
+
+        if (recordButton) {
+            if (allTracksFilled) {
+                recordButton.disabled = false;
+                recordButton.classList.remove('header__record-button--disabled');
+                recordButton.title = 'Record Song';
+            } else {
+                recordButton.disabled = true;
+                recordButton.classList.add('header__record-button--disabled');
+                recordButton.title = 'Fill all 4 tracks to record';
+            }
+        }
+    }
+
+    renderMenuItem(item) {
+        const disabledClass = item.disabled ? 'header__nav-button--disabled' : '';
+
         return `
-            <button class="header__window-button ${className}" 
-                    title="${control.title}" 
-                    data-window-control="${control.id}">
-                ${control.icon}
+            <button class="header__nav-button ${disabledClass}" 
+                    data-menu-item="${item.id}"
+                    ${item.disabled ? 'disabled' : ''}>
+                ${item.label}
             </button>
         `;
     }
 
     setupEventListeners() {
-        // Menu item clicks
+        // Menu item clicks and Record Song button
         this.element.addEventListener('click', (e) => {
+            const recordButton = e.target.closest('[data-action="record-song"]');
+            if (recordButton) {
+                this.handleRecordSongClick();
+                return;
+            }
+
             const menuItem = e.target.closest('[data-menu-item]');
             if (menuItem) {
                 const itemId = menuItem.dataset.menuItem;
@@ -261,83 +301,29 @@ class HeaderComponent extends Component {
         });
     }
 
-    handleMenuItemClick(itemId) {
-        if (itemId === 'load') {
-            this.showProjectDropdown();
-        } else if (itemId === 'createSong') {
-            this.selectProject('song');
+    handleRecordSongClick() {
+        if (!this.checkAllTracksFilled()) {
+            console.log('Cannot record - not all tracks are filled');
+            return;
         }
-        // Other menu items are disabled for now
+
+        console.log('Record Song button clicked');
+        if (window.assemblyApp) {
+            window.assemblyApp.showRecordSongOverlay();
+        }
+    }
+
+    handleMenuItemClick(itemId) {
+        console.log(`Menu item clicked: ${itemId}`);
+        // All menu items are disabled for now
     }
 
     handleWindowControlClick(controlId) {
         console.log(`Window control clicked: ${controlId}`);
-    }
-
-    showProjectDropdown() {
-        // Remove any existing dropdown first
-        const existingDropdown = document.querySelector('.project-dropdown');
-        if (existingDropdown && existingDropdown.parentNode) {
-            existingDropdown.parentNode.removeChild(existingDropdown);
-        }
-
-        // Create dropdown with project options (excluding 'song')
-        const dropdown = document.createElement('div');
-        dropdown.className = 'project-dropdown';
-        dropdown.innerHTML = `
-            <div class="project-dropdown__content">
-                ${Object.values(PROJECT_DATA)
-                .filter(project => project.id !== 'song')
-                .map(project => `
-                        <div class="project-dropdown__item" data-project-id="${project.id}">
-                            <div class="project-dropdown__name">${project.name}</div>
-                            <div class="project-dropdown__description">${project.description}</div>
-                        </div>
-                    `).join('')}
-            </div>
-        `;
-
-        // Position dropdown
-        const loadButton = this.element.querySelector('[data-menu-item="load"]');
-        const rect = loadButton.getBoundingClientRect();
-        dropdown.style.position = 'absolute';
-        dropdown.style.top = `${rect.bottom + 5}px`;
-        dropdown.style.left = `${rect.left}px`;
-        dropdown.style.zIndex = '1000';
-
-        // Add to DOM
-        document.body.appendChild(dropdown);
-
-        // Handle project selection
-        dropdown.addEventListener('click', (e) => {
-            const projectItem = e.target.closest('[data-project-id]');
-            if (projectItem) {
-                const projectId = projectItem.dataset.projectId;
-                this.selectProject(projectId);
-                this.removeDropdown(dropdown);
-            }
+        const event = new CustomEvent('windowControlClick', {
+            detail: { controlId },
+            bubbles: true
         });
-
-        // Close dropdown when clicking outside
-        const closeDropdown = (e) => {
-            if (!dropdown.contains(e.target) && !loadButton.contains(e.target)) {
-                this.removeDropdown(dropdown);
-                document.removeEventListener('click', closeDropdown);
-            }
-        };
-        document.addEventListener('click', closeDropdown);
-    }
-
-    removeDropdown(dropdown) {
-        // Safe removal with proper checks
-        if (dropdown && dropdown.parentNode) {
-            dropdown.parentNode.removeChild(dropdown);
-        }
-    }
-
-    selectProject(projectId) {
-        // Dispatch custom event for project selection
-        const event = createCustomEvent('projectSelected', { projectId });
         this.element.dispatchEvent(event);
     }
 }
@@ -359,33 +345,26 @@ class SidebarComponent extends Component {
 
     render() {
         this.element.innerHTML = `
-            <div class="file-info">
-                <div class="file-info__row">
-                    <span class="file-info__label">${PROJECT_CONFIG.content.fileInfo.fileLabel}</span>
-                    <span class="file-info__value">${this.getFileName()}</span>
-                </div>
-                <div class="file-info__row">
-                    <span class="file-info__label">${PROJECT_CONFIG.content.fileInfo.bpmLabel}</span>
-                    <span class="file-info__value">${this.getBPM()}</span>
-                </div>
-                <div class="file-info__row">
-                    <span class="file-info__label">Time Sig:</span>
-                    <span class="file-info__value">${this.getTimeSignature()}</span>
-                </div>
-            </div>
-            <div class="time-display">
-                ${this.formatTimeDisplay()}
-            </div>
-            <div class="transport-controls">
-                ${this.renderTransportControls()}
-            </div>
-            <div class="master-volume">
-                ${this.renderMasterVolume()}
-            </div>
             <div class="clip-repository">
                 ${this.renderClipRepository()}
             </div>
         `;
+
+        // Render transport controls and master volume into header
+        this.renderHeaderControls();
+    }
+
+    renderHeaderControls() {
+        const timeDisplay = document.getElementById('header-time-display');
+        const transportControls = document.getElementById('header-transport-controls');
+
+        if (timeDisplay) {
+            timeDisplay.textContent = this.formatTimeDisplay();
+        }
+
+        if (transportControls) {
+            transportControls.innerHTML = this.renderTransportControls();
+        }
     }
 
     renderTransportControls() {
@@ -410,10 +389,7 @@ class SidebarComponent extends Component {
     renderMasterVolume() {
         return `
             <div class="master-volume__container">
-                <div class="master-volume__label">
-                    <span class="master-volume__icon">🔊</span>
-                    <span class="master-volume__text">Master Volume</span>
-                </div>
+                <span class="master-volume__icon" title="Master Volume">🔊</span>
                 <div class="master-volume__slider-container">
                     <input type="range" 
                            class="master-volume__slider" 
@@ -433,40 +409,50 @@ class SidebarComponent extends Component {
             return `<div class="clip-repository__empty">${PROJECT_CONFIG.content.clipRepository.emptyMessage}</div>`;
         }
 
-        // Get used clip IDs from timeline
         const usedClipIds = this.getUsedClipIds();
 
-        // Group sidebar clips by category
-        const clipsByCategory = this.groupSidebarClipsByCategory();
+        const melodyClips = [];
+        const instrumentClips = [];
+        const lyricsClips = [];
+        const visualsClips = [];
 
-        const result = Object.entries(clipsByCategory).map(([categoryId, clips]) => {
-            const category = getCategoryByType(categoryId);
-            if (!category) return '';
+        this.currentProject.sidebarClips.forEach(clip => {
+            if (clip.type === 'melody') {
+                melodyClips.push(clip);
+            } else if (clip.type === 'instrument') {
+                instrumentClips.push(clip);
+            } else if (clip.type === 'lyrics') {
+                lyricsClips.push(clip);
+            } else if (clip.type === 'visuals') {
+                visualsClips.push(clip);
+            }
+        });
 
-            return `
-                <div class="clip-category">
-                    <div class="clip-category__header folder-label">
-                        <span class="folder-caret">&#9654;</span>
-                        <span class="folder-name">${category.name}</span>
-                    </div>
-                    <div class="clip-category__clips">
-                        ${clips.map(clip => {
-                const isUsed = usedClipIds.includes(clip.id);
-                const usedCount = this.getClipUsageCount(clip.id);
+        return `
+            ${this.renderClipSection('🎵 Melody', melodyClips, usedClipIds)}
+            ${this.renderClipSection('🎸 Instrument', instrumentClips, usedClipIds)}
+            ${this.renderClipSection('📝 Lyrics', lyricsClips, usedClipIds)}
+            ${this.renderClipSection('🖼️ Visuals', visualsClips, usedClipIds)}
+        `;
+    }
 
-                // Check if this is a recording clip
-                if (clip.needsRecording) {
-                    return this.renderRecordingClip(clip, isUsed, usedCount);
-                } else {
-                    return this.renderNormalClip(clip, isUsed, usedCount);
-                }
-            }).join('')}
-                    </div>
+    renderClipSection(title, clips, usedClipIds) {
+        if (clips.length === 0) return '';
+
+        return `
+            <div class="clip-category">
+                <div class="clip-category__header folder-label">
+                    <span class="folder-name">${title}</span>
                 </div>
-            `;
-        }).join('');
-
-        return result;
+                <div class="clip-category__clips">
+                    ${clips.map(clip => {
+            const isUsed = usedClipIds.includes(clip.id);
+            const usedCount = this.getClipUsageCount(clip.id);
+            return this.renderNormalClip(clip, isUsed, usedCount);
+        }).join('')}
+                </div>
+            </div>
+        `;
     }
 
     renderNormalClip(clip, isUsed, usedCount) {
@@ -476,9 +462,17 @@ class SidebarComponent extends Component {
                  data-clip-type="${clip.type}"
                  data-clip-duration="${clip.duration}"
                  draggable="true">
-                <div class="clip-item__name">
-                    ${clip.name}
-                    ${usedCount > 0 ? `<span class="clip-item__usage-count">(${usedCount})</span>` : ''}
+                <div class="clip-item__header">
+                    <div class="clip-item__name">
+                        ${clip.name}
+                        ${usedCount > 0 ? `<span class="clip-item__usage-count">(${usedCount})</span>` : ''}
+                    </div>
+                    <button class="clip-item__preview-btn" 
+                            data-clip-id="${clip.id}" 
+                            data-action="preview"
+                            title="Preview">
+                        👁️
+                    </button>
                 </div>
                 <div class="clip-item__beats">
                     ${this.renderBeatBars(clip.duration)}
@@ -553,10 +547,46 @@ class SidebarComponent extends Component {
         this.element.addEventListener('dragover', this.handleDragOver.bind(this));
         this.element.addEventListener('drop', this.handleDrop.bind(this));
         this.element.addEventListener('dragend', this.handleDragEnd.bind(this));
+
+        // Listen for transport controls in header (global listener)
+        document.addEventListener('click', this.handleHeaderControlsClick.bind(this));
+        document.addEventListener('input', this.handleHeaderControlsInput.bind(this));
+    }
+
+    handleHeaderControlsClick(e) {
+        // Handle transport button clicks in header
+        const transportButton = e.target.closest('[data-transport]');
+        if (transportButton) {
+            const action = transportButton.dataset.transport;
+            console.log('Transport button clicked:', action);
+            this.handleTransportAction(action);
+            return;
+        }
+
+        // Handle loop toggle clicks in header
+        const loopToggle = e.target.closest('.loop-toggle');
+        if (loopToggle) {
+            console.log('Loop toggle clicked');
+            this.handleTransportAction('toggleLoop');
+        }
+    }
+
+    handleHeaderControlsInput(e) {
+        // No volume slider in header anymore
     }
 
     handleClick(e) {
         console.log('Sidebar click event:', e.target);
+
+        // Handle preview button clicks
+        const previewButton = e.target.closest('[data-action="preview"]');
+        if (previewButton) {
+            e.stopPropagation();
+            const clipId = previewButton.dataset.clipId;
+            console.log('Preview button clicked for clip:', clipId);
+            this.selectAssetForPreview(clipId);
+            return;
+        }
 
         // Handle recording button clicks
         const recordButton = e.target.closest('.clip-item__record-btn');
@@ -566,19 +596,14 @@ class SidebarComponent extends Component {
             this.handleRecordingButtonClick(clipId);
             return;
         }
+    }
 
-        const transportButton = e.target.closest('[data-transport]');
-        if (transportButton) {
-            const action = transportButton.dataset.transport;
-            console.log('Transport button clicked:', action);
-            this.handleTransportAction(action);
+    selectAssetForPreview(clipId) {
+        if (window.assemblyApp && window.assemblyApp.assetPreviewComponent) {
+            window.assemblyApp.assetPreviewComponent.selectAsset(clipId);
         }
-
-        // Handle loop toggle clicks
-        const loopToggle = e.target.closest('.loop-toggle');
-        if (loopToggle) {
-            console.log('Loop toggle clicked');
-            this.handleTransportAction('toggleLoop');
+        if (window.assemblyApp && window.assemblyApp.vincesNotesComponent) {
+            window.assemblyApp.vincesNotesComponent.showNotesForAsset(clipId);
         }
     }
 
@@ -588,14 +613,7 @@ class SidebarComponent extends Component {
     }
 
     handleInput(e) {
-        if (e.target.classList.contains('master-volume__slider')) {
-            const value = e.target.value;
-            const valueDisplay = e.target.parentElement.querySelector('.master-volume__value');
-            if (valueDisplay) {
-                valueDisplay.textContent = `${value}%`;
-            }
-            console.log('Master volume changed to:', value);
-        }
+        // Input events in sidebar element only (header handled separately)
     }
 
     handleDragStart(e) {
@@ -735,11 +753,6 @@ class SidebarComponent extends Component {
         }
 
         this.render();
-
-        // Update clip playing states after rendering
-        if (this.currentTime !== undefined) {
-            this.updateClipPlayingStates(this.currentTime);
-        }
     }
 
     refreshClipRepository() {
@@ -768,8 +781,8 @@ class SidebarComponent extends Component {
     setPlaying(playing) {
         this.isPlaying = playing;
 
-        // Update the play button visual state
-        const playButton = this.element.querySelector('[data-transport="play"]');
+        // Update the play button visual state in header
+        const playButton = document.querySelector('[data-transport="play"]');
         if (playButton) {
             if (playing) {
                 playButton.classList.add('transport-button--active');
@@ -782,8 +795,8 @@ class SidebarComponent extends Component {
     setLoopState(isLooping) {
         this.isLooping = isLooping;
 
-        // Update the loop toggle visual state
-        const loopToggle = this.element.querySelector('.loop-toggle');
+        // Update the loop toggle visual state in header
+        const loopToggle = document.querySelector('.loop-toggle');
         if (loopToggle) {
             if (isLooping) {
                 loopToggle.classList.add('loop-toggle--active');
@@ -799,7 +812,7 @@ class SidebarComponent extends Component {
     }
 
     updateTimeDisplay() {
-        const timeDisplay = this.element.querySelector('.time-display');
+        const timeDisplay = document.getElementById('header-time-display');
         if (timeDisplay) {
             timeDisplay.textContent = this.formatTimeDisplay();
         }
@@ -1023,21 +1036,14 @@ class TimelineComponent extends Component {
     }
 
     renderTrackControls(trackId, isDisabled = false) {
-        const isAmbientProject = this.currentProject?.id === 'ambient';
         const disabledClass = isDisabled ? 'track__button--disabled' : '';
         const disabledAttr = isDisabled ? 'disabled' : '';
-        const checkboxDisabled = !isAmbientProject ? 'disabled' : '';
-        const checkboxChecked = isDisabled ? '' : 'checked';
-        const checkboxAction = isDisabled ? 'enable' : 'disable';
-        const checkboxTitle = isDisabled ? 'Enable Track' : 'Disable Track';
-        const checkboxClass = isDisabled ? 'track__checkbox--enable' : 'track__checkbox--disable';
 
         return `
             <div class="track__controls">
                 <button class="track__button ${disabledClass}" title="Mute" data-track-action="mute" data-track-id="${trackId}" ${disabledAttr}>
                     🔇
                 </button>
-                <input type="checkbox" class="track__checkbox ${checkboxClass}" title="${checkboxTitle}" data-track-action="${checkboxAction}" data-track-id="${trackId}" ${checkboxChecked} ${checkboxDisabled}>
             </div>
         `;
     }
@@ -1078,10 +1084,38 @@ class TimelineComponent extends Component {
     }
 
     renderTrackHeader(track) {
+        let effects = [];
+
+        if (track.type === 'instrument') {
+            effects = [{ type: 'reverb', value: 50, label: 'Reverb' }];
+        } else if (track.type === 'lyrics') {
+            effects = [{ type: 'vocoder', value: 50, label: 'Vocoder' }];
+        }
+
         return `
             <div class="track-header" data-track-id="${track.id}">
                 <div class="track-header__name" data-track-id="${track.id}">${track.name}</div>
                 ${this.renderTrackControls(track.id)}
+                ${effects.length > 0 ? this.renderEffectKnobs(track.id, effects) : ''}
+            </div>
+        `;
+    }
+
+    renderEffectKnobs(trackId, effects) {
+        return `
+            <div class="track-effects">
+                ${effects.map(effect => `
+                    <div class="effect-knob" data-track-id="${trackId}" data-effect-type="${effect.type}">
+                        <div class="effect-knob__control" data-value="${effect.value}">
+                            <svg class="effect-knob__svg" width="36" height="36" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="var(--color-bg-tertiary)" stroke="var(--color-border)" stroke-width="1.5"/>
+                                <line x1="18" y1="18" x2="18" y2="6" stroke="var(--color-accent-primary)" stroke-width="2" stroke-linecap="round" 
+                                      transform="rotate(${(effect.value / 100) * 270 - 135} 18 18)"/>
+                            </svg>
+                        </div>
+                        <div class="effect-knob__label">${effect.label}</div>
+                    </div>
+                `).join('')}
             </div>
         `;
     }
@@ -1163,15 +1197,8 @@ class TimelineComponent extends Component {
             }
         });
 
-        // Checkbox changes
-        this.element.addEventListener('change', (e) => {
-            const checkbox = e.target.closest('.track__checkbox');
-            if (checkbox) {
-                const action = checkbox.dataset.trackAction;
-                const trackId = checkbox.dataset.trackId;
-                this.handleTrackAction(action, trackId);
-            }
-        });
+        // Setup knob interactions
+        this.setupKnobInteractions();
 
         // Track name editing
         this.element.addEventListener('blur', (e) => {
@@ -1228,6 +1255,48 @@ class TimelineComponent extends Component {
             resizingState = null;
             document.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener('mouseup', handleMouseUp);
+        };
+    }
+
+    setupKnobInteractions() {
+        let knobState = null;
+
+        this.element.addEventListener('mousedown', (e) => {
+            const knobControl = e.target.closest('.effect-knob__control');
+            if (!knobControl) return;
+
+            e.preventDefault();
+            const knob = knobControl.closest('.effect-knob');
+            const startY = e.clientY;
+            const startValue = parseInt(knobControl.dataset.value) || 0;
+
+            knobState = { knob, knobControl, startY, startValue };
+
+            document.addEventListener('mousemove', handleKnobMove);
+            document.addEventListener('mouseup', handleKnobUp);
+        });
+
+        const handleKnobMove = (e) => {
+            if (!knobState) return;
+
+            const deltaY = knobState.startY - e.clientY;
+            const sensitivity = 0.5;
+            let newValue = knobState.startValue + (deltaY * sensitivity);
+            newValue = Math.max(0, Math.min(100, newValue));
+
+            knobState.knobControl.dataset.value = Math.round(newValue);
+            const rotation = (newValue / 100) * 270 - 135;
+
+            const line = knobState.knobControl.querySelector('line');
+            if (line) {
+                line.setAttribute('transform', `rotate(${rotation} 18 18)`);
+            }
+        };
+
+        const handleKnobUp = () => {
+            knobState = null;
+            document.removeEventListener('mousemove', handleKnobMove);
+            document.removeEventListener('mouseup', handleKnobUp);
         };
     }
 
@@ -1654,31 +1723,7 @@ class TimelineComponent extends Component {
     }
 
     autoScrollToPlayhead(time) {
-        // Skip auto-scroll if we're in a seeking operation
-        if (this.isSeeking) return;
-
-        const timelineContent = this.element.querySelector('.timeline-content-scrollable');
-        if (!timelineContent || !this.timelineLength) return;
-
-        const playheadY = time * this.getPixelsPerBeat();
-        const containerHeight = timelineContent.clientHeight;
-        const scrollTop = timelineContent.scrollTop;
-        const scrollBottom = scrollTop + containerHeight;
-
-        // Calculate the 50% threshold point in the visible area
-        const fiftyPercentPoint = scrollTop + (containerHeight * 0.5);
-
-        // Check if playhead has reached or passed the 50% point
-        if (playheadY >= fiftyPercentPoint) {
-            // Calculate target scroll position to keep playhead at 50% of visible area
-            const targetScrollTop = playheadY - (containerHeight * 0.5);
-
-            // Instant smooth scroll to playhead position
-            timelineContent.scrollTo({
-                top: Math.max(0, targetScrollTop),
-                behavior: 'auto'
-            });
-        }
+        // Auto-scrolling disabled - tracks stay fixed
     }
 
     setPlaying(playing) {
@@ -1764,15 +1809,10 @@ class TimelineComponent extends Component {
             return { startTime: 0, endTime: 0, isValid: false };
         }
 
-        const rect = clipsArea.getBoundingClientRect();
-        const y = e.clientY - rect.top;
         const trackId = trackElement.dataset.trackId;
 
-        const beatsPerPixel = 1 / this.getPixelsPerBeat();
-        let startTime = y * beatsPerPixel;
-
-        startTime = Math.round(startTime * 4) / 4;
-        startTime = Math.max(0, startTime);
+        // Always start clips at position 0 (top of track)
+        const startTime = 0;
 
         const dragData = window.globalDragData;
         if (!dragData) return { startTime: 0, endTime: 0, isValid: false };
@@ -1901,6 +1941,198 @@ class VUMeterComponent extends Component {
     }
 }
 
+// ===== VINCE'S NOTES COMPONENT =====
+class VincesNotesComponent extends Component {
+    init() {
+        this.currentText = null;
+        this.typedText = '';
+        this.typingInterval = null;
+        this.currentProject = null;
+        this.render();
+    }
+
+    render() {
+        this.element.innerHTML = `
+            <div class="vinces-notes__header">
+                <span>📝</span>
+                <span>Vince's Notes</span>
+            </div>
+            <div class="vinces-notes__content" id="vinces-notes-content">
+                ${this.typedText || 'Click the eye icon on any asset to see Vince\'s notes...'}
+            </div>
+        `;
+    }
+
+    startTyping(text) {
+        assert(text, 'Text is required');
+
+        this.stopTyping();
+        this.currentText = text;
+        this.typedText = '';
+
+        const words = this.currentText.split(' ');
+        const totalWords = words.length;
+        const typingDuration = 5000; // 5 seconds (doubled speed)
+        const intervalTime = typingDuration / totalWords;
+
+        let wordIndex = 0;
+
+        this.typingInterval = setInterval(() => {
+            if (wordIndex < totalWords) {
+                this.typedText += (wordIndex === 0 ? '' : ' ') + words[wordIndex];
+                wordIndex++;
+                this.updateContent();
+            } else {
+                this.stopTyping();
+            }
+        }, intervalTime);
+    }
+
+    updateContent() {
+        const contentElement = this.element.querySelector('#vinces-notes-content');
+        if (contentElement) {
+            contentElement.textContent = this.typedText;
+        }
+    }
+
+    stopTyping() {
+        if (this.typingInterval) {
+            clearInterval(this.typingInterval);
+            this.typingInterval = null;
+        }
+    }
+
+    showNotesForAsset(assetId) {
+        if (!this.currentProject) return;
+
+        const asset = this.currentProject.sidebarClips?.find(clip => clip.id === assetId);
+        if (asset && asset.vincesNotes) {
+            this.startTyping(asset.vincesNotes);
+        }
+    }
+
+    setProject(project) {
+        this.currentProject = project;
+        this.typedText = 'Click the eye icon on any asset to see Vince\'s notes...';
+        this.render();
+    }
+
+    destroy() {
+        this.stopTyping();
+        super.destroy();
+    }
+}
+
+// ===== ASSET PREVIEW COMPONENT =====
+class AssetPreviewComponent extends Component {
+    init() {
+        this.selectedAsset = null;
+        this.currentProject = null;
+        this.render();
+    }
+
+    render() {
+        this.element.innerHTML = `
+            <div class="asset-preview__header">
+                <span>👁️</span>
+                <span>Asset Preview</span>
+            </div>
+            <div class="asset-preview__content">
+                ${this.renderContent()}
+            </div>
+        `;
+    }
+
+    renderContent() {
+        if (!this.selectedAsset) {
+            return '<div class="asset-preview__empty">Select an asset to preview it here</div>';
+        }
+
+        if (this.selectedAsset.type === 'lyrics') {
+            return this.renderLyrics();
+        } else if (this.selectedAsset.type === 'visuals') {
+            return this.renderVisual();
+        } else {
+            // melody, instrument, and other audio types
+            return this.renderAudio();
+        }
+    }
+
+    renderLyrics() {
+        const text = this.selectedAsset.text || 'No lyrics available';
+        return `
+            <div class="asset-preview__lyrics">
+                <div class="asset-preview__lyrics-text">${text}</div>
+            </div>
+        `;
+    }
+
+    renderVisual() {
+        const color = this.selectedAsset.placeholder || '#6b7280';
+        return `
+            <div class="asset-preview__visual" style="background: linear-gradient(135deg, ${color} 0%, ${color}dd 100%);">
+                <div class="asset-preview__visual-placeholder">🖼️</div>
+            </div>
+        `;
+    }
+
+    renderAudio() {
+        const barCount = 32;
+        const bars = [];
+        for (let i = 0; i < barCount; i++) {
+            const height = Math.random() * 70 + 30; // 30-100%
+            bars.push(`<div class="asset-preview__waveform-bar" style="height: ${height}%"></div>`);
+        }
+
+        return `
+            <div class="asset-preview__audio">
+                <div class="asset-preview__waveform">
+                    ${bars.join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    selectAsset(assetId) {
+        assert(assetId, 'Asset ID is required');
+
+        if (!this.currentProject) {
+            console.warn('No project loaded yet');
+            return;
+        }
+
+        const asset = this.currentProject.sidebarClips?.find(clip => clip.id === assetId);
+
+        if (!asset) {
+            const allTracks = this.currentProject.tracks || [];
+            for (const track of allTracks) {
+                const clipInTrack = track.clips?.find(clip => clip.id === assetId);
+                if (clipInTrack) {
+                    this.selectedAsset = clipInTrack;
+                    this.render();
+                    return;
+                }
+            }
+
+            console.warn(`Asset not found: ${assetId}`);
+            return;
+        }
+
+        this.selectedAsset = asset;
+        this.render();
+    }
+
+    setProject(project) {
+        this.currentProject = project;
+        this.selectedAsset = null;
+        this.render();
+    }
+
+    destroy() {
+        super.destroy();
+    }
+}
+
 // ===== EXPORTS =====
 export {
     Component,
@@ -1908,5 +2140,7 @@ export {
     SidebarComponent,
     TimelineComponent,
     VUMeterComponent,
-    RecordingPopupComponent
+    RecordingPopupComponent,
+    VincesNotesComponent,
+    AssetPreviewComponent
 }; 

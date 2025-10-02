@@ -22,8 +22,11 @@ export const PROJECT_CONFIG = {
         trackHeight: 56,
         trackControlsWidth: 240,
         gridBeatWidth: 40,
-        maxTracksVisible: 6,
-        maxTracks: 7
+        maxTracksVisible: 5,
+        maxTracks: 5,
+        vincesNotesHeight: 200,
+        assetPreviewHeight: 300,
+        rightWindowsWidth: 320
     },
 
     // Visual theme
@@ -75,24 +78,8 @@ export const PROJECT_CONFIG = {
 
     // Menu configuration
     menu: {
-        items: [
-            { id: 'load', label: 'Load Projects', hasDropdown: true },
-            { id: 'createSong', label: 'Live Recording', disabled: false },
-            { id: 'save', label: 'Save', disabled: true },
-            { id: 'analyze', label: 'Analyze', disabled: true },
-            { id: 'details', label: 'Details', disabled: true },
-            { id: 'settings', label: 'Settings', disabled: true },
-            { id: 'help', label: 'Help', disabled: true },
-            { id: 'license', label: 'License', disabled: true }
-        ]
+        items: []
     },
-
-    // Window controls
-    windowControls: [
-        { id: 'minimize', icon: '🗕', title: 'Minimize', action: 'minimize' },
-        { id: 'maximize', icon: '🗖', title: 'Maximize', action: 'maximize' },
-        { id: 'close', icon: '🗙', title: 'Close', action: 'close', className: 'close' }
-    ],
 
     // UI Content and Labels
     content: {
@@ -161,32 +148,164 @@ export const PROJECT_CONFIG = {
 
 // ===== PROJECT DATA =====
 export const PROJECT_DATA = {
-    // Project A: Piece together a linear sentence
-    sentence: {
-        id: 'sentence',
-        name: 'Piece together a linear sentence',
-        bpm: 90,
+    // Single project with 4 specific slots
+    main: {
+        id: 'main',
+        name: 'Assembly Project',
+        bpm: 120,
         timeSignature: '4/4',
+        maxActiveTracks: 4,
         tracks: [
             {
-                id: 'sentence-track',
-                name: 'Sentence',
-                type: 'text',
-                clips: []
+                id: 'melody-track',
+                name: 'Melody',
+                type: 'melody',
+                clips: [],
+                position: 0
+            },
+            {
+                id: 'instrument-track',
+                name: 'Instrument',
+                type: 'instrument',
+                clips: [],
+                position: 1
+            },
+            {
+                id: 'lyrics-track',
+                name: 'Lyrics',
+                type: 'lyrics',
+                clips: [],
+                position: 2
+            },
+            {
+                id: 'visuals-track',
+                name: 'Visuals',
+                type: 'visuals',
+                clips: [],
+                position: 3
             }
         ],
         sidebarClips: [
-            { id: 'fragment-a', name: 'Fragment A', duration: 1, type: 'text' },
-            { id: 'fragment-b', name: 'Fragment B', duration: 2, type: 'text' },
-            { id: 'fragment-c', name: 'Fragment C', duration: 1.5, type: 'text' },
-            { id: 'fragment-d', name: 'Fragment D', duration: 3, type: 'text' },
-            { id: 'fragment-e', name: 'Fragment E', duration: 2.5, type: 'text' },
-            { id: 'fragment-f', name: 'Fragment F', duration: 1, type: 'text' },
-            { id: 'fragment-g', name: 'Fragment G', duration: 4, type: 'text' },
-            { id: 'fragment-h', name: 'Fragment H', duration: 2, type: 'text' },
-            { id: 'fragment-i', name: 'Fragment I', duration: 3.5, type: 'text' }
+            // Melody options (3)
+            {
+                id: 'melody-1',
+                name: 'Uplifting Melody',
+                duration: 8,
+                type: 'melody',
+                vincesNotes: "I wrote this one the morning after Dad called. Couldn't sleep, so I sat at the piano until sunrise. Each note climbs higher, like I'm trying to reach something just out of grasp. Maybe hope? I don't know. But it feels right."
+            },
+            {
+                id: 'melody-2',
+                name: 'Melancholic Theme',
+                duration: 9,
+                type: 'melody',
+                vincesNotes: "This melody haunts me. It showed up in a dream last week and I've been chasing it ever since. There's something unfinished about it, something that aches. Sometimes I wonder if all my best work comes from the parts of me I'm afraid to look at."
+            },
+            {
+                id: 'melody-3',
+                name: 'Rhythmic Hook',
+                duration: 7,
+                type: 'melody',
+                vincesNotes: "Finally! A hook that doesn't overthink itself. I've been so stuck in my own head lately, afraid nothing I make matters. But this one? It's simple, confident. The kind of thing people hum without realizing. Maybe I should trust the simple stuff more."
+            },
+
+            // Instrument options (3)
+            {
+                id: 'instrument-1',
+                name: 'Piano Accompaniment',
+                duration: 9,
+                type: 'instrument',
+                vincesNotes: "Piano is home for me. When everything else feels fake or forced, I come back to these keys. This arrangement reminds me of sitting in my grandmother's living room, how the sound would fill the whole house. I wish she could hear what I'm making now.",
+                effects: [
+                    { type: 'reverb', value: 50, label: 'Reverb' }
+                ]
+            },
+            {
+                id: 'instrument-2',
+                name: 'Electric Guitar',
+                duration: 7,
+                type: 'instrument',
+                vincesNotes: "I'm scared this is too aggressive. Too loud. But then I remember being seventeen and feeling invisible. This guitar screams in all the ways I never could. Sometimes the music has to be braver than you are. Sometimes it has to fight for you.",
+                effects: [
+                    { type: 'reverb', value: 30, label: 'Reverb' }
+                ]
+            },
+            {
+                id: 'instrument-3',
+                name: 'Synth Pad',
+                duration: 8,
+                type: 'instrument',
+                vincesNotes: "Recorded this at 3 AM when I couldn't turn my brain off. There's so much space in these sounds. It's like floating. Maya says I use ambient textures to avoid being direct, and maybe she's right. But there's honesty in the quiet too, isn't there?",
+                effects: [
+                    { type: 'reverb', value: 70, label: 'Reverb' }
+                ]
+            },
+
+            // Lyrics options (3)
+            {
+                id: 'lyrics-1',
+                name: 'Hope & Dreams',
+                duration: 8,
+                type: 'lyrics',
+                text: 'When the night is darkest, we find our light within. Every step forward is a victory.',
+                vincesNotes: "I'm embarrassed by how earnest these words are. Part of me wants to hide behind irony, make it clever instead of vulnerable. But I wrote this for myself on the bad days, and if someone else needs to hear it too... maybe that's enough. Maybe it's okay to hope out loud.",
+                effects: [
+                    { type: 'vocoder', value: 40, label: 'Vocoder' }
+                ]
+            },
+            {
+                id: 'lyrics-2',
+                name: 'Lost Love',
+                duration: 9,
+                type: 'lyrics',
+                text: 'Memory fades like photographs in sunlight. What we had lives on in silent echoes.',
+                vincesNotes: "It's been two years and I still think about her. Not every day anymore, but in the quiet moments. These words feel pretentious when I read them back, but they're the closest I can get to that specific kind of loss. The kind where the goodbye was gentle but still breaks you.",
+                effects: [
+                    { type: 'vocoder', value: 20, label: 'Vocoder' }
+                ]
+            },
+            {
+                id: 'lyrics-3',
+                name: 'Call to Action',
+                duration: 7,
+                type: 'lyrics',
+                text: 'Stand up, reach out, make some noise! This is our moment, this is our voice!',
+                vincesNotes: "This is the version of me I wish I could be all the time. Confident. Unafraid. I wrote this imagining a stadium full of people, all of us shouting together. Sometimes you have to write the energy you need into existence. Fake it till you make it, right?",
+                effects: [
+                    { type: 'vocoder', value: 60, label: 'Vocoder' }
+                ]
+            },
+
+            // Visuals options (3)
+            {
+                id: 'visual-1',
+                name: 'Sunrise Sequence',
+                duration: 8,
+                type: 'visuals',
+                visualType: 'video',
+                placeholder: '#ff6b35',
+                vincesNotes: "Shot this footage on a morning I almost gave up. I'd sent out fifty demos and heard nothing back. Then I saw this sunrise and something clicked. There's this Japanese concept, 'mono no aware' - the beauty of impermanence. That's what this is."
+            },
+            {
+                id: 'visual-2',
+                name: 'Urban Nights',
+                duration: 7,
+                type: 'visuals',
+                visualType: 'video',
+                placeholder: '#4a5568',
+                vincesNotes: "I feel most alive in cities at night. All these people, each carrying their own stories, their own struggles. The rain makes everything look like a painting. Sometimes I walk for hours just watching, trying to understand why beauty and loneliness feel so connected."
+            },
+            {
+                id: 'visual-3',
+                name: 'Concert Energy',
+                duration: 9,
+                type: 'visuals',
+                visualType: 'video',
+                placeholder: '#e53e3e',
+                vincesNotes: "This is the dream. This exact energy. Everyone moving as one, losing themselves in the music. I've only played for small crowds, maybe thirty people max. But I close my eyes and imagine this. The lights, the roar, the connection. One day. It has to be one day."
+            }
         ],
-        description: 'Player must arrange clips in correct order to form the sentence.'
+        description: 'Assemble your song by selecting one asset from each category.'
     },
 
     // Project B: Choose instrument options
@@ -195,6 +314,7 @@ export const PROJECT_DATA = {
         name: 'Choose instrument options',
         bpm: 110,
         timeSignature: '6/8',
+        maxActiveTracks: 4,
         tracks: [
             {
                 id: 'drums',
@@ -230,21 +350,28 @@ export const PROJECT_DATA = {
             // Drum clips
             { id: 'rock-beat', name: 'Rock Beat', duration: 1, type: 'drums' },
             { id: 'funk-groove', name: 'Funk Groove', duration: 8, type: 'drums' },
-            { id: 'jazz-shuffle', name: 'Jazz Shuffle', duration: 6, type: 'drums' },
 
             // Bass clips
             { id: 'walking-bass', name: 'Walking Bass', duration: 12, type: 'bass' },
             { id: 'synth-bass', name: 'Synth Bass', duration: 3, type: 'bass' },
-            { id: 'slap-bass', name: 'Slap Bass', duration: 5, type: 'bass' },
 
             // Guitar clips
             { id: 'clean-chords', name: 'Clean Chords', duration: 16, type: 'guitar' },
             { id: 'distorted-riff', name: 'Distorted Riff', duration: 2, type: 'guitar' },
-            { id: 'arpeggio', name: 'Arpeggio', duration: 7, type: 'guitar' },
 
             // Vocal clips
             { id: 'lead-take-1', name: 'Lead Take 1', duration: 10, type: 'vocals' },
-            { id: 'lead-take-2', name: 'Lead Take 2', duration: 4, type: 'vocals' }
+            { id: 'lead-take-2', name: 'Lead Take 2', duration: 4, type: 'vocals' },
+
+            // Lyrics
+            { id: 'verse-1', name: 'Verse 1', duration: 8, type: 'lyrics', text: 'We are the rhythm, we are the sound' },
+            { id: 'chorus-1', name: 'Chorus Hook', duration: 4, type: 'lyrics', text: 'Feel the beat inside your soul' },
+            { id: 'bridge-1', name: 'Bridge', duration: 6, type: 'lyrics', text: 'Break it down now, take it slow' },
+
+            // Visuals
+            { id: 'stage-lights', name: 'Stage Lights', duration: 12, type: 'visuals', visualType: 'video', placeholder: '#ef4444' },
+            { id: 'band-photo', name: 'Band Photo', duration: 8, type: 'visuals', visualType: 'image', placeholder: '#f59e0b' },
+            { id: 'concert-crowd', name: 'Concert Crowd', duration: 10, type: 'visuals', visualType: 'video', placeholder: '#10b981' }
         ],
         description: 'Player chooses one clip per track to build a band arrangement.'
     },
@@ -255,6 +382,7 @@ export const PROJECT_DATA = {
         name: 'Vince\'s ambient sandbox',
         bpm: 70,
         timeSignature: '7/8',
+        maxActiveTracks: 5,
         allowTrackManagement: true,
         tracks: [
             {
@@ -285,11 +413,19 @@ export const PROJECT_DATA = {
                 clips: [],
                 position: 3
             },
+            {
+                id: 'track-5',
+                name: 'Track 5',
+                type: 'custom',
+                clips: [],
+                position: 4
+            }
         ],
         sidebarClips: [
             // Ambient clips
             { id: 'ambient-pad', name: 'Ambient Pad', duration: 16, type: 'ambient' },
             { id: 'tape-loop', name: 'Tape Loop', duration: 12, type: 'ambient' },
+            { id: 'synth-texture', name: 'Synth Texture', duration: 18, type: 'synth' },
 
             // Guitar clips
             { id: 'guitar-phrase-1', name: 'Guitar Phrase 1', duration: 5, type: 'guitar' },
@@ -298,16 +434,17 @@ export const PROJECT_DATA = {
             // Field recording clips
             { id: 'birds', name: 'Birds', duration: 14, type: 'field' },
             { id: 'rain', name: 'Rain', duration: 20, type: 'field' },
-            { id: 'street-noise', name: 'Street Noise', duration: 3, type: 'field' },
 
-            // Bass clips
-            { id: 'walking-bass', name: 'Walking Bass', duration: 7, type: 'bass' },
-            { id: 'electric-bass', name: 'Electric Bass', duration: 11, type: 'bass' },
-            { id: 'synth-bass', name: 'Synth Bass', duration: 6, type: 'bass' },
+            // Lyrics
+            { id: 'spoken-word-1', name: 'Spoken Word 1', duration: 9, type: 'lyrics', text: 'Silence speaks louder than words ever could' },
+            { id: 'whisper-1', name: 'Whispered Poetry', duration: 7, type: 'lyrics', text: 'In the space between breaths, we find meaning' },
+            { id: 'ambient-vocals', name: 'Ambient Vocals', duration: 15, type: 'lyrics', text: 'Ooooh... ahhhhh... hmmmm...' },
 
-            // Extra clips
-            { id: 'synth-texture', name: 'Synth Texture', duration: 18, type: 'synth' },
-            { id: 'perc-loop', name: 'Perc Loop', duration: 1, type: 'percussion' }
+            // Visuals
+            { id: 'sunset-time', name: 'Sunset Timelapse', duration: 12, type: 'visuals', visualType: 'video', placeholder: '#fb923c' },
+            { id: 'abstract-waves', name: 'Abstract Waves', duration: 8, type: 'visuals', visualType: 'image', placeholder: '#3b82f6' },
+            { id: 'city-lights', name: 'City Lights', duration: 10, type: 'visuals', visualType: 'video', placeholder: '#fbbf24' },
+            { id: 'nature-scene', name: 'Nature Scene', duration: 14, type: 'visuals', visualType: 'image', placeholder: '#84cc16' }
         ],
         description: 'Player can freely add/remove tracks and clips, move and resize as desired.'
     },
@@ -318,6 +455,7 @@ export const PROJECT_DATA = {
         name: 'THE SONG',
         bpm: 120,
         timeSignature: '4/4',
+        maxActiveTracks: 5,
         tracks: [
             {
                 id: 'track-1',
@@ -355,30 +493,32 @@ export const PROJECT_DATA = {
                 position: 4
             },
             {
-                id: 'track-6',
+                id: 'track-5',
                 name: 'Viola 3',
                 type: 'custom',
                 clips: [],
-                position: 5
-            },
+                position: 4
+            }
         ],
         sidebarClips: [
-            // Unrecorded Vince clips - these need to be recorded first
+            // Vince clips
             { id: 'vince-recording-1', name: 'Vince Recording 1', duration: null, type: 'vince', needsRecording: true },
             { id: 'vince-recording-2', name: 'Vince Recording 2', duration: null, type: 'vince', needsRecording: true },
-            { id: 'vince-recording-3', name: 'Vince Recording 3', duration: null, type: 'vince', needsRecording: true },
 
-            // Viola clips - 9 fragments
+            // Viola clips
             { id: 'viola-fragment-1', name: 'Viola Fragment 1', duration: 2, type: 'viola' },
             { id: 'viola-fragment-2', name: 'Viola Fragment 2', duration: 3, type: 'viola' },
             { id: 'viola-fragment-3', name: 'Viola Fragment 3', duration: 1.5, type: 'viola' },
-            { id: 'viola-fragment-4', name: 'Viola Fragment 4', duration: 4, type: 'viola' },
-            { id: 'viola-fragment-5', name: 'Viola Fragment 5', duration: 2.5, type: 'viola' },
-            { id: 'viola-fragment-6', name: 'Viola Fragment 6', duration: 3.5, type: 'viola' },
-            { id: 'viola-fragment-7', name: 'Viola Fragment 7', duration: 1, type: 'viola' },
-            { id: 'viola-fragment-8', name: 'Viola Fragment 8', duration: 2, type: 'viola' },
-            { id: 'viola-fragment-9', name: 'Viola Fragment 9', duration: 3, type: 'viola' },
 
+            // Lyrics
+            { id: 'song-verse', name: 'Verse Lines', duration: 8, type: 'lyrics', text: 'When the music fades and silence falls, we remember why we started' },
+            { id: 'song-chorus', name: 'Chorus', duration: 6, type: 'lyrics', text: 'This is the song that never ends, it goes on and on my friend' },
+            { id: 'song-outro', name: 'Final Words', duration: 4, type: 'lyrics', text: 'And in the end, the love you take is equal to the love you make' },
+
+            // Visuals
+            { id: 'album-art', name: 'Album Art', duration: 10, type: 'visuals', visualType: 'image', placeholder: '#a855f7' },
+            { id: 'music-video', name: 'Music Video Clip', duration: 12, type: 'visuals', visualType: 'video', placeholder: '#ec4899' },
+            { id: 'vinyl-spin', name: 'Vinyl Spinning', duration: 16, type: 'visuals', visualType: 'video', placeholder: '#14b8a6' }
         ],
         description: 'Arrange clips to create the final song structure.'
     }
@@ -447,6 +587,22 @@ export const VINCE_RECORDING_VARIANTS = {
         }
     ]
 };
+
+// ===== VINCE'S NOTES TEXT CONTENT =====
+export const VINCES_NOTES_TEXTS = [
+    {
+        id: 'text-1',
+        content: "Music isn't about perfection. It's about capturing a moment, a feeling, something raw. When Viola plays, I hear colors. When the bass drops, I feel the room shake. That's what we're chasing here. Not a clean mix. Not a radio hit. Just truth."
+    },
+    {
+        id: 'text-2',
+        content: "Viola keeps saying we need more structure. More rules. But rules kill creativity. You know what happens when you follow all the rules? You get elevator music. Safe. Boring. Forgettable. I'd rather make something messy and real than polished and dead."
+    },
+    {
+        id: 'text-3',
+        content: "This track needs space. Room to breathe. Too many producers fill every second with sound. They're afraid of silence. But silence is part of the music. It's the canvas. Without it, you're just throwing paint at a wall and calling it art."
+    }
+];
 
 // ===== CLIP CATEGORIES =====
 export const CLIP_CATEGORIES = [
@@ -533,6 +689,30 @@ export const CLIP_CATEGORIES = [
         name: 'Text',
         icon: '📝',
         color: '#6b7280' // gray-500
+    },
+    {
+        id: 'lyrics',
+        name: 'Lyrics',
+        icon: '📝',
+        color: '#fbbf24' // amber-400
+    },
+    {
+        id: 'visuals',
+        name: 'Visuals',
+        icon: '🖼️',
+        color: '#c084fc' // purple-400
+    },
+    {
+        id: 'melody',
+        name: 'Melody',
+        icon: '🎵',
+        color: '#38bdf8' // sky-400
+    },
+    {
+        id: 'instrument',
+        name: 'Instrument',
+        icon: '🎸',
+        color: '#f59e0b' // amber-500
     }
 ];
 
@@ -597,9 +777,8 @@ export const calculateTimelineLength = (project) => {
     // Calculate bars needed
     const barsNeeded = Math.ceil(maxClipEnd / beatsPerBar);
 
-    // Ensure appropriate timeline length based on project type
-    const minBars = 16;
-    const totalBars = Math.max(minBars, barsNeeded);
+    // Timeline is fixed at 2 bars
+    const totalBars = 2;
 
     // Calculate total beats
     const totalBeats = totalBars * beatsPerBar;
